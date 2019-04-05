@@ -8,7 +8,7 @@
     <groupId>org.jboss.integration-platform</groupId>
     <artifactId>jboss-integration-platform-bom</artifactId>
     <!-- Keep in sync with ip-parent version in kie-user-bom-parent/pom.xml -->
-    <version>8.5.0.Final</version>
+    <version>8.6.0.Final</version>
   </parent>
 
   <groupId>org.kie</groupId>
@@ -238,8 +238,6 @@
     <jboss.releases.repo.url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</jboss.releases.repo.url>
     <jboss.snapshots.repo.url>https://repository.jboss.org/nexus/content/repositories/snapshots/</jboss.snapshots.repo.url>
 
-
-    <version.org.infinispan>9.4.9.Final</version.org.infinispan>
 
     <!-- Latest release to be used by api-compatibility-check to check backwards compatibility of the Kie API. -->
     <revapi.oldKieVersion>7.18.0.Final</revapi.oldKieVersion>
@@ -2631,28 +2629,6 @@
         <groupId>org.jboss.spec.javax.ws.rs</groupId>
         <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
         <version>${version.org.jboss.spec.javax.ws.rs.jboss-jaxrs-api_2.1_spec}</version>
-      </dependency>
-
-      <!--TODO: ISPN version upgraded, move to ip-bom on next release -->
-      <dependency>
-        <groupId>org.infinispan</groupId>
-        <artifactId>infinispan-query-dsl</artifactId>
-        <version>${version.org.infinispan}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.infinispan</groupId>
-        <artifactId>infinispan-remote-query-client</artifactId>
-        <version>${version.org.infinispan}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.infinispan</groupId>
-        <artifactId>infinispan-client-hotrod</artifactId>
-        <version>${version.org.infinispan}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.infinispan</groupId>
-        <artifactId>infinispan-commons</artifactId>
-        <version>${version.org.infinispan}</version>
       </dependency>
 
       <dependency>
