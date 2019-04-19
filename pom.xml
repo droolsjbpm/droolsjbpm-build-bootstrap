@@ -270,6 +270,8 @@
 
     <version.io.prometheus>0.5.0</version.io.prometheus>
     <version.com.github.javaparser>3.10.2</version.com.github.javaparser>
+
+    <version.org.apache.commons.csv>1.6</version.org.apache.commons.csv>
   </properties>
 
   <repositories>
@@ -2720,6 +2722,14 @@
         <artifactId>javaparser-core</artifactId>
         <version>${version.com.github.javaparser}</version>
       </dependency>
+
+      <!-- Used by Test Scenario to read/write CSV -->
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-csv</artifactId>
+        <version>${version.org.apache.commons.csv}</version>
+      </dependency>
+
     </dependencies>
 
   </dependencyManagement>
