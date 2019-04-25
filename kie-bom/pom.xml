@@ -2535,7 +2535,7 @@
         <artifactId>business-central-webapp</artifactId>
         <version>${version.org.kie}</version>
         <type>jar</type>
-        <classifier>swarm</classifier>
+        <classifier>thorntail</classifier>
       </dependency>
       <dependency>
         <groupId>org.kie</groupId>

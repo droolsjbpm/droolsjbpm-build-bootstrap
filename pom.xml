@@ -226,7 +226,7 @@
     <!-- Version of the KIE Workbench application. Shown for example in About dialog. Will be usually overridden by productisation. -->
     <version.org.kie.workbench.app>${version.org.kie}</version.org.kie.workbench.app>
 
-    <version.org.wildfly.swarm>2018.3.3</version.org.wildfly.swarm>
+    <version.thorntail>2.4.0.Final</version.thorntail>
     <version.net.byte-buddy>1.9.4</version.net.byte-buddy>
     <version.docker-client>3.5.12</version.docker-client>
     <version.kubernetes-client>4.1.1</version.kubernetes-client>
@@ -475,10 +475,6 @@
                 <rules>
                   <banDuplicateClasses>
                     <ignoreClasses>
-                      <!-- ASM is in Wildfly Swarm through Undertow but exclusion will break the swarm jar -->
-                      <!-- when docker-client shaded GAV will be removed, this ignore can be removed too -->
-                      <!-- kie-wb-common-ala-distribution is affected by this -->
-                      <ignoreClass>org.objectweb.asm.*</ignoreClass>
                       <!-- Duplicated by XStream's transitive deps, with very little chance to get properly fixed -->
                       <ignoreClass>org.xmlpull.v1.XmlPullParserException</ignoreClass>
                       <ignoreClass>org.xmlpull.v1.XmlPullParser</ignoreClass>
@@ -1304,9 +1300,9 @@
           </configuration>
         </plugin>
         <plugin>
-          <groupId>org.wildfly.swarm</groupId>
-          <artifactId>wildfly-swarm-plugin</artifactId>
-          <version>${version.org.wildfly.swarm}</version>
+          <groupId>io.thorntail</groupId>
+          <artifactId>thorntail-maven-plugin</artifactId>
+          <version>${version.thorntail}</version>
         </plugin>
         <plugin>
           <groupId>com.github.spotbugs</groupId>
@@ -2412,6 +2408,18 @@
         <version>${version.org.wildfly.security}</version>
       </dependency>
 
+      <!-- Required by Thorntail -->
+      <dependency>
+        <groupId>org.ow2.asm</groupId>
+        <artifactId>asm</artifactId>
+        <version>5.0.4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.wildfly.common</groupId>
+        <artifactId>wildfly-common</artifactId>
+        <version>1.2.0.Final</version>
+      </dependency>
+
       <!-- Data source management libraries -->
       <dependency>
         <groupId>org.jboss</groupId>
@@ -2511,9 +2519,9 @@
         <version>${version.arquillian-cube}</version>
       </dependency>
       <dependency>
-        <groupId>org.wildfly.swarm</groupId>
+        <groupId>io.thorntail</groupId>
         <artifactId>bom</artifactId>
-        <version>${version.org.wildfly.swarm}</version>
+        <version>${version.thorntail}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
