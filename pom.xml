@@ -70,15 +70,8 @@
     <version.com.android-dx>1.10</version.com.android-dx>
     <!-- commons cli 1.3.1+ required by Dashbuilder's ElasticSearch module. This override can be removed once IP BOM upgrades as well. -->
     <version.commons-cli>1.3.1</version.commons-cli>
-    <!-- IP BOM 7.0.0.Final defines Jackson 2.5.4
-         Wildfly 10.0.0.Final includes Jackson 2.5.4
-         Wildfly 10.1.0.Final includes Jackson 2.7.4
-         JBoss EAP 6.4.16 includes Jackson 2.5.4
-         JBoss EAP 7.1.0.Beta4 includes Jackson 2.8.6
-         Dashbuilder's ElasticSearch module requires Jackson 2.6.2+, so defined here
-         Fabric8 Kubernetes/OpenShift Client 2.6.3 requires Jackson 2.6+, but built against Jackson 2.7.7
-         guvnor-ala-openshift-client shades Jackson 2.7.7 with Fabric8 Kubernetes/OpenShift Client 2.6.3
-         Once the IP BOM gets upgraded and we solely deploy on Wildfly 10.1+ and EAP 7.1+, guvnor-ala-openshift-client can be removed. -->
+    <!-- IP BOM 8.5.0.Final defines Jackson 2.9.5 -->
+    <version.com.fasterxml.jackson>2.9.8</version.com.fasterxml.jackson>
     <version.org.eclipse.bpmn2>0.8.2-jboss</version.org.eclipse.bpmn2>
     <version.com.github.detro>1.2.0</version.com.github.detro>
     <version.com.github.tomakehurst.wiremock>1.53</version.com.github.tomakehurst.wiremock>
