@@ -80,7 +80,7 @@
     <version.jakarta-regexp>1.4</version.jakarta-regexp>
     <version.link.bek.tools.issue-keeper-junit>4.11.1</version.link.bek.tools.issue-keeper-junit>
     <version.net.sf.docbook.docbook-xsl>1.76.1</version.net.sf.docbook.docbook-xsl>
-    <version.org.antlr4>4.5.3</version.org.antlr4>
+    <version.org.antlr4>4.7.2</version.org.antlr4>
     <!-- overrides version of cxf coming from jboss-ip-bom 8.3.2.Final since tests in kie-spring-boot (droolsjbpm-integration) fail -->
     <version.org.apache.cxf>3.1.16</version.org.apache.cxf>
     <version.org.apache.camel>2.23.0</version.org.apache.camel>
