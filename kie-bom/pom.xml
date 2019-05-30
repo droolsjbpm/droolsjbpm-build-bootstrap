@@ -2210,6 +2210,58 @@
         <classifier>sources</classifier>
       </dependency>
 
+      <dependency>
+        <groupId>org.kie.workbench.stunner</groupId>
+        <artifactId>kie-wb-common-stunner-jbpm-designer-integration-shared</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.kie.workbench.stunner</groupId>
+        <artifactId>kie-wb-common-stunner-jbpm-designer-integration-shared</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>sources</classifier>
+      </dependency>
+
+      <dependency>
+        <groupId>org.kie.workbench.stunner</groupId>
+        <artifactId>kie-wb-common-stunner-jbpm-designer-integration-api</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.kie.workbench.stunner</groupId>
+        <artifactId>kie-wb-common-stunner-jbpm-designer-integration-api</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>sources</classifier>
+      </dependency>
+
+      <dependency>
+        <groupId>org.kie.workbench.stunner</groupId>
+        <artifactId>kie-wb-common-stunner-jbpm-designer-integration-backend</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.kie.workbench.stunner</groupId>
+        <artifactId>kie-wb-common-stunner-jbpm-designer-integration-backend</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>sources</classifier>
+      </dependency>
+
+      <dependency>
+        <groupId>org.kie.workbench.stunner</groupId>
+        <artifactId>kie-wb-common-stunner-jbpm-designer-integration-client</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.kie.workbench.stunner</groupId>
+        <artifactId>kie-wb-common-stunner-jbpm-designer-integration-client</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>sources</classifier>
+      </dependency>
+
       <!-- Stunner - Backend -->
 
       <dependency>
