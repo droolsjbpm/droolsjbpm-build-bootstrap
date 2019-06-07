@@ -167,6 +167,17 @@
       <version>${version.org.kie}</version>
       <classifier>sources</classifier>
     </dependency>
+    <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-dmn-core-osgi</artifactId>
+      <version>${version.org.kie}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-dmn-core-osgi</artifactId>
+      <version>${version.org.kie}</version>
+      <classifier>sources</classifier>
+    </dependency>
     
     </dependencies>
   </dependencyManagement>

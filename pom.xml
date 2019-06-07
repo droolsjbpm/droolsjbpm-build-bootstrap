@@ -265,6 +265,7 @@
     <version.com.github.javaparser>3.13.10</version.com.github.javaparser>
 
     <version.org.apache.commons.csv>1.6</version.org.apache.commons.csv>
+    <version.org.jpmml.model>1.4.11</version.org.jpmml.model> <!-- jpmml-model BSD 3C license - ATTENTION 1.4.11 intentional, because 1.4.9 evaluators depend on 1.4.11 -->
   </properties>
 
   <repositories>
@@ -2665,6 +2666,12 @@
         <groupId>ch.obermuhlner</groupId>
         <artifactId>big-math</artifactId>
         <version>${version.ch.obermuhlner}</version>
+      </dependency>
+      <!-- used by DMN for general (runtime-agnostic) inspection of PMML model -->
+      <dependency>
+        <groupId>org.jpmml</groupId>
+        <artifactId>pmml-model</artifactId>
+        <version>${version.org.jpmml.model}</version>
       </dependency>
 
       <dependency>
