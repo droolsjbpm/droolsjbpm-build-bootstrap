@@ -108,12 +108,23 @@
       <!-- Drools Model -->
       <dependency>
         <groupId>org.drools</groupId>
-        <artifactId>drools-constraint-parser</artifactId>
+        <artifactId>drools-mvel-parser</artifactId>
         <version>${version.org.kie}</version>
       </dependency>
       <dependency>
         <groupId>org.drools</groupId>
-        <artifactId>drools-constraint-parser</artifactId>
+        <artifactId>drools-mvel-parser</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>sources</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.drools</groupId>
+        <artifactId>drools-mvel-compiler</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.drools</groupId>
+        <artifactId>drools-mvel-compiler</artifactId>
         <version>${version.org.kie}</version>
         <classifier>sources</classifier>
       </dependency>
