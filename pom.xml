@@ -2013,6 +2013,12 @@
 
       <dependency>
         <groupId>com.google.elemental2</groupId>
+        <artifactId>elemental2-core</artifactId>
+        <version>${version.com.google.elemental2}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.google.elemental2</groupId>
         <artifactId>elemental2-promise</artifactId>
         <version>${version.com.google.elemental2}</version>
       </dependency>
