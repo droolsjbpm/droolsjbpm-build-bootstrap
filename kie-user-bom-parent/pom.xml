@@ -4,11 +4,10 @@
 
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.jboss.integration-platform</groupId>
-    <artifactId>jboss-integration-platform-parent</artifactId>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-parent</artifactId>
     <!-- Keep in sync with the parent version in ../pom.xml (kie-parent)  -->
-    <version>8.6.0.Final</version>
-    <!-- Empty relativePath needed to fix Maven warning 'parent.relativePath points at wrong POM' -->
+    <version>31</version>
     <relativePath/>
   </parent>
 
