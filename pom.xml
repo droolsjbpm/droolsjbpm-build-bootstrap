@@ -728,6 +728,7 @@
               <goals>
                 <goal>enforce</goal>
               </goals>
+              <phase>none</phase>
               <configuration>
                 <rules>
                   <illegalTransitiveDependencyCheck
