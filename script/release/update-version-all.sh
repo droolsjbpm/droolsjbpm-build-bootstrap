@@ -110,32 +110,15 @@ for repository in `cat ${scriptDir}/../repository-list.txt` ; do
             mvnVersionsSet
             returnCode=$?
 
-        elif [ "$repository" == "kie-soup" ]; then
-            mvnVersionsSet
-            cd kie-soup-bom
-            mvnVersionsSet
-            cd ..
-            mvn -B -U -Dfull -s $settingsXmlFile clean install -DskipTests
-            returnCode=$?
-
-        elif [ "$repository" == "appformer" ]; then
-            #appformer has its own version
-            # newVersion is updated with newVersion for appformer
-            newVersion=$2
-            mvnVersionsSet
-            cd uberfire-bom
-            mvnVersionsSet
-            cd ..
-            mvn -B -U -Dfull -s $settingsXmlFile clean install -DskipTests
-            # switch back to kie version
-            newVersion=$1
-            returnCode=$?
-
         elif [ "$repository" == "droolsjbpm-build-bootstrap" ]; then
             # first build&install the current version (usually SNAPSHOT) as it is needed later by other repos
             mvn -B -U -Dfull -s $settingsXmlFile clean install
+            # extract old kie version
+            kieOldVersion=$(grep -oP -m 2 '(?<=<version>).*(?=</version)' pom.xml| awk 'FNR==2')
+            # extract old uberfire version
+            oldUberfireVersion=$(grep -oP -m 2 '(?<=<version>).*(?=</version)' uberfire-bom/pom.xml | awk 'FNR==2')
+            newUberfireVersion=$2
             mvnVersionsSet
-            sed -i "s/<version\.org\.kie>.*<\/version.org.kie>/<version.org.kie>$newVersion<\/version.org.kie>/" pom.xml
             # update latest released version property only for non-SNAPSHOT versions
             if [[ ! $newVersion == *-SNAPSHOT ]]; then
                 sed -i "s/<latestReleasedVersionFromThisBranch>.*<\/latestReleasedVersionFromThisBranch>/<latestReleasedVersionFromThisBranch>$newVersion<\/latestReleasedVersionFromThisBranch>/" pom.xml
@@ -144,8 +127,30 @@ for repository in `cat ${scriptDir}/../repository-list.txt` ; do
             cd kie-user-bom-parent
             mvnVersionsSet
             cd ..
+            # update version that are not automatically updated
+            sed -i "s/<version.org.kie>$kieOldVersion<\/version.org.kie>/<version.org.kie>$newVersion<\/version.org.kie>/" pom.xml
+            sed -i "s/<version.org.uberfire>$oldUberfireVersion<\/version.org.uberfire>/<version.org.uberfire>$newUberfireVersion<\/version.org.uberfire>/" pom.xml
+            sed -i "s/<version>$oldUberfireVersion<\/version>/<version>$newUberfireVersion<\/version>/" uberfire-bom/pom.xml
             # workaround for http://jira.codehaus.org/browse/MVERSIONS-161
             mvn -B -s $settingsXmlFile clean install -DskipTests
+            returnCode=$?
+
+        elif [ "$repository" == "kie-soup" ]; then
+            mvnVersionsSet
+            returnCode=$?
+
+        elif [ "$repository" == "appformer" ]; then
+            # extract old kie version
+            kieOldVersion=$(grep -oP -m 1 '(?<=<version>).*(?=</version)' pom.xml)
+            #appformer has its own version
+            # newVersion is updated with newVersion for appformer
+            newVersion=$2
+            mvnVersionsSet
+            # switch back to kie version
+            newVersion=$1
+            # update version that are not automatically updated
+            sed -i "s/<version>$kieOldVersion<\/version>/<version>$newVersion<\/version>/" pom.xml
+            sed -i "s/<version.org.kie>$kieOldVersion<\/version.org.kie>/<version.org.kie>$newVersion<\/version.org.kie>/" pom.xml
             returnCode=$?
 
         elif [ "$repository" == "jbpm" ]; then
