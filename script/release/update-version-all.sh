@@ -136,7 +136,7 @@ for repository in `cat ${scriptDir}/../repository-list.txt` ; do
             returnCode=$?
 
         elif [ "$repository" == "kie-soup" ]; then
-            mvnVersionsSet
+            mvnVersionsUpdateParentAndChildModules
             returnCode=$?
 
         elif [ "$repository" == "appformer" ]; then
