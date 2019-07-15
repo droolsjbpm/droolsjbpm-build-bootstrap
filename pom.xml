@@ -704,6 +704,12 @@
                     </message>
                     <unCheckedPluginList>org.kie:kie-maven-plugin</unCheckedPluginList>
                   </requirePluginVersions>
+                  <requireFilesDontExist>
+                    <files>
+                      <file>${project.basedir}/src/main/resources/logback-test.xml</file>
+                      <file>${project.basedir}/src/main/filtered-resources/logback-test.xml</file>
+                    </files>
+                  </requireFilesDontExist>
                 </rules>
               </configuration>
             </execution>
