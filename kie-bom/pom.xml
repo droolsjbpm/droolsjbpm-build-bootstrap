@@ -2706,6 +2706,33 @@
         <version>${version.org.kie}</version>
         <classifier>sources</classifier>
       </dependency>
+
+      <!-- KIE SpringBoot -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-server-spring-boot-starter</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-server-spring-boot-starter-drools</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-server-spring-boot-starter-jbpm</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-server-spring-boot-starter-optaplanner</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>jbpm-spring-boot-starter-basic</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
