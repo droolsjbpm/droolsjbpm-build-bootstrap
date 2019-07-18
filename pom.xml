@@ -202,7 +202,7 @@
     <version.org.eclipse.emf.ecore.xmi>2.5.0.v20100521-1846</version.org.eclipse.emf.ecore.xmi>
     <version.org.eclipse.jdt.core.compiler>4.6.1</version.org.eclipse.jdt.core.compiler>
     <version.org.eclipse.jetty>9.2.14.v20151106</version.org.eclipse.jetty>
-    <version.org.eclipse.jgit>5.0.2.201807311906-r</version.org.eclipse.jgit>
+    <version.org.eclipse.jgit>5.4.0.201906121030-r</version.org.eclipse.jgit>
     <version.org.eclipse.sisu>0.3.2</version.org.eclipse.sisu>
     <version.org.glassfish>3.1.2</version.org.glassfish>
     <version.org.gwtbootstrap3>0.9.3</version.org.gwtbootstrap3>
