@@ -21,3 +21,4 @@ jbpm-wb
 kie-docs
 kie-wb-distributions
 optaweb-employee-rostering
+openshift-drools-hacep
