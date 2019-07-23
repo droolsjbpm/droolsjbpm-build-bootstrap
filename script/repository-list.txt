@@ -5,6 +5,7 @@ kie-soup
 appformer
 droolsjbpm-knowledge
 drools
+openshift-drools-hacep
 optaplanner
 jbpm
 kie-jpmml-integration
@@ -21,4 +22,3 @@ jbpm-wb
 kie-docs
 kie-wb-distributions
 optaweb-employee-rostering
-openshift-drools-hacep
