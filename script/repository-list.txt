@@ -5,11 +5,11 @@ kie-soup
 appformer
 droolsjbpm-knowledge
 drools
-openshift-drools-hacep
 optaplanner
 jbpm
 kie-jpmml-integration
 droolsjbpm-integration
+openshift-drools-hacep
 droolsjbpm-tools
 kie-uberfire-extensions
 kie-wb-playground
