@@ -863,6 +863,9 @@
                       <ignoreClass>org.infinispan.util.AbstractDelegatingMap</ignoreClass>
                       <ignoreClass>org.infinispan.util.AbstractDelegatingSet</ignoreClass>
                       <ignoreClass>org.infinispan.util.AbstractDelegatingCollection</ignoreClass>
+                      <!-- This package contains auto generated code and is available both in kafka-clients
+                      and in kafka-clients-test -->
+                      <ignoreClass>org.apache.kafka.common.message.*</ignoreClass>
                     </ignoreClasses>
                     <dependencies>
                       <!-- gwt-dev bundles dozens of different 3rd party dependencies, but can not be usually excluded
