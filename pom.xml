@@ -5494,7 +5494,7 @@
         <groupId>org.uberfire</groupId>
         <artifactId>uberfire-bom</artifactId>
         <type>pom</type>
-        <version>${version.org.uberfire}</version>
+        <version>${version.org.kie}</version>
         <scope>import</scope>
       </dependency>
       <dependency>
