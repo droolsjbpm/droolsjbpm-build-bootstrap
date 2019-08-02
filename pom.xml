@@ -328,6 +328,7 @@
     <version.org.mozilla.rhino>1.7R4</version.org.mozilla.rhino>
     <version.rome>1.0</version.rome>
     <version.smartgwt>2.4</version.smartgwt>
+    <version.tomcat>9.0.22</version.tomcat>
     <version.tranql.connector>1.2</version.tranql.connector>
     <version.wsdl4j>1.6.3</version.wsdl4j>
     <version.xalan>2.7.1</version.xalan>
