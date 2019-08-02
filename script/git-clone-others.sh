@@ -19,6 +19,22 @@ initializeWorkingDirAndScriptDir() {
     # Set script directory and remove other symbolic links (parent directory links)
     scriptDir=`pwd -P`
 }
+
+printUsage() {
+    echo
+    echo "Usage:"
+    echo "  $0 <additional git options> [--repo-list=<list-of-repositories>|--target-repo=<repository>] [--add-upstream-remote]"
+    echo "For example:"
+    echo "  $0"
+    echo "  $0 --bare"
+    echo "  $0 --repo-list=droolsjbpm-knowledge,drools"
+    echo "  $0 --target-repo=drools-wb"
+    echo "In case you are cloning your forks, the following option will create a second remote called upstream"
+    echo "pointing to kiegroup. It can be useful for keeping your forks up to date:"
+    echo "  $0 --add-upstream-remote"
+    echo
+}
+
 initializeWorkingDirAndScriptDir
 droolsjbpmOrganizationDir="$scriptDir/../.."
 
@@ -35,9 +51,42 @@ cd "$droolsjbpmOrganizationDir"
 
 # additinal Git options can be passed simply as params to the script
 # example: --depth 1 (creates a shallow clone with that depth)
-additionalGitOptions="$@"
+additionalGitOptions=()
 
-for repository in `cat "${scriptDir}/repository-list.txt"` ; do
+# default repository list is stored in the repository-list.txt file
+REPOSITORY_LIST=`cat "${scriptDir}/repository-list.txt"`
+
+for arg in "$@"
+do
+    case "$arg" in
+        --target-repo=*)
+            REPOSITORY_LIST=$($scriptDir/checks/repo-dep-tree.pl -w -t ${arg#*=})
+            REPOSITORY_LIST=${REPOSITORY_LIST//,/ }
+        ;;
+
+        --repo-list=*)
+            REPOSITORY_LIST=$(echo "$arg" | sed 's/[-a-zA-Z0-9]*=//')
+            # replace the commas with spaces so that the for loop treats the individual repos as different values
+            REPOSITORY_LIST=${REPOSITORY_LIST//,/ }
+        ;;
+        # add upstream remote for a repository, i.e. git@github.com:kiegroup/${repository}.git, might be useful for PRs
+        --add-upstream-remote)
+            UPSTREAM=true
+        ;;
+
+        --help)
+            printUsage
+            exit 1
+        ;;
+
+        *)
+            additionalGitOptions+=("$arg")
+        ;;
+    esac
+done
+
+
+for repository in $REPOSITORY_LIST ; do
     echo
     if [ -d $repository ] ; then
         echo "==============================================================================="
@@ -52,9 +101,17 @@ for repository in `cat "${scriptDir}/repository-list.txt"` ; do
         echo -- repository ${repository} --
         echo -- ${gitUrlPrefix}${repository}.git -- ${repository} --
         if [ "x${additionalGitOptions}" != "x" ]; then
-            echo -- additional Git options: ${additionalGitOptions} --
+            echo -- additional Git options: ${additionalGitOptions[@]} --
         fi
-        git clone ${additionalGitOptions} ${gitUrlPrefix}${repository}.git ${repository}
+        git clone ${additionalGitOptions[@]} ${gitUrlPrefix}${repository}.git ${repository}
+
+        if [ "$UPSTREAM" = true ]; then
+            upstreamGitUrlPrefix=`echo ${gitUrlPrefix} | sed 's|\(.*github\.com[:/]\).*|\1kiegroup/|'`
+            echo -- adding upstream remote "${upstreamGitUrlPrefix}${repository}.git"
+            cd ${repository}
+            git remote add upstream ${upstreamGitUrlPrefix}${repository}.git
+            cd ..
+        fi
 
         returnCode=$?
         if [ $returnCode != 0 ] ; then
