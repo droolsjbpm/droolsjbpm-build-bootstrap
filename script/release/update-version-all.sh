@@ -116,7 +116,7 @@ for repository in `cat ${scriptDir}/../repository-list.txt` ; do
             # extract old kie version
             kieOldVersion=$(grep -oP -m 2 '(?<=<version>).*(?=</version)' pom.xml| awk 'FNR==2')
             # extract old uberfire version
-            oldUberfireVersion=$(grep -oP -m 2 '(?<=<version.org.uberfire>).*(?=</version.org.uberfire)' uberfire-bom/pom.xml | awk 'FNR==2')
+            oldUberfireVersion=$(grep -oP -m 1 '(?<=<version.org.uberfire>).*(?=</version.org.uberfire)' pom.xml | awk 'FNR==1')
             newUberfireVersion=$2
             mvnVersionsSet
             # update latest released version property only for non-SNAPSHOT versions
@@ -130,7 +130,6 @@ for repository in `cat ${scriptDir}/../repository-list.txt` ; do
             # update version that are not automatically updated
             sed -i "s/<version.org.kie>$kieOldVersion<\/version.org.kie>/<version.org.kie>$newVersion<\/version.org.kie>/" pom.xml
             sed -i "s/<version.org.uberfire>$oldUberfireVersion<\/version.org.uberfire>/<version.org.uberfire>$newUberfireVersion<\/version.org.uberfire>/" pom.xml
-            sed -i "s/<version>$kieOldVersion<\/version>/<version>$newVersion<\/version>/" uberfire-bom/pom.xml
             sed -i "s/<version.org.uberfire>$oldUberfireVersion<\/version.org.uberfire>/<version.org.uberfire>$newUberfireVersion<\/version.org.uberfire>/" uberfire-bom/pom.xml
             # workaround for http://jira.codehaus.org/browse/MVERSIONS-161
             mvn -B -s $settingsXmlFile clean install -DskipTests
