@@ -483,8 +483,7 @@
     <version.org.codehaus.plexus.plexus-io>3.0.0</version.org.codehaus.plexus.plexus-io>
     <version.org.apache.maven.shared.maven-artifact-transfer>0.9.1
     </version.org.apache.maven.shared.maven-artifact-transfer>
-    <version.org.apache.maven.plugins.maven-compiler-plugin>3.7.0
-    </version.org.apache.maven.plugins.maven-compiler-plugin>
+    <version.compiler.plugin>3.8.1</version.compiler.plugin>
     <version.net.openhft.chronicle-queue>5.16.10</version.net.openhft.chronicle-queue>
     <version.net.openhft.chronicle-core>1.16.16</version.net.openhft.chronicle-core>
     <version.net.openhft.chronicle-bytes>1.16.16</version.net.openhft.chronicle-bytes>
