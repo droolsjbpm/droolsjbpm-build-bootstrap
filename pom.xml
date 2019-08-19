@@ -5476,38 +5476,6 @@
       </dependency>
       <!-- END of jboss-ip-bom -->
 
-      <!-- dependencies from kie-parent -->
-      <dependency>
-        <groupId>org.uberfire</groupId>
-        <artifactId>uberfire-commons</artifactId>
-        <version>${version.org.uberfire}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.kie.soup</groupId>
-        <artifactId>kie-soup-maven-support</artifactId>
-        <version>${version.org.kie}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.kie.soup</groupId>
-        <artifactId>kie-soup-maven-integration</artifactId>
-        <version>${version.org.kie}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.kie.soup</groupId>
-        <artifactId>kie-soup-commons</artifactId>
-        <version>${version.org.kie}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.kie.soup</groupId>
-        <artifactId>kie-soup-project-datamodel-api</artifactId>
-        <version>${version.org.kie}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.kie.soup</groupId>
-        <artifactId>kie-soup-project-datamodel-commons</artifactId>
-        <version>${version.org.kie}</version>
-      </dependency>
-
       <dependency>
         <groupId>org.apache.camel</groupId>
         <artifactId>camel-core</artifactId>
