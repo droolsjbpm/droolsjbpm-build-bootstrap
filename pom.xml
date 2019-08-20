@@ -405,7 +405,7 @@
     <!-- this version will overwrite jboss-ip-bom version 2.5.1. The version in jboss-ip-bom couldn't be upgraded as it will break ModeShape Web Explorer application which uses GWT 2.5.1 -->
     <!-- please look at https://github.com/fredsa/gwt-dnd/wiki/GettingStarted -->
     <version.net.ltgt.gwt.maven>1.0-rc-6</version.net.ltgt.gwt.maven>
-    <version.org.kie.gwthelper.maven>1.1</version.org.kie.gwthelper.maven>
+    <version.org.kie.gwthelper.maven>1.3</version.org.kie.gwthelper.maven>
     <!-- Version 1.1.0.Final which is coming from ip-bom is not compatible with GWT 2.8.0.Beta1 -->
     <version.javax.validation>1.0.0.GA</version.javax.validation>
     <version.javax.xml.stream.stax>1.0-2</version.javax.xml.stream.stax>
