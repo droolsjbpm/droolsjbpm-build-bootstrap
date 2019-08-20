@@ -294,7 +294,7 @@ A pull request is like a patch file, but easier to apply, more powerful and you'
 
         * Or use the button *Merge* if there are no merge conflicts.
 
-If the change being proposed is affecting more than a single repository, it will require creating a pull request for each of the repositories being affected; in this case, it is required for the *topic branch* to share the same name across all pull requests, in order for the CI build tool to include the necessary dependencies while performing the build with the proposed change. It is also highly recommended to use the github *Autolinked references* in the pull request comments, in order to make these depedencies explicit and emphasized during code reviews.
+If the change being proposed is affecting more than a single repository, it will require creating a pull request for each of the repositories being affected; in this case, it is required for the *topic branch* to share the same name across all pull requests, in order for the CI build tool to include the necessary dependencies while performing the build with the proposed change. It is also highly recommended to use the github *Autolinked references* in the pull request comments, in order to make these dependencies explicit and emphasized during code reviews.
 
 Building with Maven
 ===================
@@ -559,7 +559,7 @@ Any dependency used in any KIE project must fulfill these hard requirements:
 
         * Build speed. More repositories slow down the build.
 
-        * Build reliability. A repository server that is temporary down can break builds.
+        * Build reliability. A repository server that is temporarily down can break builds.
 
     * Workaround to still use a great looking jar as a dependency:
 
@@ -757,7 +757,7 @@ Configuring Eclipse
 
     * Set up formatter for edited code only: Open menu *Window*, menu item *Preferences*, click tree item *Java*, tree item *Editor*, and click *Save actions*. Enable *Perform the selected actions on save*: select *Format source code* (*Format edited lines*) and *Organize imports*
     
-    * **IMPORTANT** Eclipse uses three seperate formatters, and you need to setup each one seperately (click Import...,
+    * **IMPORTANT** Eclipse uses three separate formatters, and you need to setup each one separately (click Import...,
     select the file, and click apply for each one):
     
         - Clean Up: Uses "eclipse-code-style-clean-up_droolsjbpm-java-conventions.xml"
@@ -788,7 +788,7 @@ Configuring Eclipse
 
         * Textfield *Tab size*: `4`
 
-        * Note: If it is a build-in profile, you 'll need to change its name with the textfield on top.
+        * Note: If it is a built-in profile, you 'll need to change its name with the textfield on top.
 
     * Click tree item *XML*, tree item *XML Files*, tree item *Editor*.
 
@@ -824,7 +824,7 @@ Configuring Eclipse
 
 * Set the correct license header
 
-    Eclipse JEE Helios currently has no build-in support of license headers, but you can configure it for new files.
+    Eclipse JEE Helios currently has no built-in support of license headers, but you can configure it for new files.
 
     * Open menu *Window*, menu item *Preferences*.
 
@@ -975,7 +975,7 @@ Before running IntelliJ
 Configuring the project with the maven integration
 --------------------------------------------------
 
-IntelliJ has very good build-in support for Maven.
+IntelliJ has very good built-in support for Maven.
 
 * Open IntelliJ.
 
@@ -1286,7 +1286,7 @@ Knowing what's going on
 
 * Subscribe to the RSS feeds.
 
-    * **It's recommend to subscribe at least to the RSS feeds of the project/repositories you're working on.**
+    * **It's recommended to subscribe at least to the RSS feeds of the project/repositories you're working on.**
 
     * Prefer an RSS reader which shows which RSS articles you've already read, such as:
 
