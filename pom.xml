@@ -284,7 +284,7 @@
     <version.org.json>20090211</version.org.json>
     <version.org.jsoup>1.8.3</version.org.jsoup>
     <version.org.jvnet.mock-javamail>1.9</version.org.jvnet.mock-javamail>
-    <version.org.keycloak>4.8.3.Final</version.org.keycloak>
+    <version.org.keycloak>6.0.1</version.org.keycloak>
     <version.org.littleshoot.littleproxy>0.5.3</version.org.littleshoot.littleproxy>
     <version.log4j>1.2.17</version.log4j>
     <version.ognl>3.0.6</version.ognl>
