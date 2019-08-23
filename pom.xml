@@ -3397,6 +3397,11 @@
         <artifactId>lucene-misc</artifactId>
         <version>${version.org.apache.lucene}</version>
       </dependency>
+      <dependency>
+        <groupId>org.apache.lucene</groupId>
+        <artifactId>lucene-backward-codecs</artifactId>
+        <version>${version.org.apache.lucene}</version>
+      </dependency>
 
       <dependency>
         <groupId>org.apache.maven</groupId>
@@ -5302,6 +5307,11 @@
       <dependency>
         <groupId>org.wildfly.core</groupId>
         <artifactId>wildfly-server</artifactId>
+        <version>${version.org.wildfly.core}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.wildfly.core</groupId>
+        <artifactId>wildfly-domain-management</artifactId>
         <version>${version.org.wildfly.core}</version>
       </dependency>
 
