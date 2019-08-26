@@ -20,6 +20,6 @@ jbpm-designer
 jbpm-work-items
 jbpm-wb
 kie-docs
-kie-wb-distributions
 optaweb-employee-rostering
 optaweb-vehicle-routing
+kie-wb-distributions
