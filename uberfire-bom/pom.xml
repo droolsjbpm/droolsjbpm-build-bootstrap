@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.kie</groupId>
     <artifactId>kie-user-bom-parent</artifactId>
-    <version>7.27.0-SNAPSHOT</version>
+    <version>7.28.0-SNAPSHOT</version>
     <relativePath>../kie-user-bom-parent/pom.xml</relativePath>
   </parent>
 
@@ -58,7 +58,7 @@
   </issueManagement>
 
   <properties>
-    <version.org.uberfire>2.24.0-SNAPSHOT</version.org.uberfire>
+    <version.org.uberfire>2.25.0-SNAPSHOT</version.org.uberfire>
   </properties>
 
   <repositories>
