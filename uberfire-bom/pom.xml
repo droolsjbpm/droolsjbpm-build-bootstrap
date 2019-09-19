@@ -58,7 +58,7 @@
   </issueManagement>
 
   <properties>
-    <version.org.uberfire>2.25.0-SNAPSHOT</version.org.uberfire>
+    <version.org.uberfire>${version.org.kie}</version.org.uberfire>
   </properties>
 
   <repositories>
