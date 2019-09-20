@@ -37,7 +37,7 @@ if [ "$source" == "production-tag" ]; then
 fi
 
 # upgrades the version to the release/tag version
-./droolsjbpm-build-bootstrap/script/release/update-version-all.sh $releaseVersion $uberfireVersion custom
+./droolsjbpm-build-bootstrap/script/release/update-version-all.sh $releaseVersion custom
 
 
 #droolsjbpm-build-bootstrap
