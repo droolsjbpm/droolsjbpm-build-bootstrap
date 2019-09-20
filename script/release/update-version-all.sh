@@ -50,13 +50,13 @@ mvnVersionsUpdateParentAndChildModules() {
 initializeScriptDir
 droolsjbpmOrganizationDir="$scriptDir/../../.."
 
-if [ $# != 1 ] && [ $# != 3 ]; then
+if [ $# != 1 ] && [ $# != 2 ]; then
     echo
     echo "Usage:"
-    echo "  $0 newVersion newAppformerVersion releaseType"
+    echo "  $0 newVersion releaseType"
     echo "For example:"
-    echo "  $0 7.5.0.Final 2.2.0.Final community"
-    echo "  $0 7.5.0.20171120-prod 2.2.0.20171120-prod productized"
+    echo "  $0 7.5.0.Final community"
+    echo "  $0 7.5.0.20171120-prod productized"
     echo
     exit 1
 fi
@@ -115,9 +115,6 @@ for repository in `cat ${scriptDir}/../repository-list.txt` ; do
             mvn -B -U -Dfull -s $settingsXmlFile clean install
             # extract old kie version
             kieOldVersion=$(grep -oP -m 2 '(?<=<version>).*(?=</version)' pom.xml| awk 'FNR==2')
-            # extract old uberfire version
-            oldUberfireVersion=$(grep -oP -m 1 '(?<=<version.org.uberfire>).*(?=</version.org.uberfire)' pom.xml | awk 'FNR==1')
-            newUberfireVersion=$2
             mvnVersionsSet
             # update latest released version property only for non-SNAPSHOT versions
             if [[ ! $newVersion == *-SNAPSHOT ]]; then
@@ -129,8 +126,6 @@ for repository in `cat ${scriptDir}/../repository-list.txt` ; do
             cd ..
             # update version that are not automatically updated
             sed -i "s/<version.org.kie>$kieOldVersion<\/version.org.kie>/<version.org.kie>$newVersion<\/version.org.kie>/" pom.xml
-            sed -i "s/<version.org.uberfire>$oldUberfireVersion<\/version.org.uberfire>/<version.org.uberfire>$newUberfireVersion<\/version.org.uberfire>/" pom.xml
-            sed -i "s/<version.org.uberfire>$oldUberfireVersion<\/version.org.uberfire>/<version.org.uberfire>$newUberfireVersion<\/version.org.uberfire>/" uberfire-bom/pom.xml
             # workaround for http://jira.codehaus.org/browse/MVERSIONS-161
             mvn -B -s $settingsXmlFile clean install -DskipTests
             returnCode=$?
@@ -142,12 +137,7 @@ for repository in `cat ${scriptDir}/../repository-list.txt` ; do
         elif [ "$repository" == "appformer" ]; then
             # extract old kie version
             kieOldVersion=$(grep -oP -m 1 '(?<=<version>).*(?=</version)' pom.xml)
-            #appformer has its own version
-            # newVersion is updated with newVersion for appformer
-            newVersion=$2
             mvnVersionsSet
-            # switch back to kie version
-            newVersion=$1
             # update version that are not automatically updated
             sed -i "s/<version>$kieOldVersion<\/version>/<version>$newVersion<\/version>/" pom.xml
             sed -i "s/<version.org.kie>$kieOldVersion<\/version.org.kie>/<version.org.kie>$newVersion<\/version.org.kie>/" pom.xml
