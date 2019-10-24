@@ -955,6 +955,34 @@
         <classifier>sources</classifier>
       </dependency>
 
+      <!-- Widget Ace and Editors -->
+
+      <dependency>
+        <groupId>org.uberfire</groupId>
+        <artifactId>uberfire-widgets-core-ace</artifactId>
+        <version>${version.org.uberfire}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.uberfire</groupId>
+        <artifactId>uberfire-widgets-core-ace</artifactId>
+        <version>${version.org.uberfire}</version>
+        <classifier>sources</classifier>
+      </dependency>
+
+      <dependency>
+        <groupId>org.uberfire</groupId>
+        <artifactId>uberfire-widgets-core-editors</artifactId>
+        <version>${version.org.uberfire}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.uberfire</groupId>
+        <artifactId>uberfire-widgets-core-editors</artifactId>
+        <version>${version.org.uberfire}</version>
+        <classifier>sources</classifier>
+      </dependency>
+
       <!-- Markdown widget -->
 
       <dependency>
