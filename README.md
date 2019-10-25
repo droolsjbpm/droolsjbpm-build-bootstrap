@@ -1296,8 +1296,6 @@ Knowing what's going on
 
             * Tip: create a new, separate directory for each feed: some feeds (such as about the project you are working on) are more important to you than others.
 
-        * [Google Reader](http://www.google.com/reader)
-
     * Subscribe to jira issue changes:
 
         * [DROOLS](https://issues.jboss.org/plugins/servlet/streams?key=DROOLS&os_authType=basic)
