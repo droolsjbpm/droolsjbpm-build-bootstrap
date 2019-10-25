@@ -1221,7 +1221,7 @@ Extra IntelliJ plugins
 Linux inotify
 -------------
 
-We have encountered some issues with different Linux distribution's *inotify* when running any of the Workbench's in Super Dev Mode from within InteliJ.
+We have encountered some issues with different Linux distribution's *inotify* when running any of the Workbench's in Super Dev Mode from within IntelliJ.
 
 Error message `User limit of inotify instances reached or too many open files` has been observed with both Ubuntu and Fedora. Should you encounter this issue you will need to reconfigure your *inotify* settings.
 
