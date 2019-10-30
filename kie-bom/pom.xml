@@ -2676,6 +2676,12 @@
       </dependency>
       <dependency>
         <groupId>org.kie.workbench</groupId>
+        <artifactId>kie-wb-common-dmn-webapp-kogito-common</artifactId>
+        <version>${version.org.kie}</version>
+        <type>test-jar</type>
+      </dependency>
+      <dependency>
+        <groupId>org.kie.workbench</groupId>
         <artifactId>kie-wb-common-dmn-webapp-kogito-marshaller</artifactId>
         <version>${version.org.kie}</version>
       </dependency>
