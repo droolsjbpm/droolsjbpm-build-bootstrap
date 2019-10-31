@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.kie</groupId>
+    <artifactId>kie-user-bom-parent</artifactId>
+    <version>7.30.0-SNAPSHOT</version>
+    <relativePath>../kie-user-bom-parent/pom.xml</relativePath>
+  </parent>
+
+  <groupId>org.kie</groupId>
+  <artifactId>narayana-integration-bom</artifactId>
+  <packaging>pom</packaging>
+
+  <name>Narayana Integration BOM (Bill Of Materials)</name>
+  <description>
+    Import this BOM in your dependencyManagement if you want to include narayana in your project.
+  </description>
+
+  <!-- IMPORTANT: Do not declare any build things here! Declare them in kie-user-bom-parent. -->
+  <build />
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.jbossts.jta</groupId>
+        <artifactId>narayana-jta</artifactId>
+      </dependency>
+
+      <!-- Integration between Tomcat and Narayana -->
+      <dependency>
+        <groupId>org.jboss.integration</groupId>
+        <artifactId>narayana-tomcat</artifactId>
+      </dependency>
+      <!-- TODO: remove this legacy dependency once all repositories switch to narayana-tomcat -->
+      <dependency>
+        <groupId>org.jboss.narayana.tomcat</groupId>
+        <artifactId>tomcat-jta</artifactId>
+      </dependency>
+
+      <!-- Narayana uses DBCP for DB connection pooling on Tomcat and for embedded engine use case -->
+      <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-dbcp</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.spec.javax.transaction</groupId>
+        <artifactId>jboss-transaction-api_1.2_spec</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-transaction-spi</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.logging</groupId>
+        <artifactId>jboss-logging</artifactId>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+</project>
