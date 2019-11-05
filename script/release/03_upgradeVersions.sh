@@ -1,7 +1,8 @@
 #!/bin/bash -e
 
 # upgrades the version to the release/tag version
-# parameters: $kieVersion == $1
+# parameters: kieVersion = $1
+
 ./droolsjbpm-build-bootstrap/script/release/update-version-all.sh $1 custom
 
 

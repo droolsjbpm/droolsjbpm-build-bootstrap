@@ -25,7 +25,7 @@ fi
 kieVersion=$(sed -e 's/^[ \t]*//' -e 's/[ \t]*$//' -n -e 's/<version.org.kie>\(.*\)<\/version.org.kie>/\1/p' droolsjbpm-build-bootstrap/pom.xml)
 
 # creates a properties file to pass variables and moves it to the root directory
-echo kieVersion=$kieVersion > kie.properties
+$kieVersion > kie.properties
 
 
 deployDir=$WORKSPACE/prod-deploy-dir

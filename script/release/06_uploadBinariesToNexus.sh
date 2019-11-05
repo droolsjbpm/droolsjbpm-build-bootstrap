@@ -5,6 +5,7 @@
 # BACKUP for prod:
 #    stagingRep=15c3321d12936e
 #    deployDir=$WORKSPACE/prod-deploy-dir
+#    kieVersion = $2
 
 
 # staging repository on Nexus
@@ -16,4 +17,4 @@ deployDir=$WORKSPACE/community-deploy-dir
 cd $deployDir
 # upload the content to remote staging repo on Nexus
 mvn -B -e org.sonatype.plugins:nexus-staging-maven-plugin:1.6.5:deploy-staged-repository -DnexusUrl=https://repository.jboss.org/nexus -DserverId=jboss-releases-repository \
- -DrepositoryDirectory=$deployDir -DstagingProfileId=$stagingRep -DstagingDescription="kie-$kieVersion" -DstagingProgressTimeoutMinutes=30
+ -DrepositoryDirectory=$deployDir -DstagingProfileId=$stagingRep -DstagingDescription="kie-$2" -DstagingProgressTimeoutMinutes=30
