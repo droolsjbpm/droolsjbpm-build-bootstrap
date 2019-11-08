@@ -111,7 +111,7 @@
     <!-- override is needed since 3.0.0-M2, coming from jboss-parent, has a bug. This can be removed once this bug was fixed. -->
     <!-- see https://issues.apache.org/jira/browse/MENFORCER-306 -->
     <version.io.takari.maven.plugins.testing>2.9.2</version.io.takari.maven.plugins.testing>
-    <version.io.undertow>2.0.22.Final</version.io.undertow>
+    <version.io.undertow>2.0.23.Final</version.io.undertow>
     <version.javax.activation>1.1.1</version.javax.activation>
     <version.javax.enterprise>2.0.SP1</version.javax.enterprise>
     <version.javax.inject>1</version.javax.inject>
