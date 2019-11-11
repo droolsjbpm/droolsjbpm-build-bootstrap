@@ -138,6 +138,17 @@
       </dependency>
       <dependency>
         <groupId>org.uberfire</groupId>
+        <artifactId>uberfire-security-backend</artifactId>
+        <version>${version.org.uberfire}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.uberfire</groupId>
+        <artifactId>uberfire-security-backend</artifactId>
+        <version>${version.org.uberfire}</version>
+        <classifier>sources</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.uberfire</groupId>
         <artifactId>uberfire-security-client-backend</artifactId>
         <version>${version.org.uberfire}</version>
       </dependency>
