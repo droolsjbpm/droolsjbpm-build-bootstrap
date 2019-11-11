@@ -9,7 +9,6 @@
     <relativePath>../kie-user-bom-parent/pom.xml</relativePath>
   </parent>
 
-  <groupId>org.kie</groupId>
   <artifactId>narayana-integration-bom</artifactId>
   <packaging>pom</packaging>
 
