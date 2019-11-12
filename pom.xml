@@ -888,16 +888,6 @@
                           <ignoreClass>org.jboss.logging.*</ignoreClass>
                         </ignoreClasses>
                       </dependency>
-                      <!-- ignore jboss-logging included in kie server on tomcat using narayana-->
-                      <dependency>
-                        <groupId>org.jboss.narayana.tomcat</groupId>
-                        <artifactId>tomcat-jta</artifactId>
-                        <type>jar</type>
-                        <ignoreClasses>
-                          <ignoreClass>org.jboss.logging.*</ignoreClass>
-                          <ignoreClass>javax.transaction.*</ignoreClass>
-                        </ignoreClasses>
-                      </dependency>
                       <dependency>
                         <!-- The openshift-client duplicates these classes from the kubernetes-client.
                              It is an upstream io.fabric8 issue that needs to be fixed there:

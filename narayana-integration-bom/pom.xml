@@ -49,13 +49,6 @@
         <version>${version.org.jboss.integration.narayana-tomcat}</version>
       </dependency>
 
-      <!-- TODO: remove this legacy dependency once all repositories switch to narayana-tomcat -->
-      <dependency>
-        <groupId>org.jboss.narayana.tomcat</groupId>
-        <artifactId>tomcat-jta</artifactId>
-        <version>${version.org.jboss.narayana.tomcat}</version>
-      </dependency>
-
       <dependency>
         <groupId>org.jboss.narayana.jta</groupId>
         <artifactId>narayana-jta</artifactId>
