@@ -83,7 +83,7 @@
     </version.com.datastax.cassandra.cassandra-driver-core>
     <version.com.drewnoakes.metadata-extractor>2.6.2</version.com.drewnoakes.metadata-extractor>
     <version.com.fasterxml.jackson>2.9.9</version.com.fasterxml.jackson>
-    <version.com.fasterxml.jackson.databind>2.9.9.3</version.com.fasterxml.jackson.databind>
+    <version.com.fasterxml.jackson.databind>2.9.10.1</version.com.fasterxml.jackson.databind>
     <version.com.github.gwtbootstrap>2.2.1.0</version.com.github.gwtbootstrap>
     <version.com.google.code.gin>1.0</version.com.google.code.gin>
     <version.com.google.code.gson>2.8.2</version.com.google.code.gson>
