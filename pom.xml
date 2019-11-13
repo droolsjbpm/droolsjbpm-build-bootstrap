@@ -100,7 +100,6 @@
     <version.com.h2database>1.3.173</version.com.h2database>
     <version.com.jcraft>0.1.54</version.com.jcraft>
     <version.com.lowagie.itext>2.1.7</version.com.lowagie.itext>
-    <version.com.mchange.c3p0>0.9.5.4</version.com.mchange.c3p0>
     <version.com.miglayout>3.7.4</version.com.miglayout>
     <version.com.smartgwt.smartgwt-skins>2.4</version.com.smartgwt.smartgwt-skins>
     <version.com.sun.codemodel>2.6</version.com.sun.codemodel>
@@ -2479,12 +2478,6 @@
             <artifactId>bctsp-jdk14</artifactId>
           </exclusion>
         </exclusions>
-      </dependency>
-
-      <dependency>
-        <groupId>com.mchange</groupId>
-        <artifactId>c3p0</artifactId>
-        <version>${version.com.mchange.c3p0}</version>
       </dependency>
 
       <dependency>
