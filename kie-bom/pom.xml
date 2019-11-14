@@ -1539,17 +1539,6 @@
       </dependency>
       <dependency>
         <groupId>org.kie.workbench.screens</groupId>
-        <artifactId>kie-wb-common-examples-screen-client</artifactId>
-        <version>${version.org.kie}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.kie.workbench.screens</groupId>
-        <artifactId>kie-wb-common-examples-screen-client</artifactId>
-        <version>${version.org.kie}</version>
-        <classifier>sources</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.kie.workbench.screens</groupId>
         <artifactId>kie-wb-common-examples-screen-backend</artifactId>
         <version>${version.org.kie}</version>
       </dependency>
