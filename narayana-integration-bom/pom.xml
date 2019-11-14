@@ -10,7 +10,6 @@
   </parent>
 
   <artifactId>narayana-integration-bom</artifactId>
-  <version>7.30.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Narayana Integration BOM (Bill Of Materials)</name>
