@@ -275,6 +275,7 @@
     <version.org.jruby>1.7.2</version.org.jruby>
     <version.org.json>20090211</version.org.json>
     <version.org.jsoup>1.8.3</version.org.jsoup>
+    <version.org.junit>5.5.2</version.org.junit>
     <version.org.jvnet.mock-javamail>1.9</version.org.jvnet.mock-javamail>
     <version.org.keycloak>4.8.3.Final</version.org.keycloak>
     <version.org.littleshoot.littleproxy>0.5.3</version.org.littleshoot.littleproxy>
@@ -2673,6 +2674,11 @@
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>${version.junit}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.junit.vintage</groupId>
+        <artifactId>junit-vintage-engine</artifactId>
+        <version>${version.org.junit}</version>
       </dependency>
 
       <dependency>
