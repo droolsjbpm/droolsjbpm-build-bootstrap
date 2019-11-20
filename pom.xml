@@ -529,6 +529,8 @@
          possible to measure cross-module test coverage -->
     <!--suppress UnresolvedMavenProperty -->
     <jacoco.exec.file>${maven.multiModuleProjectDirectory}/target/jacoco.exec</jacoco.exec.file>
+    <!-- com.github.eirslett:frontend-maven-plugin version -->
+    <version.frontend-maven-plugin>1.8.0</version.frontend-maven-plugin>
   </properties>
 
   <repositories>
