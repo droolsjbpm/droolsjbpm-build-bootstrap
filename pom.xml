@@ -306,7 +306,8 @@
     <version.org.sonatype.plexus.plexus-sec-dispatcher>1.3</version.org.sonatype.plexus.plexus-sec-dispatcher>
     <version.org.sonatype.sisu>2.3.0</version.org.sonatype.sisu>
     <version.org.sonatype.sisu.sisu-guice>3.2.3</version.org.sonatype.sisu.sisu-guice>
-    <version.org.springframework>4.3.3.RELEASE</version.org.springframework>
+    <version.org.springframework>5.2.1.RELEASE</version.org.springframework>
+    <version.org.springframework.boot>2.2.1.RELEASE</version.org.springframework.boot>
     <version.org.springframework.osgi>1.2.1</version.org.springframework.osgi>
     <version.org.subethamail>1.2</version.org.subethamail>
     <version.org.subethamail.subethasmtp>3.1.6</version.org.subethamail.subethasmtp>
@@ -1309,6 +1310,11 @@
               <version>${version.plexus.archiver}</version>
             </dependency>
           </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${version.org.springframework.boot}</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -5103,11 +5109,6 @@
       </dependency>
       <dependency>
         <groupId>org.springframework</groupId>
-        <artifactId>spring-instrument-tomcat</artifactId>
-        <version>${version.org.springframework}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
         <artifactId>spring-jdbc</artifactId>
         <version>${version.org.springframework}</version>
       </dependency>
@@ -5153,13 +5154,14 @@
       </dependency>
       <dependency>
         <groupId>org.springframework</groupId>
-        <artifactId>spring-webmvc-portlet</artifactId>
-        <version>${version.org.springframework}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
         <artifactId>spring-websocket</artifactId>
         <version>${version.org.springframework}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${version.org.springframework.boot}</version>
       </dependency>
 
       <dependency>
