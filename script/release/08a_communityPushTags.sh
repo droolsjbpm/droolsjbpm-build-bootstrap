@@ -2,12 +2,11 @@
 
 # pushes the tag to github for community releases
 
-# in case that the community build takes several days the variable kieVersion gets some how unset
-# the kieVersion is taken from a created file
-kieVersion=$(cut -f1 kie.properties)
+# fetch the <version.org.kie> from kie-parent-metadata pom.xml and set it on parameter KIE_VERSION
+kieVersion=$(sed -e 's/^[ \t]*//' -e 's/[ \t]*$//' -n -e 's/<version.org.kie>\(.*\)<\/version.org.kie>/\1/p' droolsjbpm-build-bootstrap/pom.xml)
 
 # create a tag
-commitMsg="Tagging $1"
+commitMsg="Tagging $kieVersion"
 ./droolsjbpm-build-bootstrap/script/git-all.sh tag -a $kieVersion -m "$commitMsg"
 
 # pushes tag to github kiegroup

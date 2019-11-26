@@ -2,9 +2,8 @@
 
 # this script build the jbpm-installer and jbpm-installer full
 
-# in case that the community build takes several days the variable kieVersion gets some how unset
-# the kieVersion is taken from a created file
-kieVersion=$(cut -f1 kie.properties)
+# fetch the <version.org.kie> from kie-parent-metadata pom.xml and set it on parameter KIE_VERSION
+kieVersion=$(sed -e 's/^[ \t]*//' -e 's/[ \t]*$//' -n -e 's/<version.org.kie>\(.*\)<\/version.org.kie>/\1/p' droolsjbpm-build-bootstrap/pom.xml)
 
 URLgroup="public-jboss"
 
