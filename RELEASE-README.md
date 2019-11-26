@@ -24,59 +24,11 @@ One week in advance:
 
     * Get those dependencies (errai) released if needed, preferably 1 week before the kie release. This way, those released artifacts gets tested by our tests.
 
-* Ask kie-wb module (kie-uberfire-extensions, uberfire, kie-wb-common, drools-wb, jbpm-wb, jbpm-designer, optaplanner-wb and kie-wb-distributions) leads to update the translations with Zanata:
+* Ask kiegroup modules (appformer, kie-wb-common, drools-wb, jbpm-wb, jbpm-designer, optaplanner-wb and kie-wb-distributions) leads to update the i18n translations:
 
-    * Translations into different locales are handled within Zanata (https://vendors.zanata.redhat.com)
+    * Translations are at the time beeing a manual process since Zanata shut down
 
-    * Email Zanata mailing list that a release is about to be made.
-
-    * The most recent translations need to be pulled into the release branch. Assuming you have set-up your Zanata configuration correctly, this can be achieved with:
-
-        ```shell
-        $ mvn zanata:pull-module
-        ```
-
-    * NOTE: If releasing a new version number (major, minor or micro) a new version of the translations should be setup in Zanata.
-
-    * Automatically fix simple errors in the translations using the following:
-
-        ```shell
-        $ mvn replacer:replace -N
-        ```
-
-    * NOTE: For the repositories kie-wb-distributions it has to be added to the workflow
-
-        ```shell
-        $ mvn native2ascii:native2ascii
-        ```
-
-    * NOTE: jbpm-designer has it's own workflow
-
-        ```shell
-        $ cd ../jbpm-designer
-        $ mvn zanata:pull-module
-        $ mvn replacer:replace-N
-        $ mvn native2ascii:native2ascii
-        $ cd jbpm-designer-api
-        $ mvn replacer:replace-N
-        ```
-
-    * Zanata workflow is:
-
-        ```shell
-        $ mvn zanata:pull-module
-        $ mvn replacer:replace-N
-        $ mvn native2ascii:native2ascii # In repositories where this has to be executed, please
-                                        # pay attention to jbpm-designer.
-        $ mvn clean install -Dfull -DskipTests # To see if everything compiles after Zanata changes were pulled.
-                                               # In kie-wb-distribution has to be added -Dcustom-container for preventing
-                                               # not building the repo cause possibly hanging at kie-smoke-tests
-        $ git commit -a # add & commit the changes
-        $ git push <upstream> <branch> # push changes to blessed repository
-        ```
-
-* Since Zanata translations was outsourced it have to be clafirfied before a release if the Zanata translations will be needed.
-  (mvn -B zanata:pull-module).
+* Since Zanata translations was outsourced it have to be clarified before a release if the i18n translations have to be updated..
   
 * Get access to `filemgmt.jboss.org`
 
@@ -354,25 +306,11 @@ If everything is perfect (compiles, Jenkins is all blue, sanity checks succeed a
 
     * Adjust the version in the poms, manifests and other eclipse stuff.
 
-            $ droolsjbpm-build-bootstrap/script/release/update-version-all.sh 6.2.0-SNAPSHOT 6.2.0.Final
+            $ droolsjbpm-build-bootstrap/script/release/update-version-all.sh 6.2.0.Final community
 
-        * Note: the arguments are `releaseOldVersion releaseNewVersion`
+        * Note: the arguments are `newVersion`
 
         * WARNING: FIXME the update-version-all script does not work correctly if you are releasing a hotfix version.
-
-        * WARNING: Guvnor has a hard-coded version number in org.drools.guvnor.server.test.GuvnorIntegrationTest.createDeployment. This must be changed manually and committed.
-
-        * WARNING: script update-version-all.sh did not update automatically all versions in all modules. Check all have been updated with the following and re-run if required.
-
-            ```shell
-            $ grep -r '6.2.0-SNAPSHOT' **/pom.xml
-            # or
-            for i in $(find . -name "pom.xml"); do grep '6.2.0-SNAPSHOT' $i; done
-            ```
-            OR
-            ```shell
-            $ grep -ER --exclude-dir=*git* --exclude-dir=*target* --exclude-dir=*idea* --exclude=*ipr --exclude=*iws --exclude=*iml --exclude=workspace* --exclude-dir=*.errai 6.3.0-SNAPSHOT . | grep -v ./kie-wb-distributions/kie-eap-integration/kie-eap-modules/kie-jboss-eap-base-modules.
-            ```
 
     * versions that have to be changed manually
 
@@ -492,7 +430,7 @@ If everything is perfect (compiles, Jenkins is all blue, sanity checks succeed a
     * Adjust the version in the poms, manifests and other eclipse stuff:
 
         ```shell
-        $ droolsjbpm-build-bootstrap/script/release/update-version-all.sh 6.2.0.Final 6.3.0-SNAPSHOT 6.2.0.Final 6.3.0-SNAPSHOT
+        $ droolsjbpm-build-bootstrap/script/release/update-version-all.sh 6.3.0-SNAPSHOT community
         ```
 
         * Commit those changes:
@@ -507,16 +445,6 @@ If everything is perfect (compiles, Jenkins is all blue, sanity checks succeed a
 
             ```shell
             $ droolsjbpm-build-bootstrap/script/git-all.sh push
-            ```
-
-        * Warning: Guvnor has a hard-coded version number in org.drools.guvnor.server.test.GuvnorIntegrationTest.createDeployment. This must be changed manually and committed.
-
-        * Warning: script update-version-all.sh did not update all versions in all modules for 6.2.0.Final. Check all have been updated with the following and re-run if required.
-
-            ```shell
-            $ grep -r '6.2.0-SNAPSHOT' **/pom.xml
-            # or
-            for i in $(find . -name "pom.xml"); do grep '6.2.0-SNAPSHOT' $i; done
             ```
 
         * Warning: If releasing from master (i.e. a Beta release) and the push fails as there have been other commits to the remote master branch it might be necessary to pull.
@@ -665,7 +593,7 @@ Here are the steps:
 
     $ .script/git-all.sh rebase <remote>/<base branch> <base branch> (i.e. remote = origin)
 
-**5 - Create a local branch to base the tag on. I usually name the base branch as "bsync-base branch-YYYY.MM.DD" where YYYY.MM.DD is the year, month and day when the tag is being created.**
+**5 - Create a local branch to base the tag on. Usually the branch is named "bsync-base branch-YYYY.MM.DD" where YYYY.MM.DD is the year, month and day when the tag is being created.**
 
     $ .script/git-all.sh checkout -b bsync-<base-branch>-YYYY.MM.DD <branch to base the tag on> (i.e. bsync-7.5.x-2017.01.15)
 
