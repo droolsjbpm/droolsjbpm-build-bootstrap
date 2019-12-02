@@ -202,7 +202,8 @@
     <version.org.eclipse.sisu>0.3.2</version.org.eclipse.sisu>
     <version.org.eclipse.emf.gwt>2.9.0</version.org.eclipse.emf.gwt>
     <version.org.glassfish>3.1.2</version.org.glassfish>
-    <version.org.gwtbootstrap3>0.9.3</version.org.gwtbootstrap3>
+    <version.org.gwtbootstrap3>1.0.1</version.org.gwtbootstrap3>
+    <version.org.gwtbootstrap3-extras>1.0.2</version.org.gwtbootstrap3-extras>
     <version.org.hibernate>5.3.7.Final</version.org.hibernate>
     <version.org.hibernate.search>5.10.3.Final</version.org.hibernate.search>
     <version.org.hibernate.validator>6.0.13.Final</version.org.hibernate.validator>
@@ -3934,7 +3935,7 @@
       <dependency>
         <groupId>org.gwtbootstrap3</groupId>
         <artifactId>gwtbootstrap3-extras</artifactId>
-        <version>${version.org.gwtbootstrap3}</version>
+        <version>${version.org.gwtbootstrap3-extras}</version>
       </dependency>
 
       <dependency>
