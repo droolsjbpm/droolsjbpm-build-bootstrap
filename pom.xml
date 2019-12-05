@@ -84,7 +84,6 @@
     <version.com.drewnoakes.metadata-extractor>2.6.2</version.com.drewnoakes.metadata-extractor>
     <version.com.fasterxml.jackson>2.9.9</version.com.fasterxml.jackson>
     <version.com.fasterxml.jackson.databind>2.9.10.1</version.com.fasterxml.jackson.databind>
-    <version.com.github.gwtbootstrap>2.2.1.0</version.com.github.gwtbootstrap>
     <version.com.google.code.gin>1.0</version.com.google.code.gin>
     <version.com.google.code.gson>2.8.2</version.com.google.code.gson>
     <version.com.googlecode.gwt-crypto>2.3.0</version.com.googlecode.gwt-crypto>
@@ -2357,13 +2356,6 @@
         <artifactId>jackson-datatype-jsr310</artifactId>
         <version>${version.com.fasterxml.jackson}</version>
       </dependency>
-
-      <dependency>
-        <groupId>com.github.gwtbootstrap</groupId>
-        <artifactId>gwt-bootstrap</artifactId>
-        <version>${version.com.github.gwtbootstrap}</version>
-      </dependency>
-
       <dependency>
         <groupId>com.google.javascript</groupId>
         <artifactId>closure-compiler</artifactId>
