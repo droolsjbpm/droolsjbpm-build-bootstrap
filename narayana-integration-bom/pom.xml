@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.kie</groupId>
     <artifactId>kie-user-bom-parent</artifactId>
-    <version>7.31.0-SNAPSHOT</version>
+    <version>7.32.0-SNAPSHOT</version>
     <relativePath>../kie-user-bom-parent/pom.xml</relativePath>
   </parent>
 
   <artifactId>narayana-integration-bom</artifactId>
-  <version>7.31.0-SNAPSHOT</version>
+  <version>7.32.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Narayana Integration BOM (Bill Of Materials)</name>
