@@ -100,6 +100,8 @@
     <version.com.jcraft>0.1.54</version.com.jcraft>
     <version.com.lowagie.itext>2.1.7</version.com.lowagie.itext>
     <version.com.miglayout>3.7.4</version.com.miglayout>
+    <!-- Only used by optaweb-vehicle-routing, but is required -->
+    <version.com.neovisionaries>1.27</version.com.neovisionaries>
     <version.com.smartgwt.smartgwt-skins>2.4</version.com.smartgwt.smartgwt-skins>
     <version.com.sun.codemodel>2.6</version.com.sun.codemodel>
     <version.com.sun.xml.bind>2.3.0</version.com.sun.xml.bind>
@@ -2484,6 +2486,12 @@
         <groupId>com.miglayout</groupId>
         <artifactId>miglayout</artifactId>
         <version>${version.com.miglayout}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.neovisionaries</groupId>
+        <artifactId>nv-i18n</artifactId>
+        <version>${version.com.neovisionaries}</version>
       </dependency>
 
       <dependency>
