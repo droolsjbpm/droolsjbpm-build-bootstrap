@@ -599,11 +599,10 @@ Any dependency used in any KIE project must fulfill these hard requirements:
 
 Any dependency used in any KIE project should fulfill these soft requirements:
 
-* Use dependencies that are **acceptable for the [jboss-integration-platform-bom](https://github.com/jboss-integration/jboss-integration-platform-bom)**.
+* **Edit dependencies** in **[kie-parent](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/pom.xml)**.
 
-    * Do not override versions in `kie-parent`'s `pom.xml` unless an exception is granted
-
-        * If a newer version of the ip-bom already uses the new version, it's of course fine to do a temporarily overwrite in `kie-parent`'s `pom.xml`.
+    * Dependencies in subprojects should avoid overwriting the dependency versions of kie-parent
+        
 
 * **Prefer dependencies with the groupId `org.jboss.spec`** over those with the groupId `javax.*`.
 
