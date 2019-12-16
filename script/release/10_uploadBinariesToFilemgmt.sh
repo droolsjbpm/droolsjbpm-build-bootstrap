@@ -9,10 +9,9 @@ droolsDocs=drools@filemgmt.jboss.org:/docs_htdocs/drools/release
 droolsHtdocs=drools@filemgmt.jboss.org:/downloads_htdocs/drools/release
 jbpmDocs=jbpm@filemgmt.jboss.org:/docs_htdocs/jbpm/release
 jbpmHtdocs=jbpm@filemgmt.jboss.org:/downloads_htdocs/jbpm/release
-jbpmServiceRepo=jbpm@filemgmt.jboss.org:/downloads_htdocs/jbpm/release
 optaplannerDocs=optaplanner@filemgmt.jboss.org:/docs_htdocs/optaplanner/release
 optaplannerHtdocs=optaplanner@filemgmt.jboss.org:/downloads_htdocs/optaplanner/release
-
+deployDir=community-deploy-dir
 
 # create directory on filemgmt.jboss.org for new release
 touch upload_version
@@ -38,6 +37,11 @@ echo "mkdir updatesite" > upload_jbpm
 chmod +x upload_jbpm
 sftp -b upload_jbpm $jbpmHtdocs/$kieVersion
 
+# creates a directory service-repository in jbpm on filemgmt.jboss.org
+touch upload_service_repository
+echo "mkdir service-repository" > upload_service_repository
+chmod +x upload_service_repository
+sftp -b upload_service_repository $jbpmHtdocs/$kieVersion
 
 #creates directories for docs for drools and jbpm and optaplanner on filemgmt.jboss.org
 touch upload_drools_docs
@@ -75,31 +79,42 @@ echo "mkdir optaplanner-wb-es-docs" > upload_optaplanner_wb_es_docs
 chmod +x upload_optaplanner_wb_es_docs
 sftp -b upload_optaplanner_wb_es_docs $optaplannerDocs/$kieVersion
 
-touch upload_service_repository
-echo "mkdir service-repository" > upload_service_repository
-chmod +x upload_service_repository
-sftp -b upload_service_repository $jbpmServiceRepo/$kieVersion
+
 
 # copies drools binaries to filemgmt.jboss.org
-scp -r droolsjbpm-tools/droolsjbpm-tools-distribution/target/droolsjbpm-tools-distribution-$kieVersion/droolsjbpm-tools-distribution-$kieVersion/binaries/org.drools.updatesite/* $droolsHtdocs/$kieVersion/org.drools.updatesite
-scp drools/drools-distribution/target/drools-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
-scp droolsjbpm-integration/droolsjbpm-integration-distribution/target/droolsjbpm-integration-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
-scp droolsjbpm-tools/droolsjbpm-tools-distribution/target/droolsjbpm-tools-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
-scp kie-wb-distributions/business-central-parent/business-central-distribution-wars/business-central/target/business-central-$kieVersion-*.war $droolsHtdocs/$kieVersion
-scp droolsjbpm-integration/kie-server-parent/kie-server-wars/kie-server-distribution/target/kie-server-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
+# cp and unzip updatesite
+mkdir updatesite
+cp  $deployDir/org/drools/org.drools.updatesite/$kieVersion/org.drools.updatesite-$kieVersion.zip updatesite/
+unzip updatesite/org.drools.updatesite-$kieVersion.zip -d updatesite/
+rm updatesite/org.drools.updatesite-$kieVersion.zip
+scp -r updatesite/* $droolsHtdocs/$kieVersion/org.drools.updatesite
 
-#copies drools-docs and kie-api-javadoc to filemgmt.jboss.or
-scp -r kie-docs/doc-content/drools-docs/target/generated-docs/* $droolsDocs/$kieVersion/drools-docs
-scp -r droolsjbpm-knowledge/kie-api/target/apidocs/* $droolsDocs/$kieVersion/kie-api-javadoc
+scp $deployDir/org/drools/drools-distribution/$kieVersion/drools-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
+scp $deployDir/org/drools/droolsjbpm-integration-distribution/$kieVersion/droolsjbpm-integration-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
+scp $deployDir/org/drools/droolsjbpm-tools-distribution/$kieVersion/droolsjbpm-tools-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
+scp $deployDir/org/kie/business-central/$kieVersion/business-central-$kieVersion-*.war $droolsHtdocs/$kieVersion
+scp $deployDir/org/kie/server/kie-server-distribution/$kieVersion/kie-server-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
+
+#unzips and copies drools-docs and kie-api-javadoc to filemgmt.jboss.or
+mkdir droolsDocs
+cp  $deployDir/org/drools/drools-docs/$kieVersion/drools-docs-$kieVersion.zip droolsDocs/
+unzip droolsDocs/drools-docs-$kieVersion.zip -d droolsDocs/
+rm droolsDocs/drools-docs-$kieVersion.zip
+scp -r droolsDocs/* $droolsDocs/$kieVersion/drools-docs
+
+mkdir kieJavadoc
+scp  $deployDir/org/kie/kie-api/$kieVersion/kie-api-$kieVersion-javadoc.jar kieJavadoc/
+unzip kieJavadoc/kie-api-$kieVersion-javadoc.jar -d kieJavadoc/
+rm kieJavadoc/kie-api-$kieVersion-javadoc.jar
+scp -r kieJavadoc/* $droolsDocs/$kieVersion/kie-api-javadoc
 
 #copies jbpm binaries to filemgmt.jboss.org
-scp -r droolsjbpm-tools/droolsjbpm-tools-distribution/target/droolsjbpm-tools-distribution-$kieVersion/droolsjbpm-tools-distribution-$kieVersion/binaries/org.drools.updatesite/* $jbpmHtdocs/$kieVersion/updatesite
-scp jbpm/jbpm-distribution/target/jbpm-$kieVersion-bin.zip $jbpmHtdocs/$kieVersion
-scp jbpm/jbpm-distribution/target/jbpm-$kieVersion-examples.zip $jbpmHtdocs/$kieVersion
-scp kie-wb-distributions/business-central-parent/jbpm-server-distribution/target/jbpm-server-$kieVersion-dist.zip $jbpmHtdocs/$kieVersion
+scp -r updatesite/* $jbpmHtdocs/$kieVersion/updatesite
+scp $deployDir/org/jbpm/jbpm-distribution/jbpm-$kieVersion-bin.zip $jbpmHtdocs/$kieVersion
+scp $deployDir/org/jbpm/jbpm-distribution/jbpm-$kieVersion-examples.zip $jbpmHtdocs/$kieVersion
+scp $deployDir/org/kie/jbpm-server-distribution/$kieVersion/jbpm-server-$kieVersion-dist.zip $jbpmHtdocs/$kieVersion
 
-#copies the jbpm-installers to filemgmt.jboss.org
-jbpmHtdocs=jbpm@filemgmt.jboss.org:/downloads_htdocs/jbpm/release
+# uploads jbpm -installers them to filemgt.jboss.org
 
 uploadInstaller(){
         # upload installers to filemgmt.jboss.org
@@ -119,20 +134,34 @@ else
         uploadInstaller
 fi
 
-# copies jbpm work items into service repository
-scp -r jbpm-work-items/repository/target/repository-$kieVersion/* $jbpmServiceRepo/$kieVersion/service-repository
-
-#copies jbpm-docs to filemgmt.jboss.org
-scp -r kie-docs/doc-content/jbpm-docs/target/generated-docs/* $jbpmDocs/$kieVersion/jbpm-docs
+#unzips and copies jbpm-docs to filemgmt.jboss.org
+mkdir jbpmDocs
+cp  $deployDir/org/jbpm/jbpm-docs/$kieVersion/jbpm-docs-$kieVersion.zip jbpmDocs/
+unzip jbpmDocs/jbpm-docs-$kieVersion.zip -d jbpmDocs/
+rm jbpmDocs/jbpm-docs-$kieVersion.zip
+scp -r jbpmDocs/* $jbmDocs/$kieVersion/jbpm-docs
 
 #copies optaplanner binaries to filemgmt.jboss.org
-scp optaplanner/optaplanner-distribution/target/optaplanner-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
+scp $deployDir/org/optaplanner/optaplanner-distribution/$kieVersion/optaplanner-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
 
-#copies optaplanner-docs and optaplanner-javadoc to filemgmt.jboss.org
-scp -r optaplanner/optaplanner-docs/target/generated-docs/* $optaplannerDocs/$kieVersion/optaplanner-docs
+#unzips and copies optaplanner-docs to filemgmt.jboss.org
+mkdir optaplannerDocs
+cp  $deployDir/org/optaplanner/optaplanner-docs/$kieVersion/optaplanner-docs-$kieVersion.zip optaplannerDocs/
+unzip optaplannerDocs/optaplanner-docs-$kieVersion.zip -d optaplannerDocs/
+rm optaplannerDocs/optaplanner-docs-$kieVersion.zip
+scp -r optaplannerDocs/* $optaplannerDocs/$kieVersion/optaplanner-docs
+
+#unzips and copies employee-rostering-docs to filemgmt.jboss.org
+mkdir employeeRosteringDocs
+cp  $deployDir/org/optaweb/employeerostering/employee-rostering-docs/employee-rostering-docs-$kieVersion.zip employeeRosteringDocs/
+unzip employeeRosteringDocs/employee-rostering-docs-$kieVersion.zip -d employeeRosteringDocs/
+rm employeeRosteringDocs/employee-rostering-docs-$kieVersion.zip
+scp -r employeeRosteringDocs/* $optaplannerDocs/$kieVersion/optaweb-employee-rostering-docs
+
+# copies binaries + docs that oare only available in its form in /target directories
+scp -r jbpm-work-items/repository/target/repository-$kieVersion/* $jbpmHtdocs/$kieVersion/service-repository
 scp -r optaplanner/optaplanner-distribution/target/optaplanner-distribution-$kieVersion/optaplanner-distribution-$kieVersion/javadocs/* $optaplannerDocs/$kieVersion/optaplanner-javadoc
 scp -r kie-docs/doc-content/optaplanner-wb-es-docs/target/generated-docs/* $optaplannerDocs/$kieVersion/optaplanner-wb-es-docs
-scp -r optaweb-employee-rostering/employee-rostering-docs/target/generated-docs/* $optaplannerDocs/$kieVersion/optaweb-employee-rostering-docs
 
 # clean upload files
 rm upload_*
