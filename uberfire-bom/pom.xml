@@ -1476,6 +1476,19 @@
         <classifier>sources</classifier>
       </dependency>
 
+      <!--Appformer Kogito Bridge-->
+      <dependency>
+        <groupId>org.uberfire</groupId>
+        <artifactId>appformer-kogito-bridge</artifactId>
+        <version>${version.org.uberfire}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.uberfire</groupId>
+        <artifactId>appformer-kogito-bridge</artifactId>
+        <version>${version.org.uberfire}</version>
+        <classifier>sources</classifier>
+      </dependency>
+
       <!-- Dashbuilder APIs -->
       <dependency>
         <groupId>org.dashbuilder</groupId>
