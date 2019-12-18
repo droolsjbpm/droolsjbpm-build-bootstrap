@@ -196,7 +196,7 @@
     <version.org.eclipse.aether>1.1.0</version.org.eclipse.aether>
     <version.org.eclipse.emf>2.6.0.v20100614-1136</version.org.eclipse.emf>
     <version.org.eclipse.emf.ecore.xmi>2.5.0.v20100521-1846</version.org.eclipse.emf.ecore.xmi>
-    <version.org.eclipse.jdt.core.compiler>4.6.1</version.org.eclipse.jdt.core.compiler>
+    <version.org.eclipse.jdt>3.19.0</version.org.eclipse.jdt>
     <version.org.eclipse.jetty>9.2.14.v20151106</version.org.eclipse.jetty>
     <version.org.eclipse.jgit>5.0.2.201807311906-r</version.org.eclipse.jgit>
     <version.org.eclipse.sisu>0.3.2</version.org.eclipse.sisu>
@@ -3833,9 +3833,9 @@
         <version>${version.org.eclipse.emf.ecore.xmi}</version>
       </dependency>
       <dependency>
-        <groupId>org.eclipse.jdt.core.compiler</groupId>
+        <groupId>org.eclipse.jdt</groupId>
         <artifactId>ecj</artifactId>
-        <version>${version.org.eclipse.jdt.core.compiler}</version>
+        <version>${version.org.eclipse.jdt}</version>
       </dependency>
       <dependency>
         <groupId>org.eclipse.jgit</groupId>
