@@ -96,6 +96,7 @@
     <version.com.thoughtworks.xstream>1.4.11.1</version.com.thoughtworks.xstream>
     <version.de.benediktmeurer.gwt-slf4j>0.0.2</version.de.benediktmeurer.gwt-slf4j>
     <version.org.dom4j>2.1.1</version.org.dom4j>
+    <version.io.springfox>2.9.2</version.io.springfox>
     <!-- override is needed since 3.0.0-M2, coming from jboss-parent, has a bug. This can be removed once this bug was fixed. -->
     <!-- see https://issues.apache.org/jira/browse/MENFORCER-306 -->
     <version.io.takari.maven.plugins.testing>2.9.2</version.io.takari.maven.plugins.testing>
@@ -2407,6 +2408,18 @@
         <groupId>io.netty</groupId>
         <artifactId>netty</artifactId>
         <version>${version.io.netty.old}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <version>${version.io.springfox}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-ui</artifactId>
+        <version>${version.io.springfox}</version>
       </dependency>
 
       <dependency>
