@@ -115,7 +115,7 @@
     <version.net.jcip>1.0</version.net.jcip>
     <version.net.java.dev.glazedlists>1.8.0</version.net.java.dev.glazedlists>
     <version.net.sf.opencsv>2.3</version.net.sf.opencsv>
-    <version.okhttp>3.9.0</version.okhttp>
+    <version.okhttp>3.12.1</version.okhttp>
     <version.antlr>2.7.7</version.antlr>
     <version.org.antlr>3.5.2</version.org.antlr>
     <version.org.antlr.ST4>4.0.7</version.org.antlr.ST4>
@@ -415,7 +415,7 @@
     <version.thorntail>2.5.0.Final</version.thorntail>
     <version.net.byte-buddy>1.10.3</version.net.byte-buddy>
     <version.docker-client>3.5.12</version.docker-client>
-    <version.kubernetes-client>4.1.1</version.kubernetes-client>
+    <version.kubernetes-client>4.6.0</version.kubernetes-client>
     <version.zjsonpatch>0.3.0</version.zjsonpatch>
     <version.arquillian-cube>1.0.0.Alpha15</version.arquillian-cube>
     <jboss.releases.repo.url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/
@@ -464,6 +464,8 @@
     <jacoco.exec.file>${maven.multiModuleProjectDirectory}/target/jacoco.exec</jacoco.exec.file>
     <!-- com.github.eirslett:frontend-maven-plugin version -->
     <version.frontend-maven-plugin>1.8.0</version.frontend-maven-plugin>
+    
+    <version.org.awaitility>3.0.0</version.org.awaitility>
   </properties>
 
   <repositories>
@@ -1648,6 +1650,30 @@
     <plugins>
       <plugin>
         <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>ban-duplicated-classes</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <banDuplicateClasses>
+                  <dependencies combine.children="append">
+                    <!-- sundr-codegen is required to compile test classes. -->
+                    <dependency>
+                      <groupId>io.sundr</groupId>
+                      <artifactId>sundr-codegen</artifactId>
+                      <ignoreClasses>
+                        <ignoreClass>*</ignoreClass>
+                      </ignoreClasses>
+                    </dependency>
+                  </dependencies>
+                </banDuplicateClasses>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -4848,6 +4874,13 @@
       </dependency>
       <dependency>
         <groupId>io.fabric8</groupId>
+        <artifactId>kubernetes-client-bom</artifactId>
+        <version>${version.kubernetes-client}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.fabric8</groupId>
         <artifactId>kubernetes-model</artifactId>
         <version>${version.kubernetes-client}</version>
         <exclusions>
@@ -4883,11 +4916,6 @@
             <artifactId>jul-to-slf4j</artifactId>
           </exclusion>
         </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>io.fabric8</groupId>
-        <artifactId>openshift-client</artifactId>
-        <version>${version.kubernetes-client}</version>
       </dependency>
       <dependency>
         <groupId>io.fabric8</groupId>
@@ -5099,6 +5127,13 @@
         <groupId>com.github.javaparser</groupId>
         <artifactId>javaparser-core</artifactId>
         <version>${version.com.github.javaparser}</version>
+      </dependency>
+      
+      <dependency>
+        <groupId>org.awaitility</groupId>
+        <artifactId>awaitility</artifactId>
+        <version>${version.org.awaitility}</version>
+        <scope>test</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
