@@ -2758,6 +2758,13 @@
       </dependency>
       <dependency>
         <groupId>org.kie</groupId>
+        <artifactId>business-monitoring-webapp</artifactId>
+        <version>${version.org.kie}</version>
+        <type>jar</type>
+        <classifier>thorntail</classifier>
+      </dependency>	
+      <dependency>
+        <groupId>org.kie</groupId>
         <artifactId>kie-config-cli</artifactId>
         <version>${version.org.kie}</version>
         <classifier>dist</classifier>
