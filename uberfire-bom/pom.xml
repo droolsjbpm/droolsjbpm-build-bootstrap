@@ -371,6 +371,17 @@
         <version>${version.org.uberfire}</version>
         <classifier>sources</classifier>
       </dependency>
+      <dependency>
+        <groupId>org.uberfire</groupId>
+        <artifactId>uberfire-nio2-k8s</artifactId>
+        <version>${version.org.uberfire}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.uberfire</groupId>
+        <artifactId>uberfire-nio2-k8s</artifactId>
+        <version>${version.org.uberfire}</version>
+        <classifier>sources</classifier>
+      </dependency>
 
       <!-- Uberfire SSH -->
       <dependency>
