@@ -144,7 +144,7 @@ mkdir jbpmDocs
 cp  $deployDir/org/jbpm/jbpm-docs/$kieVersion/jbpm-docs-$kieVersion.zip jbpmDocs/
 unzip jbpmDocs/jbpm-docs-$kieVersion.zip -d jbpmDocs/
 rm jbpmDocs/jbpm-docs-$kieVersion.zip
-scp -r jbpmDocs/* $jbmDocs/$kieVersion/jbpm-docs
+scp -r jbpmDocs/* $jbpmDocs/$kieVersion/jbpm-docs
 
 #copies optaplanner-distribution.zip to filemgmt.jboss.org
 scp $deployDir/org/optaplanner/optaplanner-distribution/$kieVersion/optaplanner-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
