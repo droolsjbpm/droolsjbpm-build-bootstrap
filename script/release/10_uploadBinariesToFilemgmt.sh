@@ -150,6 +150,8 @@ scp -r jbpmDocs/* $jbpmDocs/$kieVersion/jbpm-docs
 scp $deployDir/org/optaplanner/optaplanner-distribution/$kieVersion/optaplanner-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
 #copies employee-rostering-distribution.zip
 scp $deployDir/org/optaweb/employeerostering/employee-rostering-distribution/$kieVersion/employee-rostering-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
+#copies optaweb-vehicle-routing-distribution.zip
+scp $deployDir/org/optaweb/vehiclerouting/optaweb-vehicle-routing-distribution/$kieVersion/optaweb-vehicle-routing-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
 
 #unzips and copies optaplanner-docs to filemgmt.jboss.org
 mkdir optaplannerDocs
