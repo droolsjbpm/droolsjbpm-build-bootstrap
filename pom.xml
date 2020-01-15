@@ -374,7 +374,7 @@
     <!-- Jacoco plugin configurations -->
     <jacoco.haltOnFailure>false</jacoco.haltOnFailure>
     <jacoco.line.coveredratio.minimum>0.9</jacoco.line.coveredratio.minimum>
-    <version.jacoco.plugin>0.7.5.201505241946</version.jacoco.plugin>
+    <version.jacoco.plugin>0.8.5</version.jacoco.plugin>
     <!-- TODO: remove this once all repositories comply to the defined checkstyle rules -->
     <checkstyle.failOnViolation>false</checkstyle.failOnViolation>
     <checkstyle.logViolationsToConsole>false</checkstyle.logViolationsToConsole>
@@ -458,10 +458,8 @@
     <version.io.prometheus>0.5.0</version.io.prometheus>
     <version.com.github.javaparser>3.13.10</version.com.github.javaparser>
 
-    <!-- JaCoCo coverage data file location. Using a single file for appending in the project's root directory makes it
-         possible to measure cross-module test coverage -->
-    <!--suppress UnresolvedMavenProperty -->
-    <jacoco.exec.file>${maven.multiModuleProjectDirectory}/target/jacoco.exec</jacoco.exec.file>
+    <!-- JaCoCo coverage data file location -->
+    <jacoco.exec.file>${project.build.directory}/jacoco.exec</jacoco.exec.file>
     <!-- com.github.eirslett:frontend-maven-plugin version -->
     <version.frontend-maven-plugin>1.8.0</version.frontend-maven-plugin>
     
@@ -1063,48 +1061,6 @@
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>${version.jacoco.plugin}</version>
-          <executions>
-            <execution>
-              <id>default-instrument</id>
-              <goals>
-                <goal>instrument</goal>
-              </goals>
-            </execution>
-            <execution>
-              <id>default-restore-instrumented-classes</id>
-              <goals>
-                <goal>restore-instrumented-classes</goal>
-              </goals>
-            </execution>
-            <execution>
-              <id>default-report</id>
-              <phase>prepare-package</phase>
-              <goals>
-                <goal>report</goal>
-              </goals>
-            </execution>
-            <execution>
-              <id>default-check</id>
-              <goals>
-                <goal>check</goal>
-              </goals>
-              <configuration>
-                <haltOnFailure>${jacoco.haltOnFailure}</haltOnFailure>
-                <rules>
-                  <rule>
-                    <element>BUNDLE</element>
-                    <limits>
-                      <limit>
-                        <counter>LINE</counter>
-                        <value>COVEREDRATIO</value>
-                        <minimum>${jacoco.line.coveredratio.minimum}</minimum>
-                      </limit>
-                    </limits>
-                  </rule>
-                </rules>
-              </configuration>
-            </execution>
-          </executions>
         </plugin>
         <!-- Packaging -->
         <plugin>
@@ -1757,44 +1713,6 @@
 
   <profiles>
     <profile>
-      <!-- Code coverage disabled by default (use -Dcode-coverage to activate it) -->
-      <id>code-coverage</id>
-      <activation>
-        <property>
-          <name>code-coverage</name>
-        </property>
-      </activation>
-      <dependencies>
-        <dependency>
-          <groupId>org.jacoco</groupId>
-          <artifactId>org.jacoco.agent</artifactId>
-          <classifier>runtime</classifier>
-          <scope>test</scope>
-        </dependency>
-      </dependencies>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-surefire-plugin</artifactId>
-              <configuration>
-                <systemPropertyVariables>
-                  <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
-                </systemPropertyVariables>
-              </configuration>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-        <plugins>
-          <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <profile>
       <!-- Mutation coverage disabled by default (use -Dmutation-coverage to activate it) -->
       <id>mutation-coverage</id>
       <activation>
@@ -2019,11 +1937,13 @@
         </pluginManagement>
       </build>
     </profile>
-    <!-- Merges test coverage reports and uploads statistics via sonar scanner into the SonarCloud. -->
+    <!--
+      Creates JaCoCo XML reports and invokes the Sonar scanner, which uploads code quality data into the SonarCloud.
+    -->
     <profile>
       <id>sonarcloud-analysis</id>
       <properties>
-        <sonar.jacoco.reportPaths>${jacoco.exec.file}</sonar.jacoco.reportPaths>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.reporting.outputDirectory}/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.organization>kiegroup</sonar.organization>
         <!--suppress UnresolvedMavenProperty -->
@@ -2031,6 +1951,22 @@
       </properties>
       <build>
         <plugins>
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>generate-jacoco-report</id>
+                <goals>
+                  <goal>report</goal>
+                </goals>
+                <phase>generate-resources</phase>
+                <configuration>
+                  <dataFile>${jacoco.exec.file}</dataFile>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
           <plugin>
             <groupId>org.sonarsource.scanner.maven</groupId>
             <artifactId>sonar-maven-plugin</artifactId>
