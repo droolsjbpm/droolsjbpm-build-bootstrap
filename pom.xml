@@ -1922,15 +1922,6 @@
               <artifactId>maven-javadoc-plugin</artifactId>
               <configuration>
                 <source>${maven.compiler.source}</source>
-                <additionalDependencies>
-                  <additionalDependency>
-                    <groupId>org.jboss.spec.javax.transaction</groupId>
-                    <artifactId>jboss-transaction-api_1.2_spec</artifactId>
-                    <version>
-                      ${version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.2_spec}
-                    </version>
-                  </additionalDependency>
-                </additionalDependencies>
               </configuration>
             </plugin>
           </plugins>
