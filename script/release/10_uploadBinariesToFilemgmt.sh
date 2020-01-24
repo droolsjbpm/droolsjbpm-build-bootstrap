@@ -1,6 +1,4 @@
-#!/bin/bash
-
-set -e
+#!/bin/bash -e
 
 # fetch the <version.org.kie> from kie-parent-metadata pom.xml and set it on parameter KIE_VERSION
 kieVersion=$(sed -e 's/^[ \t]*//' -e 's/[ \t]*$//' -n -e 's/<version.org.kie>\(.*\)<\/version.org.kie>/\1/p' droolsjbpm-build-bootstrap/pom.xml)
@@ -11,7 +9,7 @@ jbpmDocs=jbpm@filemgmt.jboss.org:/docs_htdocs/jbpm/release
 jbpmHtdocs=jbpm@filemgmt.jboss.org:/downloads_htdocs/jbpm/release
 optaplannerDocs=optaplanner@filemgmt.jboss.org:/docs_htdocs/optaplanner/release
 optaplannerHtdocs=optaplanner@filemgmt.jboss.org:/downloads_htdocs/optaplanner/release
-deployDir=community-deploy-dir
+uploadDir=${kieVersion}_uploadBinaries
 
 # create directory on filemgmt.jboss.org for new release
 touch upload_version
@@ -86,41 +84,28 @@ sftp -b upload_optaplanner_wb_es_docs $optaplannerDocs/$kieVersion
 
 
 
-# copies drools binaries to filemgmt.jboss.org
-# cp and unzip updatesite
-mkdir updatesite
-cp  $deployDir/org/drools/org.drools.updatesite/$kieVersion/org.drools.updatesite-$kieVersion.zip updatesite/
-unzip updatesite/org.drools.updatesite-$kieVersion.zip -d updatesite/
-rm updatesite/org.drools.updatesite-$kieVersion.zip
-scp -r updatesite/* $droolsHtdocs/$kieVersion/org.drools.updatesite
+# *** copies drools binaries and docs to filemgmt.jboss.org ********************************
 
-scp $deployDir/org/drools/drools-distribution/$kieVersion/drools-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
-scp $deployDir/org/drools/droolsjbpm-integration-distribution/$kieVersion/droolsjbpm-integration-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
-scp $deployDir/org/drools/droolsjbpm-tools-distribution/$kieVersion/droolsjbpm-tools-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
-scp $deployDir/org/kie/business-central/$kieVersion/business-central-$kieVersion-*.war $droolsHtdocs/$kieVersion
-scp $deployDir/org/kie/server/kie-server-distribution/$kieVersion/kie-server-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
+# bins
+scp $uploadDir/drools-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
+scp $uploadDir/droolsjbpm-integration-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
+scp $uploadDir/droolsjbpm-tools-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
+scp $uploadDir/business-central-$kieVersion-*.war $droolsHtdocs/$kieVersion
+scp $uploadDir/kie-server-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
+# updatesite
+scp -r $uploadDir/updatesite/* $droolsHtdocs/$kieVersion/org.drools.updatesite
+# docs
+scp -r $uploadDir/drools-docs/* $droolsDocs/$kieVersion/drools-docs
+scp -r $uploadDir/kie-api-javadoc/* $droolsDocs/$kieVersion/kie-api-javadoc
 
-#unzips and copies drools-docs and kie-api-javadoc to filemgmt.jboss.or
-mkdir droolsDocs
-cp  $deployDir/org/drools/drools-docs/$kieVersion/drools-docs-$kieVersion.zip droolsDocs/
-unzip droolsDocs/drools-docs-$kieVersion.zip -d droolsDocs/
-rm droolsDocs/drools-docs-$kieVersion.zip
-scp -r droolsDocs/* $droolsDocs/$kieVersion/drools-docs
 
-mkdir kieJavadoc
-scp  $deployDir/org/kie/kie-api/$kieVersion/kie-api-$kieVersion-javadoc.jar kieJavadoc/
-unzip kieJavadoc/kie-api-$kieVersion-javadoc.jar -d kieJavadoc/
-rm kieJavadoc/kie-api-$kieVersion-javadoc.jar
-scp -r kieJavadoc/* $droolsDocs/$kieVersion/kie-api-javadoc
+# *** copies jbpm binaries and docs to filemgmt.jboss.org **********************************
 
-#copies jbpm binaries to filemgmt.jboss.org
-scp -r updatesite/* $jbpmHtdocs/$kieVersion/updatesite
-scp $deployDir/org/jbpm/jbpm-distribution/jbpm-$kieVersion-bin.zip $jbpmHtdocs/$kieVersion
-scp $deployDir/org/jbpm/jbpm-distribution/jbpm-$kieVersion-examples.zip $jbpmHtdocs/$kieVersion
-scp $deployDir/org/kie/jbpm-server-distribution/$kieVersion/jbpm-server-$kieVersion-dist.zip $jbpmHtdocs/$kieVersion
-
+# bins
+scp $uploadDir/jbpm-$kieVersion-bin.zip $jbpmHtdocs/$kieVersion
+scp $uploadDir/jbpm-$kieVersion-examples.zip $jbpmHtdocs/$kieVersion
+scp $uploadDir/jbpm-server-$kieVersion-dist.zip $jbpmHtdocs/$kieVersion
 # uploads jbpm -installers them to filemgt.jboss.org
-
 uploadInstaller(){
         # upload installers to filemgmt.jboss.org
         scp jbpm-installer-$kieVersion.zip $jbpmHtdocs/$kieVersion
@@ -138,48 +123,26 @@ if [[ $kieVersion == *"Final"* ]] ;then
 else
         uploadInstaller
 fi
-
-#unzips and copies jbpm-docs to filemgmt.jboss.org
-mkdir jbpmDocs
-cp  $deployDir/org/jbpm/jbpm-docs/$kieVersion/jbpm-docs-$kieVersion.zip jbpmDocs/
-unzip jbpmDocs/jbpm-docs-$kieVersion.zip -d jbpmDocs/
-rm jbpmDocs/jbpm-docs-$kieVersion.zip
-scp -r jbpmDocs/* $jbpmDocs/$kieVersion/jbpm-docs
-
-#copies optaplanner-distribution.zip to filemgmt.jboss.org
-scp $deployDir/org/optaplanner/optaplanner-distribution/$kieVersion/optaplanner-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
-#copies employee-rostering-distribution.zip
-scp $deployDir/org/optaweb/employeerostering/employee-rostering-distribution/$kieVersion/employee-rostering-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
-#copies optaweb-vehicle-routing-distribution.zip
-scp $deployDir/org/optaweb/vehiclerouting/optaweb-vehicle-routing-distribution/$kieVersion/optaweb-vehicle-routing-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
-
-#unzips and copies optaplanner-docs to filemgmt.jboss.org
-mkdir optaplannerDocs
-cp  $deployDir/org/optaplanner/optaplanner-docs/$kieVersion/optaplanner-docs-$kieVersion.zip optaplannerDocs/
-unzip optaplannerDocs/optaplanner-docs-$kieVersion.zip -d optaplannerDocs/
-rm optaplannerDocs/optaplanner-docs-$kieVersion.zip
-scp -r optaplannerDocs/* $optaplannerDocs/$kieVersion/optaplanner-docs
-
-#unzips and copies employee-rostering-docs to filemgmt.jboss.org
-mkdir employeeRosteringDocs
-cp  $deployDir/org/optaweb/employeerostering/employee-rostering-docs/employee-rostering-docs-$kieVersion.zip employeeRosteringDocs/
-unzip employeeRosteringDocs/employee-rostering-docs-$kieVersion.zip -d employeeRosteringDocs/
-rm employeeRosteringDocs/employee-rostering-docs-$kieVersion.zip
-scp -r employeeRosteringDocs/* $optaplannerDocs/$kieVersion/optaweb-employee-rostering-docs
+# updatesite
+scp -r $uploadDir/updatesite/* $jbpmHtdocs/$kieVersion/updatesite
+# docs
+scp -r $uploadDir/jbpm-docs/* $jbpmDocs/$kieVersion/jbpm-docs
+scp -r $uploadDir/service-repository/* $jbpmHtdocs/$kieVersion/service-repository
 
 
-#unzips and copies vehicle-routing-docs to filemgmt.jboss.org
-mkdir vehicleRoutingDocs
-cp  $deployDir/org/optaweb/vehiclerouting/optaweb-vehicle-routing-docs/optaweb-vehicle-routing-docs-$kieVersion.zip vehicleRoutingDocs/
-unzip vehicleRoutingDocs/optaweb-vehicle-routing-docs-$kieVersion.zip -d vehicleRoutingDocs/
-rm vehicleRoutingDocs/optaweb-vehicle-routing-docs-$kieVersion.zip
-scp -r vehicleRoutingDocs/* $optaplannerDocs/$kieVersion/optaweb-vehicle-routing-docs
+# *** copies optaplanner binaries and docs to filemgmt.jboss.org ***************************
 
+# bins
+scp $uploadDir/optaplanner-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
+scp $uploadDir/employee-rostering-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
+scp $uploadDir/optaweb-vehicle-routing-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
+# docs
+scp -r $uploadDir/optaplanner-docs/* $optaplannerDocs/$kieVersion/optaplanner-docs
+scp -r $uploadDir/optaweb-employee-rostering-docs/* $optaplannerDocs/$kieVersion/optaweb-employee-rostering-docs
+scp -r $uploadDir/optaweb-vehicle-routing-docs/* $optaplannerDocs/$kieVersion/optaweb-vehicle-routing-docs
+scp -r $uploadDir/optaplanner-javadoc/* $optaplannerDocs/$kieVersion/optaplanner-javadoc
+scp -r $uploadDir/optaplanner-wb-es-docs/* $optaplannerDocs/$kieVersion/optaplanner-wb-es-docs
 
-# copies binaries + docs that are only available in /target directories - they are not deployed
-scp -r jbpm-work-items/repository/target/repository-$kieVersion/* $jbpmHtdocs/$kieVersion/service-repository
-scp -r optaplanner/optaplanner-distribution/target/optaplanner-distribution-$kieVersion/optaplanner-distribution-$kieVersion/javadocs/* $optaplannerDocs/$kieVersion/optaplanner-javadoc
-scp -r kie-docs/doc-content/optaplanner-wb-es-docs/target/generated-docs/* $optaplannerDocs/$kieVersion/optaplanner-wb-es-docs
 
 # clean upload files
 rm upload_*
