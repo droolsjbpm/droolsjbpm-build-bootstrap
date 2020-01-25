@@ -18,4 +18,4 @@ deployDir=$WORKSPACE/community-deploy-dir
 cd $deployDir
 # upload the content to remote staging repo on Nexus
 mvn -B -e -s $SETTINGS_XML_FILE -Dkie.maven.settings.custom=$SETTINGS_XML_FILE org.sonatype.plugins:nexus-staging-maven-plugin:1.6.5:deploy-staged-repository -DnexusUrl=https://repository.jboss.org/nexus -DserverId=jboss-releases-repository \
- -DrepositoryDirectory=$deployDir -DstagingProfileId=$stagingRep -DstagingDescription="kie-$kieVersion" -DstagingProgressTimeoutMinutes=30
+ -DrepositoryDirectory=$deployDir -DstagingProfileId=$stagingRep -DstagingDescription="kie-$kieVersion" -DstagingProgressTimeoutMinutes=90
