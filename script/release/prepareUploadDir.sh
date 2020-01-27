@@ -59,7 +59,7 @@ cp $deployDir/org/kie/jbpm-server-distribution/$kieVersion/jbpm-server-distribut
 
 # optaplanner
 cp $deployDir/org/optaplanner/optaplanner-distribution/$kieVersion/optaplanner-distribution-$kieVersion.zip .
-cp $deployDir/org/optaweb/employeerostering/employee-rostering-distribution/$kieVersion/employee-rostering-distribution-$kieVersion.zip .
+cp $deployDir/org/optaweb/employeerostering/optaweb-employee-rostering-distribution/$kieVersion/optaweb-employee-rostering-distribution-$kieVersion.zip .
 cp $deployDir/org/optaweb/vehiclerouting/optaweb-vehicle-routing-distribution/$kieVersion/optaweb-vehicle-routing-distribution-$kieVersion.zip .
 
 # copies binaries + docs that are only available in /target directories - they are not deployed

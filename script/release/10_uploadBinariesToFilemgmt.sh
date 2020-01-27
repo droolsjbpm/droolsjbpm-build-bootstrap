@@ -134,7 +134,7 @@ scp -r $uploadDir/service-repository/* $jbpmHtdocs/$kieVersion/service-repositor
 
 # bins
 scp $uploadDir/optaplanner-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
-scp $uploadDir/employee-rostering-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
+scp $uploadDir/optaweb-employee-rostering-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
 scp $uploadDir/optaweb-vehicle-routing-distribution-$kieVersion.zip $optaplannerHtdocs/$kieVersion
 # docs
 scp -r $uploadDir/optaplanner-docs/* $optaplannerDocs/$kieVersion/optaplanner-docs
