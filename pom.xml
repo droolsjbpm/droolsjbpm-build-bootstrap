@@ -321,7 +321,7 @@
     <version.org.jboss.byteman>3.0.1</version.org.jboss.byteman>
     <version.org.roboguice>3.0.1</version.org.roboguice>
     <version.org.robolectric>3.1.2</version.org.robolectric>
-    <version.org.xmlunit>2.3.0</version.org.xmlunit>
+    <version.org.xmlunit>2.6.3</version.org.xmlunit>
     <version.org.skyscreamer.jsonassert>1.2.3</version.org.skyscreamer.jsonassert>
     <!-- WildFly version used together with  the GWT's Super Dev Mode -->
     <version.org.wildfly.gwt.sdm>14.0.1.Final</version.org.wildfly.gwt.sdm>
@@ -464,6 +464,7 @@
     <version.frontend-maven-plugin>1.8.0</version.frontend-maven-plugin>
     
     <version.org.awaitility>3.0.0</version.org.awaitility>
+    <version.io.github.bonigarcia>3.8.1</version.io.github.bonigarcia>
   </properties>
 
   <repositories>
@@ -4720,6 +4721,12 @@
         <version>${version.org.xmlunit}</version>
         <scope>test</scope>
       </dependency>
+      <dependency>
+        <groupId>org.xmlunit</groupId>
+        <artifactId>xmlunit-assertj</artifactId>
+        <version>${version.org.xmlunit}</version>
+        <scope>test</scope>
+      </dependency>
 
       <dependency>
         <groupId>org.skyscreamer</groupId>
@@ -5086,6 +5093,13 @@
         <groupId>org.awaitility</groupId>
         <artifactId>awaitility</artifactId>
         <version>${version.org.awaitility}</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>${version.io.github.bonigarcia}</version>
         <scope>test</scope>
       </dependency>
     </dependencies>
