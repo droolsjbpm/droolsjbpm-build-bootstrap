@@ -654,6 +654,13 @@
         <version>${version.org.kie}</version>
       </dependency>
 
+      <!-- KIE Workbench Templates -->
+      <dependency>
+        <groupId>org.kie.workbench.screens</groupId>
+        <artifactId>kie-all-templates</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+
       <!--KIE Common - Compiler Service -->
       <dependency>
         <groupId>org.kie.workbench.services</groupId>
@@ -1503,6 +1510,17 @@
       <dependency>
         <groupId>org.kie.workbench.screens</groupId>
         <artifactId>kie-wb-common-archetype-mgmt-backend</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>sources</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.kie.workbench.screens</groupId>
+        <artifactId>kie-wb-common-archetype-mgmt-templates</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie.workbench.screens</groupId>
+        <artifactId>kie-wb-common-archetype-mgmt-templates</artifactId>
         <version>${version.org.kie}</version>
         <classifier>sources</classifier>
       </dependency>
