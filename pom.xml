@@ -242,7 +242,7 @@
     <version.org.owasp.encoder>1.2</version.org.owasp.encoder>
     <version.org.powermock>1.7.4</version.org.powermock>
     <version.org.python>2.5.3</version.org.python>
-    <version.org.quartz-scheduler>2.2.3</version.org.quartz-scheduler>
+    <version.org.quartz-scheduler>2.3.2</version.org.quartz-scheduler>
     <version.org.reflections>0.9.11</version.org.reflections>
     <!-- Avoid using scannotation in favor of its successor org.reflections -->
     <version.org.scannotation>1.0.3</version.org.scannotation>
