@@ -459,7 +459,9 @@
     <version.com.github.javaparser>3.13.10</version.com.github.javaparser>
 
     <!-- JaCoCo coverage data file location -->
-    <jacoco.exec.file>${project.build.directory}/jacoco.exec</jacoco.exec.file>
+    <!--suppress UnresolvedMavenProperty -->
+    <project.root.dir>${maven.multiModuleProjectDirectory}</project.root.dir>
+    <jacoco.exec.file>${project.root.dir}/target/jacoco.exec</jacoco.exec.file>
     <!-- com.github.eirslett:frontend-maven-plugin version -->
     <version.frontend-maven-plugin>1.8.0</version.frontend-maven-plugin>
     
@@ -1944,20 +1946,53 @@
       <build>
         <plugins>
           <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
             <executions>
               <execution>
-                <id>generate-jacoco-report</id>
+                <phase>validate</phase>
                 <goals>
-                  <goal>report</goal>
+                  <goal>run</goal>
                 </goals>
-                <phase>generate-resources</phase>
                 <configuration>
-                  <dataFile>${jacoco.exec.file}</dataFile>
+                  <target>
+                    <echo message="Generating JaCoCo Reports"/>
+                    <taskdef name="report" classname="org.jacoco.ant.ReportTask"/>
+                    <mkdir dir="${project.reporting.outputDirectory}/jacoco"/>
+                    <report>
+                      <executiondata>
+                        <fileset dir="${project.root.dir}/target">
+                          <include name="jacoco.exec"/>
+                        </fileset>
+                      </executiondata>
+                      <structure name="Coverage Report">
+                        <group name="${project.artifactId}">
+                          <classfiles>
+                            <fileset dir="${project.root.dir}">
+                              <include name="**/target/classes/**/*.class"/>
+                            </fileset>
+                          </classfiles>
+                          <sourcefiles encoding="UTF-8">
+                            <fileset dir="${project.root.dir}">
+                              <include name="**/src/main/**/*.java"/>
+                            </fileset>
+                          </sourcefiles>
+                        </group>
+                      </structure>
+                      <xml destfile="${project.reporting.outputDirectory}/jacoco/jacoco.xml"/>
+                    </report>
+                  </target>
                 </configuration>
               </execution>
             </executions>
+            <dependencies>
+              <dependency>
+                <groupId>org.jacoco</groupId>
+                <artifactId>org.jacoco.ant</artifactId>
+                <!-- Keep the version in sync with jacoco-maven-plugin -->
+                <version>${version.jacoco.plugin}</version>
+              </dependency>
+            </dependencies>
           </plugin>
           <plugin>
             <groupId>org.sonarsource.scanner.maven</groupId>
@@ -1967,7 +2002,7 @@
                 <goals>
                   <goal>sonar</goal>
                 </goals>
-                <phase>generate-resources</phase>
+                <phase>validate</phase>
               </execution>
             </executions>
           </plugin>
