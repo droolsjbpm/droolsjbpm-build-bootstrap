@@ -9,7 +9,7 @@
 # ./git-all.sh --repo-list=$REVAPI_REPOSITORIES checkout -b revapi-7.23.0.Final
 # Copy this script to root of all repositories and run it there, ./revapi-clean.sh 7.23.0.Final
 # Update <revapi.oldKieVersion> in kie-parent
-# ./mvn-all.sh --repo-list=$REVAPI_REPOSITORIES clean install -DskipTests
+# ./mvn-all.sh --repo-list=$REVAPI_REPOSITORIES clean install -DskipTests -Dskip.npm
 # ./git-all.sh --repo-list=$REVAPI_REPOSITORIES add -u
 # ./git-all.sh --repo-list=$REVAPI_REPOSITORIES commit -m "BAQE-1039 - Change revapi to check against 7.23.0.Final"
 # ./git-all.sh --repo-list=$REVAPI_REPOSITORIES push origin revapi-7.23.0.Final
