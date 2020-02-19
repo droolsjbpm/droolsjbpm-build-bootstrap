@@ -528,9 +528,9 @@ Requirements for dependencies
 
 Any dependency used in any KIE project must fulfill these hard requirements:
 
-* The dependency must have **an ASL compatible license**.
+* The dependency must have **an Apache 2.0 compatible license**.
 
-    * Good: BSD, MIT, ASL
+    * Good: BSD, MIT, Apache 2.0
 
     * Avoid: EPL, LGPL
 
@@ -833,19 +833,18 @@ Configuring Eclipse
 
     * Click tree item *Comments*, tree item *Files*.
 
-    * Replace the text area with the java multi-line comment version of
-    ` droolsjbpm-build-bootstrap/ide-configuration/LICENSE-ASL-2.0-HEADER.txt`:
+    * Replace the text area with the following content:
 
         ```
         /*
          * Copyright ${year} Red Hat, Inc. and/or its affiliates.
-         * 
+         *
          * Licensed under the Apache License, Version 2.0 (the "License");
          * you may not use this file except in compliance with the License.
          * You may obtain a copy of the License at
-         * 
+         *
          *     http://www.apache.org/licenses/LICENSE-2.0
-         * 
+         *
          * Unless required by applicable law or agreed to in writing, software
          * distributed under the License is distributed on an "AS IS" BASIS,
          * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
