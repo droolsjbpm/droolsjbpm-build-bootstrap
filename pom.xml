@@ -1397,23 +1397,6 @@
           </configuration>
         </plugin>
         <plugin>
-          <groupId>com.mycila.maven-license-plugin</groupId>
-          <artifactId>maven-license-plugin</artifactId>
-          <version>1.8.0</version>
-          <configuration>
-            <!-- TODO this is buggy as it only works for first level modules -->
-            <header>${basedir}/../LICENSE-ASL-2.0-HEADER.txt</header>
-            <includes>
-              <include>**/*.java</include>
-              <include>**/*.drl</include>
-            </includes>
-            <mapping>
-              <drl>JAVADOC_STYLE</drl>
-            </mapping>
-            <encoding>UTF-8</encoding>
-          </configuration>
-        </plugin>
-        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <configuration>
