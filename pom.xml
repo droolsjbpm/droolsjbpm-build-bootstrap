@@ -340,7 +340,8 @@
     <version.org.geronimo.atinject>1.0</version.org.geronimo.atinject>
     <!-- simple-jndi is a small library that helps us avoid JNDI error messages during testing -->
     <version.simple-jndi>0.11.4.1</version.simple-jndi>
-    <version.org.asciidoctor.pdf>1.5.0-alpha.11</version.org.asciidoctor.pdf>
+    <version.org.asciidoctor.asciidoctorj>2.2.0</version.org.asciidoctor.asciidoctorj>
+    <version.org.asciidoctor.asciidoctorj-pdf>1.5.0</version.org.asciidoctor.asciidoctorj-pdf>
     <!-- Downgrade required for Errai Dynamic Bean validation  -->
     <version.org.hibernate.hibernate-validator>4.1.0.Final</version.org.hibernate.hibernate-validator>
     <!-- CSS parsing library from Apache used by Stunner. -->
@@ -462,7 +463,7 @@
     <jacoco.exec.file>${project.build.directory}/jacoco.exec</jacoco.exec.file>
     <!-- com.github.eirslett:frontend-maven-plugin version -->
     <version.frontend-maven-plugin>1.8.0</version.frontend-maven-plugin>
-    
+
     <version.org.awaitility>3.0.0</version.org.awaitility>
     <version.io.github.bonigarcia>3.8.1</version.io.github.bonigarcia>
   </properties>
@@ -1285,7 +1286,19 @@
         <plugin>
           <groupId>org.asciidoctor</groupId>
           <artifactId>asciidoctor-maven-plugin</artifactId>
-          <version>1.5.2.1</version>
+          <version>2.0.0-RC.1</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.asciidoctor</groupId>
+              <artifactId>asciidoctorj</artifactId>
+              <version>${version.org.asciidoctor.asciidoctorj}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.asciidoctor</groupId>
+              <artifactId>asciidoctorj-pdf</artifactId>
+              <version>${version.org.asciidoctor.asciidoctorj-pdf}</version>
+            </dependency>
+          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -4320,11 +4333,6 @@
         <version>${version.org.jboss.errai}</version>
         <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.asciidoctor</groupId>
-        <artifactId>asciidoctorj-pdf</artifactId>
-        <version>${version.org.asciidoctor.pdf}</version>
-      </dependency>
       <!-- END of jboss-ip-bom -->
 
       <dependency>
@@ -5054,7 +5062,7 @@
         <artifactId>pmml-model</artifactId>
         <version>${version.org.jpmml.model}</version>
       </dependency>
-      
+
       <!-- used  by DMN test to ensure NI reflect-conf.json is correctly up-to-date -->
       <dependency>
         <groupId>org.jboss</groupId>
@@ -5088,7 +5096,7 @@
         <artifactId>javaparser-core</artifactId>
         <version>${version.com.github.javaparser}</version>
       </dependency>
-      
+
       <dependency>
         <groupId>org.awaitility</groupId>
         <artifactId>awaitility</artifactId>
