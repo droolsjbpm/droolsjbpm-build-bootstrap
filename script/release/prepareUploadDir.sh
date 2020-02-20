@@ -36,9 +36,9 @@ unzip optaplanner-docs/optaplanner-docs-$kieVersion.zip -d optaplanner-docs/
 rm optaplanner-docs/optaplanner-docs-$kieVersion.zip
 
 mkdir optaweb-employee-rostering-docs
-cp  $deployDir/org/optaweb/employeerostering/employee-rostering-docs/$kieVersion/employee-rostering-docs-$kieVersion.zip optaweb-employee-rostering-docs/
-unzip optaweb-employee-rostering-docs/employee-rostering-docs-$kieVersion.zip -d optaweb-employee-rostering-docs/
-rm optaweb-employee-rostering-docs/employee-rostering-docs-$kieVersion.zip
+cp  $deployDir/org/optaweb/employeerostering/optaweb-employee-rostering-docs/$kieVersion/optaweb-employee-rostering-docs-$kieVersion.zip optaweb-employee-rostering-docs/
+unzip optaweb-employee-rostering-docs/optaweb-employee-rostering-docs-$kieVersion.zip -d optaweb-employee-rostering-docs/
+rm optaweb-employee-rostering-docs/optaweb-employee-rostering-docs-$kieVersion.zip
 
 mkdir optaweb-vehicle-routing-docs
 cp  $deployDir/org/optaweb/vehiclerouting/optaweb-vehicle-routing-docs/$kieVersion/optaweb-vehicle-routing-docs-$kieVersion.zip optaweb-vehicle-routing-docs/
