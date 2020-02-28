@@ -460,7 +460,9 @@
     <version.com.github.javaparser>3.13.10</version.com.github.javaparser>
 
     <!-- JaCoCo coverage data file location -->
-    <jacoco.exec.file>${project.build.directory}/jacoco.exec</jacoco.exec.file>
+    <!--suppress UnresolvedMavenProperty -->
+    <project.root.dir>${maven.multiModuleProjectDirectory}</project.root.dir>
+    <jacoco.exec.file>${project.root.dir}/target/jacoco.exec</jacoco.exec.file>
     <!-- com.github.eirslett:frontend-maven-plugin version -->
     <version.frontend-maven-plugin>1.8.0</version.frontend-maven-plugin>
 
@@ -1957,20 +1959,90 @@
       <build>
         <plugins>
           <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
             <executions>
               <execution>
-                <id>generate-jacoco-report</id>
+                <id>generate-aggregated-jacoco-report</id>
+                <phase>validate</phase>
                 <goals>
-                  <goal>report</goal>
+                  <goal>run</goal>
                 </goals>
-                <phase>generate-resources</phase>
                 <configuration>
-                  <dataFile>${jacoco.exec.file}</dataFile>
+                  <!--
+                    Jacoco ant "report" task provides control over scope of the generated report. The report task
+                    requires access to sources, classes and .exec file containing coverage data. The configuration
+                    below uses sources and classes of the entire project (each of its modules) and a single jacoco.exec
+                    file placed in project root directory.
+                    Jacoco maven plugin does not provide such a level of control and requires an artificial module that
+                    depends on all modules in the project to generate an aggregated report for all the modules.
+                    This necessity of creating a reporting module in every project is rather intrusive.
+                    See:
+                    https://www.jacoco.org/jacoco/trunk/doc/report-aggregate-mojo.html and
+                    https://groups.google.com/forum/#!topic/jacoco/oMxNZs_DNII
+                  -->
+                  <target>
+                    <echo message="Generating JaCoCo Reports"/>
+                    <taskdef name="report" classname="org.jacoco.ant.ReportTask"/>
+                    <mkdir dir="${project.reporting.outputDirectory}/jacoco"/>
+                    <report>
+                      <executiondata>
+                        <fileset dir="${project.root.dir}/target">
+                          <!--
+                            Include a single jacoco.exec file, which should be used in append mode by every module.
+                          -->
+                          <include name="jacoco.exec"/>
+                        </fileset>
+                      </executiondata>
+                      <structure name="Coverage Report">
+                        <group name="${project.artifactId}">
+                          <classfiles>
+                            <fileset dir="${project.root.dir}">
+                              <!--
+                                Include class files from every module.
+                              -->
+                              <include name="**/target/classes/**/*.class"/>
+                              <!--
+                                Following classes are excluded as they are present in multiple modules. Usually they
+                                are a product of tests or 3rd party dependencies that got unwrapped in target/classes
+                                folder during the build. These are not a subject of test coverage measurement.
+                              -->
+                              <exclude name="**/target/**/target/classes/**/*.class"/>
+                              <exclude name="**/.errai/**/*.class"/>
+                              <exclude name="**/target/classes/org/jboss/errai/**/*.class"/>
+                              <!--
+                                TODO: there are multiple classes of the same fully qualified name in kie-server modules.
+                                They need to be renamed to enable coverage reporting for them.
+                                -->
+                              <exclude name="**/target/classes/**/org/kie/server/gateway/KieServerGateway.class"/>
+                              <exclude name="**/target/classes/**/org/kie/server/springboot/samples/KieServerApplication.class"/>
+                            </fileset>
+                          </classfiles>
+                          <sourcefiles encoding="UTF-8">
+                            <fileset dir="${project.root.dir}">
+                              <!--
+                                Include source files from every module.
+                              -->
+                              <include name="**/src/main/**/*.java"/>
+                            </fileset>
+                          </sourcefiles>
+                        </group>
+                      </structure>
+                      <!-- The same report is generated in each module -->
+                      <xml destfile="${project.reporting.outputDirectory}/jacoco/jacoco.xml"/>
+                    </report>
+                  </target>
                 </configuration>
               </execution>
             </executions>
+            <dependencies>
+              <dependency>
+                <groupId>org.jacoco</groupId>
+                <artifactId>org.jacoco.ant</artifactId>
+                <!-- Keep the version in sync with jacoco-maven-plugin -->
+                <version>${version.jacoco.plugin}</version>
+              </dependency>
+            </dependencies>
           </plugin>
           <plugin>
             <groupId>org.sonarsource.scanner.maven</groupId>
@@ -1980,7 +2052,7 @@
                 <goals>
                   <goal>sonar</goal>
                 </goals>
-                <phase>generate-resources</phase>
+                <phase>validate</phase>
               </execution>
             </executions>
           </plugin>
