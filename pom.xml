@@ -136,7 +136,7 @@
     <version.org.apache.commons.ssl>0.3.9</version.org.apache.commons.ssl>
     <version.org.apache.deltaspike.core>1.5.1</version.org.apache.deltaspike.core>
     <version.org.apache.ftpserver>1.0.6</version.org.apache.ftpserver>
-    <version.org.apache.httpcomponents.httpclient>4.5.3</version.org.apache.httpcomponents.httpclient>
+    <version.org.apache.httpcomponents.httpclient>4.5.4</version.org.apache.httpcomponents.httpclient>
     <version.org.apache.httpcomponents.httpcore>4.4.6</version.org.apache.httpcomponents.httpcore>
     <version.org.apache.karaf>2.4.0</version.org.apache.karaf>
     <version.org.apache.lucene>6.6.1</version.org.apache.lucene>
