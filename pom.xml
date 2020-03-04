@@ -75,7 +75,7 @@
     <version.com.ahome-it.lienzo.tooling.common>1.0.190-RELEASE</version.com.ahome-it.lienzo.tooling.common>
     <version.com.allen-sauer.gwt.dnd>3.3.3</version.com.allen-sauer.gwt.dnd>
     <version.com.fasterxml.jackson>2.9.9</version.com.fasterxml.jackson>
-    <version.com.fasterxml.jackson.databind>2.9.10.1</version.com.fasterxml.jackson.databind>
+    <version.com.fasterxml.jackson.databind>2.9.10.3</version.com.fasterxml.jackson.databind>
     <version.com.google.code.gson>2.8.2</version.com.google.code.gson>
     <version.com.google.guava>25.0-jre</version.com.google.guava>
     <version.com.google.inject.guice>4.0</version.com.google.inject.guice>
