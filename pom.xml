@@ -70,8 +70,6 @@
     <version.commons-net>2.2</version.commons-net>
     <version.commons-pool>1.6</version.commons-pool>
     <version.commons-io>2.6</version.commons-io>
-    <version.com.ahome-it.lienzo-core>2.0.295-RELEASE</version.com.ahome-it.lienzo-core>
-    <version.com.ahome-it.lienzo-tests>2.0.295-RELEASE</version.com.ahome-it.lienzo-tests>
     <version.com.ahome-it.lienzo.tooling.nativetools>1.0.195-RELEASE
     </version.com.ahome-it.lienzo.tooling.nativetools>
     <version.com.ahome-it.lienzo.tooling.common>1.0.190-RELEASE</version.com.ahome-it.lienzo.tooling.common>
@@ -2216,16 +2214,6 @@
         <version>${version.commons-io}</version>
       </dependency>
 
-      <dependency>
-        <groupId>com.ahome-it</groupId>
-        <artifactId>lienzo-core</artifactId>
-        <version>${version.com.ahome-it.lienzo-core}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.ahome-it</groupId>
-        <artifactId>lienzo-tests</artifactId>
-        <version>${version.com.ahome-it.lienzo-tests}</version>
-      </dependency>
       <dependency>
         <groupId>com.ahome-it</groupId>
         <artifactId>ahome-tooling-nativetools</artifactId>
