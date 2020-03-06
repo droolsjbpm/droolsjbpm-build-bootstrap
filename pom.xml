@@ -255,6 +255,7 @@
     <version.org.springframework.osgi>1.2.1</version.org.springframework.osgi>
     <version.org.subethamail>1.2</version.org.subethamail>
     <version.org.subethamail.subethasmtp>3.1.6</version.org.subethamail.subethasmtp>
+    <version.org.webjars.swagger-ui>2.2.10</version.org.webjars.swagger-ui>
     <version.org.wildfly>14.0.1.Final</version.org.wildfly>
     <version.org.wildfly.arquillian>2.1.1.Final</version.org.wildfly.arquillian>
     <version.org.wildfly.core>6.0.2.Final</version.org.wildfly.core>
@@ -4202,6 +4203,12 @@
         <groupId>org.subethamail</groupId>
         <artifactId>subethasmtp</artifactId>
         <version>${version.org.subethamail.subethasmtp}</version>
+      </dependency>
+      
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>swagger-ui</artifactId>
+        <version>${version.org.webjars.swagger-ui}</version>
       </dependency>
 
       <dependency>
