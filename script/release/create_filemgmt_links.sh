@@ -59,8 +59,8 @@ rm latest
 ln -s ${kieVersion} latest
 
 echo "Uploading normal links..."
-rsync -a --protocol=28 latest $urlBase_drools/downloads_htdocs/drools/release/
-rsync -a --protocol=28 latest $urlBase_drools/docs_htdocs/drools/release/
+rsync -a -e "ssh -i $HOME/.ssh/drools/id_rsa" --protocol=28 latest $urlBase_drools/downloads_htdocs/drools/release/
+rsync -a -e "ssh -i $HOME/.ssh/drools/id_rsa" --protocol=28 latest $urlBase_drools/docs_htdocs/drools/release/
 
 ###############################################################################
 # latestFinal drools links
@@ -69,8 +69,8 @@ if [[ "${kieVersion}" == *Final* ]]; then
     rm latestFinal
     ln -s ${kieVersion} latestFinal
     echo "Uploading Final links..."
-    rsync -a --protocol=28  latestFinal $urlBase_drools/downloads_htdocs/drools/release/
-    rsync -a --protocol=28  latestFinal $urlBase_drools/docs_htdocs/drools/release/
+    rsync -a -e "ssh -i $HOME/.ssh/drools/id_rsa" --protocol=28  latestFinal $urlBase_drools/downloads_htdocs/drools/release/
+    rsync -a -e "ssh -i $HOME/.ssh/drools/id_rsa" --protocol=28  latestFinal $urlBase_drools/docs_htdocs/drools/release/
 fi
 
 urlBase_optaplanner="optaplanner@filemgmt.jboss.org:"
@@ -83,8 +83,8 @@ rm latest
 ln -s ${kieVersion} latest
 
 echo "Uploading normal links for optaplanner..."
-rsync -a --protocol=28 latest $urlBase_optaplanner/downloads_htdocs/optaplanner/release/
-rsync -a --protocol=28 latest $urlBase_optaplanner/docs_htdocs/optaplanner/release/
+rsync -a -e "ssh -i $HOME/.ssh/optaplanner/id_rsa" --protocol=28 latest $urlBase_optaplanner/downloads_htdocs/optaplanner/release/
+rsync -a -e "ssh -i $HOME/.ssh/optaplanner/id_rsa" --protocol=28 latest $urlBase_optaplanner/docs_htdocs/optaplanner/release/
 
 
 ###############################################################################
@@ -95,8 +95,8 @@ if [[ "${kieVersion}" == *Final* ]]; then
     rm latestFinal
     ln -s ${kieVersion} latestFinal
     echo "Uploading Final links for optaplanner..."
-    rsync -a --protocol=28 latestFinal $urlBase_optaplanner/downloads_htdocs/optaplanner/release/
-    rsync -a --protocol=28 latestFinal $urlBase_optaplanner/docs_htdocs/optaplanner/release/
+    rsync -a -e "ssh -i $HOME/.ssh/optaplanner/id_rsa" --protocol=28 latestFinal $urlBase_optaplanner/downloads_htdocs/optaplanner/release/
+    rsync -a -e "ssh -i $HOME/.ssh/optaplanner/id_rsa" --protocol=28 latestFinal $urlBase_optaplanner/docs_htdocs/optaplanner/release/
 fi
 
 urlBase_jbpm="jbpm@filemgmt.jboss.org:"
@@ -109,8 +109,8 @@ rm latest
 ln -s ${kieVersion} latest
 
 echo "Uploading normal links for jbpm..."
-rsync -a --protocol=28 latest $urlBase_jbpm/downloads_htdocs/jbpm/release/
-rsync -a --protocol=28 latest $urlBase_jbpm/docs_htdocs/jbpm/release/
+rsync -a -e "ssh -i $HOME/.ssh/jbpm/id_rsa" --protocol=28 latest $urlBase_jbpm/downloads_htdocs/jbpm/release/
+rsync -a -e "ssh -i $HOME/.ssh/jbpm/id_rsa" --protocol=28 latest $urlBase_jbpm/docs_htdocs/jbpm/release/
 
 
 ###############################################################################
@@ -121,8 +121,8 @@ if [[ "${kieVersion}" == *Final* ]]; then
     rm latestFinal
     ln -s ${kieVersion} latestFinal
     echo "Uploading Final links for jbpm..."
-    rsync -a --protocol=28 latestFinal $urlBase_jbpm/downloads_htdocs/jbpm/release/
-    rsync -a --protocol=28 latestFinal $urlBase_jbpm/docs_htdocs/jbpm/release/
+    rsync -a -e "ssh -i $HOME/.ssh/jbpm/id_rsa" --protocol=28 latestFinal $urlBase_jbpm/downloads_htdocs/jbpm/release/
+    rsync -a -e "ssh -i $HOME/.ssh/jbpm/id_rsa" --protocol=28 latestFinal $urlBase_jbpm/docs_htdocs/jbpm/release/
 fi
 
 ###############################################################################
