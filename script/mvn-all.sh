@@ -108,6 +108,7 @@ for repository in $REPOSITORY_LIST; do
         echo "==============================================================================="
         cd $repository
 
+        echo "Running maven: $mvnBin ${MVN_ARG_LINE[@]}"
         "$mvnBin" "${MVN_ARG_LINE[@]}"
         returnCode=$?
 
