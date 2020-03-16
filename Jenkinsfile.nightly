@@ -8,18 +8,15 @@ pipeline {
         maven 'kie-maven-3.6.0'
         jdk 'kie-jdk1.8'
     }
+    parameters {
+        string(defaultValue: 'master', description: 'The default branch', name: 'DEFAULT_BRANCH')
+        string(description: 'The deployment URL', name: 'KIE_GROUP_DEPLOYMENT_REPO_URL')
+    }
     options {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
         timeout(time: 720, unit: 'MINUTES')
     }
     stages {
-        stage ("Clean") {
-            steps {
-                echo "[INFO] Cleaning the workspace."
-                cleanWs()
-                echo "[SUCCESS] Workspace was successfully cleaned up."
-            }
-        }
         stage('Initialize') {
             steps {
                 sh 'printenv'
@@ -44,7 +41,7 @@ pipeline {
                         projectCollection.addAll(productionProjectListFile.readLines())
                         projectCollection.removeAll { 'droolsjbpm-tools'.equals(it.toLowerCase()) } // The droolsjbpm-tools is skiped
                         println "File ${repositoryListPath} and ${env.PRODUCTION_PROJECT_LIST} jenkins file merged in ${projectCollection}"
-                        nightlyStages(SETTINGS_XML_ID, projectCollection, "rhba/nightly", projectVariableMap)
+                        nightlyStages(SETTINGS_XML_ID, projectCollection, DEFAULT_BRANCH, "rhba/nightly", projectVariableMap)
                     }
 
                     def PME_BUILD_VARIABLES = env.PME_BUILD_VARIABLES.split(";").collect{ it.split("=")}.inject([:]) {map, item -> map << [(item.length == 2 ? item[0] : null): (item.length == 2 ? item[1] : null)]}
