@@ -41,7 +41,7 @@ pipeline {
                         projectCollection.addAll(productionProjectListFile.readLines())
                         projectCollection.removeAll { 'droolsjbpm-tools'.equals(it.toLowerCase()) } // The droolsjbpm-tools is skiped
                         println "File ${repositoryListPath} and ${env.PRODUCTION_PROJECT_LIST} jenkins file merged in ${projectCollection}"
-                        nightlyStages(SETTINGS_XML_ID, projectCollection, DEFAULT_BRANCH, "rhba/nightly", projectVariableMap)
+                        nightlyStages(SETTINGS_XML_ID, projectCollection, "${DEFAULT_BRANCH}", "rhba/nightly", projectVariableMap)
                     }
 
                     def PME_BUILD_VARIABLES = env.PME_BUILD_VARIABLES.split(";").collect{ it.split("=")}.inject([:]) {map, item -> map << [(item.length == 2 ? item[0] : null): (item.length == 2 ? item[1] : null)]}
