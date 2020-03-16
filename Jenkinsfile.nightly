@@ -2,7 +2,7 @@
 
 pipeline {
     agent {
-        label 'image-test && !master'
+        label 'kie-rhel7 && kie-mem24g && !master'
     }
     tools {
         maven 'kie-maven-3.6.0'
