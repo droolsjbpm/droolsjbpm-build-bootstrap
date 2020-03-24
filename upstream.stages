@@ -5,6 +5,7 @@ stage('Upstream Build') {
         println "Reading file ${REPOSITORY_LIST_FILE}"
         def file = readFile REPOSITORY_LIST_FILE
         def projectCollection = file.readLines()
-        treebuild.upstreamBuild(projectCollection, treebuild.getProject(env.GIT_URL), "${SETTINGS_XML_ID}", 'clean install', true)
+        def gitURL = env.GIT_URL ?: env.ghprbAuthorRepoGitUrl
+        treebuild.upstreamBuild(projectCollection, treebuild.getProject(gitURL), "${SETTINGS_XML_ID}", 'clean install', true)
     }
 }
