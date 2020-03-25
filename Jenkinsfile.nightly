@@ -9,8 +9,8 @@ pipeline {
         jdk 'kie-jdk1.8'
     }
     parameters {
-        string(defaultValue: 'master', description: 'The default branch', name: 'DEFAULT_BRANCH')
         string(description: 'The deployment URL', name: 'KIE_GROUP_DEPLOYMENT_REPO_URL')
+        booleanParam(description: 'Skip Tests? True as default', name: 'SKIP_TESTS', defaultValue: true)
     }
     options {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
@@ -41,13 +41,14 @@ pipeline {
                         projectCollection.addAll(productionProjectListFile.readLines())
                         projectCollection.removeAll { 'droolsjbpm-tools'.equals(it.toLowerCase()) } // The droolsjbpm-tools is skiped
                         println "File ${repositoryListPath} and ${env.PRODUCTION_PROJECT_LIST} jenkins file merged in ${projectCollection}"
-                        nightlyStages(SETTINGS_XML_ID, projectCollection, "${DEFAULT_BRANCH}", "rhba/nightly", projectVariableMap)
+                        nightlyStages(SETTINGS_XML_ID, projectCollection, "rhba/nightly", projectVariableMap)
                     }
 
                     def PME_BUILD_VARIABLES = env.PME_BUILD_VARIABLES.split(";").collect{ it.split("=")}.inject([:]) {map, item -> map << [(item.length == 2 ? item[0] : null): (item.length == 2 ? item[1] : null)]}
 
                     build job: env.RHBA_PROPERTIES_GENERATOR_PATH, parameters: [
                         [$class: 'BooleanParameterValue', name: 'IS_PROD', value: false],
+                        [$class: 'StringParameterValue', name: 'KIE_VERSION', value: PME_BUILD_VARIABLES['kieVersion']],
                         [$class: 'StringParameterValue', name: 'PRODUCT_VERSION', value: PME_BUILD_VARIABLES['productVersion']],
                         [$class: 'StringParameterValue', name: 'TIME_STAMP', value: "${PME_BUILD_VARIABLES['datetimeSuffix']}"],
                         [$class: 'StringParameterValue', name: 'MVEL_VERSION', value: PME_BUILD_VARIABLES['mvelVersion']],
