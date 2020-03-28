@@ -11,6 +11,8 @@ pipeline {
     parameters {
         string(description: 'The deployment URL', name: 'KIE_GROUP_DEPLOYMENT_REPO_URL')
         booleanParam(description: 'Skip Tests? True as default', name: 'SKIP_TESTS', defaultValue: true)
+        string(description: 'The UMB message version', name: 'UMB_VERSION', defaultValue: 'master')
+        string(description: 'The product version', name: 'PRODUCT_VERSION')
     }
     options {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
@@ -64,10 +66,9 @@ pipeline {
                     echo "[INFO] Sending RHPAM UMB message to QE."
                     def PME_BUILD_VARIABLES = env.PME_BUILD_VARIABLES.split(";").collect{ it.split("=")}.inject([:]) {map, item -> map << [(item.length == 2 ? item[0] : null): (item.length == 2 ? item[1] : null)]}
                     
-                    def versionIdentifier = (PME_BUILD_VARIABLES['productVersion'] =~ /\d+\.\d+/)[0].replace(".", "")
                     def propertiesFileUrl = "${env.STAGING_SERVER_URL}/rhpam/RHPAM-${PME_BUILD_VARIABLES['productVersion']}.${PME_BUILD_VARIABLES['milestone']}/rhpam-${PME_BUILD_VARIABLES['datetimeSuffix']}.properties"
-                    def topic = "VirtualTopic.qe.ci.ba.rhpam.${versionIdentifier}.nightly.trigger"
-                    def eventType = "rhpam-${versionIdentifier}-nightly-qe-trigger"
+                    def topic = "VirtualTopic.qe.ci.ba.rhpam.${env.UMB_VERSION}.nightly.trigger"
+                    def eventType = "rhpam-${env.UMB_VERSION}-nightly-qe-trigger"
                     
                     echo "[INFO] Message Body: ${propertiesFileUrl}"
                     echo "[INFO] Topic: ${topic}"
@@ -87,10 +88,9 @@ pipeline {
                     echo "[INFO] Sending RHDM UMB message to QE."
                     def PME_BUILD_VARIABLES = env.PME_BUILD_VARIABLES.split(";").collect{ it.split("=")}.inject([:]) {map, item -> map << [(item.length == 2 ? item[0] : null): (item.length == 2 ? item[1] : null)]}
                     
-                    def versionIdentifier = (PME_BUILD_VARIABLES['productVersion'] =~ /\d+\.\d+/)[0].replace(".", "")
                     def propertiesFileUrl = "${env.STAGING_SERVER_URL}/rhdm/RHDM-${PME_BUILD_VARIABLES['productVersion']}.${PME_BUILD_VARIABLES['milestone']}/rhdm-${PME_BUILD_VARIABLES['datetimeSuffix']}.properties"
-                    def topic = "VirtualTopic.qe.ci.ba.rhdm.${versionIdentifier}.nightly.trigger"
-                    def eventType = "rhdm-${versionIdentifier}-nightly-qe-trigger"
+                    def topic = "VirtualTopic.qe.ci.ba.rhdm.${env.UMB_VERSION}.nightly.trigger"
+                    def eventType = "rhdm-${env.UMB_VERSION}-nightly-qe-trigger"
                     
                     echo "[INFO] Message Body: ${propertiesFileUrl}"
                     echo "[INFO] Topic: ${topic}"
