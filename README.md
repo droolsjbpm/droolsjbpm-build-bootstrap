@@ -37,11 +37,11 @@ Quick start
 
 If you don't want to contribute to this project and you know git and maven, these build instructions should suffice:
 
-* To build 1 repository, for example `guvnor`:
+* To build 1 repository, for example `drools`:
 
     ```shell
-    $ git clone git@github.com:kiegroup/guvnor.git
-    $ cd guvnor
+    $ git clone git@github.com:kiegroup/drools.git
+    $ cd drools
     $ mvn clean install -DskipTests
     ```
 * To build all repositories:
@@ -84,7 +84,7 @@ Installing and configuring git
 
     ```shell
     $ git --version
-    git version 1.7.1
+    git version 2.21.2
     ```
 
 * Configure git correctly:
@@ -93,8 +93,8 @@ Installing and configuring git
     $ git config --global user.name "My Full Name"
     $ git config --global user.email myAccount@gmail.com
     $ git config --global -l
-    user.name=Geoffrey De Smet
-    user.email=gds...@gmail.com
+    user.name=<user name and surname >
+    user.email=<user email address>
     ```
 
     * Warning: the field `user.name` is your full name, *not your username*.
@@ -116,14 +116,14 @@ Because you'll probably want to change our code, it's recommended to fork our co
 so it's easier to share your changes with us later.
 For more info on forking, read [GitHub's help on forking](http://help.github.com/fork-a-repo/).
 
-* First fork the repository you want to work on, for example `guvnor`:
+* First fork the repository you want to work on, for example `drools`:
 
     * Surf to [the blessed repositories on github](https://github.com/kiegroup) and log in.
 
         * Note: **Every git repository can be build alone.**
-        You only need to fork/clone the repositories you're interested in (`guvnor` in this case).
+        You only need to fork/clone the repositories you're interested in (`drools` in this case).
 
-    * Surf to [the specific repository (guvnor)](https://github.com/kiegroup/guvnor)
+    * Surf to [the specific repository (drools)](https://github.com/kiegroup/drools)
 
     * Click the top right button *Fork*
 
@@ -138,8 +138,8 @@ For more info on forking, read [GitHub's help on forking](http://help.github.com
     $ cd kiegroup
 
     # Then clone the repository you want to clone.
-    $ git clone git@github.com:MY_GITHUB_USERNAME/guvnor.git
-    $ cd guvnor
+    $ git clone git@github.com:MY_GITHUB_USERNAME/drools.git
+    $ cd drools
     $ ls
     ```
 
@@ -152,13 +152,13 @@ For more info on forking, read [GitHub's help on forking](http://help.github.com
         * Use git checkout to switch to a more stable branch or tag:
 
             ```shell
-            $ git checkout 5.2.0.Final
+            $ git checkout <stable version> # i.e git checkout 7.33.x
             ```
 
 * Add the blessed repository as upstream (if you've directly cloned the blessed repository, don't do this):
 
     ```shell
-    $ git remote add upstream git@github.com:kiegroup/guvnor.git
+    $ git remote add upstream git@github.com:kiegroup/drools.git
     $ git fetch upstream
     ```
 
@@ -320,7 +320,7 @@ Installing Maven
 
             ```shell
             $ cd ~/opt/build/
-            $ ln -s apache-maven-3.3.9 apache-maven
+            $ ln -s apache-maven-3.5.2 apache-maven
             ```
 
             Next time you only have to remove the link and recreate the link to the new version.
@@ -332,13 +332,9 @@ Installing Maven
             export PATH="$M3_HOME/bin:$PATH"
             ```
 
-    * Give more memory to maven, so it can build the big projects too:
+    * Give more memory to maven:
 
-        * Add this to your `~/.bashrc` file:
-
-            ```shell
-            export MAVEN_OPTS="-Xms256m -Xmx1024m"
-            ```
+        * Please read: [Configuring Apache Maven](http://maven.apache.org/configure.html)
 
 * Windows:
 
@@ -354,7 +350,7 @@ Installing Maven
 
     ```shell
     $ mvn --version
-    Apache Maven 3.3.9 (...)
+    Apache Maven 3.5.2 (...)
     Java version: 1.8.0_112
     ```
 
@@ -363,15 +359,17 @@ Installing Maven
 Running the build
 -----------------
 
-* Go into a project's base directory, for example `guvnor`:
+* Go into a project's base directory, for example `drools`:
 
     ```shell
     $ cd ~/projects/kiegroup
+    $ ls 
+    ```
+    the repositories displayed should be like listed here. [repository_list](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/script/repository-list.txt)
+    ```shell
+    $ cd drools
     $ ls
-    drools  droolsjbpm-build-bootstrap droolsjbpm-integration  droolsjbpm-knowledge  droolsjbpm-tools  optaplanner  guvnor
-    $ cd guvnor
-    $ ls
-    ...  guvnor-repository  guvnor-webapp-drools  pom.xml
+    ...  drools-core  drools-cdi  pom.xml ...
     ```
 
     Notice you see a `pom.xml` file there. Those `pom.xml` files are the heart of Maven.
@@ -442,16 +440,7 @@ Those SNAPSHOTS were build and deployed last night by Jenkins jobs.
 Running tests
 -------------
 
-Guvnor uses Arquillian to run tests in a J2EE container and hence tests need to be ran differently to others.
-
-* Guvnor
-
-    ```shell
-    $ cd ~/projects/kiegroup/guvnor/guvnor-webapp-drools
-    $ mvn integration-test [-Dtest=ATestClassName]
-    ```
-
-* All other modules
+* All modules
 
     ```shell
     $ cd ~/projects/kiegroup/drools
@@ -881,8 +870,6 @@ Extra Eclipse plugins
 
             * Checkbox *Use google Web Tookit*: `on`
 
-            * List *Entry Point Modules* should contain `Guvnor - org.drools.guvnor` (and optionally `FastCompiledGuvnor` too).
-
         * The gwt-dev jar needs to be first on the compilation classpath (the `java.lang.NoSuchFieldError: warningThreshold` problem)
 
             * Click tree item *Java Build Path*
@@ -1246,9 +1233,9 @@ Team workflows
 
 * Fixing a community issue in JIRA:
 
-    * Find/create the issue in JIRA ([Drools](https://issues.jboss.org/browse/DROOLS),
-    [OptaPlanner](https://issues.jboss.org/browse/PLANNER), [jBPM](https://issues.jboss.org/browse/JBPM),
-    [Guvnor](https://issues.jboss.org/browse/GUVNOR))
+    * Find/create the issue in JIRA ([Drools](https://issues.redhat.org/browse/DROOLS),
+    [OptaPlanner](https://issues.redhat.org/browse/PLANNER), [jBPM](https://issues.redhat.org/browse/JBPM),
+    [Guvnor](https://issues.redhat.org/browse/GUVNOR))
 
     * Fix the issue and push those changes to the appropriate branch(es) on github.
 
@@ -1259,19 +1246,6 @@ Team workflows
 
         * Once the reporter verifies the fix, he changes *Status* to `Closed`. Or we bulk change it to `Closed` after a year.
 
-* (Red Hat developers only) Fixing BRMS issues in Bugzilla:
-
-    * Find an issue in Bugzilla. Change *Status* to `ASSIGNED` and *Assigned To* to yourself.
-
-    * Fix the issue and push those changes to the appropriate branch(es) on github.
-
-        * This will likely require back porting or forward porting, because the issue must be fixed on master too.
-
-    * Change the *Status* to `MODIFIED`.
-
-        * Once the new product version is build, they change *Status* to `ON_QA`.
-
-        * Once QA verifies the fix, they change *Status* to `VERIFIED`.
 
 Knowing what's going on
 -----------------------

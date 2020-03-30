@@ -1,6 +1,6 @@
 Table of content
 ================
-* **[Releasing](#releasing)**
+* **[Releasing a community release](#releasing)**
 
 * **[Building a Product Tag](#building-a-product-tag)**
 
@@ -10,9 +10,9 @@ Releasing
 Expecting a release
 -------------------
 
-One week in advance:
+A week in advance:
 
-* Announce on the upcoming release on all the developer mailing lists and in the IRC channel topics.
+* Announce on the upcoming release on all the developer mailing lists bsig@redhat.com .
 
     * Include a list of projects on Jenkins that are yellow or red.
 
@@ -21,8 +21,6 @@ One week in advance:
     * For a CR/Final, also mention the FindBugs reports on Jenkins.
 
 * All external dependencies must be on a non-SNAPSHOT version, to avoid failing to *close* the staging repo on nexus near the end of the release.
-
-    * Get those dependencies (errai) released if needed, preferably 1 week before the kie release. This way, those released artifacts gets tested by our tests.
 
 * Ask kiegroup modules (appformer, kie-wb-common, drools-wb, jbpm-wb, jbpm-designer, optaplanner-wb and kie-wb-distributions) leads to update the i18n translations:
 
@@ -55,122 +53,109 @@ One week in advance:
 
 48 hours in advance:
 
-* Push deadline: Announce on the upcoming push deadline on all the developer mailing lists and in the IRC channel topics.
+* Push deadline: Announce on the upcoming push deadline on all the developer mailing lists kie-jenkins-builds@redhat.com.
 
     * Commits pushed before the deadline will make the release, the rest won't.
 
-* Pull the latest changes.
 
-    ```shell
-    $ git-all.sh pull --rebase
-    ```
-
-* Do a sanity check.
-
-    * Produce the distribution zips, build with `-Dfull`:
-
-        ```shell
-        $ droolsjbpm-build-bootstrap/script/mvn-all.sh clean install -Dfull -Dcustom-container -DskipTests
-        ```
-
-        * Warning: It is not uncommon to run out of either PermGen space or Heap Space. The following settings are known (@Sept-2012) to work:-
-
-            ```shell
-            $ export MAVEN_OPTS='-Xms512m -Xmx2200m -XX:MaxPermSize=512m'
-            ```
-
-        * Warning: Verify that workspace contains no uncommitted changes or rogue module directories of older branches:
-
-            ```shell
-            $ droolsjbpm-build-bootstrap/script/git-all.sh status
-            ```
-
-            * Specifically watch out for an uncommitted `*/target` directory: that's the result of a build of an older branch that didn't get cleaned.
-
-                * If the root of that directory gets zipped, binaries of that older branch leak into today's distribution zip.
-
-    * Do a sanity check of the artifacts by running each runExamples.sh from the zips.
-
-        * Go to `kie-wb-distributions/droolsjbpm-uber-distribution/target/*/download_jboss_org`:
-
-            * Unzip the zips to a temporary directory.
-
-            * Start the `runExamples.sh` script for drools, droolsjbpm-integration and optaplanner
-
-            * Deploy the guvnor WildFly 8 war and surf to it:
-
-                * Install the mortgages examples, build it and run the test scenario's
-
-            * Verify that the reference manuals open in a browser (HTML) and Adobe Reader (PDF).
-
-Creating a new branch 
+Creating a release branch or new branch
 ---------------------
 
-A new branch name should always end with `.x` so it looks different from a tag name and a topic branch name.
+A new release branch name should always end start withy `r` so it looks different from a tag name and a topic branch name.
 
 * When do we create a new branch?
 
     * We only create a new branch just before releasing CR1.
 
-        * For example, just before releasing 6.5.0.CR1, we created the release branch 6.5.x
+        * For example, just before releasing 7.7.0.CR1, we created the release branch 7.33.x
 
-            * The new branch 6.2.x contained the releases 6.5.0.CR1, 6.5.0.Final, 6.5.1-SNAPSHOT, ...
+            * The new branch 7.33.x contained the releases 7.7.0.CR1, CR+ and 7.33.1-SNAPSHOT, ...
 
     * Alpha/Beta releases are released directly from master, because we don't backport commits to Alpha/Beta's.
 
-* Alert the IRC dev channels that you're going to branch master.
+* Alert the bsig mail list that you're going to branch master.
 
 * Pull the latest changes.
 
     ```shell
-    $ git-all.sh pull --rebase
+    $ ./droolsjbpm-build-bootstrap/script/git-all.sh fetch origin
+    $ ./droolsjbpm-build-bootstrap/script/git-all.sh rebase origin/master master
     ```
 
-* Create a new branch using the script kie-createNewBranches.sh:
+* Create a release branch (based on master branch):
 
     ```shell
-    $ ./droolsjbpm-build-bootstrap/script/release/kie-createNewBranch.sh <new branch> 
+    $ ./droolsjbpm-build-bootstrap/git-all.sh checkout -b $releaseBranch master (i.e. rX.Y.Z = r7.x.x.Final)
     ```
 
-    * Note: this script creates a new branch, pushes it to origin and sets the upstream from local new branch to remote new branch
 
+If required and a new branch has to be created based on master (i.e. 7.33.x for 7.7. product) following step has to be executed:
 
-* Switch back and forth from master to the new branches for all git repositories
+* Create new branch from master
+
+      ```shell
+      $ ./droolsjpbm-build-bootstrap/git-all.sh checkout -b $newBranch master (i.e. newBranch = 7.33.x)
+      ```
+
+* Important:
+
+  In case we are creating a new branch (i.e. 7.33.x) and a release branch (i.e. r7.33.0.Final) we will have three branches
+  
+  master
+  
+  newBranch (i.e. 7.33.x)
+  
+  releaseBranch (i.e. r7.33.0.Final)
+  
+  All these branches need to have their own version to avoid clashing the artifacts on Nexus of master and all other branches. The versions of each branch have to be upgraded.
+  Except the release branch the other two branches have to be upgraded to their new SNAPSHOT version.  
+   
+* Switch to the new branches ($newBranch or $releaseBranch) for all git repositories
 
     * If you haven't made the branches yourself, first make sure your local repository knows about them:
 
         ```shell
-        $ droolsjbpm-build-bootstrap/script/git-all.sh fetch
+        $ ./droolsjbpm-build-bootstrap/script/git-all.sh fetch origin
         ```
-
-    * Switch to master with `script/git-checkout-all.sh`
+    
+    * Swith to the new branch or release branch
 
         ```shell
-        $ droolsjbpm-build-bootstrap/script/git-checkout-all.sh <new branch>
+        $ ./droolsjbpm-build-bootstrap/script/git-checkout-all.sh $master or $newBranch or $releaseBranch (i.e. master or 7.33.x or r7.33.0.Final)
         ```
 
-    * Update master to the next SNAPSHOT version to avoid clashing the artifacts on nexus of master and the release branch:
+    * Update versions:
 
+        master branch
         ```shell
-        $ droolsjbpm-build-bootstrap/script/release/update-version-all.sh 7.6.1-SNAPSHOT 2.2.1-SNAPSHOT 
+        $ ./droolsjbpm-build-bootstrap/script/release/update-version-all.sh $nextSNAPSHOT_master community (i.e. nextSNAPSHOT = 7.34.0-SNAPSHOT)
+        ```
+        
+        $releaseBranch
+        ```shell
+        $ ./droolsjbpm-build-bootstrap/script/release/update-version-all.sh $kieVersion_releaseBranch community (i.e. kieVersion = 7.33.0.Final)  
         ```
 
-        * Note: the arguments are `kie Version` `uberfire Version`
+        $newBranch
+        ```shell
+        $ ./droolsjbpm-build-bootstrap/script/release/update-version-all.sh $nextSNAPSHOT_newBranch community (i.e. nextSNAPSHOT_newBranch = 7.33.1-SNAPSHOT )  
+        ```
 
-        * WARNING: script update-version-all.sh did not update all versions in all modules for 7.6.0-SNAPSHOT. Check all have been updated with the following and re-run if required.
+        * Note: the arguments are `new version` `community`
+
+        * WARNING: script update-version-all.sh did not update all versions in all modules for the desired version. Check all have been updated with the following and re-run if required.
 
             ```shell
-            $ grep -r '7.6.0-SNAPSHOT' **/pom.xml
+            $ grep -r '$newVersion' **/pom.xml
             # or
-            $ for i in $(find . -name "pom.xml"); do grep '7.6.0-SNAPSHOT' $i; done
-            ```
-            or
-            ```shell
-            $ grep -ER --exclude-dir=*git* --exclude-dir=*target* --exclude-dir=*idea* --exclude=*ipr --exclude=*iws --exclude=*iml --exclude=workspace* --exclude-dir=*.errai 6.3.0-SNAPSHOT . | grep -v ./kie-wb-distributions/kie-eap-integration/kie-eap-modules/kie-jboss-eap-base-modules
+            $ for i in $(find . -name "pom.xml"); do grep '$newVersion' $i; done
             ```
 
-        * Note: in either case it is important to search for `-SNAPSHOT`, as there are various hidden `-SNAPSHOT` dependencies in some pom.xml files and they should be prevented for releases
-
+        * Note: 
+        $newVersion could be here or the release version or the upcoming -SNAPSHOT versions (master or new branch)
+        
+        in either case it is important to search for `-SNAPSHOT`, as there are various hidden `-SNAPSHOT` dependencies in some pom.xml files and they should be prevented for releases
+        
         * Commit those changes (so you can tag them properly):
 
             * Add changes from untracked files if there are any. WARNING: DO NOT USE `git add .`. You may accidentally add files that are not meant to be added into git.
@@ -182,34 +167,77 @@ A new branch name should always end with `.x` so it looks different from a tag n
             * Commit all changes
 
                 ```shell
-                $ droolsjbpm-build-bootstrap/script/git-all.sh commit -m "Set release version: 6.3.0-SNAPSHOT"
-                ```
-
-            * Check if all repositories build after version upgrade
-
-                ```shell
-                $ sh droolsjbpm-build-bootstrap/mvnall.sh mvn clean install -Dfull -DskipTests
+                $ ./droolsjbpm-build-bootstrap/script/git-all.sh commit -m "Set version to: $newVersion"
                 ```
 
     * Push the new `-SNAPSHOT` version to `master` of the blessed directory
 
         ```shell
-        $ sh droolsjbpbm-build-bootstrap/script/git-all.sh pull --rebase origin master (pulls all changes for master that could be commited in the meantime and prevents merge problems when pushing commits)
-        $ sh droolsjbpm-build-bootstrap/script/git-all.sh push origin master (pushes all commits to master)
+        $ ./droolsjbpbm-build-bootstrap/script/git-all.sh pull --rebase origin master (pulls all changes for master that could be commited in the meantime and prevents merge problems when pushing commits)
+        $ ./droolsjbpm-build-bootstrap/script/git-all.sh push origin master (pushes all commits to master)
         ```
 
-    * Switch back to the *release branch name* with `script/git-checkout-all.sh` with drools and jbpm *release branch name*:
+    * Switch back to the *new* or *release* branch name with `droolsjbpm-build-bootstrap/script/git-checkout-all.sh $newBranch or $releaseBranch` :
 
         ```shell
-        $ sh droolsjbpm-build-bootstrap/script/git-checkout-all.sh 7.6.x
+        $ ./droolsjbpbm-build-bootstrap/script/git-all.sh checkout $newBranch or $releaseBranch  
+        $ ./droolsjbpm-build-bootstrap/script/git-all.sh push origin $newBranch or $releaseBranch
         ```
+        
+    *Important:
+    
+    At this point in time we should have three upgraded branches on git hub. The new branch (i.e. 7.33.x), the release branch (i.e. r7.33.0.Final) and the upgraded master branch.
+    Depending on the need of a new branch (master branch has often to be upgraded but not branched) we will have one or two new branches on git hub. The new branch and the release branch.
+    To save storage the release branch of the previous release (i.e. r7.32.0.Final) will be removed, so that on git hub there is only one release branch. These release branches are only and exclusive fro the community 
+    releases and no dev should commit to them.
+    
+* Build release (mvn clean deploy to a local directory)
 
-* Push the created release branches to the blessed directory
+    If we checkout to the $releaseBranch we can do a mvn clean deploy executing all test
+    
+      ```shell
+      $ ./droolsjbpbm-build-bootstrap/script/git-all.sh checkout $releaseBranch
+      A local directory deployDir where the binaries are deplyed to should be created (i.e. deployDir=<WORKING_DIR>/community-deploy-dir)
+      The SETTINGS_XML_FILE should point to a existing settings.xml file with configuration the all dependencies can be downloaded
+      $ ./droolsjbpbm-build-bootstrap/script/mvn-all.sh -B -e -U clean deploy -s $SETTINGS_XML_FILE -Dkie.maven.settings.custom=$SETTINGS_XML_FILE -Dfull -Drelease -DaltDeploymentRepository=local::default::file://$deployDir -Dmaven.test.failure.ignore=true -Dgwt.memory.settings="-Xmx10g"     
+      ```
 
-    ```shell
-    $ sh droolsjbm-build-bootstrap/script/git-all.sh push origin 7.6.x
-    ```
+NOTE: the steps until here are explaining the manual way to create a release.
+At least the release branches of every repository in [repository-list.txt](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/script/repository-list.txt)      
+were build and a "raw" release is available. All binaries are in the $deployDir.
+To finish a release there are still a few steps to be done (that are done automatically when executing the community-release-pipeline)
 
+  * Sanity checks
+  
+      * Warning: It is not uncommon to run out of either PermGen space or Heap Space. The following settings are known (@Sept-2012) to work:-
+  
+            ```shell
+            $ export MAVEN_OPTS='-Xms1g -Xmx4g -XX:+CMSClassUnloadingEnabled'
+            ```
+  
+      * Warning: Verify that workspace contains no uncommitted changes or rogue module directories of older branches:
+  
+            ```shell
+            $ ./droolsjbpm-build-bootstrap/script/git-all.sh status
+            ```
+  
+      * Do a sanity check of the artifacts by running each runExamples.sh from the zips.
+  
+          * Go to `kie-wb-distributions/droolsjbpm-uber-distribution/target/*/download_jboss_org`:
+  
+              * Unzip the zips to a temporary directory.
+  
+              * Start the `runExamples.sh` script for drools, droolsjbpm-integration and optaplanner
+  
+              * Deploy the guvnor WildFly 14 war and surf to it:
+  
+                  * Install the mortgages examples, build it and run the test scenario's
+  
+              * Verify that the reference manuals open in a browser (HTML) and Adobe Reader (PDF).
+
+  As a consequence of the result of sanity checks it will be decided if the build was stable enough for a release or not.
+  This [document](https://docs.google.com/document/d/1FTCimpPp5KK-cfk0b6mgjKhDP68OKbXOBkC7D0Ya6C8/edit) describes how to release using the Jenkins job community-release-pipeline 
+        
 * Set up Jenkins build jobs for the new branch.
 
     * Add a new branch to kiegroup/kie-jenkins-jobs
@@ -218,28 +246,14 @@ A new branch name should always end with `.x` so it looks different from a tag n
 
     * Note:since all these Jenkins Jobs are done with a DSL Plugin there are two things that should be done so all jobs are available:
    
-        - the file [branch-mapping.yaml](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/script/branch-mapping.yaml) should be upgraded to the new branch
         - the Jenkins Jobs
         
-          https://kie-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/DSL/job/DSL-KIE-releases-master/
+          https://github.com/kiegroup/kie-jenkins-scripts/tree/master/job-dsls/jobs/seed-job.groovy
         
-          https://kie-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/DSL/job/DSL-kieAllBuild-FlowJob-master/
-        
-          https://kie-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/DSL/job/DSL-seed-job-master/
-        
-          should be updated to the new branch
+          should be updated to the new branch, because maybe bit all DSL scriptsare requiered. The file https://github.com/kiegroup/kie-jenkins-scripts/blob/master/job-dsls/src/main/groovy/org/kie/jenkins/jobdsl/Constants.groovy
+          
+          should be updated to0.
       
-* Set up a new Jenkins view for the related release builds
-
-    * https://jenkins.mw.lab.eng.bos.redhat.com/hudson/me/my-views/view/All/ (i.e. [7.5.x](https://kie-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/7.5.x/))
-
-        * Note: Add kie <new branch> jobs manually or use a regex pattern similar to `^((kie).*7).*$`
-
-* Alert the dev mailing list and the IRC channel that the branch has been made.
-
-    * Remind everyone clearly that every new commit to `master` will not make the upcoming CR and Final release, unless they cherry-pick it to this new branch.
-
-
 #### NOTE:
 * at this point we have created a release branch
 * we have updated the master branch to the new development version (`*-SNAPSHOT`)
@@ -252,37 +266,22 @@ Releasing from a release branch
 
 * Alert the IRC dev channels that you're starting the release.
 
-* Pull the latest changes of the branch that will be the base for the release (branchName == master or i.e. 7.6.x)
+* Pull the latest changes of the branch that will be the base for the release (branchName == master or i.e. 7.33.x)
 
     ```shell
-    $ git-all.sh checkout <branchName>
-    $ git-all.sh pull --rebase
+    $ ./droolsjbpm-build-bootstrap/script/git-all.sh checkout <branchName>
+    $ ./droolsjbpm-build-bootstrap/script/git-all.sh pull --rebase
     ```
 
 * Create a local release branch
 
-    Name should begin with r, i.e if the release will be 7.6.0.Final the name should be r7.6.0.Final (localReleaseBranchName == r7.6.0.Final)
+    Name should begin with r, i.e if the release will be 7.33.0.Final the name should be r7.33.0.Final (localReleaseBranchName == r7.33.0.Final)
 
     ```shell
-    $ git-all.sh checkout -b <localReleaseBranchName> <branchname>    
+    $ git-all.sh checkout -b r<localReleaseBranchName> <branchname>    
     ```
 
-* Check if everything builds after the last pull & execute all unit tests
-
-    ```shell
-    $ mvn-all.sh clean install -Dfull -Dmaven.test.failure.ignore=true > testResult.txt
-    # This will execute the build and execute the unit tests and write all logs into testResult.txt.
-    ```
-
-* Explore testResult.txt to see if the build breaks or which unit tests are failing.
-
-* Mail to leads of projects the failed unit tests.
-
-* Do another sanity check.
-
-If everything is perfect (compiles, Jenkins is all blue, sanity checks succeed and there is nothing to do about the failed unit tests):
-
-* Define the version and adjust the sources accordingly:
+* Create a new version:
 
     * First define the version.
 
@@ -306,27 +305,13 @@ If everything is perfect (compiles, Jenkins is all blue, sanity checks succeed a
 
     * Adjust the version in the poms, manifests and other eclipse stuff.
 
-            $ droolsjbpm-build-bootstrap/script/release/update-version-all.sh 6.2.0.Final community
-
-        * Note: the arguments are `newVersion`
+            '''shell
+            $ ./droolsjbpm-build-bootstrap/script/release/update-version-all.sh $newVersion community
+            '''
+            
+        * Note: the arguments are `newVersion` i.e. 7.x.x.Final
 
         * WARNING: FIXME the update-version-all script does not work correctly if you are releasing a hotfix version.
-
-    * versions that have to be changed manually
-
-        NOTE: in droolsjbpm-build-bootstrap pom.xml there are some properties where you should pay attention to:
-
-        1. jboss-ip bom version (https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/pom.xml#L11)
-           the version of jboss-integration-platform-bom. should be the most recent version released  in jboss-ip-bom
-
-        2. org.kie version (https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/pom.xml#L48)
-           org.kie version sometimes has to be changed manually, if needed, should be updated to release version
-
-        3. uberfire version (https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/pom.xml#L53)
-           the uberfire version has to be updated manually to the last released version
-
-        4. errai version (https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/pom.xml#L99)
-           the errai version has to be updated manually to the last released version
 
     * Commit those changes (so you can tag them properly):
 
@@ -339,7 +324,7 @@ If everything is perfect (compiles, Jenkins is all blue, sanity checks succeed a
         * Commit all changes
 
             ```shell
-            $ droolsjbpm-build-bootstrap/script/git-all.sh commit -m "Set release version: 6.2.0.Final"
+            $ ./droolsjbpm-build-bootstrap/script/git-all.sh commit -m "Set release version: 7.x.x.Final"
             ```
 
         * Adjust the property *`<latestReleasedVersionFromThisBranch>`* in *droolsjbpm-build-bootstrap/pom.xml*
@@ -357,14 +342,10 @@ If everything is perfect (compiles, Jenkins is all blue, sanity checks succeed a
     The release branches rX.X.X.Y should be pushed to the github repository (community=kiegroup/... or product=jboss-integration/...), so the branch
     is available for all future steps. People can access it to review, if all commits that should be in the release were commited.<br>
     This branch has to be removed when doing the next release as a new branch starting with "r" will be pushed and we want prevent having a bunch of "obsolete" release branches.
-
-
-* Create the tag locally. The arguments are the Drools version, the jBPM version:
-
+   
     ```shell
-    $ droolsjbpm-build-bootstrap/script/release/git-tag-locally-all.sh 6.2.0.Final 6.2.0.Final
+    $ ./droolsjbpm-build-bootstrap/script/release/git-all.sh push origin <$newVersion> (i.e. 7.x.x.Final)
     ```
-
 
 * Go to [nexus](https://repository.jboss.org/nexus), menu item *Staging repositories*, drop all your old staging repositories.
 
@@ -372,11 +353,16 @@ If everything is perfect (compiles, Jenkins is all blue, sanity checks succeed a
 * Deploy the artifacts:
 
     ```shell
-    ./droolsjbpm-build-bootstrap/script/mvn-all.sh -B -e -U clean deploy -Dfull -Drelease -T2 -Dmaven.test.failure.ignore=true -Dgwt.memory.settings="-Xmx4g -Xms1g -Xss1M" -Dgwt.compiler.localWorkers=2
+    $ ./droolsjbpm-build-bootstrap/script/release/05a_communityDeployLocally.sh <$newVersion> (i.e. 7.x.x.Final)
     ```
-    * Note: add this parameter -Dproductized if this is a release/tag for prod
+    * Executing this script a new directory will be created locally where all artifacts will be dployed.
+    
+    ```shell
+    $ ./droolsjbpm-build-bootstrap/script/release/06_uploadBinariesToNexus.sh 
+    ```
+    * The binaries in the local created directory will be uploaded to Nexus
 
-    * This will take a long while (3+ hours)
+    * This will take a long while (8+ hours)
 
     * If it fails for any reason, go to nexus and drop your stating repositories again and start over.
 
@@ -389,10 +375,12 @@ If everything is perfect (compiles, Jenkins is all blue, sanity checks succeed a
     * Button *close*
 
         * This will validate the nexus rules. If any fail: fix the issues, and force a git retag locally.
+        
+* Do sanity checks
 
+    * If the artifacts are uploaded to Nexus you will find the closed staging-respository (kie-<newVersion>) on [nexus](https://repository.jboss.org/nexus)         
 
-* Do another sanity check of the artifacts by running the examples and opening the manuals from the zips. See above.
-
+    * This [document](https://docs.google.com/spreadsheets/d/1jPtRilvcOji__qN0QmVoXw6KSi4Nkq8Nz_coKIVfX6A/edit#gid=167259416) describes how (waht) to do for sanity checks
 
 * This is **the point of no return**.
 
@@ -414,77 +402,57 @@ If everything is perfect (compiles, Jenkins is all blue, sanity checks succeed a
     * Checkout to the master-branch or the branch which is the base for this release.
 
         ```shell
-        $ git-all.sh checkout master (or base release branch i.e. 6.2.x)
+        $  ./droolsjbpm-build-bootstrap/script/git-all.sh checkout master
         ```
 
-    * Define the next development version on the branch from which you are releasing.
+    * Define the next development version on the master branch.
 
         * There are only 1 acceptable pattern:
 
             * `major.minor.micro-SNAPSHOT`, for example `1.2.0-SNAPSHOT` or `1.2.1-SNAPSHOT`
 
-        * Warning: The release branch should never have the same SNAPSHOT version as any other branch.
-
-            * If you're releasing a Final, increment the micro number, not the minor number.
-
     * Adjust the version in the poms, manifests and other eclipse stuff:
 
         ```shell
-        $ droolsjbpm-build-bootstrap/script/release/update-version-all.sh 6.3.0-SNAPSHOT community
+        $ ./droolsjbpm-build-bootstrap/script/release/update-version-all.sh 7.x.x-SNAPSHOT community
         ```
 
         * Commit those changes:
 
             ```shell
-            $ droolsjbpm-build-bootstrap/script/git-all.sh add .
+            $ ./droolsjbpm-build-bootstrap/script/git-all.sh add .
 
-            $ droolsjbpm-build-bootstrap/script/git-all.sh commit -m "Set next development version: 6.3.0-SNAPSHOT"
+            $ ./droolsjbpm-build-bootstrap/script/git-all.sh commit -m "Set next development version: 7.x.x-SNAPSHOT"
             ```
 
         * Push all changes to the blessed repository:
 
             ```shell
-            $ droolsjbpm-build-bootstrap/script/git-all.sh push
+            $ ./droolsjbpm-build-bootstrap/script/git-all.sh push origin master
             ```
+    
+* Release your staging repository on [nexus](https://repository.jboss.org/nexus) and push the tags to GitHub
 
-        * Warning: If releasing from master (i.e. a Beta release) and the push fails as there have been other commits to the remote master branch it might be necessary to pull.
-
-            ```shell
-            $ droolsjbpm-build-bootstrap/script/git-all.sh pull
-            ```
-
-    * Checkout back to your local release branch.
+    * Nexus: Button *Release*
+    
+    * locally: Checkout back to your local release branch.
 
         ```shell
-        $ git-all.sh checkout r6.2.0.Final
+        $ ./droolsjbpm-build-bootstrap/script/git-all.sh checkout r7.x.x.Final
         ```
 
-
-* Push the local tag from the local release branch to the remote blessed repository.
-
-      $ droolsjbpm-build-bootstrap/script/release/git-push-tag-all.sh 6.2.0.Final 6.2.0.Final
-
-    * Push your changes to the release branch:
-
-        * Especially if the release branch is master: First pull any latest changes **without `--rebase`**, .
+        * Create the tag locally:
 
             ```shell
-            $ git-all.sh pull
+            $ ./droolsjbpm-build-bootstrap/script/release/git-all.sh -a 7.x.x.Final -m ·tagged 7.x.x.Final"
             ```
 
-            * Without the `--rebase` it's a merge, and their commits will not be rebased before your version-changing commits.
-
-        * Push your version-changing commits to the release branch:
+        * Push the local tag from the local release branch to the remote blessed repository.
 
             ```shell
-            $ git-all.sh push origin 5.2.x
-            ```
+            $ ./droolsjbpm-build-bootstrap/script/git-all.sh push <tag> | where <tag> is 7.x.x.Final    
 
-* Release your staging repository on [Nexus](https://repository.jboss.org/nexus)
-
-    * Button *release*
-
-* Go to [JIRA](https://issues.jboss.org) and for each of our JIRA projects (DROOLS, PLANNER, JBPM, GUVNOR):
+* Go to [JIRA](https://issues.redhat.org) and for each of our JIRA projects (DROOLS, OPTAPLANNER, JBPM, APPFORMER):
 
     * Open menu item *Administration*, link *Manage versions*, release the version.
 
@@ -492,8 +460,20 @@ If everything is perfect (compiles, Jenkins is all blue, sanity checks succeed a
 
 * Upload the zips, documentation and javadocs to filemgmt and update the website.
 
-    * Go to `kie-wb-distributions/droolsjbpm-uber-distribution/target`.
-
+    * To prepare and upload everything what is needed (all needed binaries for the webs) in filemgmt.jboss.org please 
+    run the scripts
+    
+    ```shell
+    $ ./droolsjbpm-build-bootstrap/script/release/prepareUploadDir.sh
+    $ ./droolsjbpm-build-bootstrap/script/release/09_createjBPM_installers.sh
+    $ ./droolsjbpm-build-bootstrap/script/release/10_uploadBinariesToFilemgmt.sh
+    ```
+    
+    * The uploading to filemgmt.jboss.org doesn't work for an arbitrary user because of permission issues. Righy now the script 10_uploadBinariesToFilemgmt.sh
+    can only be executed from the server kie-releases (kie-releases.lab.eng.brq.redhat.com).
+    
+    * The symbolic links `latest` and `latestFinal` links on filemgmt.jboss.org are also uploaded and link to the version number specified in 10_uploadBinariesToFilemgmt.sh  
+    
     * To get access to `filemgmt.jboss.org`, see preparation above.
 
     * Folder `download_jboss_org` should be uploaded to `filemgmt.jboss.org/downloads_htdocs/drools/release`
@@ -506,11 +486,7 @@ If everything is perfect (compiles, Jenkins is all blue, sanity checks succeed a
 
         * Use `documentation_table.txt` to update [the documentation webpage](http://www.jboss.org/drools/documentation).
 
-* Update the symbolic links `latest` and `latestFinal` links on filemgmt, if and only if there is no higher major or minor release was already released.
-
-    ```shell
-    $ droolsjbpm-build-bootstrap/script/release/create_filemgmt_links.sh 7.6.0.Final
-    ```
+* Check the symbolic links `latest` and `latestFinal` links on filemgmt, if and only if there is no higher major or minor release was already released.
 
     * Wait 5 minutes and then check these URL's. Hit ctrl-F5 in your browser to do a hard refresh:
 
@@ -521,6 +497,33 @@ If everything is perfect (compiles, Jenkins is all blue, sanity checks succeed a
         * [http://docs.jboss.org/drools/release/latest/](http://docs.jboss.org/drools/release/latest/)
 
         * [http://docs.jboss.org/drools/release/latestFinal/](http://docs.jboss.org/drools/release/latestFinal/)
+        
+* The script for [uploading](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/script/release/10_uploadBinariesToFilemgmt.sh) the binaries and docs should upload all needed stuff 
+for the web-pages
+    
+     https://www.drools.org
+     
+     https://www.jbpm.org
+     
+     https:/www.optaplanner.org
+
+    You can find the docs and binaries here:
+
+     docs:
+   
+     https://filemgmgt.jboss.org/docs_htdocs/\<repository>\/release/$kieVersion
+        
+     and can be seen here
+
+     https://docs.jboss.org/drools/release/&kieVersion
+     https://docs.jboss.org/jbpm/release/&kieVersion
+     https://docs.jboss.org/optaplanner/release/&kieVersion
+        
+     binaries:
+   
+     https://filemgmt.jboss.org/download_htdocs/<repository>/releases/$kieVersion
+       
+     Thes binaries can only be checked once the webs are upgraded.            
 
 * If it's a Final, non-hotfix release: publish the XSD file(s), by copying each XSD file to its website.
 
@@ -575,41 +578,5 @@ Follows an instruction on how to do that. These instructions assume:
 * The clones have a remote repository reference to the @kiegroup repositories that we will name **origin**
 * The clones have a remote repository reference to the @jboss-integration (> 6.5.x) or Gerrit (>7.5.x) (remote: **jboss-integration** OR **gerrit**)
 
-Here are the steps:
+Please follow the steps of this [document](https://docs.google.com/document/d/1V-1vCOEYF6Ed-n3blHLowGgHV6rhEmJG98pbsqaaRsU/edit#) to produce a tag for productization.
 
-**1 - clone droolsjbpm-build-bootstrap repository (base branch = master or 6.5.x or 7.5.x)**
-
-    $ git clone git@github.com:kiegroup/droolsjbpm-build-bootstrap.git --branch <base branch> --depth 100
-
-**2 - cd into the droolsjbpm-build-bootstrap repository**
-
-    $ cd droolsjbpm-build-bootstrap
-
-**3 - Fetch the changes from the repository:**
-
-    $ .script/git-all.sh fetch <remote> (i.e. remote = orgin)
-
-**4 - Rebase the corresponding branches (base branch = master or 6.5.x or 7.5.x)**
-
-    $ .script/git-all.sh rebase <remote>/<base branch> <base branch> (i.e. remote = origin)
-
-**5 - Create a local branch to base the tag on. Usually the branch is named "bsync-base branch-YYYY.MM.DD" where YYYY.MM.DD is the year, month and day when the tag is being created.**
-
-    $ .script/git-all.sh checkout -b bsync-<base-branch>-YYYY.MM.DD <branch to base the tag on> (i.e. bsync-7.5.x-2017.01.15)
-
-**6 - Build local branch with product specific commits to make sure it is working. Fix any problems in case it is not working.**
-
-    $ .script/mvn-all.sh -B -e -U clean install -Dfull -Drelease -Dproductized -T2 -Dgwt.memory.settings="-Xmx4g -Xms1g -Xss1M" -Dgwt.compiler.localWorkers=2
-
-**7 - Create the tag for all repositories. For product tags, we use a naming standard of "sync-<base branch>-YYYY.MM.DD", where YYYY.MM.DD is the date the tag is created. If for any reason more than one tag needs to be created on the same day, add a sequential counter sufix: "sync-<base branch>-YYYY.MM.DD.C"**
-
-    $ tag=sync-<base branch>-YYYY.MM.DD (i.e. sync-7.5.x-2018.01.15)
-    $ commitMsg="Tagging $tag"
-    $ .script/git-add-remote-gerrit.sh - (adds a new remote gerrit) 
-    ONLY for 6.5.x: .script/git-add-remote-jboss-integration.sh (add a new remote jboss-integration)
-    $ .script/git-all.sh tag -a $tag -m "$commitMsg" - (creates the tags)
-
-**8 - Push the tag and branches to the _product_ server.**
-
-    $ .script/git-all.sh push gerrit $tag  - (pushes the tags to gerrit)
-    ONLY for 6.5.x: .script/git-all.sh push jboss-integration $tag - (pushes the tags to jboss-integration)
