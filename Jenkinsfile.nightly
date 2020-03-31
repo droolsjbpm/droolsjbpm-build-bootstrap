@@ -50,6 +50,7 @@ pipeline {
 
                     build job: env.RHBA_PROPERTIES_GENERATOR_PATH, parameters: [
                         [$class: 'BooleanParameterValue', name: 'IS_PROD', value: false],
+                        [$class: 'StringParameterValue', name: 'BRANCH_NAME', value: env.BRANCH_NAME],
                         [$class: 'StringParameterValue', name: 'KIE_VERSION', value: PME_BUILD_VARIABLES['kieVersion']],
                         [$class: 'StringParameterValue', name: 'PRODUCT_VERSION', value: PME_BUILD_VARIABLES['productVersion']],
                         [$class: 'StringParameterValue', name: 'TIME_STAMP', value: "${PME_BUILD_VARIABLES['datetimeSuffix']}"],
