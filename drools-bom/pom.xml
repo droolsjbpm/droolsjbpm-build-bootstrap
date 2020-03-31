@@ -615,6 +615,18 @@
       </dependency>
 
       <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-memory-compiler</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-memory-compiler</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>sources</classifier>
+      </dependency>
+
+      <dependency>
         <groupId>org.drools</groupId>
         <artifactId>drools-android</artifactId>
         <version>${version.org.kie}</version>
