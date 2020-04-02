@@ -45,7 +45,12 @@ pipeline {
                         println "File ${repositoryListPath} and ${env.PRODUCTION_PROJECT_LIST} jenkins file merged in ${projectCollection}"
                         nightlyStages(SETTINGS_XML_ID, projectCollection, "rhba/nightly", projectVariableMap)
                     }
-
+                }
+            }
+        }
+        stage('Generate Properties Files') {
+            steps {
+                script {
                     def PME_BUILD_VARIABLES = env.PME_BUILD_VARIABLES.split(";").collect{ it.split("=")}.inject([:]) {map, item -> map << [(item.length == 2 ? item[0] : null): (item.length == 2 ? item[1] : null)]}
 
                     build job: env.RHBA_PROPERTIES_GENERATOR_PATH, parameters: [
@@ -58,6 +63,19 @@ pipeline {
                         [$class: 'StringParameterValue', name: 'IZPACK_VERSION', value: PME_BUILD_VARIABLES['izpackVersion']],
                         [$class: 'StringParameterValue', name: 'INSTALLER_COMMONS_VERSION', value: PME_BUILD_VARIABLES['installerCommonsVersion']]
                     ]
+                }
+            }
+        }
+        stage('Upload Files to repository') {
+            steps {
+                script {
+                    echo "[INFO] Start uploading ${env.WORKSPACE}/deployDirectory"
+                    dir("${env.WORKSPACE}/deployDirectory") {
+                        withCredentials([usernameColonPassword(credentialsId: "${env.NIGHTLY_DEPLOYMENT_CREDENTIAL}", variable: 'deploymentCredentials')]) {
+                            sh "zip -r kiegroup ."
+                            sh "curl --upload-file kiegroup.zip -u $deploymentCredentials -v ${KIE_GROUP_DEPLOYMENT_REPO_URL}"
+                        }
+                    }
                 }
             }
         }
