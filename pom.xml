@@ -1560,26 +1560,6 @@
           <groupId>org.pitest</groupId>
           <artifactId>pitest-maven</artifactId>
           <version>1.2.0</version>
-          <configuration>
-            <reportsDirectory>local/pit-reports</reportsDirectory>
-            <timestampedReports>false</timestampedReports>
-            <timeoutConstant>1000</timeoutConstant>
-            <mutators>
-              <!--
-              <mutator>CONDITIONALS_BOUNDARY</mutator>
-              <mutator>NEGATE_CONDITIONALS</mutator>
-              <mutator>MATH</mutator>
-              <mutator>INCREMENTS</mutator>
-              <mutator>INVERT_NEGS</mutator>
-              <mutator>RETURN_VALS</mutator>
-              <mutator>VOID_METHOD_CALLS</mutator>
-              -->
-              <mutator>DEFAULTS</mutator>
-              <mutator>NON_VOID_METHOD_CALLS</mutator>
-              <mutator>REMOVE_CONDITIONALS</mutator>
-            </mutators>
-            <avoidCallsTo>java.lang.StringBuilder</avoidCallsTo>
-          </configuration>
         </plugin>
         <!-- Incremental compiler-->
         <plugin>
@@ -1739,6 +1719,26 @@
                 <goals>
                   <goal>mutationCoverage</goal>
                 </goals>
+                <configuration>
+                  <reportsDirectory>local/pit-reports</reportsDirectory>
+                  <timestampedReports>true</timestampedReports>
+                  <timeoutConstant>1000</timeoutConstant>
+                  <mutators>
+                    <!--
+                    <mutator>CONDITIONALS_BOUNDARY</mutator>
+                    <mutator>NEGATE_CONDITIONALS</mutator>
+                    <mutator>MATH</mutator>
+                    <mutator>INCREMENTS</mutator>
+                    <mutator>INVERT_NEGS</mutator>
+                    <mutator>RETURN_VALS</mutator>
+                    <mutator>VOID_METHOD_CALLS</mutator>
+                    -->
+                    <mutator>DEFAULTS</mutator>
+                    <mutator>NON_VOID_METHOD_CALLS</mutator>
+                    <mutator>REMOVE_CONDITIONALS</mutator>
+                  </mutators>
+                  <avoidCallsTo>java.lang.StringBuilder</avoidCallsTo>
+                </configuration>
               </execution>
             </executions>
           </plugin>
@@ -4296,7 +4296,7 @@
         <artifactId>subethasmtp</artifactId>
         <version>${version.org.subethamail.subethasmtp}</version>
       </dependency>
-      
+
       <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>swagger-ui</artifactId>
