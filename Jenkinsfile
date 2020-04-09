@@ -19,14 +19,27 @@ pipeline {
 
             }
         }
-        stage('Build upstream projects') {
+        stage('Build projects') {
             steps {
                 script {
                     def file =  (JOB_NAME =~ /\/[a-z,A-Z\-]*\.downstream\.production/).find() ? 'downstream.production.stages' :
                                 (JOB_NAME =~ /\/[a-z,A-Z\-]*\.downstream/).find() ? 'downstream.stages' :
                                 'upstream.stages'
-                    println "Loading ${file} file..."
-                    load("$WORKSPACE/${file}")
+                    if(fileExists("$WORKSPACE/${file}")) {
+                        println "File ${file} exists, loading it."
+                        load("$WORKSPACE/${file}")
+                    } else {
+                        dir("droolsjbpm-build-bootstrap") {
+                            def changeAuthor = env.CHANGE_AUTHOR ?: env.ghprbPullAuthorLogin
+                            def changeBranch = env.CHANGE_BRANCH ?: env.ghprbSourceBranch
+                            def changeTarget = env.CHANGE_TARGET ?: env.ghprbTargetBranch
+
+                            println "File ${file} does not exist. Loading the one from droolsjbpm-build-bootstrap project. Author [${changeAuthor}], branch [${changeBranch}]..."
+                            githubscm.checkoutIfExists('droolsjbpm-build-bootstrap', "${changeAuthor}", "${changeBranch}", 'kiegroup', "${changeTarget}")
+                            println "Loading ${file} file..."
+                            load("${file}")
+                        }
+                    }
                 }
             }
         }
