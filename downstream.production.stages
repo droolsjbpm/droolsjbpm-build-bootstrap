@@ -1,6 +1,6 @@
 stage('Downstream Production Build') {
     final REPOSITORY_LIST_FILE = "./script/repository-list.txt"
-    final SETTINGS_XML_ID = "771ff52a-a8b4-40e6-9b22-d54c7314aa1e"
+    final SETTINGS_XML_ID = "5d9884a1-178a-4d67-a3ac-9735d2df2cef"
     final PRODUCTION_PROJECT_LIST_ID = "49737697-ebd6-4396-9c22-11f7714808eb"
 
     configFileProvider([configFile(fileId: PRODUCTION_PROJECT_LIST_ID, variable: 'PRODUCTION_PROJECT_LIST')]) {
