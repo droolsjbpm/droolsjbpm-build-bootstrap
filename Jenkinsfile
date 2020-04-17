@@ -56,7 +56,8 @@ pipeline {
             }
         }
         always {
-            //junit '**/target/surefire-reports/**/*.xml'
+            junit allowEmptyResults: true, healthScaleFactor: 1.0, testResults: '**/target/*-reports/TEST-*.xml'
+            archiveArtifacts excludes: '**/target/checkstyle.log', artifacts: '**/target/*.log,**/target/testStatusListener*,**/target/screenshots/**,**/target/business-central*wildfly*.war,**/target/business-central*eap*.war,**/target/kie-server-*ee7.war,**/target/kie-server-*webc.war,**/target/jbpm-server*dist*.zip', fingerprint: false, defaultExcludes: true, caseSensitive: true, allowEmptyArchive: true
             cleanWs()
         }
     }
