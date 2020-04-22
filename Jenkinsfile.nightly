@@ -125,17 +125,23 @@ pipeline {
         }
     }
     post {
-        unstable {
-            script {
-                echo "[INFO] Sending notification email for result UNSTABLE to"
-                mailer.sendEmailFailure()
-            }
-        }
         failure {
-            script {
-                echo "[INFO] Sending notification email for result FAILURE to"
-                mailer.sendEmailFailure()
-            }
+            emailext body: '${PRODUCT_VERSION}:nightly-build #${BUILD_NUMBER} was: ' + "${currentBuild.currentResult}" +  '\n' +
+                    'Please look here: ${BUILD_URL} \n' +
+                    ' \n' +
+                    '${BUILD_LOG, maxLines=750}', subject: '${PRODUCT_VERSION}:nightly-build #${BUILD_NUMBER}: ' + "${currentBuild.currentResult}", to: 'kie-jenkins-builds@redhat.com'
+        }
+        unstable {
+            emailext body: '${PRODUCT_VERSION}:nightly-build #${BUILD_NUMBER} was: ' + "${currentBuild.currentResult}" +  '\n' +
+                    'Please look here: ${BUILD_URL} \n' +
+                    ' \n' +
+                    'Failed tests: ${BUILD_URL}/testReport \n' +
+                    ' \n' +
+                    '${BUILD_LOG, maxLines=750}', subject: '${PRODUCT_VERSION}:nightly-build #${BUILD_NUMBER}: ' + "${currentBuild.currentResult}", to: 'kie-jenkins-builds@redhat.com'
+        }
+        fixed {
+            emailext body: '${PRODUCT_VERSION}:nightly-build #${BUILD_NUMBER} was: ' + "${currentBuild.currentResult}" +  '\n' +
+                    'Please look here: ${BUILD_URL}', subject: '${PRODUCT_VERSION}:nightly-build #${BUILD_NUMBER}: ' + "${currentBuild.currentResult}", to: 'kie-jenkins-builds@redhat.com'
         }
         always {
             cleanWs()
