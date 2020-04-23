@@ -82,8 +82,8 @@
     <version.com.google.gwt>2.8.2</version.com.google.gwt>
     <version.org.google.gwt-charts>0.9.9</version.org.google.gwt-charts>
     <version.com.google.gwt.gwtmockito>1.1.8</version.com.google.gwt.gwtmockito>
-    <version.com.google.jsinterop.base>1.0.0-beta-1</version.com.google.jsinterop.base>
-    <version.com.google.jsinterop>1.0.1</version.com.google.jsinterop>
+    <version.com.google.jsinterop.base>1.0.0-RC1</version.com.google.jsinterop.base>
+    <version.com.google.jsinterop.annotations>1.0.2</version.com.google.jsinterop.annotations>
     <version.com.google.protobuf>3.6.1</version.com.google.protobuf>
     <version.com.h2database>1.3.173</version.com.h2database>
     <version.com.jcraft>0.1.54</version.com.jcraft>
@@ -312,7 +312,7 @@
     <version.org.jboss.arquillian.extension.drone>2.5.1</version.org.jboss.arquillian.extension.drone>
     <version.org.jboss.arquillian.graphene>2.3.2</version.org.jboss.arquillian.graphene>
     <version.com.google.guava.for-selenium>23.0</version.com.google.guava.for-selenium>
-    <version.com.google.elemental2>1.0.0-beta-1</version.com.google.elemental2>
+    <version.com.google.elemental2>1.0.0-RC1</version.com.google.elemental2>
     <version.org.jboss.errai>4.6.0.Final</version.org.jboss.errai>
     <version.org.jboss.errai.wildfly>14.0.1.Final</version.org.jboss.errai.wildfly>
     <!-- Required by jboss-remoting version above -->
@@ -2339,7 +2339,7 @@
       <dependency>
         <groupId>com.google.jsinterop</groupId>
         <artifactId>jsinterop-annotations</artifactId>
-        <version>${version.com.google.jsinterop}</version>
+        <version>${version.com.google.jsinterop.annotations}</version>
       </dependency>
 
       <dependency>
