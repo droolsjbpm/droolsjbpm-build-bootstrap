@@ -96,8 +96,6 @@
     <version.de.benediktmeurer.gwt-slf4j>0.0.2</version.de.benediktmeurer.gwt-slf4j>
     <version.org.dom4j>2.1.1</version.org.dom4j>
     <version.io.springfox>2.9.2</version.io.springfox>
-    <!-- override is needed since 3.0.0-M2, coming from jboss-parent, has a bug. This can be removed once this bug was fixed. -->
-    <!-- see https://issues.apache.org/jira/browse/MENFORCER-306 -->
     <version.io.takari.maven.plugins.testing>2.9.2</version.io.takari.maven.plugins.testing>
     <version.io.undertow>2.0.28.Final</version.io.undertow>
     <version.javax.activation>1.1.1</version.javax.activation>
@@ -109,6 +107,8 @@
     <version.jivesoftware.smack>3.1.0</version.jivesoftware.smack>
     <version.joda-time>2.9.7</version.joda-time>
     <version.junit>4.12</version.junit>
+    <!-- override is needed since 3.0.0-M2, coming from jboss-parent, has a bug. This can be removed once this bug was fixed. -->
+    <!-- see https://issues.apache.org/jira/browse/MENFORCER-306 -->
     <version.enforcer.plugin>3.0.0-M1</version.enforcer.plugin>
     <version.mysql.connector-java>5.1.47</version.mysql.connector-java>
     <version.net.jcip>1.0</version.net.jcip>
@@ -194,7 +194,7 @@
     <version.org.jboss.arquillian.container.weld>1.0.0.CR5</version.org.jboss.arquillian.container.weld>
     <version.org.jboss.classfilewriter>1.2.3.Final</version.org.jboss.classfilewriter>
     <version.org.jboss.marshalling>2.0.6.Final</version.org.jboss.marshalling>
-    <version.org.jboss.resteasy>3.6.1.SP2</version.org.jboss.resteasy>
+    <version.org.jboss.resteasy>3.9.1.Final</version.org.jboss.resteasy>
     <version.org.jboss.forge.roaster>2.19.5.Final</version.org.jboss.forge.roaster>
     <version.org.jboss.remote-naming>2.0.5.Final</version.org.jboss.remote-naming>
     <version.org.jboss.remoting>5.0.8.Final</version.org.jboss.remoting>
@@ -258,9 +258,9 @@
     <version.org.subethamail>1.2</version.org.subethamail>
     <version.org.subethamail.subethasmtp>3.1.6</version.org.subethamail.subethasmtp>
     <version.org.webjars.swagger-ui>2.2.10</version.org.webjars.swagger-ui>
-    <version.org.wildfly>14.0.1.Final</version.org.wildfly>
-    <version.org.wildfly.arquillian>2.1.1.Final</version.org.wildfly.arquillian>
-    <version.org.wildfly.core>6.0.2.Final</version.org.wildfly.core>
+    <version.org.wildfly>18.0.1.Final</version.org.wildfly>
+    <version.org.wildfly.arquillian>2.2.0.Final</version.org.wildfly.arquillian>
+    <version.org.wildfly.core>10.0.3.Final</version.org.wildfly.core>
     <version.org.wildfly.common>1.5.1.Final</version.org.wildfly.common>
     <version.org.yaml.snakeyaml>1.18</version.org.yaml.snakeyaml>
     <version.postgresql>8.4-702.jdbc4</version.postgresql>
@@ -313,8 +313,9 @@
     <version.org.jboss.arquillian.graphene>2.3.2</version.org.jboss.arquillian.graphene>
     <version.com.google.guava.for-selenium>23.0</version.com.google.guava.for-selenium>
     <version.com.google.elemental2>1.0.0-RC1</version.com.google.elemental2>
-    <version.org.jboss.errai>4.6.0.Final</version.org.jboss.errai>
-    <version.org.jboss.errai.wildfly>14.0.1.Final</version.org.jboss.errai.wildfly>
+    <version.org.jboss.errai>4.7.0.Final</version.org.jboss.errai>
+    <!-- WildFly version used together with  the GWT's Super Dev Mode -->
+    <version.org.jboss.errai.wildfly>${version.org.wildfly}</version.org.jboss.errai.wildfly>
     <!-- Required by jboss-remoting version above -->
     <version.org.wildfly.security>1.1.0.Final</version.org.wildfly.security>
     <version.org.ow2.asm>5.0.4</version.org.ow2.asm>
@@ -327,11 +328,9 @@
     <version.org.robolectric>3.1.2</version.org.robolectric>
     <version.org.xmlunit>2.6.3</version.org.xmlunit>
     <version.org.skyscreamer.jsonassert>1.2.3</version.org.skyscreamer.jsonassert>
-    <!-- WildFly version used together with  the GWT's Super Dev Mode -->
-    <version.org.wildfly.gwt.sdm>14.0.1.Final</version.org.wildfly.gwt.sdm>
     <version.org.jboss.jboss-dmr>1.5.0.Final</version.org.jboss.jboss-dmr>
     <!-- Version of Camel patch for Wildfly -->
-    <version.org.wildfly.camel>8.0.0</version.org.wildfly.camel>
+    <version.org.wildfly.camel>11.0.1</version.org.wildfly.camel>
     <!-- this version will overwrite jboss-ip-bom version 2.5.1. The version in jboss-ip-bom couldn't be upgraded as it will break ModeShape Web Explorer application which uses GWT 2.5.1 -->
     <!-- please look at https://github.com/fredsa/gwt-dnd/wiki/GettingStarted -->
     <version.net.ltgt.gwt.maven>1.0-rc-6</version.net.ltgt.gwt.maven>
@@ -625,7 +624,7 @@
             <dependency>
               <groupId>org.codehaus.mojo</groupId>
               <artifactId>extra-enforcer-rules</artifactId>
-              <version>1.0-beta-7</version>
+              <version>1.0</version>
             </dependency>
           </dependencies>
           <executions>
@@ -837,6 +836,12 @@
                         <type>jar</type>
                         <ignoreClasses>
                           <ignoreClass>org.jboss.logging.*</ignoreClass>
+                          <ignoreClass>io.undertow.*</ignoreClass>
+                          <ignoreClass>org.json.*</ignoreClass>
+                          <ignoreClass>org.jboss.threads.*</ignoreClass>
+                          <ignoreClass>org.xnio.*</ignoreClass>
+                          <ignoreClass>org.wildfly.*</ignoreClass>
+                          <ignoreClass>org.apache.commons.*</ignoreClass>
                         </ignoreClasses>
                       </dependency>
                       <dependency>
@@ -2223,7 +2228,8 @@
         <version>${version.commons-io}</version>
       </dependency>
 
-      <dependency>
+      <!-- KIE Lienzo modules -->
+	  <dependency>
         <groupId>com.ahome-it</groupId>
         <artifactId>ahome-tooling-nativetools</artifactId>
         <version>${version.com.ahome-it.lienzo.tooling.nativetools}</version>
@@ -2233,7 +2239,8 @@
         <artifactId>ahome-tooling-common</artifactId>
         <version>${version.com.ahome-it.lienzo.tooling.common}</version>
       </dependency>
-
+      <!-- end of KIE Lienzo modules -->
+     
       <dependency>
         <groupId>com.allen-sauer.gwt.dnd</groupId>
         <artifactId>gwt-dnd</artifactId>
@@ -3857,8 +3864,6 @@
         <artifactId>roaster-jdt</artifactId>
         <version>${version.org.jboss.forge.roaster}</version>
       </dependency>
-
-      <!-- WARNING: org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-bom must be defined BEFORE org.jboss.arquillian:arquillian-bom -->
 
       <dependency>
         <groupId>org.jboss.spec.javax.annotation</groupId>
