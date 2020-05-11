@@ -468,9 +468,9 @@
     <jacoco.exec.file>${project.root.dir}/target/jacoco.exec</jacoco.exec.file>
     <!-- com.github.eirslett:frontend-maven-plugin version -->
     <version.frontend-maven-plugin>1.8.0</version.frontend-maven-plugin>
-    <version.node>v11.6.0</version.node>
-    <version.npm>6.9.0</version.npm>
-    <version.yarn>v1.12.3</version.yarn>
+    <version.node>v12.16.2</version.node>
+    <version.npm>6.14.4</version.npm>
+    <version.yarn>v1.22.4</version.yarn>
 
     <version.org.awaitility>3.0.0</version.org.awaitility>
     <version.io.github.bonigarcia>3.8.1</version.io.github.bonigarcia>
