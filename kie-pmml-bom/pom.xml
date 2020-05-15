@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.kie</groupId>
+    <artifactId>kie-user-bom-parent</artifactId>
+    <version>7.38.0-SNAPSHOT</version>
+    <relativePath>../kie-user-bom-parent/pom.xml</relativePath>
+  </parent>
+
+  <artifactId>kie-pmml-bom</artifactId>
+  <packaging>pom</packaging>
+
+  <name>Kie PMML BOM (Bill Of Materials)</name>
+  <description>
+    Import this BOM in your dependencyManagement if you want to depend on multiple Kie PMML artifacts.
+  </description>
+
+  <url>https://www.drools.org</url>
+
+  <scm>
+    <connection>scm:git:https://github.com/kiegroup/drools.git</connection>
+    <developerConnection>scm:git:git@github.com:kiegroup/drools.git</developerConnection>
+    <url>https://github.com/kiegroup/drools</url>
+  </scm>
+  <issueManagement>
+    <system>jira</system>
+    <url>https://issues.jboss.org/browse/DROOLS</url>
+  </issueManagement>
+  <developers>
+    <developer>
+      <name>All developers are listed on the team website</name>
+      <url>http://www.drools.org/community/team.html</url>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>All contributors are listed on the team website</name>
+      <url>http://www.drools.org/community/team.html</url>
+    </contributor>
+  </contributors>
+  <mailingLists>
+    <mailingList>
+      <name>setup</name>
+      <subscribe>https://groups.google.com/forum/#!forum/drools-setup</subscribe>
+      <unsubscribe>https://groups.google.com/forum/#!forum/drools-setup</unsubscribe>
+    </mailingList>
+    <mailingList>
+      <name>usage</name>
+      <subscribe>https://groups.google.com/forum/#!forum/drools-usage</subscribe>
+      <unsubscribe>https://groups.google.com/forum/#!forum/drools-usage</unsubscribe>
+    </mailingList>
+    <mailingList>
+      <name>development</name>
+      <subscribe>https://groups.google.com/forum/#!forum/drools-development</subscribe>
+      <unsubscribe>https://groups.google.com/forum/#!forum/drools-development</unsubscribe>
+    </mailingList>
+  </mailingLists>
+
+  <!-- IMPORTANT: Do not declare any build things here! Declare them in kie-user-bom-parent. -->
+  <build/>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- PMML -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-commons</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Compiler -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-compiler-api</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-compiler-core</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-compiler-commons</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Evaluator -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-evaluator-api</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-evaluator-core</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-evaluator-assembler</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Drools -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-drools-common</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Regression -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-regression-model</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-regression-compiler</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-regression-evaluator</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Tree -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-drools-tree-model</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-drools-tree-compiler</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-drools-tree-evaluator</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Scorecard -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-drools-scorecard-model</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-drools-scorecard-compiler</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-drools-scorecard-evaluator</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- EXTERNAL -->
+      <!-- TEST -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-commons</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Compiler -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-compiler-api</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-compiler-commons</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Regression -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-regression-compiler</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-regression-evaluator</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Drools -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-drools-common</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Tree -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-drools-tree-compiler</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Scorecard -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-drools-scorecard-compiler</artifactId>
+        <scope>test</scope>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- EXTERNAL -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-test-util</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-test-util</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+
+</project>

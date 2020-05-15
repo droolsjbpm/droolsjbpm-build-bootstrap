@@ -2093,6 +2093,7 @@
     <module>jbpm-bom</module>
     <module>kie-uberfire-extensions-bom</module>
     <module>kie-dmn-bom</module>
+    <module>kie-pmml-bom</module>
     <module>narayana-integration-bom</module>
     <module>kie-platform-bom</module>
   </modules>
