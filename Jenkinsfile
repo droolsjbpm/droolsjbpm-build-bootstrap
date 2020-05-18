@@ -1,9 +1,9 @@
 @Library('jenkins-pipeline-shared-libraries')_
 
-agentLabel = "${ADDITIONAL_LABEL?.trim() ? ADDITIONAL_LABEL : 'kie-rhel7 && kie-mem24g'} && !master"
-additionalArtifactsToArchive = "${ADDITIONAL_ARTIFACTS_TO_ARCHIVE?.trim() ?: ''}"
-additionalTimeout = "${ADDITIONAL_TIMEOUT?.trim() ?: 1200}"
-additionalExcludedArtifacts = "${ADDITIONAL_EXCLUDED_ARTIFACTS.trim() ?: ''}"
+agentLabel = "${env.ADDITIONAL_LABEL?.trim() ? ADDITIONAL_LABEL : 'kie-rhel7 && kie-mem24g'} && !master"
+additionalArtifactsToArchive = "${env.ADDITIONAL_ARTIFACTS_TO_ARCHIVE?.trim() ?: ''}"
+additionalTimeout = "${env.ADDITIONAL_TIMEOUT?.trim() ?: 1200}"
+additionalExcludedArtifacts = "${env.ADDITIONAL_EXCLUDED_ARTIFACTS?.trim() ?: ''}"
 
 pipeline {
     agent {
