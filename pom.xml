@@ -197,7 +197,7 @@
     <version.org.jboss.resteasy>3.9.1.Final</version.org.jboss.resteasy>
     <version.org.jboss.forge.roaster>2.19.5.Final</version.org.jboss.forge.roaster>
     <version.org.jboss.remote-naming>2.0.5.Final</version.org.jboss.remote-naming>
-    <version.org.jboss.remoting>5.0.8.Final</version.org.jboss.remoting>
+    <version.org.jboss.remoting>5.0.16.Final</version.org.jboss.remoting>
     <version.org.jboss.shrinkwrap.resolver>2.2.0</version.org.jboss.shrinkwrap.resolver>
     <version.org.jboss.spec.javax.annotation.jboss-annotations-api_1.2_spec>1.0.0.Final
     </version.org.jboss.spec.javax.annotation.jboss-annotations-api_1.2_spec>
