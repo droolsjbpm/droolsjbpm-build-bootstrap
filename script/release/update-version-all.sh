@@ -143,6 +143,15 @@ for repository in `cat ${scriptDir}/../repository-list.txt` ; do
             sed -i "s/<version.org.kie>$kieOldVersion<\/version.org.kie>/<version.org.kie>$newVersion<\/version.org.kie>/" pom.xml
             returnCode=$?
 
+        elif [ "$repository" == "optaplanner" ]; then
+            mvnVersionsUpdateParentAndChildModules
+            returnCode=$?
+            if [ $returnCode != 0 ] ; then
+                exit $returnCode
+            fi
+            optaplanner-quickstarts/update-version.sh $newVersion $releaseType
+            returnCode=$?
+
         elif [ "$repository" == "jbpm" ]; then
             mvnVersionsUpdateParentAndChildModules
             returnCode=$?
