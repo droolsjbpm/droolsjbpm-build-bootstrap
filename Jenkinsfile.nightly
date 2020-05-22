@@ -145,6 +145,8 @@ pipeline {
         }
         always {
             archiveArtifacts artifacts: '**/*.maven.log', fingerprint: false, defaultExcludes: true, caseSensitive: true, allowEmptyArchive: true
+        }
+        cleanup {
             cleanWs()
         }
     }
