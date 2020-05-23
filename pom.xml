@@ -845,6 +845,14 @@
                         </ignoreClasses>
                       </dependency>
                       <dependency>
+                        <groupId>org.wildfly.security</groupId>
+                        <artifactId>wildfly-elytron</artifactId>
+                        <type>jar</type>
+                        <ignoreClasses>
+                          <ignoreClass>*</ignoreClass>
+                        </ignoreClasses>
+                      </dependency>
+                      <dependency>
                         <!-- The openshift-client duplicates these classes from the kubernetes-client.
                              It is an upstream io.fabric8 issue that needs to be fixed there:
                              https://github.com/fabric8io/kubernetes-client/issues/828 -->
