@@ -56,6 +56,9 @@ pipeline {
             }
         }
         always {
+            script {
+                util.printGitInformationReport()
+            }
             echo 'Generating JUnit report...'
             junit allowEmptyResults: true, healthScaleFactor: 1.0, testResults: '**/target/*-reports/TEST-*.xml'
 
