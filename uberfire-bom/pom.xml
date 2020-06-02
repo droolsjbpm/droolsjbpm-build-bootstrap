@@ -1829,6 +1829,13 @@
         <type>war</type>
       </dependency>
 
+      <!-- Dashbuilder Runtime -->
+      <dependency>
+        <groupId>org.dashbuilder</groupId>
+        <artifactId>dashbuilder-runtime</artifactId>
+        <version>${version.org.uberfire}</version>
+        <type>war</type>
+      </dependency>
 
       <!-- Appformer -->
       <dependency>
