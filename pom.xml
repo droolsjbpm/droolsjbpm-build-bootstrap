@@ -808,6 +808,14 @@
                       <ignoreClass>org.apache.kafka.common.message.*</ignoreClass>
                     </ignoreClasses>
                     <dependencies>
+                      <dependency>
+                        <!-- quarkus-ide-launcher is a dependency of quarkus-core that they auto exclude during the build -->
+                        <groupId>io.quarkus</groupId>
+                        <artifactId>quarkus-ide-launcher</artifactId>
+                        <ignoreClasses>
+                          <ignoreClass>*</ignoreClass>
+                        </ignoreClasses>
+                      </dependency>
                       <!-- gwt-dev bundles dozens of different 3rd party dependencies, but can not be usually excluded
                            as e.g. GWT Mockito tests are using the com.google.gwt classes inside. Ignoring it for the
                            duplicate classes check seems to be the only way. -->
