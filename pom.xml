@@ -478,6 +478,7 @@
     <version.org.kogito.gwt-jsonix-schema-compiler>1.2.0</version.org.kogito.gwt-jsonix-schema-compiler>
     <version.org.hisrc.jsonix.jsonix-scripts>3.0.0</version.org.hisrc.jsonix.jsonix-scripts>
     <version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>0.14.0</version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>
+    <version.org.mock-server>5.10.0</version.org.mock-server>
   </properties>
 
   <repositories>
@@ -5248,6 +5249,18 @@
         <groupId>com.google.jsinterop</groupId>
         <artifactId>base</artifactId>
         <version>${version.com.google.jsinterop.base}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.mock-server</groupId>
+        <artifactId>mockserver-netty</artifactId>
+        <version>${version.org.mock-server}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
     </dependencies>
   </dependencyManagement>
