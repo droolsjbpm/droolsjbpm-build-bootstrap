@@ -493,7 +493,7 @@
         <artifactId>showcase-distribution-wars</artifactId>
         <type>war</type>
         <version>${version.org.uberfire}</version>
-        <classifier>wildfly8.1</classifier>
+        <classifier>wildfly</classifier>
       </dependency>
 
       <dependency>
