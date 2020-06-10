@@ -5,6 +5,6 @@ stage('Downstream Build') {
         println "Reading file ${REPOSITORY_LIST_FILE}"
         def file = readFile REPOSITORY_LIST_FILE
         def projectCollection = file.readLines()
-        treebuild.downstreamBuild(projectCollection, "${SETTINGS_XML_ID}", '-e -nsu -Pbusiness-central,wildfly,sourcemaps,no-showcase clean install -Dfull=true -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-60esr/firefox-bin')
+        treebuild.build(projectCollection, "${SETTINGS_XML_ID}", '-e -nsu -Pbusiness-central,wildfly,sourcemaps,no-showcase clean install -Dfull=true -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-60esr/firefox-bin')
     }
 }

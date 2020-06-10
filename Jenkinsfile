@@ -1,16 +1,24 @@
 @Library('jenkins-pipeline-shared-libraries')_
 
+agentLabel = "${env.ADDITIONAL_LABEL?.trim() ? ADDITIONAL_LABEL : 'kie-rhel7 && kie-mem24g'} && !master"
+additionalArtifactsToArchive = "${env.ADDITIONAL_ARTIFACTS_TO_ARCHIVE?.trim() ?: ''}"
+additionalTimeout = "${env.ADDITIONAL_TIMEOUT?.trim() ?: 1200}"
+additionalExcludedArtifacts = "${env.ADDITIONAL_EXCLUDED_ARTIFACTS?.trim() ?: ''}"
+checkstyleFile = env.CHECKSTYLE_FILE?.trim() ?: null
+findbugsFile = env.FINDBUGS_FILE?.trim() ?: null
+pr_type = env.PR_TYPE?.trim() ?: null
+
 pipeline {
     agent {
-        label 'kie-rhel7 && kie-mem24g && !master'
+        label agentLabel
     }
     tools {
         maven 'kie-maven-3.5.4'
         jdk 'kie-jdk1.8'
     }
     options {
-        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
-        timeout(time: 1202, unit: 'MINUTES')
+        timestamps ()
+        timeout(time: additionalTimeout, unit: 'MINUTES')
     }
     stages {
         stage('Initialize') {
@@ -19,11 +27,22 @@ pipeline {
 
             }
         }
+        // executes a script that compresses the consoleText and attaches it to the mail
+        stage('build sh script') {
+            steps {
+                script {
+                    mailer.buildLogScriptPR()
+                }
+            }
+        }
         stage('Build projects') {
             steps {
                 script {
                     def file =  (JOB_NAME =~ /\/[a-z,A-Z\-]*\.downstream\.production/).find() ? 'downstream.production.stages' :
+                                (JOB_NAME =~ /\/new-[a-z,A-Z\-]*\.downstream/).find() ? 'new.downstream.stages' :
                                 (JOB_NAME =~ /\/[a-z,A-Z\-]*\.downstream/).find() ? 'downstream.stages' :
+                                (JOB_NAME =~ /\/[a-z,A-Z\-]*\.pullrequest/).find() ? 'pullrequest.stages' :
+                                (JOB_NAME =~ /\/[a-z,A-Z\-]*\.compile/).find() ? 'compilation.stages' :
                                 'upstream.stages'
                     if(fileExists("$WORKSPACE/${file}")) {
                         println "File ${file} exists, loading it."
@@ -45,14 +64,25 @@ pipeline {
         }
     }
     post {
-        unstable {
+        fixed {
             script {
-                mailer.sendEmailFailure()
+                mailer.sendEmail_fixedPR(pr_type)
+            }
+        }
+        aborted {
+            script {
+                mailer.sendEmail_abortedPR(pr_type)
             }
         }
         failure {
+            sh '$WORKSPACE/trace.sh'
             script {
-                mailer.sendEmailFailure()
+                mailer.sendEmail_failedPR(pr_type)
+            }
+        }
+        unstable {
+            script {
+                mailer.sendEmail_unstablePR(pr_type)
             }
         }
         always {
@@ -66,13 +96,26 @@ pipeline {
             archiveArtifacts excludes: '**/target/checkstyle.log', artifacts: '**/*.maven.log,**/target/*.log', fingerprint: false, defaultExcludes: true, caseSensitive: true, allowEmptyArchive: true
 
             echo 'Archiving testStatusListener and screenshots artifacts...'
-            archiveArtifacts artifacts: '**/target/testStatusListener*,**/target/screenshots/**', fingerprint: false, defaultExcludes: true, caseSensitive: true, allowEmptyArchive: true
+            archiveArtifacts allowEmptyArchive: true, artifacts: '**/target/testStatusListener*' + additionalArtifactsToArchive, excludes: additionalExcludedArtifacts, fingerprint: false, defaultExcludes: true, caseSensitive: true
 
             echo 'Archiving wars...'
             archiveArtifacts artifacts: '**/target/business-monitoring-webapp.war,**/target/business-central*wildfly*.war,**/target/business-central*eap*.war,**/target/kie-server-*ee7.war,**/target/kie-server-*webc.war', fingerprint: false, defaultExcludes: true, caseSensitive: true, allowEmptyArchive: true
 
             echo 'Archiving zips...'
             archiveArtifacts artifacts: '**/target/jbpm-server*dist*.zip', fingerprint: false, defaultExcludes: true, caseSensitive: true, allowEmptyArchive: true
+
+            script {
+                if(findbugsFile) {
+                    echo 'Findbugs reports ...'
+                    findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: findbugsFile, unHealthy: ''
+                }
+            }
+            script {
+                if(checkstyleFile) {
+                    echo 'Checkstyle reports ...'
+                    checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: checkstyleFile, unHealthy: ''
+                }
+            }
         }
         cleanup {
             cleanWs()
