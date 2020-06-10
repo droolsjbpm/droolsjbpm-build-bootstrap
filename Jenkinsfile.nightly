@@ -16,7 +16,6 @@ pipeline {
     }
     options {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
-        timeout(time: 720, unit: 'MINUTES')
     }
     stages {
         stage('Initialize') {
@@ -28,23 +27,27 @@ pipeline {
         stage('Build Nightly projects') {
             steps {
                 script {
-                    def SETTINGS_XML_ID = "5d9884a1-178a-4d67-a3ac-9735d2df2cef"
+                    def pipelineHelper = new PipelineHelper(this)
+                    pipelineHelper.retry(
+                    {
+                        def SETTINGS_XML_ID = "5d9884a1-178a-4d67-a3ac-9735d2df2cef"
 
-                    // This is the map project, variable to store the version from this project
-                    def repositoryListPath = "./script/repository-list.txt"
-                    def projectVariableMap = ['kiegroup_droolsjbpm-build-bootstrap': "kieVersion", 'jboss-integration_izpack': "izpackVersion", 'jboss-integration_installer-commons': "installerCommonsVersion"]
-                    def nightlyStages = load("$WORKSPACE/nightly.stages")
+                        // This is the map project, variable to store the version from this project
+                        def repositoryListPath = "./script/repository-list.txt"
+                        def projectVariableMap = ['kiegroup_droolsjbpm-build-bootstrap': "kieVersion", 'jboss-integration_izpack': "izpackVersion", 'jboss-integration_installer-commons': "installerCommonsVersion"]
+                        def nightlyStages = load("$WORKSPACE/nightly.stages")
 
-                    configFileProvider([configFile(fileId: "49737697-ebd6-4396-9c22-11f7714808eb", variable: 'PRODUCTION_PROJECT_LIST')]) {
-                        println "Reading file ${repositoryListPath} and merging it with ${PRODUCTION_PROJECT_LIST} jenkins file"
-                        def communityProjectListFile = readFile repositoryListPath
-                        def projectCollection = communityProjectListFile.readLines()
-                        def productionProjectListFile = readFile "${env.PRODUCTION_PROJECT_LIST}"
-                        projectCollection.addAll(productionProjectListFile.readLines())
-                        projectCollection.removeAll { 'droolsjbpm-tools'.equals(it.toLowerCase()) } // The droolsjbpm-tools is skiped
-                        println "File ${repositoryListPath} and ${env.PRODUCTION_PROJECT_LIST} jenkins file merged in ${projectCollection}"
-                        nightlyStages(SETTINGS_XML_ID, projectCollection, "rhba/nightly", projectVariableMap)
-                    }
+                        configFileProvider([configFile(fileId: "49737697-ebd6-4396-9c22-11f7714808eb", variable: 'PRODUCTION_PROJECT_LIST')]) {
+                            println "Reading file ${repositoryListPath} and merging it with ${PRODUCTION_PROJECT_LIST} jenkins file"
+                            def communityProjectListFile = readFile repositoryListPath
+                            def projectCollection = communityProjectListFile.readLines()
+                            def productionProjectListFile = readFile "${env.PRODUCTION_PROJECT_LIST}"
+                            projectCollection.addAll(productionProjectListFile.readLines())
+                            projectCollection.removeAll { 'droolsjbpm-tools'.equals(it.toLowerCase()) } // The droolsjbpm-tools is skiped
+                            println "File ${repositoryListPath} and ${env.PRODUCTION_PROJECT_LIST} jenkins file merged in ${projectCollection}"
+                            nightlyStages(SETTINGS_XML_ID, projectCollection, "rhba/nightly", projectVariableMap)
+                        }
+                    }, 2, 480*60)
                 }
             }
         }
@@ -84,11 +87,11 @@ pipeline {
                 script {
                     echo "[INFO] Sending RHPAM UMB message to QE."
                     def PME_BUILD_VARIABLES = env.PME_BUILD_VARIABLES.split(";").collect{ it.split("=")}.inject([:]) {map, item -> map << [(item.length == 2 ? item[0] : null): (item.length == 2 ? item[1] : null)]}
-                    
+
                     def propertiesFileUrl = "${env.STAGING_SERVER_URL}/rhpam/RHPAM-${PME_BUILD_VARIABLES['productVersion']}.${PME_BUILD_VARIABLES['milestone']}/rhpam-${PME_BUILD_VARIABLES['datetimeSuffix']}.properties"
                     def topic = "VirtualTopic.qe.ci.ba.rhpam.${env.UMB_VERSION}.nightly.trigger"
                     def eventType = "rhpam-${env.UMB_VERSION}-nightly-qe-trigger"
-                    
+
                     echo "[INFO] Message Body: ${propertiesFileUrl}"
                     echo "[INFO] Topic: ${topic}"
                     echo "[INFO] Event Type: ${eventType}"
@@ -106,11 +109,11 @@ pipeline {
                 script {
                     echo "[INFO] Sending RHDM UMB message to QE."
                     def PME_BUILD_VARIABLES = env.PME_BUILD_VARIABLES.split(";").collect{ it.split("=")}.inject([:]) {map, item -> map << [(item.length == 2 ? item[0] : null): (item.length == 2 ? item[1] : null)]}
-                    
+
                     def propertiesFileUrl = "${env.STAGING_SERVER_URL}/rhdm/RHDM-${PME_BUILD_VARIABLES['productVersion']}.${PME_BUILD_VARIABLES['milestone']}/rhdm-${PME_BUILD_VARIABLES['datetimeSuffix']}.properties"
                     def topic = "VirtualTopic.qe.ci.ba.rhdm.${env.UMB_VERSION}.nightly.trigger"
                     def eventType = "rhdm-${env.UMB_VERSION}-nightly-qe-trigger"
-                    
+
                     echo "[INFO] Message Body: ${propertiesFileUrl}"
                     echo "[INFO] Topic: ${topic}"
                     echo "[INFO] Event Type: ${eventType}"
