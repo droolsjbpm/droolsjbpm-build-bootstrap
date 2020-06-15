@@ -314,7 +314,7 @@
     <version.org.jboss.arquillian.graphene>2.3.2</version.org.jboss.arquillian.graphene>
     <version.com.google.guava.for-selenium>23.0</version.com.google.guava.for-selenium>
     <version.com.google.elemental2>1.0.0-RC1</version.com.google.elemental2>
-    <version.org.jboss.errai>4.7.0.Final</version.org.jboss.errai>
+    <version.org.jboss.errai>4.8.0.Final</version.org.jboss.errai>
     <!-- WildFly version used together with  the GWT's Super Dev Mode -->
     <version.org.jboss.errai.wildfly>${version.org.wildfly}</version.org.jboss.errai.wildfly>
     <!-- Required by jboss-remoting version above -->
