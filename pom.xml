@@ -330,6 +330,7 @@
     <version.org.xmlunit>2.6.3</version.org.xmlunit>
     <version.org.skyscreamer.jsonassert>1.2.3</version.org.skyscreamer.jsonassert>
     <version.org.jboss.jboss-dmr>1.5.0.Final</version.org.jboss.jboss-dmr>
+    <version.org.jboss.jboss-msc>1.4.11.Final</version.org.jboss.jboss-msc>
     <!-- Version of Camel patch for Wildfly -->
     <version.org.wildfly.camel>11.0.1</version.org.wildfly.camel>
     <!-- this version will overwrite jboss-ip-bom version 2.5.1. The version in jboss-ip-bom couldn't be upgraded as it will break ModeShape Web Explorer application which uses GWT 2.5.1 -->
@@ -4968,6 +4969,13 @@
         <artifactId>jboss-dmr</artifactId>
         <version>${version.org.jboss.jboss-dmr}</version>
       </dependency>
+
+      <dependency>
+        <groupId>org.jboss.msc</groupId>
+        <artifactId>jboss-msc</artifactId>
+        <version>${version.org.jboss.jboss-msc}</version>
+      </dependency>
+
       <dependency>
         <groupId>net.bytebuddy</groupId>
         <artifactId>byte-buddy</artifactId>
