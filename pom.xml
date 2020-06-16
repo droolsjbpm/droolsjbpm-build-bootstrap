@@ -263,7 +263,7 @@
     <version.org.wildfly.arquillian>2.2.0.Final</version.org.wildfly.arquillian>
     <version.org.wildfly.core>10.0.3.Final</version.org.wildfly.core>
     <version.org.wildfly.common>1.5.1.Final</version.org.wildfly.common>
-    <version.org.yaml.snakeyaml>1.18</version.org.yaml.snakeyaml>
+    <version.org.yaml.snakeyaml>1.26</version.org.yaml.snakeyaml>
     <version.postgresql>8.4-702.jdbc4</version.postgresql>
     <version.org.mozilla.rhino>1.7R4</version.org.mozilla.rhino>
     <version.rome>1.0</version.rome>
@@ -316,7 +316,7 @@
     <version.com.google.elemental2>1.0.0-RC1</version.com.google.elemental2>
     <version.org.jboss.errai>4.8.0.Final</version.org.jboss.errai>
     <!-- WildFly version used together with  the GWT's Super Dev Mode -->
-    <version.org.jboss.errai.wildfly>${version.org.wildfly}</version.org.jboss.errai.wildfly>
+    <version.org.jboss.errai.wildfly>19.1.0.SP1</version.org.jboss.errai.wildfly>
     <!-- Required by jboss-remoting version above -->
     <version.org.ow2.asm>7.1</version.org.ow2.asm>
     <version.org.wildfly.security>1.10.4.Final</version.org.wildfly.security>
