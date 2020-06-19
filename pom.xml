@@ -3375,6 +3375,12 @@
         <artifactId>batik-codec</artifactId>
         <version>${version.org.apache.xmlgraphics.batik}</version>
       </dependency>
+      
+      <dependency>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctorj</artifactId>
+        <version>${version.org.asciidoctor.asciidoctorj}</version>
+      </dependency>
 
       <dependency>
         <groupId>org.assertj</groupId>
