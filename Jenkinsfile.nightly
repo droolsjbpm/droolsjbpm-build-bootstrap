@@ -53,7 +53,7 @@ pipeline {
                             def additionalVariables = [:]
                             if ('master' == currentBranch) {
                                 def branched7RepositoryListFile = readFile branched7RepositoryListPath
-                                branched7RepositoryListFile.readLines().each { it -> additionalVariables["${it}-scmRevision"] = '7.x' }
+                                branched7RepositoryListFile.readLines().each { additionalVariables["${it}-scmRevision"] = '7.x' }
                             }
 
                             pmebuild.buildProjects(projectCollection, "${SETTINGS_XML_ID}", "$WORKSPACE/build_config/rhba/nightly", "${env.PME_CLI_PATH}", projectVariableMap, additionalVariables, [:])
