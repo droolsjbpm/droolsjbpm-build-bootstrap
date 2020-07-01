@@ -5292,7 +5292,16 @@
           </exclusion>
         </exclusions>
       </dependency>
+
+      <!-- Used by kie-pmml-trusty projects -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-dependencies</artifactId>
+        <version>${version.org.kie}</version>
+        <type>pom</type>
+      </dependency>
     </dependencies>
+
   </dependencyManagement>
 
   <dependencies>
