@@ -1,11 +1,15 @@
 #!/bin/sh
 # How to clean ignores in revapi-config.json files:
 #
-# export REVAPI_REPOSITORIES=droolsjbpm-build-bootstrap,droolsjbpm-knowledge,drools,jbpm,droolsjbpm-integration,optaplanner
+# export MASTER_REVAPI_REPOSITORIES=droolsjbpm-build-bootstrap,droolsjbpm-knowledge,drools,jbpm,droolsjbpm-integration
+# export BRANCHED_7_REVAPI_REPOSITORIES=optaplanner
+# export REVAPI_REPOSITORIES=$MASTER_REVAPI_REPOSITORIES,$BRANCHED_7_REVAPI_REPOSITORIES
 #
 # ./git-clone-others.sh --repo-list=$REVAPI_REPOSITORIES --add-upstream-remote
-# ./git-all.sh --repo-list=$REVAPI_REPOSITORIES checkout master
-# ./git-all.sh --repo-list=$REVAPI_REPOSITORIES pull --rebase upstream master
+# ./git-all.sh --repo-list=MASTER_REVAPI_REPOSITORIES checkout master
+# ./git-all.sh --repo-list=MASTER_REVAPI_REPOSITORIES pull --rebase upstream master
+# ./git-all.sh --repo-list=BRANCHED_7_REVAPI_REPOSITORIES checkout 7.x
+# ./git-all.sh --repo-list=BRANCHED_7_REVAPI_REPOSITORIES pull --rebase upstream 7.x
 # ./git-all.sh --repo-list=$REVAPI_REPOSITORIES checkout -b revapi-7.23.0.Final
 # Copy this script to root of all repositories and run it there, ./revapi-clean.sh 7.23.0.Final
 # Update <revapi.oldKieVersion> in kie-parent

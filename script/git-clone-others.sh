@@ -55,6 +55,8 @@ additionalGitOptions=()
 
 # default repository list is stored in the repository-list.txt file
 REPOSITORY_LIST=`cat "${scriptDir}/repository-list.txt"`
+# Repositories that need to use the branch 7.x instead of master
+BRANCHED_7_REPOSITORY_LIST=`cat "${scriptDir}/branched-7-repository-list.txt"`
 
 for arg in "$@"
 do
@@ -103,7 +105,23 @@ for repository in $REPOSITORY_LIST ; do
         if [ "x${additionalGitOptions}" != "x" ]; then
             echo -- additional Git options: ${additionalGitOptions[@]} --
         fi
-        git clone ${additionalGitOptions[@]} ${gitUrlPrefix}${repository}.git ${repository}
+
+        repoAdditionalGitOptions=( "${additionalGitOptions[@]}" )
+        if [ $(echo "$BRANCHED_7_REPOSITORY_LIST" | grep "^$repository$") ] ; then
+            if [[ ${additionalGitOptions[0]} == "-b" ]] || [[ ${additionalGitOptions[0]} == "--branch" ]]; then
+                if [[ ${additionalGitOptions[1]} == "master" ]]; then
+                  repoAdditionalGitOptions[1]="7.x"
+                fi
+            else
+                repoAdditionalGitOptions=( "-b" "7.x" "${repoAdditionalGitOptions[@]}" )
+            fi
+        fi
+        git clone "${repoAdditionalGitOptions[@]}" ${gitUrlPrefix}${repository}.git ${repository}
+
+        returnCode=$?
+        if [ $returnCode != 0 ] ; then
+            exit $returnCode
+        fi
 
         if [ "$UPSTREAM" = true ]; then
             upstreamGitUrlPrefix=`echo ${gitUrlPrefix} | sed 's|\(.*github\.com[:/]\).*|\1kiegroup/|'`
@@ -111,11 +129,6 @@ for repository in $REPOSITORY_LIST ; do
             cd ${repository}
             git remote add upstream ${upstreamGitUrlPrefix}${repository}.git
             cd ..
-        fi
-
-        returnCode=$?
-        if [ $returnCode != 0 ] ; then
-            exit $returnCode
         fi
     fi
 done
