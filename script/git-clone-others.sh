@@ -111,6 +111,7 @@ for repository in $REPOSITORY_LIST ; do
             if [[ ${additionalGitOptions[0]} == "-b" ]] || [[ ${additionalGitOptions[0]} == "--branch" ]]; then
                 if [[ ${additionalGitOptions[1]} == "master" ]]; then
                   repoAdditionalGitOptions[1]="7.x"
+                  echo -- additional Git options changed in ${repository} to: ${repoAdditionalGitOptions[@]} --
                 fi
             else
                 repoAdditionalGitOptions=( "-b" "7.x" "${repoAdditionalGitOptions[@]}" )
