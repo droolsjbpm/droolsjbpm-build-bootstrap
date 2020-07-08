@@ -27,6 +27,9 @@ pipeline {
         stage('Build Nightly projects') {
             steps {
                 script {
+                    println "Checking out ${env.BUILD_CONFIGURATION_REPO_URL} into build_config folder"
+                    sh "git clone ${env.BUILD_CONFIGURATION_REPO_URL} build_config"
+
                     def pipelineHelper = new PipelineHelper(this)
                     pipelineHelper.retry(
                     {
@@ -45,9 +48,6 @@ pipeline {
                             projectCollection.addAll(productionProjectListFile.readLines())
                             projectCollection.removeAll { 'droolsjbpm-tools'.equals(it.toLowerCase()) } // The droolsjbpm-tools is skiped
                             println "File ${repositoryListPath} and ${env.PRODUCTION_PROJECT_LIST} jenkins file merged in ${projectCollection}"
-
-                            println "Checking out ${env.BUILD_CONFIGURATION_REPO_URL} into build_config folder"
-                            sh "git clone ${env.BUILD_CONFIGURATION_REPO_URL} build_config"
 
                             def currentBranch = env.BRANCH_NAME ?: env.GIT_BRANCH
                             def additionalVariables = [:]
