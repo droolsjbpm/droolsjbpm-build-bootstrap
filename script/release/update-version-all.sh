@@ -89,6 +89,43 @@ startDateTime=`date +%s`
 
 cd $droolsjbpmOrganizationDir
 
+# --- --- ---
+# checks if optaplanner is on the right 7.x branch if all other repos are checked out to master
+# optaplanner 7.x branch has the same version as master on other kiegroup/reps
+cd optaplanner
+optaBranch=$(git rev-parse --abbrev-ref HEAD)
+if [ $optaBranch == "master" ]; then
+    echo ""
+    echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+	echo " Can't update versions for master branches because optaplanner is still on master and should be checked out to 7.x"
+	echo ""
+    while true; do
+        echo "a abort"
+        echo "c continue and check out optaplanner to 7.x"
+        echo ""
+        echo -n "Do you want to continue c or abort a "
+        echo ""
+        read choice
+
+        case $choice in
+            c)
+            git checkout 7.x
+            break
+            ;;
+            a)
+            echo "-------------------------- ABORTED --------------------------"
+            echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+            exit 0;
+            ;;
+            *)
+            echo "That is not a valid choice, try a c to continue or a to abort"
+            ;;
+        esac
+    done
+fi
+cd ..
+# --- --- ---
+
 for repository in `cat ${scriptDir}/../repository-list.txt` ; do
     echo
 
