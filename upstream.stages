@@ -5,6 +5,7 @@ stage('Upstream Build') {
         println "Reading file ${REPOSITORY_LIST_FILE}"
         def file = readFile REPOSITORY_LIST_FILE
         def projectCollection = file.readLines()
+        projectCollection.removeAll(['kie-jpmml-integration'])
         def gitURL = env.ghprbAuthorRepoGitUrl ?: env.GIT_URL
         def project = util.getProjectGroupName(util.getProject(gitURL))[1]
 
