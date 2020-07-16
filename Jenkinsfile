@@ -13,7 +13,7 @@ pipeline {
         label agentLabel
     }
     tools {
-        maven 'kie-maven-3.5.4'
+        maven 'kie-maven-3.6.3'
         jdk 'kie-jdk1.8'
     }
     options {
