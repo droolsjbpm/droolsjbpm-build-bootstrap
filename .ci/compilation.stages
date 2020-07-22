@@ -1,0 +1,18 @@
+def call(def propertiesFolderPath) {
+    stage('Compile Downstream Build') {
+        final REPOSITORY_LIST_FILE = "./script/repository-list.txt"
+        final SETTINGS_XML_ID = "771ff52a-a8b4-40e6-9b22-d54c7314aa1e"
+        final PROPERTIES_FILE_PATH = "${propertiesFolderPath}/compileDownstreamBuild.properties"
+        configFileProvider([configFile(fileId: SETTINGS_XML_ID, variable: 'MAVEN_SETTINGS_XML_UPSTREAM')]) {
+            println "Reading file ${REPOSITORY_LIST_FILE}"
+            def file = readFile REPOSITORY_LIST_FILE
+            def projectCollection = file.readLines()
+            projectCollection.removeAll(['kie-jpmml-integration','droolsjbpm-tools', 'kie-docs'])
+            def gitURL = env.ghprbAuthorRepoGitUrl ?: env.GIT_URL
+            def project = util.getProjectGroupName(util.getProject(gitURL))[1]
+            compile.build(projectCollection, project, "${SETTINGS_XML_ID}", "${PROPERTIES_FILE_PATH}")
+        }
+    }
+}
+
+return this

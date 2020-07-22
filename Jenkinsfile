@@ -44,9 +44,10 @@ pipeline {
                                 (JOB_NAME =~ /\/[a-z,A-Z\-]*\.pullrequest/).find() ? 'pullrequest.stages' :
                                 (JOB_NAME =~ /\/[a-z,A-Z\-]*\.compile/).find() ? 'compilation.stages' :
                                 'upstream.stages'
-                    if(fileExists("$WORKSPACE/${file}")) {
+                    if(fileExists("$WORKSPACE/.ci/${file}")) {
                         println "File ${file} exists, loading it."
-                        load("$WORKSPACE/${file}")
+                            def stage = load("$WORKSPACE/.ci/${file}")
+                            stage("$WORKSPACE/.ci")
                     } else {
                         dir("droolsjbpm-build-bootstrap") {
                             def changeAuthor = env.CHANGE_AUTHOR ?: env.ghprbPullAuthorLogin
@@ -56,7 +57,8 @@ pipeline {
                             println "File ${file} does not exist. Loading the one from droolsjbpm-build-bootstrap project. Author [${changeAuthor}], branch [${changeBranch}]..."
                             githubscm.checkoutIfExists('droolsjbpm-build-bootstrap', "${changeAuthor}", "${changeBranch}", 'kiegroup', "${changeTarget}")
                             println "Loading ${file} file..."
-                            load("${file}")
+                            def stage = load("${file}")
+                            stage("$WORKSPACE/droolsjbpm-build-bootstrap/.ci")
                         }
                     }
                 }
