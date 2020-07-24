@@ -156,6 +156,22 @@
         <artifactId>kie-pmml-models-drools-scorecard-evaluator</artifactId>
         <version>${version.org.kie}</version>
       </dependency>
+      <!-- Mining -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-mining-model</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-mining-compiler</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-mining-evaluator</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
       <!-- EXTERNAL -->
       <!-- TEST -->
       <dependency>
