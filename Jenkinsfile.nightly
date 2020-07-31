@@ -24,12 +24,18 @@ pipeline {
 
             }
         }
+        stage('Clone build configuration repo') {
+            steps {
+                script {
+                    def currentBranch = env.BRANCH_NAME ?: env.GIT_BRANCH
+                    println "Checking out ${env.BUILD_CONFIGURATION_REPO_URL}:${currentBranch} into build_config folder"
+                    sh "git clone -b ${currentBranch} --single-branch ${env.BUILD_CONFIGURATION_REPO_URL} build_config"
+                }
+            }
+        }
         stage('Build Nightly projects') {
             steps {
                 script {
-                    println "Checking out ${env.BUILD_CONFIGURATION_REPO_URL} into build_config folder"
-                    sh "git clone ${env.BUILD_CONFIGURATION_REPO_URL} build_config"
-
                     def pipelineHelper = new PipelineHelper(this)
                     pipelineHelper.retry(
                     {
