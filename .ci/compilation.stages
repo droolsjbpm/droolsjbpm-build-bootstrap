@@ -8,9 +8,7 @@ def call(def propertiesFolderPath) {
             def file = readFile REPOSITORY_LIST_FILE
             def projectCollection = file.readLines()
             projectCollection.removeAll(['kie-jpmml-integration','droolsjbpm-tools', 'kie-docs'])
-            def gitURL = env.ghprbAuthorRepoGitUrl ?: env.GIT_URL
-            def project = util.getProjectGroupName(util.getProject(gitURL))[1]
-            compile.build(projectCollection, project, "${SETTINGS_XML_ID}", "${PROPERTIES_FILE_PATH}")
+            compile.build(projectCollection, util.getCurrentProjectName(), "${SETTINGS_XML_ID}", "${PROPERTIES_FILE_PATH}")
         }
     }
 }
