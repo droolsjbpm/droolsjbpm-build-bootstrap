@@ -9,7 +9,8 @@ def call(def propertiesFolderPath) {
             def file = readFile REPOSITORY_LIST_FILE
             def projectCollection = file.readLines()
             projectCollection.removeAll(['kie-jpmml-integration'])
-            def project = util.getCurrentProjectName()
+            def gitURL = env.ghprbAuthorRepoGitUrl ?: env.GIT_URL
+            def project = util.getProjectGroupName(util.getProject(gitURL))[1]
             if (project != "kie-docs") {
                 pullrequest.build(projectCollection, project, "${SETTINGS_XML_ID}", "${PROPERTIES_FILE_PATH}", "${SONARCLOUD_ID}", ["optaplanner", "drools", "appformer", "jbpm", "drools-wb", "kie-soup", "droolsjbpm-integration", "kie-wb-common", "openshift-drools-hacep", "optaweb-employee-rostering"])
             } else {
