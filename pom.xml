@@ -265,7 +265,6 @@
     <version.org.wildfly.core>10.0.3.Final</version.org.wildfly.core>
     <version.org.wildfly.common>1.5.1.Final</version.org.wildfly.common>
     <version.org.yaml.snakeyaml>1.26</version.org.yaml.snakeyaml>
-    <version.postgresql>8.4-702.jdbc4</version.postgresql>
     <version.org.mozilla.rhino>1.7R4</version.org.mozilla.rhino>
     <version.rome>1.0</version.rome>
     <version.tomcat>9.0.22</version.tomcat>
@@ -442,7 +441,7 @@
     <version.org.jboss.spec.javax.ws.rs.jboss-jaxrs-api_2.1_spec>1.0.2.Final</version.org.jboss.spec.javax.ws.rs.jboss-jaxrs-api_2.1_spec>
     <version.org.apache.maven.plugins.dependency>3.0.2</version.org.apache.maven.plugins.dependency>
 
-    <version.org.postgresql>42.2.12</version.org.postgresql>
+    <version.org.postgresql>42.2.14</version.org.postgresql>
     <version.mariadb-java-client>1.3.4</version.mariadb-java-client>
 
     <version.ch.obermuhlner>2.0.1</version.ch.obermuhlner>
@@ -4399,12 +4398,6 @@
         <groupId>org.yaml</groupId>
         <artifactId>snakeyaml</artifactId>
         <version>${version.org.yaml.snakeyaml}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>postgresql</groupId>
-        <artifactId>postgresql</artifactId>
-        <version>${version.postgresql}</version>
       </dependency>
 
       <dependency>
