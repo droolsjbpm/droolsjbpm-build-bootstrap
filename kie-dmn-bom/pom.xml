@@ -10,7 +10,6 @@
     <relativePath>../kie-user-bom-parent/pom.xml</relativePath>
   </parent>
 
-  <groupId>org.kie</groupId>
   <artifactId>kie-dmn-bom</artifactId>
   <packaging>pom</packaging>
 
