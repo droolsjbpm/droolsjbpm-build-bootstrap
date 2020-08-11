@@ -7,7 +7,7 @@
     <groupId>org.jboss</groupId>
     <artifactId>jboss-parent</artifactId>
     <!-- Keep in sync with jboss-parent version in kie-user-bom-parent/pom.xml -->
-    <version>31</version>
+    <version>36</version>
     <relativePath/>
   </parent>
 
