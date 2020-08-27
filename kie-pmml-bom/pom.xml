@@ -220,6 +220,38 @@
         <classifier>tests</classifier>
         <version>${version.org.kie}</version>
       </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-drools-tree-evaluator</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Scorecard -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-drools-scorecard-compiler</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-drools-scorecard-evaluator</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Mining -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-mining-compiler</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-mining-evaluator</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
       <!-- EXTERNAL -->
       <dependency>
         <groupId>org.kie</groupId>
