@@ -1610,6 +1610,19 @@
 
       <dependency>
         <groupId>org.dashbuilder</groupId>
+        <artifactId>dashbuilder-external-backend</artifactId>
+        <version>${version.org.uberfire}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.dashbuilder</groupId>
+        <artifactId>dashbuilder-external-backend</artifactId>
+        <version>${version.org.uberfire}</version>
+        <classifier>sources</classifier>
+      </dependency>
+
+      <dependency>
+        <groupId>org.dashbuilder</groupId>
         <artifactId>dashbuilder-navigation-backend</artifactId>
         <version>${version.org.uberfire}</version>
       </dependency>
