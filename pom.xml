@@ -449,6 +449,7 @@
 
     <version.ch.obermuhlner>2.0.1</version.ch.obermuhlner>
     <version.org.jboss.jandex>2.1.1.Final</version.org.jboss.jandex>
+    <version.jandex.plugin>1.0.6</version.jandex.plugin>
     <version.org.eclipse.yasson>1.0.6</version.org.eclipse.yasson>
     <version.javax.jws-api>1.1</version.javax.jws-api>
     <version.javax.xml.ws>2.3.1</version.javax.xml.ws>
@@ -1622,6 +1623,19 @@
             <npmVersion>${version.npm}</npmVersion>
             <yarnVersion>${version.yarn}</yarnVersion>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.jboss.jandex</groupId>
+          <artifactId>jandex-maven-plugin</artifactId>
+          <version>${version.jandex.plugin}</version>
+          <executions>
+            <execution>
+              <id>make-index</id>
+              <goals>
+                <goal>jandex</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
       </plugins>
     </pluginManagement>
