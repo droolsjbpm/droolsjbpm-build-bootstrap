@@ -262,6 +262,7 @@
     <version.org.springframework.osgi>1.2.1</version.org.springframework.osgi>
     <version.org.subethamail>1.2</version.org.subethamail>
     <version.org.subethamail.subethasmtp>3.1.6</version.org.subethamail.subethasmtp>
+    <version.org.testcontainers>1.14.3</version.org.testcontainers>
     <version.org.webjars.swagger-ui>2.2.10</version.org.webjars.swagger-ui>
     <version.org.webjars.npm.monaco-editor>0.20.0</version.org.webjars.npm.monaco-editor>
     <version.org.wildfly>19.1.0.Final</version.org.wildfly>
@@ -4369,6 +4370,19 @@
         <groupId>org.subethamail</groupId>
         <artifactId>subethasmtp</artifactId>
         <version>${version.org.subethamail.subethasmtp}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.testcontainers</groupId>
+        <artifactId>kafka</artifactId>
+        <version>${version.org.testcontainers}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.testcontainers</groupId>
+        <artifactId>toxiproxy</artifactId>
+        <version>${version.org.testcontainers}</version>
+        <scope>test</scope>
       </dependency>
 
       <dependency>

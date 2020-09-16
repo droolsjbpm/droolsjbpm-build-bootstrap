@@ -919,6 +919,11 @@
       <!-- service task repository -->
       <dependency>
         <groupId>org.jbpm.contrib</groupId>
+        <artifactId>kafka-workitem</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jbpm.contrib</groupId>
         <artifactId>repository</artifactId>
         <version>${version.org.kie}</version>
       </dependency>
