@@ -63,6 +63,29 @@ pipeline {
                 }
             }
         }
+        stage('Sonar analysis') {
+            tools {
+              jdk "kie-jdk11"
+            }
+            steps {
+                script {
+                    def file =  (JOB_NAME =~ /\/[a-z,A-Z\-0-9\.]*\.pr/).find() ? 'sonarAnalysis.stages' : null
+                    if(file) {
+                      if(fileExists("$WORKSPACE/.ci/${file}")) {
+                        println "File ${file} exists, loading it."
+                        def stage = load("$WORKSPACE/.ci/${file}")
+                        stage("$WORKSPACE/.ci")
+                      } else {
+                          dir("droolsjbpm-build-bootstrap") {
+                              println "Loading ${file} file..."
+                              def stage = load("${file}")
+                              stage("$WORKSPACE/droolsjbpm-build-bootstrap/.ci")
+                          }
+                      }
+                    }
+                }
+            }
+        }
     }
     post {
         fixed {
