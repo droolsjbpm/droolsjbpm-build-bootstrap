@@ -174,6 +174,7 @@
       </dependency>
       <!-- EXTERNAL -->
       <!-- TEST -->
+      <!-- Commons -->
       <dependency>
         <groupId>org.kie</groupId>
         <artifactId>kie-pmml-commons</artifactId>
@@ -191,6 +192,19 @@
         <groupId>org.kie</groupId>
         <artifactId>kie-pmml-compiler-commons</artifactId>
         <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Evaluator -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-evaluator-core</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Tests -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-tests</artifactId>
         <version>${version.org.kie}</version>
       </dependency>
       <!-- Regression -->
