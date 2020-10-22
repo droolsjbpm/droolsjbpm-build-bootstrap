@@ -3026,6 +3026,11 @@
         <artifactId>jbpm-spring-boot-starter-basic</artifactId>
         <version>${version.org.kie}</version>
       </dependency>
+      <dependency>
+      	<groupId>org.kie.server</groupId>
+      	<artifactId>kie-server-services-kafka</artifactId>
+      	<version>${version.org.kie}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
