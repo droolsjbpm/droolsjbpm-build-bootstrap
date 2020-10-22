@@ -38,10 +38,10 @@ pipeline {
         stage('Build projects') {
             steps {
                 script {
-                    def file =  (JOB_NAME =~ /\/[a-z,A-Z\-0-9\.]*\.fdbp/).find() ? 'downstream.production.stages' :
-                                (JOB_NAME =~ /\/[a-z,A-Z\-0-9\.]*\.fdb/).find() ? 'fullDownstream.stages' :
-                                (JOB_NAME =~ /\/[a-z,A-Z\-0-9\.]*\.pr/).find() ? 'pullrequest.stages' :
-                                (JOB_NAME =~ /\/[a-z,A-Z\-0-9\.]*\.compile/).find() ? 'compilation.stages' :
+                    def file =  (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.fdbp/).find() ? 'downstream.production.stages' :
+                                (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.fdb/).find() ? 'fullDownstream.stages' :
+                                (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.pr/).find() ? 'pullrequest.stages' :
+                                (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.compile/).find() ? 'compilation.stages' :
                                 'upstream.stages'
                     if(fileExists("$WORKSPACE/.ci/${file}")) {
                         println "File ${file} exists, loading it."
@@ -69,7 +69,7 @@ pipeline {
             }
             steps {
                 script {
-                    def file =  (JOB_NAME =~ /\/[a-z,A-Z\-0-9\.]*\.pr/).find() ? 'sonarAnalysis.stages' : null
+                    def file =  (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.pr/).find() ? 'sonarAnalysis.stages' : null
                     if(file) {
                       if(fileExists("$WORKSPACE/.ci/${file}")) {
                         println "File ${file} exists, loading it."
