@@ -109,7 +109,7 @@
     <version.jaxen>1.1.6</version.jaxen>
     <version.jivesoftware.smack>3.1.0</version.jivesoftware.smack>
     <version.joda-time>2.9.7</version.joda-time>
-    <version.junit>4.12</version.junit>
+    <version.junit>4.13.1</version.junit>
     <!-- override is needed since 3.0.0-M2, coming from jboss-parent, has a bug. This can be removed once this bug was fixed. -->
     <!-- see https://issues.apache.org/jira/browse/MENFORCER-306 -->
     <version.enforcer.plugin>3.0.0-M1</version.enforcer.plugin>
