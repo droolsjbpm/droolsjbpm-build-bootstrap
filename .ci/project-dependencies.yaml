@@ -1,0 +1,141 @@
+version: "1.0"
+dependencies:
+  - project: kiegroup/lienzo-core
+
+  - project: kiegroup/lienzo-tests
+    dependencies:
+      - project: kiegroup/lienzo-core
+
+  - project: kiegroup/droolsjbpm-build-bootstrap
+    dependencies:
+      - project: kiegroup/lienzo-core
+
+  - project: kiegroup/kie-soup
+    dependencies:
+      - project: kiegroup/droolsjbpm-build-bootstrap
+
+  - project: kiegroup/appformer
+    dependencies:
+      - project: kiegroup/droolsjbpm-build-bootstrap
+      - project: kiegroup/lienzo-tests
+      - project: kiegroup/kie-soup
+
+  - project: kiegroup/droolsjbpm-knowledge
+    dependencies:
+      - project: kiegroup/kie-soup
+
+  - project: kiegroup/drools
+    dependencies:
+      - project: kiegroup/appformer
+      - project: kiegroup/kie-soup
+
+  - project: kiegroup/jbpm
+    dependencies:
+      - project: kiegroup/drools
+      - project: kiegroup/kie-soup
+
+  - project: kiegroup/optaplanner
+    dependencies:
+      - project: kiegroup/drools
+        mapping:
+          source: 7.x
+          target: master
+      - project: kiegroup/jbpm
+        mapping:
+          source: 7.x
+          target: master
+
+  - project: kiegroup/kie-jpmml-integration
+    dependencies:
+      - project: kiegroup/drools
+      - project: kiegroup/jbpm
+
+  - project: kiegroup/droolsjbpm-integration
+    dependencies:
+      - project: kiegroup/optaplanner
+        mapping:
+          source: master
+          target: 7.x
+      - project: kiegroup/kie-jpmml-integration
+      - project: kiegroup/jbpm
+      - project: kiegroup/kie-soup
+
+  - project: kiegroup/openshift-drools-hacep
+    dependencies:
+      - project: kiegroup/droolsjbpm-integration
+
+  - project: kiegroup/droolsjbpm-tools
+    dependencies:
+      - project: kiegroup/jbpm
+      - project: kiegroup/drools
+      - project: kiegroup/kie-soup
+
+  - project: kiegroup/kie-uberfire-extensions
+    dependencies:
+      - project: kiegroup/appformer
+
+  - project: kiegroup/kie-wb-playground
+    dependencies:
+      - project: kiegroup/openshift-drools-hacep
+
+  - project: kiegroup/kie-wb-common
+    dependencies:
+      - project: kiegroup/kie-wb-playground
+      - project: kiegroup/droolsjbpm-integration
+
+  - project: kiegroup/drools-wb
+    dependencies:
+      - project: kiegroup/kie-wb-common
+
+  - project: kiegroup/optaplanner-wb
+    dependencies:
+      - project: kiegroup/appformer
+      - project: kiegroup/kie-uberfire-extensions
+      - project: kiegroup/drools-wb
+      - project: kiegroup/drools
+      - project: kiegroup/optaplanner
+        mapping:
+          source: master
+          target: 7.x
+      - project: kiegroup/kie-soup
+      - project: kiegroup/kie-wb-common
+      - project: kiegroup/kie-wb-playground
+
+  - project: kiegroup/jbpm-designer
+    dependencies:
+      - project: kiegroup/kie-wb-common
+
+  - project: kiegroup/jbpm-work-items
+    dependencies:
+      - project: kiegroup/openshift-drools-hacep
+      - project: kiegroup/kie-wb-playground
+
+  - project: kiegroup/jbpm-wb
+    dependencies:
+      - project: kiegroup/kie-uberfire-extensions
+      - project: kiegroup/drools-wb
+      - project: kiegroup/jbpm-designer
+      - project: kiegroup/jbpm-work-items
+
+  - project: kiegroup/kie-docs
+
+  - project: kiegroup/optaweb-employee-rostering
+    dependencies:
+      - project: kiegroup/optaplanner
+
+  - project: kiegroup/optaweb-vehicle-routing
+    dependencies:
+      - project: kiegroup/optaplanner
+
+  - project: kiegroup/kie-wb-distributions
+    dependencies:
+      - project: kiegroup/appformer
+      - project: kiegroup/kie-soup
+      - project: kiegroup/drools
+      - project: kiegroup/optaplanner
+        mapping:
+          source: master
+          target: 7.x
+      - project: kiegroup/jbpm
+      - project: kiegroup/kie-uberfire-extensions
+      - project: kiegroup/jbpm-wb
