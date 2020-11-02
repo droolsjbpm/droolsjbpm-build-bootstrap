@@ -7,15 +7,14 @@ dependencies:
       - project: kiegroup/lienzo-core
 
   - project: kiegroup/droolsjbpm-build-bootstrap
-    dependencies:
-      - project: kiegroup/lienzo-core
 
   - project: kiegroup/kie-soup
     dependencies:
       - project: kiegroup/droolsjbpm-build-bootstrap
 
   - project: kiegroup/appformer
-    dependencies:
+    dependencies:    
+      - project: kiegroup/lienzo-core
       - project: kiegroup/droolsjbpm-build-bootstrap
       - project: kiegroup/lienzo-tests
       - project: kiegroup/kie-soup
@@ -26,7 +25,6 @@ dependencies:
 
   - project: kiegroup/drools
     dependencies:
-      - project: kiegroup/appformer
       - project: kiegroup/kie-soup
 
   - project: kiegroup/jbpm
@@ -80,11 +78,13 @@ dependencies:
 
   - project: kiegroup/kie-wb-common
     dependencies:
+      - project: kiegroup/lienzo-core
       - project: kiegroup/kie-wb-playground
       - project: kiegroup/droolsjbpm-integration
 
   - project: kiegroup/drools-wb
     dependencies:
+      - project: kiegroup/lienzo-core
       - project: kiegroup/kie-wb-common
 
   - project: kiegroup/optaplanner-wb
@@ -129,13 +129,13 @@ dependencies:
 
   - project: kiegroup/kie-wb-distributions
     dependencies:
-      - project: kiegroup/appformer
       - project: kiegroup/kie-soup
       - project: kiegroup/drools
+      - project: kiegroup/jbpm
       - project: kiegroup/optaplanner
         mapping:
           source: master
           target: 7.x
-      - project: kiegroup/jbpm
-      - project: kiegroup/kie-uberfire-extensions
       - project: kiegroup/jbpm-wb
+      - project: kiegroup/appformer
+      - project: kiegroup/kie-uberfire-extensions      
