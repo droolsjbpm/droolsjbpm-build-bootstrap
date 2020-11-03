@@ -69,25 +69,15 @@ pipeline {
             }
             steps {
                 script {
-                    def file =  (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.pr/).find() ? 'sonarAnalysis.stages' : null
-                    if(file) {
-                      if(fileExists("$WORKSPACE/.ci/${file}")) {
-                        println "File ${file} exists, loading it."
-                        def stage = load("$WORKSPACE/.ci/${file}")
-                        stage("$WORKSPACE/.ci")
-                      } else {
-                        dir("droolsjbpm-build-bootstrap") {
-                            def changeAuthor = env.CHANGE_AUTHOR ?: env.ghprbPullAuthorLogin
-                            def changeBranch = env.CHANGE_BRANCH ?: env.ghprbSourceBranch
-                            def changeTarget = env.CHANGE_TARGET ?: env.ghprbTargetBranch
-
-                            println "File ${file} does not exist. Loading the one from droolsjbpm-build-bootstrap project. Author [${changeAuthor}], branch [${changeBranch}]..."
-                            githubscm.checkoutIfExists('droolsjbpm-build-bootstrap', "${changeAuthor}", "${changeBranch}", 'kiegroup', "${changeTarget}")
-                            println "Loading ${file} file..."
-                            def stage = load(".ci/${file}")
-                            stage("$WORKSPACE/droolsjbpm-build-bootstrap/.ci")
+                    def gitURL = env.ghprbAuthorRepoGitUrl ?: env.GIT_URL
+                    def project = util.getProjectGroupName(util.getProject(gitURL))[1]
+                    if(["optaplanner", "drools", "appformer", "jbpm", "drools-wb", "kie-soup", "droolsjbpm-integration", "kie-wb-common", "openshift-drools-hacep", "optaweb-employee-rostering", "optaweb-vehicle-routing"].contains(project))
+                    {
+                        dir("${env.WORKSPACE}") {
+                            maven.runMavenWithSettingsSonar("771ff52a-a8b4-40e6-9b22-d54c7314aa1e", "-nsu generate-resources -Psonarcloud-analysis", "SONARCLOUD_TOKEN", "sonar_analysis.maven.log")
                         }
-                      }
+                    } else {
+                        println "Project ${project} shouldn't be analyzed by sonarcloud"
                     }
                 }
             }

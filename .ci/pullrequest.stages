@@ -11,7 +11,7 @@ def call(def propertiesFolderPath) {
             def gitURL = env.ghprbAuthorRepoGitUrl ?: env.GIT_URL
             def project = util.getProjectGroupName(util.getProject(gitURL))[1]
             if (project != "kie-docs") {
-                pullrequest.build(projectCollection, project, "${SETTINGS_XML_ID}", "${PROPERTIES_FILE_PATH}", "${SONARCLOUD_ID}", ["optaplanner", "drools", "appformer", "jbpm", "drools-wb", "kie-soup", "droolsjbpm-integration", "kie-wb-common", "openshift-drools-hacep", "optaweb-employee-rostering"])
+                pullrequest.build(projectCollection, project, "${SETTINGS_XML_ID}", "${PROPERTIES_FILE_PATH}", "${SONARCLOUD_ID}")
             } else {
                 pullrequest.build(["kie-docs"], project, "${SETTINGS_XML_ID}", "${PROPERTIES_FILE_PATH}", "")
             }
