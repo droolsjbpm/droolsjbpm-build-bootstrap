@@ -55,8 +55,6 @@ dependencies:
           source: master
           target: 7.x
       - project: kiegroup/kie-jpmml-integration
-      - project: kiegroup/jbpm
-      - project: kiegroup/kie-soup
 
   - project: kiegroup/openshift-drools-hacep
     dependencies:
@@ -131,7 +129,6 @@ dependencies:
     dependencies:
       - project: kiegroup/kie-soup
       - project: kiegroup/drools
-      - project: kiegroup/jbpm
       - project: kiegroup/optaplanner
         mapping:
           source: master
