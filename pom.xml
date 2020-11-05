@@ -3722,6 +3722,12 @@
       </dependency>
       <dependency>
         <groupId>org.infinispan</groupId>
+        <artifactId>infinispan-core</artifactId>
+        <version>${version.org.infinispan}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.infinispan</groupId>
         <artifactId>infinispan-query-dsl</artifactId>
         <version>${version.org.infinispan}</version>
       </dependency>
