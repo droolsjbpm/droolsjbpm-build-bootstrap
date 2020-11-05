@@ -60,12 +60,6 @@ dependencies:
     dependencies:
       - project: kiegroup/droolsjbpm-integration
 
-  - project: kiegroup/droolsjbpm-tools
-    dependencies:
-      - project: kiegroup/jbpm
-      - project: kiegroup/drools
-      - project: kiegroup/kie-soup
-
   - project: kiegroup/kie-uberfire-extensions
     dependencies:
       - project: kiegroup/appformer
