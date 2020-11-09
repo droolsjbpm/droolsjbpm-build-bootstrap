@@ -5,11 +5,11 @@ drools
 optaplanner
 jbpm
 kie-jpmml-integration
+droolsjbpm-integration
+openshift-drools-hacep
 lienzo-core
 lienzo-tests
 appformer
-droolsjbpm-integration
-openshift-drools-hacep
 kie-uberfire-extensions
 kie-wb-playground
 kie-wb-common
