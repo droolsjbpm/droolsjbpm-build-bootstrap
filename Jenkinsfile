@@ -74,7 +74,7 @@ pipeline {
                     if(["optaplanner", "drools", "appformer", "jbpm", "drools-wb", "kie-soup", "droolsjbpm-integration", "kie-wb-common", "openshift-drools-hacep", "optaweb-employee-rostering", "optaweb-vehicle-routing"].contains(project))
                     {
                         dir("${env.WORKSPACE}") {
-                            maven.runMavenWithSettingsSonar("771ff52a-a8b4-40e6-9b22-d54c7314aa1e", "-nsu generate-resources -Psonarcloud-analysis", "SONARCLOUD_TOKEN", "sonar_analysis.maven.log")
+                            maven.runMavenWithSettingsSonar("771ff52a-a8b4-40e6-9b22-d54c7314aa1e", "-nsu generate-resources -Psonarcloud-analysis -Denforcer.skip=true", "SONARCLOUD_TOKEN", "sonar_analysis.maven.log")
                         }
                     } else {
                         println "Project ${project} shouldn't be analyzed by sonarcloud"
