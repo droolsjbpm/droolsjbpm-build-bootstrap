@@ -38,10 +38,10 @@ pipeline {
         stage('Build projects') {
             steps {
                 script {
-                    def file =  (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.fdbp/).find() ? 'downstream.production.stages' :
-                                (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.fdb/).find() ? 'fullDownstream.stages' :
-                                (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.pr/).find() ? 'pullrequest.stages' :
-                                (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.compile/).find() ? 'compilation.stages' :
+                    def file =  isFDBP() ? 'downstream.production.stages' :
+                                isFDB() ? 'fullDownstream.stages' :
+                                isPR() ? 'pullrequest.stages' :
+                                isCompile() ? 'compilation.stages' :
                                 'upstream.stages'
                     if(fileExists("$WORKSPACE/.ci/${file}")) {
                         println "File ${file} exists, loading it."
@@ -69,15 +69,19 @@ pipeline {
             }
             steps {
                 script {
-                    def gitURL = env.ghprbAuthorRepoGitUrl ?: env.GIT_URL
-                    def project = util.getProjectGroupName(util.getProject(gitURL))[1]
-                    if(["optaplanner", "drools", "appformer", "jbpm", "drools-wb", "kie-soup", "droolsjbpm-integration", "kie-wb-common", "openshift-drools-hacep", "optaweb-employee-rostering", "optaweb-vehicle-routing"].contains(project))
-                    {
-                        dir("${env.WORKSPACE}") {
-                            maven.runMavenWithSettingsSonar("771ff52a-a8b4-40e6-9b22-d54c7314aa1e", "-nsu generate-resources -Psonarcloud-analysis -Denforcer.skip=true", "SONARCLOUD_TOKEN", "sonar_analysis.maven.log")
+                    if(isPR()) {
+                        def gitURL = env.ghprbAuthorRepoGitUrl ?: env.GIT_URL
+                        def project = util.getProjectGroupName(util.getProject(gitURL))[1]
+                        if(["optaplanner", "drools", "appformer", "jbpm", "drools-wb", "kie-soup", "droolsjbpm-integration", "kie-wb-common", "openshift-drools-hacep", "optaweb-employee-rostering", "optaweb-vehicle-routing"].contains(project))
+                        {
+                            dir("${env.WORKSPACE}") {
+                                maven.runMavenWithSettingsSonar("771ff52a-a8b4-40e6-9b22-d54c7314aa1e", "-nsu generate-resources -Psonarcloud-analysis -Denforcer.skip=true", "SONARCLOUD_TOKEN", "sonar_analysis.maven.log")
+                            }
+                        } else {
+                            println "Project ${project} shouldn't be analyzed by sonarcloud"
                         }
                     } else {
-                        println "Project ${project} shouldn't be analyzed by sonarcloud"
+                        println "[INFO] No sonar analysis execution."
                     }
                 }
             }
@@ -149,3 +153,19 @@ pipeline {
         }
     }
 }
+
+def isFDBP(){
+    return (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.fdbp/).find();
+}
+
+def isFDB(){
+    return (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.fdb/).find();
+}
+
+def isPR(){
+    return (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.pr/).find();
+}
+
+def isCompile(){
+    return (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.compile/).find();
+} 
