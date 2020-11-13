@@ -12,7 +12,6 @@
 # ./git-all.sh --repo-list=$BRANCHED_7_REVAPI_REPOSITORIES pull --rebase upstream 7.x
 # ./git-all.sh --repo-list=$REVAPI_REPOSITORIES checkout -b revapi-7.23.0.Final
 # Copy this script to root of all repositories and run it there, ./revapi-clean.sh 7.23.0.Final
-# Update <revapi.oldKieVersion> in kie-parent
 # ./mvn-all.sh --repo-list=$REVAPI_REPOSITORIES clean install -DskipTests -Dskip.npm -Dskip.yarn -Dgwt.compiler.skip
 # ./git-all.sh --repo-list=$REVAPI_REPOSITORIES add -u
 # ./git-all.sh --repo-list=$REVAPI_REPOSITORIES commit -m "BAQE-1039 - Change revapi to check against 7.23.0.Final"
@@ -42,4 +41,6 @@ else
     find . -iname "revapi-config.json" -exec perl -i -0pe 's/("ignore":.*?)\[.*\]/\1\[\]/s' {} \;
     # Secondly, change versions in the comment
     find . -iname "revapi-config.json" -exec perl -i -0pe "s/(\"Changes between).*(and the current branch.)/\1 $1 \2/s" {} \;
+    # Lastly, update "revapi.oldKieVersion" property in kie-parent pom.xml file only
+    perl -i -0pe "s/<revapi.oldKieVersion>.*<\/revapi.oldKieVersion>/<revapi.oldKieVersion>$1<\/revapi.oldKieVersion>/s" droolsjbpm-build-bootstrap/pom.xml
 fi

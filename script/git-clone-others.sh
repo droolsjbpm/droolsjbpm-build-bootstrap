@@ -89,6 +89,7 @@ done
 
 
 for repository in $REPOSITORY_LIST ; do
+    gitUrlPrefix=${droolsjbpmGitUrlPrefix}
     echo
     if [ -d $repository ] ; then
         echo "==============================================================================="
@@ -98,7 +99,6 @@ for repository in $REPOSITORY_LIST ; do
         echo "==============================================================================="
         echo "Repository: $repository"
         echo "==============================================================================="
-        gitUrlPrefix=${droolsjbpmGitUrlPrefix}
         echo -- prefix ${gitUrlPrefix} --
         echo -- repository ${repository} --
         echo -- ${gitUrlPrefix}${repository}.git -- ${repository} --
@@ -123,14 +123,13 @@ for repository in $REPOSITORY_LIST ; do
         if [ $returnCode != 0 ] ; then
             exit $returnCode
         fi
-
-        if [ "$UPSTREAM" = true ]; then
-            upstreamGitUrlPrefix=`echo ${gitUrlPrefix} | sed 's|\(.*github\.com[:/]\).*|\1kiegroup/|'`
-            echo -- adding upstream remote "${upstreamGitUrlPrefix}${repository}.git"
-            cd ${repository}
-            git remote add upstream ${upstreamGitUrlPrefix}${repository}.git
-            cd ..
-        fi
+    fi
+    if [ "$UPSTREAM" = true ]; then
+        upstreamGitUrlPrefix=`echo ${gitUrlPrefix} | sed 's|\(.*github\.com[:/]\).*|\1kiegroup/|'`
+        echo -- adding upstream remote "${upstreamGitUrlPrefix}${repository}.git"
+        cd ${repository}
+        git remote add upstream ${upstreamGitUrlPrefix}${repository}.git
+        cd ..
     fi
 done
 
