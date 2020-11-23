@@ -1,0 +1,158 @@
+@Library('jenkins-pipeline-shared-libraries')_
+
+agentLabel = "${env.ADDITIONAL_LABEL?.trim() ? ADDITIONAL_LABEL : 'kie-rhel7 && kie-mem24g'} && !master"
+additionalArtifactsToArchive = "${env.ADDITIONAL_ARTIFACTS_TO_ARCHIVE?.trim() ?: ''}"
+additionalTimeout = "${env.ADDITIONAL_TIMEOUT?.trim() ?: 1200}"
+additionalExcludedArtifacts = "${env.ADDITIONAL_EXCLUDED_ARTIFACTS?.trim() ?: ''}"
+checkstyleFile = env.CHECKSTYLE_FILE?.trim() ?: null
+findbugsFile = env.FINDBUGS_FILE?.trim() ?: null
+pr_type = env.PR_TYPE?.trim() ?: null
+
+pipeline {
+    agent {
+        label agentLabel
+    }
+    tools {
+        maven 'kie-maven-3.6.3'
+        jdk 'kie-jdk1.8'
+    }
+    options {
+        timestamps ()
+        timeout(time: additionalTimeout, unit: 'MINUTES')
+    }
+    stages {
+        stage('Initialize') {
+            steps {
+                sh 'printenv'
+            }
+        }
+        // executes a script that compresses the consoleText and attaches it to the mail
+        stage('build sh script') {
+            steps {
+                script {
+                    mailer.buildLogScriptPR()
+                }
+            }
+        }
+        stage('Build projects') {
+            steps {
+                script {
+                    def buildChainActionInfo =  
+                                isFDBP() ? [action: 'fd', file: 'downstream-production-config.yaml'] :
+                                isFDB() ? [action: 'fd', file: 'full-downstream-config.yaml'] :
+                                isPR() ? [action: 'pr', file: 'pull-request-config.yaml'] :
+                                isCompile() ? [action: 'fd', file: 'compilation-config.yaml'] :
+                                [action: 'pr', file: 'upstream-config.yaml']
+
+                    withCredentials([string(credentialsId: 'kie-ci1-token', variable: 'GITHUB_TOKEN')]) {
+                        sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/\${GROUP}/droolsjbpm-build-bootstrap/\${BRANCH}/.ci/${buildChainActionInfo.file}' build ${buildChainActionInfo.action} -url=${env.ghprbPullLink}"
+                    }
+                }
+            }
+        }
+        stage('Sonar analysis') {
+            tools {
+              jdk "kie-jdk11"
+            }
+            steps {
+                script {
+                    if(isPR()) {
+                        def gitURL = env.ghprbAuthorRepoGitUrl ?: env.GIT_URL
+                        def project = util.getProjectGroupName(util.getProject(gitURL))[1]
+                        if(["optaplanner", "drools", "appformer", "jbpm", "drools-wb", "kie-soup", "droolsjbpm-integration", "kie-wb-common", "openshift-drools-hacep", "optaweb-employee-rostering", "optaweb-vehicle-routing"].contains(project))
+                        {
+                            dir("${env.WORKSPACE}") {
+                                maven.runMavenWithSettingsSonar("771ff52a-a8b4-40e6-9b22-d54c7314aa1e", "-nsu generate-resources -Psonarcloud-analysis -Denforcer.skip=true", "SONARCLOUD_TOKEN", "sonar_analysis.maven.log")
+                            }
+                        } else {
+                            println "Project ${project} shouldn't be analyzed by sonarcloud"
+                        }
+                    } else {
+                        println "[INFO] No sonar analysis execution."
+                    }
+                }
+            }
+        }
+    }
+    post {
+        fixed {
+            script {
+                mailer.sendEmail_fixedPR(pr_type)
+            }
+        }
+        aborted {
+            script {
+                mailer.sendEmail_abortedPR(pr_type)
+            }
+        }
+        failure {
+            sh '$WORKSPACE/trace.sh'
+            script {
+                mailer.sendEmail_failedPR(pr_type)
+            }
+        }
+        unstable {
+            script {
+                mailer.sendEmail_unstablePR(pr_type)
+            }
+        }
+        always {
+            script {
+                util.printGitInformationReport()
+            }
+            echo 'Generating JUnit report...'
+            junit allowEmptyResults: true, healthScaleFactor: 1.0, testResults: '**/target/*-reports/TEST-*.xml'
+
+            echo 'Archiving logs...'
+            archiveArtifacts excludes: '**/target/checkstyle.log', artifacts: '**/*.maven.log,**/target/*.log', fingerprint: false, defaultExcludes: true, caseSensitive: true, allowEmptyArchive: true
+
+            echo 'Archiving testStatusListener and screenshots artifacts...'
+            archiveArtifacts allowEmptyArchive: true, artifacts: '**/target/testStatusListener*,**/target/screenshots/**', excludes: additionalExcludedArtifacts, fingerprint: false, defaultExcludes: true, caseSensitive: true
+
+            echo 'Archiving wars...'
+            archiveArtifacts artifacts: '**/target/business-monitoring-webapp.war,**/target/business-central*wildfly*.war,**/target/business-central*eap*.war,**/target/kie-server-*ee7.war,**/target/kie-server-*webc.war,**/target/dashbuilder-runtime.war', fingerprint: false, defaultExcludes: true, caseSensitive: true, allowEmptyArchive: true
+
+            echo 'Archiving zips...'
+            archiveArtifacts artifacts: '**/target/jbpm-server*dist*.zip', fingerprint: false, defaultExcludes: true, caseSensitive: true, allowEmptyArchive: true
+
+            script {
+                if(additionalArtifactsToArchive) {
+                    echo 'Archiving additional Artifacts ...'
+                    archiveArtifacts allowEmptyArchive: true, artifacts: additionalArtifactsToArchive, excludes: additionalExcludedArtifacts, fingerprint: false, defaultExcludes: true, caseSensitive: true
+                }
+            }
+            
+            script {
+                if(findbugsFile) {
+                    echo 'Findbugs reports ...'
+                    findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: findbugsFile, unHealthy: ''
+                }
+            }
+            script {
+                if(checkstyleFile) {
+                    echo 'Checkstyle reports ...'
+                    checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: checkstyleFile, unHealthy: ''
+                }
+            }
+        }
+        cleanup {
+            cleanWs()
+        }
+    }
+}
+
+def isFDBP(){
+    return (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.fdbp/).find();
+}
+
+def isFDB(){
+    return (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.fdb/).find();
+}
+
+def isPR(){
+    return (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.pr/).find();
+}
+
+def isCompile(){
+    return (JOB_NAME =~ /\/[a-z,A-Z\-\_0-9\.]*\.compile/).find();
+}

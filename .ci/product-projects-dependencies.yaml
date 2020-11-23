@@ -1,0 +1,26 @@
+version: "2.0"
+extends: ./project-dependencies.yaml
+dependencies:
+  - project: jboss-integration/izpack
+
+  - project: jboss-integration/installer-commons
+    dependencies:
+      - project: jboss-integration/izpack
+
+  - project: jboss-integration/rhba-boms
+    dependencies:
+        - project: kiegroup/optaplanner
+
+  - project: jboss-integration/rhba
+    dependencies:
+      - project: kiegroup/kie-wb-distributions
+      - project: kiegroup/optaweb-employee-rostering
+
+  - project: jboss-integration/rhba-installers
+    dependencies:
+      - project: jboss-integration/rhba
+      - project: jboss-integration/installer-commons
+
+  - project: jboss-integration/bxms-patch-tools
+    dependencies:
+      - project: jboss-integration/rhba

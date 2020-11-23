@@ -1,4 +1,4 @@
-version: "1.0"
+version: "2.0"
 dependencies:
   - project: kiegroup/lienzo-core
 
@@ -35,13 +35,17 @@ dependencies:
   - project: kiegroup/optaplanner
     dependencies:
       - project: kiegroup/drools
-        mapping:
-          source: 7.x
-          target: master
       - project: kiegroup/jbpm
-        mapping:
+    mapping:
+      dependencies:
+        default:
           source: 7.x
           target: master
+      source: master
+      target: 7.x
+      exclude:
+        - kiegroup/optaweb-employee-rostering  
+        - kiegroup/optaweb-vehicle-routing
 
   - project: kiegroup/kie-jpmml-integration
     dependencies:
@@ -51,9 +55,6 @@ dependencies:
   - project: kiegroup/droolsjbpm-integration
     dependencies:
       - project: kiegroup/optaplanner
-        mapping:
-          source: master
-          target: 7.x
       - project: kiegroup/kie-jpmml-integration
 
   - project: kiegroup/openshift-drools-hacep
@@ -86,9 +87,6 @@ dependencies:
       - project: kiegroup/drools-wb
       - project: kiegroup/drools
       - project: kiegroup/optaplanner
-        mapping:
-          source: master
-          target: 7.x
       - project: kiegroup/kie-soup
       - project: kiegroup/kie-wb-common
       - project: kiegroup/kie-wb-playground
@@ -114,19 +112,43 @@ dependencies:
   - project: kiegroup/optaweb-employee-rostering
     dependencies:
       - project: kiegroup/optaplanner
+    mapping:
+      dependencies:
+        default:
+          source: 7.x
+          target: master
+      source: master
+      target: 7.x
+      exclude:
+        - kiegroup/optaweb-vehicle-routing  
+        - kiegroup/optaplanner
 
   - project: kiegroup/optaweb-vehicle-routing
     dependencies:
       - project: kiegroup/optaplanner
+    mapping:
+      dependencies:
+        default:
+          source: 7.x
+          target: master
+      source: master
+      target: 7.x
+      exclude:
+        - kiegroup/optaweb-employee-rostering  
+        - kiegroup/optaplanner
 
   - project: kiegroup/kie-wb-distributions
     dependencies:
       - project: kiegroup/kie-soup
       - project: kiegroup/drools
       - project: kiegroup/optaplanner
-        mapping:
-          source: master
-          target: 7.x
       - project: kiegroup/jbpm-wb
       - project: kiegroup/appformer
-      - project: kiegroup/kie-uberfire-extensions      
+      - project: kiegroup/kie-uberfire-extensions
+
+  - project: kiegroup/droolsjbpm-tools
+    dependencies:
+      - project: kiegroup/droolsjbpm-build-bootstrap
+      - project: kiegroup/jbpm
+      - project: kiegroup/drools
+      - project: kiegroup/kie-soup
