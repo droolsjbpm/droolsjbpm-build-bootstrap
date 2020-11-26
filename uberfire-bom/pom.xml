@@ -1570,6 +1570,19 @@
         <classifier>sources</classifier>
       </dependency>
 
+      <dependency>
+        <groupId>org.dashbuilder</groupId>
+        <artifactId>dashbuilder-js</artifactId>
+        <version>${version.org.uberfire}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.dashbuilder</groupId>
+        <artifactId>dashbuilder-js</artifactId>
+        <version>${version.org.uberfire}</version>
+        <classifier>sources</classifier>
+      </dependency>
+
       <!-- Dashbuilder Backend -->
       <dependency>
         <groupId>org.dashbuilder</groupId>
