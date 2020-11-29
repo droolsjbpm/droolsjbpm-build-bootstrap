@@ -26,6 +26,7 @@ dependencies:
   - project: kiegroup/drools
     dependencies:
       - project: kiegroup/kie-soup
+      - project: kiegroup/droolsjbpm-knowledge
 
   - project: kiegroup/jbpm
     dependencies:
@@ -35,7 +36,6 @@ dependencies:
   - project: kiegroup/optaplanner
     dependencies:
       - project: kiegroup/drools
-      - project: kiegroup/jbpm
     mapping:
       dependencies:
         default:
@@ -56,6 +56,8 @@ dependencies:
     dependencies:
       - project: kiegroup/optaplanner
       - project: kiegroup/kie-jpmml-integration
+      - project: kiegroup/drools
+      - project: kiegroup/jbpm
 
   - project: kiegroup/openshift-drools-hacep
     dependencies:
@@ -67,7 +69,7 @@ dependencies:
 
   - project: kiegroup/kie-wb-playground
     dependencies:
-      - project: kiegroup/openshift-drools-hacep
+      - project: kiegroup/droolsjbpm-integration
 
   - project: kiegroup/kie-wb-common
     dependencies:
@@ -97,8 +99,8 @@ dependencies:
 
   - project: kiegroup/jbpm-work-items
     dependencies:
-      - project: kiegroup/openshift-drools-hacep
-      - project: kiegroup/kie-wb-playground
+      - project: kiegroup/jbpm
+      - project: kiegroup/droolsjbpm-integration
 
   - project: kiegroup/jbpm-wb
     dependencies:
