@@ -637,6 +637,11 @@ After testing the regenerated files, don't forget to commit them.
 For Linux/Mac, you have to compile it yourself as there are no binaries available. Follow the instructions in the README file for that.
 
 
+kiegroup project structure
+==================
+![Project hierarchy](/docs/project-dependencies-hierarchy.png)
+
+
 Team communication
 ==================
 
