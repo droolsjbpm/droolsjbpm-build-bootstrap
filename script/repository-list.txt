@@ -2,6 +2,7 @@ droolsjbpm-build-bootstrap
 kie-soup
 droolsjbpm-knowledge
 drools
+optaplanner
 lienzo-core
 lienzo-tests
 appformer
@@ -18,5 +19,7 @@ jbpm-wb
 optaplanner-wb
 kie-wb-distributions
 openshift-drools-hacep
+optaweb-employee-rostering
+optaweb-vehicle-routing
 droolsjbpm-tools
 kie-docs
