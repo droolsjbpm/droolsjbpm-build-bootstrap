@@ -71,7 +71,7 @@ pipeline {
                 script {
                     if(isPR()) {
                         def gitURL = env.ghprbAuthorRepoGitUrl ?: env.GIT_URL
-                        def project = util.getProjectGroupName(util.getProject(gitURL))[1]
+                        def project = util.getProjectTriggeringJob()[1]
                         if(["optaplanner", "drools", "appformer", "jbpm", "drools-wb", "kie-soup", "droolsjbpm-integration", "kie-wb-common", "openshift-drools-hacep", "optaweb-employee-rostering", "optaweb-vehicle-routing"].contains(project))
                         {
                             dir("${env.WORKSPACE}") {

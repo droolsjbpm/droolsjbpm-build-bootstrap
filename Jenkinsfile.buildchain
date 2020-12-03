@@ -37,15 +37,20 @@ pipeline {
         stage('Build projects') {
             steps {
                 script {
-                    def buildChainActionInfo =  
+                    def buildChainActionInfo =
                                 isFDBP() ? [action: 'fd', file: 'downstream-production-config.yaml'] :
                                 isFDB() ? [action: 'fd', file: 'full-downstream-config.yaml'] :
                                 isPR() ? [action: 'pr', file: 'pull-request-config.yaml'] :
                                 isCompile() ? [action: 'fd', file: 'compilation-config.yaml'] :
                                 [action: 'pr', file: 'upstream-config.yaml']
+                    def SETTINGS_XML_ID =
+                                isFDBP() ? '5d9884a1-178a-4d67-a3ac-9735d2df2cef' :
+                                '771ff52a-a8b4-40e6-9b22-d54c7314aa1e'
 
-                    withCredentials([string(credentialsId: 'kie-ci1-token', variable: 'GITHUB_TOKEN')]) {
-                        sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/\${GROUP}/droolsjbpm-build-bootstrap/\${BRANCH}/.ci/${buildChainActionInfo.file}' build ${buildChainActionInfo.action} -url=${env.ghprbPullLink}"
+                    configFileProvider([configFile(fileId: SETTINGS_XML_ID, variable: 'MAVEN_SETTINGS_FILE')]) {
+                        withCredentials([string(credentialsId: 'kie-ci1-token', variable: 'GITHUB_TOKEN')]) {
+                            sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/\${GROUP}/droolsjbpm-build-bootstrap/\${BRANCH}/.ci/${buildChainActionInfo.file}' build ${buildChainActionInfo.action} -url=${env.ghprbPullLink} -cct '(^mvn .*)||\$1 -s ${MAVEN_SETTINGS_FILE} -Dmaven.wagon.http.ssl.insecure=true'"
+                        }
                     }
                 }
             }
@@ -58,7 +63,7 @@ pipeline {
                 script {
                     if(isPR()) {
                         def gitURL = env.ghprbAuthorRepoGitUrl ?: env.GIT_URL
-                        def project = util.getProjectGroupName(util.getProject(gitURL))[1]
+                        def project = util.getProjectTriggeringJob()[1]
                         if(["optaplanner", "drools", "appformer", "jbpm", "drools-wb", "kie-soup", "droolsjbpm-integration", "kie-wb-common", "openshift-drools-hacep", "optaweb-employee-rostering", "optaweb-vehicle-routing"].contains(project))
                         {
                             dir("${env.WORKSPACE}") {
