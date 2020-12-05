@@ -60,31 +60,7 @@ scp -r -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $upload
 scp -r -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/optaplanner-wb-es-docs/* $optaplannerDocs/$kieVersion/optaplanner-wb-es-docs
 
 
-# make filemgmt symbolic links for optaplanner
-mkdir filemgmt_links
-cd filemgmt_links
-
-###############################################################################
-# latest optaplanner links
-###############################################################################
-touch ${kieVersion}
-ln -s ${kieVersion} latest
-
-echo "Uploading normal links..."
-rsync -e "ssh -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --protocol=28 -a latest $optaplannerDocs
-rsync -e "ssh -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --protocol=28 -a latest $optaplannerHtdocs
-
-###############################################################################
-# latestFinal optaplanner links
-###############################################################################
-if [[ "${kieVersion}" == *Final* ]]; then
-    ln -s ${kieVersion} latestFinal
-    echo "Uploading Final links..."
-    rsync -e "ssh -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --protocol=28 -a latestFinal $optaplannerDocs
-    rsync -e "ssh -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --protocol=28 -a latestFinal $optaplannerHtdocs
-fi
-
 # remove files and directories for uploading optaplanner
 rm upload_*
-rm -rf filemgmt_links
+
 
