@@ -45,11 +45,11 @@ scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir
 scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/kie-server-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
 
 # updatesite
-scp -r -i -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $1 $uploadDir/updatesite/* $droolsHtdocs/$kieVersion/org.drools.updatesite
+scp -r -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $1 $uploadDir/updatesite/* $droolsHtdocs/$kieVersion/org.drools.updatesite
 
 # docs
-scp -r -i -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $1 $uploadDir/drools-docs/* $droolsDocs/$kieVersion/drools-docs
-scp -r -i -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $1 $uploadDir/kie-api-javadoc/* $droolsDocs/$kieVersion/kie-api-javadoc
+scp -r -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $1 $uploadDir/drools-docs/* $droolsDocs/$kieVersion/drools-docs
+scp -r -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $1 $uploadDir/kie-api-javadoc/* $droolsDocs/$kieVersion/kie-api-javadoc
 
 # make filemgmt symbolic links for drools
 mkdir filemgmt_links
