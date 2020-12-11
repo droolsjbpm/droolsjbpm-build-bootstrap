@@ -10,12 +10,12 @@ kie-uberfire-extensions
 jbpm
 kie-jpmml-integration
 droolsjbpm-integration
-kie-wb-playground
 kie-wb-common
 drools-wb
 jbpm-designer
 jbpm-work-items
 jbpm-wb
+kie-wb-playground
 optaplanner-wb
 kie-wb-distributions
 openshift-drools-hacep
