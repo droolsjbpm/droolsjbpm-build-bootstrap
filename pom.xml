@@ -5369,7 +5369,6 @@
         <groupId>org.kie</groupId>
         <artifactId>kie-pmml-dependencies</artifactId>
         <version>${version.org.kie}</version>
-        <type>pom</type>
       </dependency>
 
       <dependency>
