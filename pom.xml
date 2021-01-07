@@ -308,7 +308,6 @@
     <version.com.google.testing.compile>0.11</version.com.google.testing.compile>
     <version.jakarta-regexp>1.4</version.jakarta-regexp>
     <version.jakarta.json.bind>1.0.2</version.jakarta.json.bind>
-    <version.link.bek.tools.issue-keeper-junit>4.11.1</version.link.bek.tools.issue-keeper-junit>
     <version.org.antlr4>4.8</version.org.antlr4>
     <version.org.apache.cxf>3.2.14</version.org.apache.cxf>
     <version.org.apache.camel>2.24.0</version.org.apache.camel>
@@ -4623,12 +4622,6 @@
         <groupId>javax.xml.stream</groupId>
         <artifactId>stax-api</artifactId>
         <version>${version.javax.xml.stream.stax}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>link.bek.tools</groupId>
-        <artifactId>issue-keeper-junit</artifactId>
-        <version>${version.link.bek.tools.issue-keeper-junit}</version>
       </dependency>
 
       <!-- dependency of org.apache.lucene:lucene-sandbox -->
