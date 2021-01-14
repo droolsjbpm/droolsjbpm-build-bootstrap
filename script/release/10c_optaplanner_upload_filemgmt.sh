@@ -61,6 +61,6 @@ scp -r -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $upload
 
 
 # remove files and directories for uploading optaplanner
-rm upload_*
+rm -rf upload_*
 
 
