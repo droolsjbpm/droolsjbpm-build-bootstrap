@@ -13,8 +13,7 @@ pipeline {
         label agentLabel
     }
     tools {
-        maven 'kie-maven-3.6.3'
-        jdk 'kie-jdk1.8'
+        nodejs 'nodejs-12.16.3'
     }
     options {
         timestamps ()
