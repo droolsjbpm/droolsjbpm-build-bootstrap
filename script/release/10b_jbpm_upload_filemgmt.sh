@@ -15,12 +15,6 @@ chmod +x upload_version
 sftp -i $1 -b upload_version $jbpmDocs
 sftp -i $1 -b upload_version $jbpmHtdocs
 
-#creates directory updatesite for jbpm on filemgmt.jboss.org
-touch upload_jbpm
-echo "mkdir updatesite" > upload_jbpm
-chmod +x upload_jbpm
-sftp -i $1 -b upload_jbpm $jbpmHtdocs/$kieVersion
-
 # creates a directory service-repository for jbpm on filemgmt.jboss.org
 touch upload_service_repository
 echo "mkdir service-repository" > upload_service_repository
@@ -58,9 +52,6 @@ if [[ $kieVersion == *"Final"* ]] ;then
 else
         uploadInstaller
 fi
-
-# updatesite
-scp -r -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/updatesite/* $jbpmHtdocs/$kieVersion/updatesite
 
 # docs
 scp -r -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/jbpm-docs/* $jbpmDocs/$kieVersion/jbpm-docs

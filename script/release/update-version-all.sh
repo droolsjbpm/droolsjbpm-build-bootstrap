@@ -197,31 +197,6 @@ for repository in `cat ${scriptDir}/../repository-list.txt` ; do
             returnCode=$?
             sed -i "s/release.version=.*$/release.version=$newVersion/" jbpm-installer/src/main/resources/build.properties
 
-        elif [ "$repository" == "droolsjbpm-tools" ]; then
-            cd drools-eclipse
-            mvn -B -s $settingsXmlFile -Dfull tycho-versions:set-version -DnewVersion=$newVersion
-            returnCode=$?
-            # replace the leftovers not covered by the tycho plugin (bug?)
-            # SNAPSHOT and release versions need to be handled differently
-            versionToUse=$newVersion
-            if [[ $newVersion == *-SNAPSHOT ]]; then
-                versionToUse=`sed "s/-SNAPSHOT/.qualifier/" <<< $newVersion`
-            fi
-            sed -i "s/source_[^\"]*/source_$versionToUse/" org.drools.updatesite/category.xml
-            sed -i "s/version=\"[^\"]*\">/version=\"$versionToUse\">/" org.drools.updatesite/category.xml
-            cd ..
-            if [ $returnCode == 0 ]; then
-                mvn -B -N -s $settingsXmlFile clean install
-                mvnVersionsUpdateParent
-                # workaround for http://jira.codehaus.org/browse/MVERSIONS-161
-                mvn -B -N -s $settingsXmlFile clean install -DskipTests
-                cd drools-eclipse
-                mvnVersionsUpdateParent
-                cd ..
-                mvnVersionsUpdateChildModules
-                returnCode=$?
-            fi
-
         else
             mvnVersionsUpdateParentAndChildModules
             returnCode=$?

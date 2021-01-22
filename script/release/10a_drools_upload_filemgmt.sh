@@ -15,12 +15,6 @@ chmod +x upload_version
 sftp -i $1 -b upload_version $droolsDocs
 sftp -i $1 -b upload_version $droolsHtdocs
 
-#creates directories for updatesite for drools and jbpm on filemgmt.jboss.org
-touch upload_drools
-echo "mkdir org.drools.updatesite" > upload_drools
-chmod +x upload_drools
-sftp -i $1 -b upload_drools $droolsHtdocs/$kieVersion
-
 #creates directoy kie-api-javadoc for drools on filemgmt.jboss.org
 touch upload_kie_api_javadoc
 echo "mkdir kie-api-javadoc" > upload_kie_api_javadoc
@@ -43,9 +37,6 @@ scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir
 scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/droolsjbpm-tools-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
 scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/business-central-$kieVersion-*.war $droolsHtdocs/$kieVersion
 scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/kie-server-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
-
-# updatesite
-scp -r -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $1 $uploadDir/updatesite/* $droolsHtdocs/$kieVersion/org.drools.updatesite
 
 # docs
 scp -r -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $1 $uploadDir/drools-docs/* $droolsDocs/$kieVersion/drools-docs

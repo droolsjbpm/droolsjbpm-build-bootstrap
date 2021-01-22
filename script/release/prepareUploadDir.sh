@@ -8,12 +8,6 @@ deployDir=../community-deploy-dir
 mkdir ${kieVersion}_uploadBinaries
 cd ${kieVersion}_uploadBinaries
 
-# updatesite
-mkdir updatesite
-cp  $deployDir/org/drools/org.drools.updatesite/$kieVersion/org.drools.updatesite-$kieVersion.zip updatesite/
-unzip updatesite/org.drools.updatesite-$kieVersion.zip -d updatesite/
-rm updatesite/org.drools.updatesite-$kieVersion.zip
-
 # docs
 mkdir drools-docs
 cp  $deployDir/org/drools/drools-docs/$kieVersion/drools-docs-$kieVersion.zip drools-docs/
