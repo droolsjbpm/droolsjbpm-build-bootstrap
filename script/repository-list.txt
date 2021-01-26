@@ -21,5 +21,4 @@ kie-wb-distributions
 openshift-drools-hacep
 optaweb-employee-rostering
 optaweb-vehicle-routing
-droolsjbpm-tools
 kie-docs
