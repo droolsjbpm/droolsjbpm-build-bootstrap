@@ -34,7 +34,6 @@ sftp -i $1 -b upload_drools_docs $droolsDocs/$kieVersion/
 # bins
 scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/drools-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
 scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/droolsjbpm-integration-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
-scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/droolsjbpm-tools-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
 scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/business-central-$kieVersion-*.war $droolsHtdocs/$kieVersion
 scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/kie-server-distribution-$kieVersion.zip $droolsHtdocs/$kieVersion
 
