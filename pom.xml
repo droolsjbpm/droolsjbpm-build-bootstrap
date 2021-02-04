@@ -54,7 +54,6 @@
       - Version properties must be sorted alphabetically (other form of sorting were found to be unclear and ambiguous).
     -->
     <version.aopalliance>1.0</version.aopalliance>
-    <version.asm>3.3.1</version.asm>
     <version.ch.qos.cal10n>0.8.1</version.ch.qos.cal10n>
     <version.ch.qos.logback>1.2.3</version.ch.qos.logback>
     <version.commons-beanutils>1.9.4</version.commons-beanutils>
@@ -77,14 +76,14 @@
     <version.com.fasterxml.jackson>2.10.4</version.com.fasterxml.jackson>
     <version.com.fasterxml.jackson.databind>2.10.4</version.com.fasterxml.jackson.databind>
     <version.com.fasterxml.jackson.annotations>2.9.10</version.com.fasterxml.jackson.annotations>
-    <version.com.google.code.gson>2.8.2</version.com.google.code.gson>
+    <version.com.google.code.gson>2.8.6</version.com.google.code.gson>
     <version.com.google.guava>25.0-jre</version.com.google.guava>
     <version.com.google.inject.guice>4.0</version.com.google.inject.guice>
-    <version.com.google.gwt>2.8.2</version.com.google.gwt>
+    <version.com.google.gwt>2.9.0</version.com.google.gwt>
     <version.org.google.gwt-charts>0.9.9</version.org.google.gwt-charts>
     <version.com.google.gwt.gwtmockito>1.1.9</version.com.google.gwt.gwtmockito>
-    <version.com.google.jsinterop.base>1.0.0-RC1</version.com.google.jsinterop.base>
-    <version.com.google.jsinterop.annotations>1.0.2</version.com.google.jsinterop.annotations>
+    <version.com.google.jsinterop.base>1.0.0</version.com.google.jsinterop.base>
+    <version.com.google.jsinterop.annotations>2.0.0</version.com.google.jsinterop.annotations>
     <version.com.google.protobuf>3.6.1</version.com.google.protobuf>
     <version.com.h2database>1.3.173</version.com.h2database>
     <version.com.jcraft>0.1.54</version.com.jcraft>
@@ -106,6 +105,7 @@
     <version.javax.inject>1</version.javax.inject>
     <version.javax.mail>1.4.5</version.javax.mail>
     <version.javax.persistence-api>2.2</version.javax.persistence-api>
+    <version.javax.xml.bind.jaxb-api>2.3.0</version.javax.xml.bind.jaxb-api>
     <version.jaxen>1.1.6</version.jaxen>
     <version.jivesoftware.smack>3.1.0</version.jivesoftware.smack>
     <version.joda-time>2.9.7</version.joda-time>
@@ -149,7 +149,7 @@
     <version.org.apache.maven.wagon>3.0.0</version.org.apache.maven.wagon>
     <version.org.apache.neethi>3.1.1</version.org.apache.neethi>
     <version.org.apache.poi>4.1.2</version.org.apache.poi>
-    <version.org.apache.sshd>1.6.0</version.org.apache.sshd>
+    <version.org.apache.sshd>2.0.0</version.org.apache.sshd>
     <version.org.apache.tomcat>6.0.32</version.org.apache.tomcat>
     <version.org.apache.velocity>1.7</version.org.apache.velocity>
     <version.org.apache.xmlbeans>3.1.0</version.org.apache.xmlbeans>
@@ -173,9 +173,9 @@
     <version.org.eclipse.aether>1.1.0</version.org.eclipse.aether>
     <version.org.eclipse.emf>2.6.0.v20100614-1136</version.org.eclipse.emf>
     <version.org.eclipse.emf.ecore.xmi>2.5.0.v20100521-1846</version.org.eclipse.emf.ecore.xmi>
-    <version.org.eclipse.jdt>3.19.0</version.org.eclipse.jdt>
+    <version.org.eclipse.jdt>3.18.0</version.org.eclipse.jdt>
     <version.org.eclipse.jetty>9.2.14.v20151106</version.org.eclipse.jetty>
-    <version.org.eclipse.jgit>5.0.2.201807311906-r</version.org.eclipse.jgit>
+    <version.org.eclipse.jgit>5.8.0.202006091008-r</version.org.eclipse.jgit>
     <version.org.eclipse.microprofile.openapi>1.1.2</version.org.eclipse.microprofile.openapi>
     <version.org.eclipse.persistence>2.7.6</version.org.eclipse.persistence>
     <version.org.eclipse.sisu>0.3.2</version.org.eclipse.sisu>
@@ -243,9 +243,9 @@
     <version.org.ocpsoft.prettytime>3.0.2.Final</version.org.ocpsoft.prettytime>
     <!--EAP 6.4 use 4.2.0.redhat-8 which is not OSGi compatible, so stay on 4.3.1-->
     <version.org.osgi>4.3.1</version.org.osgi>
-    <version.org.ops4j.pax.exam>4.11.0</version.org.ops4j.pax.exam>
+    <version.org.ops4j.pax.exam>4.13.4</version.org.ops4j.pax.exam>
     <version.org.owasp.encoder>1.2</version.org.owasp.encoder>
-    <version.org.powermock>1.7.4</version.org.powermock>
+    <version.org.powermock>2.0.7</version.org.powermock>
     <version.org.python>2.5.3</version.org.python>
     <version.org.quartz-scheduler>2.3.2</version.org.quartz-scheduler>
     <version.org.reflections>0.9.11</version.org.reflections>
@@ -318,8 +318,8 @@
     <version.org.jboss.arquillian.extension.drone>2.5.1</version.org.jboss.arquillian.extension.drone>
     <version.org.jboss.arquillian.graphene>2.3.2</version.org.jboss.arquillian.graphene>
     <version.com.google.guava.for-selenium>23.0</version.com.google.guava.for-selenium>
-    <version.com.google.elemental2>1.0.0-RC1</version.com.google.elemental2>
-    <version.org.jboss.errai>4.10.0.Final</version.org.jboss.errai>
+    <version.org.jboss.errai>4.11.0.Final</version.org.jboss.errai>
+    <version.com.google.elemental2>1.1.0</version.com.google.elemental2>
     <!-- WildFly version used together with  the GWT's Super Dev Mode -->
     <version.org.jboss.errai.wildfly>19.1.0.SP1</version.org.jboss.errai.wildfly>
     <!-- Required by jboss-remoting version above -->
@@ -331,7 +331,7 @@
     <version.io.swagger>1.5.20</version.io.swagger>
     <version.io.swagger.core.v3>2.0.6</version.io.swagger.core.v3>
     <version.io.swagger.swagger-parser>1.0.36</version.io.swagger.swagger-parser>
-    <version.org.jboss.byteman>3.0.1</version.org.jboss.byteman>
+    <version.org.jboss.byteman>4.0.13</version.org.jboss.byteman>
     <version.org.roboguice>3.0.1</version.org.roboguice>
     <version.org.robolectric>3.1.2</version.org.robolectric>
     <version.org.xmlunit>2.6.3</version.org.xmlunit>
@@ -359,7 +359,7 @@
     <!-- CSS parsing library from Apache used by Stunner. -->
     <version.net.sourceforge.cssparser>0.9.21</version.net.sourceforge.cssparser>
     <version.org.w3c.css.sac>1.3</version.org.w3c.css.sac>
-    <version.org.mockito>1.10.19</version.org.mockito>
+    <version.org.mockito>3.6.0</version.org.mockito>
     <!-- Version of JMH -->
     <version.org.openjdk.jmh>1.21</version.org.openjdk.jmh>
 
@@ -615,7 +615,7 @@
             <dependency>
               <groupId>org.ow2.asm</groupId>
               <artifactId>asm-analysis</artifactId>
-              <version>6.2.1</version>
+              <version>${version.org.ow2.asm}</version>
             </dependency>
             <dependency>
               <groupId>de.is24.maven.enforcer.rules</groupId>
@@ -1400,7 +1400,6 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
-          <version>3.0.0</version>
         </plugin>
         <!--Fix translations from Zanata -->
         <plugin>
@@ -2171,13 +2170,6 @@
         <version>${version.aopalliance}</version>
       </dependency>
 
-      <!-- Starting from asm 4.0 the groupId will need change to org.ow2.asm -->
-      <dependency>
-        <groupId>asm</groupId>
-        <artifactId>asm</artifactId>
-        <version>${version.asm}</version>
-      </dependency>
-
       <!-- Required by Thorntail -->
       <dependency>
         <groupId>org.ow2.asm</groupId>
@@ -2601,6 +2593,11 @@
         <groupId>org.jboss.spec.javax.xml.bind</groupId>
         <artifactId>jboss-jaxb-api_2.3_spec</artifactId>
         <version>${version.org.jboss.spec.javax.xml.bind.jboss-jaxb-api_2.3_spec}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>${version.javax.xml.bind.jaxb-api}</version>
       </dependency>
 
       <dependency>
@@ -3587,6 +3584,11 @@
         <version>${version.org.eclipse.jgit}</version>
       </dependency>
       <dependency>
+        <groupId>org.eclipse.jgit</groupId>
+        <artifactId>org.eclipse.jgit.ssh.jsch</artifactId>
+        <version>${version.org.eclipse.jgit}</version>
+      </dependency>
+      <dependency>
         <groupId>org.eclipse.microprofile.openapi</groupId>
         <artifactId>microprofile-openapi-api</artifactId>
         <version>${version.org.eclipse.microprofile.openapi}</version>
@@ -4082,6 +4084,12 @@
         <artifactId>mockito-core</artifactId>
         <version>${version.org.mockito}</version>
       </dependency>
+	  
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-inline</artifactId>
+        <version>${version.org.mockito}</version>
+      </dependency>
 
       <dependency>
         <groupId>org.mvel</groupId>
@@ -4112,7 +4120,7 @@
 
       <dependency>
         <groupId>org.powermock</groupId>
-        <artifactId>powermock-api-mockito</artifactId>
+        <artifactId>powermock-api-mockito2</artifactId>
         <version>${version.org.powermock}</version>
         <exclusions>
           <!-- mockito-all is ugly uberjar. Users of powermock need to depend on on mockito-core explicitly.
@@ -5355,7 +5363,7 @@
         <scope>test</scope>
       </dependency>
       
-      <!-- Used by jbpm-workitems-rest -->
+      <!-- Used by jgit -->
       <dependency>
         <groupId>org.bouncycastle</groupId>
         <artifactId>bcprov-jdk15on</artifactId>
@@ -5365,6 +5373,12 @@
       <dependency>
         <groupId>org.bouncycastle</groupId>
         <artifactId>bcpkix-jdk15on</artifactId>
+        <version>${version.org.bouncycastle}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcpg-jdk15on</artifactId>
         <version>${version.org.bouncycastle}</version>
         <scope>test</scope>
       </dependency>
