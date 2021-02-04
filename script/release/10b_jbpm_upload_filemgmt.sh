@@ -34,24 +34,9 @@ scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir
 scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/jbpm-$kieVersion-examples.zip $jbpmHtdocs/$kieVersion
 scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/jbpm-server-$kieVersion-dist.zip $jbpmHtdocs/$kieVersion
 
-# uploads jbpm -installers them to filemgt.jboss.org
-uploadInstaller(){
-        # upload installers to filemgmt.jboss.org
-        scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null jbpm-installer-$kieVersion.zip $jbpmHtdocs/$kieVersion
-}
-
-uploadAllInstaller(){
-        # upload installers to filemgmt.jboss.org
-        scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null jbpm-installer-$kieVersion.zip $jbpmHtdocs/$kieVersion
-        # upload installers to filemgmt.jboss.org
-        scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null jbpm-installer-full-$kieVersion.zip $jbpmHtdocs/$kieVersion
-}
-
-if [[ $kieVersion == *"Final"* ]] ;then
-        uploadAllInstaller
-else
-        uploadInstaller
-fi
+# uploads jbpm -installers to filemgt.jboss.org
+scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null jbpm-installer-$kieVersion.zip $jbpmHtdocs/$kieVersion
+scp -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null jbpm-installer-full-$kieVersion.zip $jbpmHtdocs/$kieVersion
 
 # docs
 scp -r -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $uploadDir/jbpm-docs/* $jbpmDocs/$kieVersion/jbpm-docs
@@ -81,6 +66,7 @@ if [[ "${kieVersion}" == *Final* ]]; then
     rsync -e "ssh -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --protocol=28 -a latestFinal $jbpmHtdocs
 fi
 
-# remove files and directories for uploading drools
+# remove files and directories for uploading jbpm
+cd ..
 rm -rf upload_*
 rm -rf filemgmt_links

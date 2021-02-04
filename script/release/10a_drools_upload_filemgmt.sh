@@ -66,5 +66,6 @@ if [[ "${kieVersion}" == *Final* ]]; then
 fi
 
 # remove files and directories for uploading drools
+cd ..
 rm -rf upload_*
 rm -rf filemgmt_links
