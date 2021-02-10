@@ -246,6 +246,17 @@
       </dependency>
       <dependency>
         <groupId>org.kie.soup</groupId>
+        <artifactId>kie-soup-dataset-prometheus</artifactId>
+        <version>${project.version}</version>
+        <classifier>sources</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.kie.soup</groupId>
+        <artifactId>kie-soup-dataset-prometheus</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie.soup</groupId>
         <artifactId>kie-soup-security-utils</artifactId>
         <version>${project.version}</version>
       </dependency>
