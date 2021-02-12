@@ -1,0 +1,259 @@
+import org.jenkinsci.plugins.workflow.libs.Library
+@Library('jenkins-pipeline-shared-libraries')_
+
+import org.kie.jenkins.MavenCommand
+
+repos = []
+masterRepos = []
+branched7xRepos = []
+revapiProperties = [:]
+
+pipeline {
+    agent {
+        label 'kie-rhel7'
+    }
+
+    tools {
+        maven 'kie-maven-3.6.3'
+        jdk 'kie-jdk1.8'
+    }
+
+    options {
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
+        timeout(time: 360, unit: 'MINUTES')
+    }
+
+    parameters {
+        string(name: 'DISPLAY_NAME', defaultValue: '', description: 'Setup a specific build display name')
+
+        // Git information
+        string(name: 'BUILD_BRANCH_NAME', defaultValue: 'master', description: 'Which branch to build? Set if you are not on a multibranch pipeline.')
+        string(name: 'GIT_AUTHOR', defaultValue: 'kiegroup', description: 'Which Git author repository ?')
+        // Revapi branch name
+        string(name: 'REVAPI_RELEASE_VERSION', defaultValue: '', description: 'Revapi release version to check against. E.g. 7.49.0.Final')
+
+        // Create and merge PRs?
+        booleanParam(name: 'CREATE_PRS', defaultValue: true, description: 'Raise PRs automatically')
+        booleanParam(name: 'MERGE_PRS', defaultValue: false, description: 'Merge PRs automatically')
+
+        // Build&test information
+        string(name: 'MAVEN_SETTINGS_CONFIG_FILE_ID', defaultValue: 'kogito_release_settings', description: 'Maven settings configfile to use in pipeline for Maven commands')
+        booleanParam(name: 'SKIP_MAVEN_BUILD', defaultValue: false, description: 'Skip maven build validation')
+
+        // Revapi repos
+        string(name: 'MASTER_REVAPI_REPOSITORIES', defaultValue: 'droolsjbpm-build-bootstrap,appformer,droolsjbpm-knowledge,drools,jbpm,droolsjbpm-integration', description: 'Master Revapi repositories')
+        string(name: 'BRANCHED_7_REVAPI_REPOSITORIES', defaultValue: 'optaplanner', description: 'Master Revapi repository for optaplanner')
+    }
+
+    environment {
+        MAVEN_OPTS = '-Xms1024m -Xmx4g'
+
+        BOT_BRANCH_HASH = "${util.generateHash(10)}"
+    }
+
+    stages {
+        stage('Initialize') {
+            steps {
+                script {
+                    cleanWs()
+
+                    if (params.DISPLAY_NAME != '') {
+                        currentBuild.displayName = params.DISPLAY_NAME
+                    }
+
+                    assert getProjectName() != ''
+                    assert getRevapiReleaseVersion() != ''
+                    assert getBranched7RevapiRepos() != ''
+                    assert getMasterRevapiRepos() != ''
+
+                    setRevapiRepos()
+                    checkoutRepo(masterRepos, "master")
+                    checkoutRepo(branched7xRepos, "7.x")
+                }
+            }
+            post {
+                success {
+                    script {
+                        setRevapiPropertyIfNeeded('git.branch', getBuildBranch())
+                        setRevapiPropertyIfNeeded('git.author', getGitAuthor())
+                        setRevapiPropertyIfNeeded('project.version', getRevapiProjectName())
+                    }
+                }
+            }
+        }
+        stage('Prepare for PR'){
+            when {
+                expression { return isCreatePRs() }
+            }
+            steps {
+                prepareForPR()
+            }
+        }
+        stage('Execute Revapi clean-up'){
+            steps {
+                script {
+                    // Execute revapi-clean script and build projects
+                    executeRevapiClean()
+                }
+            }
+        }
+        stage('Build & Test') {
+            when {
+                expression { return !isSkipMavenBuild() }
+            }
+            steps {
+                script {
+                    executeMavenBuild()
+                }
+            }
+        }
+        stage('Create PRs') {
+            when {
+                expression { return isCreatePRs() }
+            }
+            steps {
+                script {
+                    commitAndCreatePR()
+                }
+            }
+        }
+        stage('Merge PR'){
+            when {
+                expression { return isCreatePRs() && isMergePRs() }
+            }
+            steps {
+                mergePR()
+            }
+        }
+    }
+    post {
+        always {
+            script {
+                def propertiesStr = revapiProperties.collect{ entry ->  "${entry.key}=${entry.value}" }.join("\n")
+                writeFile(text: propertiesStr, file: 'revapi-prs.properties')
+                archiveArtifacts(artifacts: 'revapi-prs.properties')
+            }
+            cleanWs()
+        }
+    }
+}
+
+boolean isCreatePRs() {
+    return params.CREATE_PRS
+}
+
+boolean isMergePRs() {
+    return params.MERGE_PRS
+}
+
+boolean isSkipMavenBuild() {
+    return params.SKIP_MAVEN_BUILD
+}
+
+String getGitAuthor(){
+    return params.GIT_AUTHOR
+}
+
+String getBuildBranch(){
+    return params.BUILD_BRANCH_NAME
+}
+
+static String getProjectName(){
+    return "revapi"
+}
+
+String getRevapiBranch(){
+    return "${getRevapiProjectName()}-${env.BOT_BRANCH_HASH}-jenkins"
+}
+
+String getRevapiProjectName() {
+    return "${getProjectName()}-${getRevapiReleaseVersion()}"
+}
+
+String getRevapiReleaseVersion() {
+    return params.REVAPI_RELEASE_VERSION
+}
+
+void setRevapiPropertyIfNeeded(String key, def value){
+    if (value != null && value != ''){
+        revapiProperties[key] = value
+    }
+}
+
+MavenCommand getMavenCommand(String repo){
+    return new MavenCommand(this, ['-fae'])
+                .withSettingsXmlId(params.MAVEN_SETTINGS_CONFIG_FILE_ID)
+                .inDirectory(repo)
+                .withProperty('skip.npm')
+                .withProperty('skip.yarn')
+                .withProperty('gwt.compiler.skip')
+}
+
+void setRevapiRepos(){
+    masterRepos = getMasterRevapiRepos().split(",")
+    branched7xRepos = getBranched7RevapiRepos().split(",")
+    repos = masterRepos
+    repos += branched7xRepos
+}
+
+String getMasterRevapiRepos(){
+    return params.MASTER_REVAPI_REPOSITORIES
+}
+
+String getBranched7RevapiRepos(){
+    return params.BRANCHED_7_REVAPI_REPOSITORIES
+}
+
+void executeRevapiClean() {
+
+    dir("${env.WORKSPACE}/droolsjbpm-build-bootstrap/script/utils") {
+        sh(returnStdout: true, script: "cp revapi-clean.sh ${env.WORKSPACE}")
+    }
+
+    dir("${env.WORKSPACE}") {
+        sh './revapi-clean.sh ' + getRevapiProjectName()
+    }
+}
+
+void executeMavenBuild() {
+    repos.each {
+        getMavenCommand(it).skipTests(true).run('clean install')
+    }
+}
+
+void checkoutRepo(repos, String branch) {
+    repos.each {
+        dir(it) {
+            deleteDir()
+            checkout(githubscm.resolveRepository(it, getGitAuthor(), branch, false))
+        }
+    }
+}
+
+void prepareForPR() {
+    repos.each {
+        dir(it) {
+            githubscm.createBranch(getRevapiBranch())
+        }
+    }
+}
+
+void commitAndCreatePR() {
+
+    repos.each {
+        dir(it) {
+            def commitMsg = "Revapi clean up process for " + getRevapiReleaseVersion() + " release"
+            def prBody = "Generated by build ${BUILD_TAG}: ${BUILD_URL}"
+
+            githubscm.commitChanges(commitMsg)
+            githubscm.pushObject('origin', getRevapiBranch(), getGitAuthor())
+            revapiProperties["${it}.pr.link"] = githubscm.createPR(commitMsg, prBody, getBuildBranch(), getGitAuthor())
+        }
+    }
+}
+
+void mergePR() {
+    repos.each {
+        githubscm.mergePR(revapiProperties."${it}.pr.link", getGitAuthor())
+    }
+}
