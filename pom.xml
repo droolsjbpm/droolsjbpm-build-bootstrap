@@ -442,7 +442,13 @@
     </jboss.releases.repo.url>
     <jboss.snapshots.repo.url>https://repository.jboss.org/nexus/content/repositories/snapshots/
     </jboss.snapshots.repo.url>
-
+    
+    <version.server.bom>7.3.4.GA</version.server.bom>
+    <version.microprofile.bom>2.0.0.GA</version.microprofile.bom>
+    <version.server.bootable-jar>2.0.0.GA-redhat-00002</version.server.bootable-jar>
+    <version.wildfly-jar.maven.plugin>2.0.2.Final-redhat-00001</version.wildfly-jar.maven.plugin>
+    <version.jkube.maven.plugin>1.0.1</version.jkube.maven.plugin>
+    <jkube.generator.from>registry.redhat.io/ubi8/openjdk-11:latest</jkube.generator.from>
 
     <!-- Latest release to be used by api-compatibility-check to check backwards compatibility of the Kie API. -->
     <revapi.oldKieVersion>7.52.0.Final</revapi.oldKieVersion>
