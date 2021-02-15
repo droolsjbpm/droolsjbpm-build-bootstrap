@@ -39,7 +39,7 @@ pipeline {
                     def pipelineHelper = new PipelineHelper(this)
                     pipelineHelper.retry(
                     {
-                        def SETTINGS_XML_ID = "5d9884a1-178a-4d67-a3ac-9735d2df2cef"
+                        def SETTINGS_XML_ID = "rhba-prod-master"
 
                         // This is the map project, variable to store the version from this project
                         def repositoryListPath = "./script/repository-list.txt"
