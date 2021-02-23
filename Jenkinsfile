@@ -148,7 +148,9 @@ pipeline {
             }
         }
         cleanup {
-            cleanWs()
+            script {
+                util.cleanNode()
+            }
         }
     }
 }
