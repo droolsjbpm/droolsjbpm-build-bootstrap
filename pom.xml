@@ -3908,6 +3908,12 @@
         <artifactId>tjws</artifactId>
         <version>${version.org.jboss.resteasy}</version>
       </dependency>
+      <dependency>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-undertow</artifactId>
+        <version>${version.org.jboss.resteasy}</version>
+      </dependency>
+
 
       <dependency>
         <groupId>org.jboss.remoting</groupId>
