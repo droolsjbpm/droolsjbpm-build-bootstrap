@@ -33,6 +33,13 @@ pipeline {
                 }
             }
         }
+        stage('check space before build') {
+            steps {
+                script{
+                    util.spaceLeft()
+                }
+            }
+        }
         stage('Build projects') {
             steps {
                 script {
@@ -79,6 +86,13 @@ pipeline {
                     } else {
                         println "[INFO] No sonar analysis execution."
                     }
+                }
+            }
+        }
+        stage('check space after build') {
+            steps {
+                script{
+                    util.spaceLeft()
                 }
             }
         }
