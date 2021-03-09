@@ -97,7 +97,7 @@
     <version.de.benediktmeurer.gwt-slf4j>0.0.2</version.de.benediktmeurer.gwt-slf4j>
     <version.org.dom4j>2.1.3</version.org.dom4j>
     <version.io.springfox>2.9.2</version.io.springfox>
-    <version.io.smallrye.openapi.core>2.0.10</version.io.smallrye.openapi.core>
+    <version.io.smallrye.openapi.core>2.0.22</version.io.smallrye.openapi.core>
     <version.io.takari.maven.plugins.testing>2.9.2</version.io.takari.maven.plugins.testing>
     <version.io.undertow>2.0.28.Final</version.io.undertow>
     <version.javax.activation>1.1.1</version.javax.activation>
@@ -1565,6 +1565,11 @@
               </pluginExecutions>
             </lifecycleMappingMetadata>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>io.smallrye</groupId>
+          <artifactId>smallrye-open-api-maven-plugin</artifactId>
+          <version>${version.io.smallrye.openapi.core}</version>
         </plugin>
         <plugin>
           <groupId>io.thorntail</groupId>
