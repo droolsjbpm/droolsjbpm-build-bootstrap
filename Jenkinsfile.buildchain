@@ -55,7 +55,7 @@ pipeline {
 
                     configFileProvider([configFile(fileId: SETTINGS_XML_ID, variable: 'MAVEN_SETTINGS_FILE')]) {
                         withCredentials([string(credentialsId: 'kie-ci1-token', variable: 'GITHUB_TOKEN')]) {
-                            sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/\${GROUP}/droolsjbpm-build-bootstrap/\${BRANCH}/.ci/${buildChainActionInfo.file}' build ${buildChainActionInfo.action} -url=${env.ghprbPullLink} --skipParallelCheckout -cct '(^mvn .*)||\$1 -s ${MAVEN_SETTINGS_FILE} -Dmaven.wagon.http.ssl.insecure=true'"
+                            sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/\${GROUP}/droolsjbpm-build-bootstrap/\${BRANCH}/.ci/${buildChainActionInfo.file}' -folder='bc' build ${buildChainActionInfo.action} -url=${env.ghprbPullLink} --skipParallelCheckout -cct '(^mvn .*)||\$1 -s ${MAVEN_SETTINGS_FILE} -Dmaven.wagon.http.ssl.insecure=true'"
                         }
                     }
                 }
@@ -72,12 +72,7 @@ pipeline {
                         def project = util.getProjectTriggeringJob()[1]
                         if(["optaplanner", "drools", "appformer", "jbpm", "drools-wb", "kie-soup", "droolsjbpm-integration", "kie-wb-common", "openshift-drools-hacep", "optaweb-employee-rostering", "optaweb-vehicle-routing"].contains(project))
                         {
-                            dir("sonar-cloud-build") {
-                                def changeAuthor = env.CHANGE_AUTHOR ?: env.ghprbPullAuthorLogin
-                                def changeBranch = env.CHANGE_BRANCH ?: env.ghprbSourceBranch
-                                def changeTarget = env.CHANGE_TARGET ?: env.ghprbTargetBranch
-    
-                                githubscm.checkoutIfExists(project, "${changeAuthor}", "${changeBranch}", 'kiegroup', "${changeTarget}")
+                            dir("bc/kiegroup_${project}") {
                                 maven.runMavenWithSettingsSonar("771ff52a-a8b4-40e6-9b22-d54c7314aa1e", "-nsu generate-resources -Psonarcloud-analysis -Denforcer.skip=true", "SONARCLOUD_TOKEN", "sonar_analysis.maven.log")
                             }
                         } else {
