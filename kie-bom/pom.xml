@@ -2476,19 +2476,6 @@
       <!-- Stunner - Kogito-->
       <dependency>
         <groupId>org.kie.workbench.stunner</groupId>
-        <artifactId>kie-wb-common-stunner-kogito-api</artifactId>
-        <version>${version.org.kie}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.kie.workbench.stunner</groupId>
-        <artifactId>kie-wb-common-stunner-kogito-api</artifactId>
-        <version>${version.org.kie}</version>
-        <classifier>sources</classifier>
-      </dependency>
-
-      <dependency>
-        <groupId>org.kie.workbench.stunner</groupId>
         <artifactId>kie-wb-common-stunner-kogito-client</artifactId>
         <version>${version.org.kie}</version>
       </dependency>
@@ -2505,19 +2492,6 @@
         <artifactId>kie-wb-common-stunner-kogito-client</artifactId>
         <version>${version.org.kie}</version>
         <type>test-jar</type>
-      </dependency>
-
-      <dependency>
-        <groupId>org.kie.workbench.stunner</groupId>
-        <artifactId>kie-wb-common-stunner-kogito-runtime-common</artifactId>
-        <version>${version.org.kie}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.kie.workbench.stunner</groupId>
-        <artifactId>kie-wb-common-stunner-kogito-runtime-common</artifactId>
-        <version>${version.org.kie}</version>
-        <classifier>sources</classifier>
       </dependency>
 
       <!-- Stunner - BPMN-->
