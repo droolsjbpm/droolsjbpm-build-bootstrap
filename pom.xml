@@ -77,6 +77,8 @@
     <version.com.fasterxml.jackson.databind>2.10.5.1</version.com.fasterxml.jackson.databind>
     <version.com.fasterxml.jackson.annotations>2.9.10</version.com.fasterxml.jackson.annotations>
     <version.com.google.code.gson>2.8.6</version.com.google.code.gson>
+    <version.org.jresearch.gwt.time>2.0.3</version.org.jresearch.gwt.time>
+    <version.domino-slf4j-logger>1.0.1</version.domino-slf4j-logger>
     <version.com.google.guava>25.0-jre</version.com.google.guava>
     <version.com.google.inject.guice>4.0</version.com.google.inject.guice>
     <version.com.google.gwt>2.9.0</version.com.google.gwt>
@@ -120,6 +122,8 @@
     <version.okhttp>3.12.1</version.okhttp>
     <version.antlr>2.7.7</version.antlr>
     <version.org.antlr>3.5.2</version.org.antlr>
+    <version.org.antlrgwt>4.8.2</version.org.antlrgwt>
+    <version.org.antlr4c3gwt>1.1.12</version.org.antlr4c3gwt>
     <version.org.antlr.ST4>4.0.7</version.org.antlr.ST4>
     <version.org.apache.abdera>1.1.3</version.org.apache.abdera>
     <version.org.apache.ant>1.10.9</version.org.apache.ant>
@@ -251,7 +255,7 @@
     <version.org.reflections>0.9.11</version.org.reflections>
     <!-- Avoid using scannotation in favor of its successor org.reflections -->
     <version.org.scannotation>1.0.3</version.org.scannotation>
-    <version.org.slf4j>1.7.26</version.org.slf4j>
+    <version.org.slf4j>1.7.30</version.org.slf4j>
     <version.org.sonatype.aether>1.13.1</version.org.sonatype.aether>
     <version.org.sonatype.plexus.plexus-cipher>1.7</version.org.sonatype.plexus.plexus-cipher>
     <version.org.sonatype.plexus.plexus-sec-dispatcher>1.3</version.org.sonatype.plexus.plexus-sec-dispatcher>
@@ -852,6 +856,50 @@
                           <ignoreClass>org.joda.time.base.BaseDateTime</ignoreClass>
                         </ignoreClasses>
                       </dependency>
+
+                      <!-- kie-dmn-feel-gwt relies on duplicated resources to remove non-GWT-compatible dependencies
+                           from kie-dmn-feel -->
+                      <dependency>
+                        <groupId>org.kie</groupId>
+                        <artifactId>kie-dmn-feel-gwt</artifactId>
+                        <ignoreClasses>
+                          <ignoreClass>*</ignoreClass>
+                        </ignoreClasses>
+                      </dependency>
+
+                      <!-- org.jresearch.gwt.time depends on domino-slf4j-logger to provide an emulation java.util.time (JSR-310) to GWT -->
+                      <dependency>
+                        <groupId>org.dominokit</groupId>
+                        <artifactId>domino-slf4j-logger</artifactId>
+                        <ignoreClasses>
+                          <ignoreClass>org.slf4j.*</ignoreClass>
+                        </ignoreClasses>
+                      </dependency>
+
+                      <!-- antlr4gwt and antlr4-c3-gwt (javax.json) rely on duplicated resources to provide a GWT-compatible
+                           implementation for ANTLR -->
+                      <dependency>
+                        <groupId>org.antlr</groupId>
+                        <artifactId>antlr4gwt-runtime</artifactId>
+                        <ignoreClasses>
+                          <ignoreClass>org.antlr.v4.*</ignoreClass>
+                        </ignoreClasses>
+                      </dependency>
+                      <dependency>
+                        <groupId>org.antlr</groupId>
+                        <artifactId>antlr4gwt-annotations</artifactId>
+                        <ignoreClasses>
+                          <ignoreClass>org.antlr.v4.runtime.misc.*</ignoreClass>
+                        </ignoreClasses>
+                      </dependency>
+                      <dependency>
+                        <groupId>org.glassfish</groupId>
+                        <artifactId>javax.json</artifactId>
+                        <ignoreClasses>
+                          <ignoreClass>javax.json.*</ignoreClass>
+                        </ignoreClasses>
+                      </dependency>
+
                       <!-- ignore jboss-logging included in kie server router as it is required by undertow and uberjar usage-->
                       <dependency>
                         <groupId>org.kie.server</groupId>
@@ -2063,6 +2111,11 @@
                               <exclude name="**/target/**/target/classes/**/*.class"/>
                               <exclude name="**/.errai/**/*.class"/>
                               <exclude name="**/target/classes/org/jboss/errai/**/*.class"/>
+
+                              <!--
+                                JaCoCo cannot add different classes with same name in the report, so
+                                removing it until KOGITO-4647 is done. -->
+                              <exclude name="**/kie-dmn-feel-gwt/target/classes/**/*.class"/>
                               <!--
                                 TODO: there are multiple classes of the same fully qualified name in kie-server modules.
                                 They need to be renamed to enable coverage reporting for them.
@@ -2740,6 +2793,44 @@
         <groupId>org.antlr</groupId>
         <artifactId>ST4</artifactId>
         <version>${version.org.antlr.ST4}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jresearch.gwt.time</groupId>
+        <artifactId>org.jresearch.gwt.time</artifactId>
+        <version>${version.org.jresearch.gwt.time}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.dominokit</groupId>
+        <artifactId>domino-slf4j-logger</artifactId>
+        <version>${version.domino-slf4j-logger}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.antlr</groupId>
+        <artifactId>antlr4gwt-runtime</artifactId>
+        <version>${version.org.antlrgwt}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.antlr</groupId>
+        <artifactId>antlr4gwt-runtime</artifactId>
+        <version>${version.org.antlrgwt}</version>
+        <classifier>sources</classifier>
+      </dependency>
+
+      <dependency>
+        <groupId>org.rikkola.gwt</groupId>
+        <artifactId>antlr4-c3-gwt</artifactId>
+        <version>${version.org.antlr4c3gwt}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.rikkola.gwt</groupId>
+        <artifactId>antlr4-c3-gwt</artifactId>
+        <version>${version.org.antlr4c3gwt}</version>
+        <classifier>sources</classifier>
       </dependency>
 
       <dependency>
