@@ -179,6 +179,13 @@
       </dependency>
       <dependency>
         <groupId>org.drools</groupId>
+        <artifactId>drools-legacy-test-util</artifactId>
+        <version>${version.org.kie}</version>
+        <type>test-jar</type>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.drools</groupId>
         <artifactId>drools-serialization-protobuf</artifactId>
         <version>${version.org.kie}</version>
       </dependency>
