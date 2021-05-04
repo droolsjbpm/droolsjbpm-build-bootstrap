@@ -183,6 +183,22 @@
         <artifactId>kie-pmml-models-mining-evaluator</artifactId>
         <version>${version.org.kie}</version>
       </dependency>
+      <!-- Tree NO - CODEGEN -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-tree-model</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-tree-compiler</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-tree-evaluator</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
       <!-- SOURCES -->
       <!-- PMML -->
       <dependency>
@@ -325,6 +341,25 @@
         <version>${version.org.kie}</version>
         <classifier>sources</classifier>
       </dependency>
+      <!-- Tree - CODEGEN -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-tree-model</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>sources</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-tree-compiler</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>sources</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-tree-evaluator</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>sources</classifier>
+      </dependency>
       <!-- EXTERNAL -->
       <!-- TEST -->
       <!-- Commons -->
@@ -370,6 +405,19 @@
       <dependency>
         <groupId>org.kie</groupId>
         <artifactId>kie-pmml-models-regression-evaluator</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Tree No codegen -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-tree-compiler</artifactId>
+        <classifier>tests</classifier>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-tree-evaluator</artifactId>
         <classifier>tests</classifier>
         <version>${version.org.kie}</version>
       </dependency>
