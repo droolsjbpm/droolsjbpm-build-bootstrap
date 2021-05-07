@@ -143,15 +143,17 @@ pipeline {
             script {
                 if(findbugsFile) {
                     echo 'Findbugs reports ...'
-                    findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: findbugsFile, unHealthy: ''
+                    recordIssues( enabledForFailure: true, aggregatingResults: true, tool: spotBugs(pattern: findbugsFile) )
                 }
             }
+            
             script {
                 if(checkstyleFile) {
                     echo 'Checkstyle reports ...'
-                    checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: checkstyleFile, unHealthy: ''
+                    recordIssues( enabledForFailure: true, aggregatingResults: true, tool: checkStyle(pattern: checkstyleFile) )
                 }
             }
+
         }
         cleanup {
             script {
