@@ -1,0 +1,1675 @@
+Script started on 2021-05-07 11:06:22+02:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="140" LINES="35"]
+]777;notify;Command completed;git push origin rolesAdd\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kiegroup/droolsjbpm-build-bootstrap\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kiegroup/droolsjbpm-build-bootstrap\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … egroup/droolsjbpm-build-bootstrap(B[m] [32mcheckstyleFindbugs[33m+[31m*[31m(B[m [1m±(B[m git push origin rolesAdds[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kscripts
+]777;notify;Command completed;scripts\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts(B[m] [32mslave-image-build[33m+[31m(B[m [1m±(B[m clear
+[H[2J[3J]777;notify;Command completed;clear\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts(B[m] [32mslave-image-build[33m+[31m(B[m [1m±(B[m git fetch origin
+remote: Enumerating objects: 8, done.[K
+remote: Counting objects:  12% (1/8)[Kremote: Counting objects:  25% (2/8)[Kremote: Counting objects:  37% (3/8)[Kremote: Counting objects:  50% (4/8)[Kremote: Counting objects:  62% (5/8)[Kremote: Counting objects:  75% (6/8)[Kremote: Counting objects:  87% (7/8)[Kremote: Counting objects: 100% (8/8)[Kremote: Counting objects: 100% (8/8), done.[K
+remote: Compressing objects:  12% (1/8)[Kremote: Compressing objects:  25% (2/8)[Kremote: Compressing objects:  37% (3/8)[Kremote: Compressing objects:  50% (4/8)[Kremote: Compressing objects:  62% (5/8)[Kremote: Compressing objects:  75% (6/8)[Kremote: Compressing objects:  87% (7/8)[Kremote: Compressing objects: 100% (8/8)[Kremote: Compressing objects: 100% (8/8), done.[K
+remote: Total 8 (delta 1), reused 0 (delta 0), pack-reused 0[K
+Unpacking objects:  12% (1/8)   Unpacking objects:  25% (2/8)   Unpacking objects:  37% (3/8)   Unpacking objects:  50% (4/8)   Unpacking objects:  62% (5/8)   Unpacking objects:  75% (6/8)   Unpacking objects:  87% (7/8)   Unpacking objects: 100% (8/8)   Unpacking objects: 100% (8/8), done.
+From github.com:kiegroup/kie-jenkins-scripts
+   7928b27..6af76cc  master     -> origin/master
+]777;notify;Command completed;git fetch origin\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts(B[m] [32mslave-image-build[33m+[31m(B[m [1m±(B[m git rebnase origin/master master[1P
+First, rewinding head to replay your work on top of it...
+Fast-forwarded master to origin/master.
+]777;notify;Command completed;git rebase origin/master master\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts(B[m] [32mmaster[33m+[31m(B[m [1m±(B[m clear
+[H[2J[3J]777;notify;Command completed;clear\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts(B[m] [32mmaster[33m+[31m(B[m [1m±(B[m OK[K[Kgit checkout checkstyle.log master[C[1@-[1@b[1@ 
+Switched to a new branch 'checkstyle.log'
+]777;notify;Command completed;git checkout -b checkstyle.log master\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts(B[m] [32mcheckstyle.log[33m+[31m(B[m [1m±(B[m git status
+On branch checkstyle.log
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   job-dsls/jobs/kie/master/compile_downstream_build.groovy[m
+	[31mmodified:   job-dsls/jobs/kie/master/deploy_jobs.groovy[m
+	[31mmodified:   job-dsls/jobs/kie/master/deploy_jobs_7_x.groovy[m
+	[31mmodified:   job-dsls/jobs/kie/master/downstream_pr_jobs.groovy[m
+	[31mmodified:   job-dsls/jobs/kie/master/pr_jobs.groovy[m
+	[31mmodified:   job-dsls/jobs/kie/master/pr_jobs_7_x.groovy[m
+	[31mmodified:   job-dsls/jobs/kie/master/springboot_pr_job.groovy[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]777;notify;Command completed;git status\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts(B[m] [31mcheckstyle.log(B[m([35m+7/-7(B[m)[33m+[31m(B[m [1m±(B[m git add ,[K.
+]777;notify;Command completed;git add .\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts(B[m] [31mcheckstyle.log(B[m([35m+0/-0(B[m)[33m+[31m(B[m [1m±(B[m git commit -m "changed f[Kchestyle[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kreplaced checckstyle files"[1P
+[checkstyle.log f1bd851] replaced checkstyle files
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+]777;notify;Command completed;git commit -m "replaced checkstyle files"\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts(B[m] [32mcheckstyle.log[33m+[31m(B[m [1m±(B[m cd job-dsls/
+]777;notify;Command completed;cd job-dsls/\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mcheckstyle.log[33m+[31m(B[m [1m±(B[m ./gradlew clean i[Ktest
+
+[1AStarting a Gradle Daemon, 1 incompatible and 1 stopped Daemons could not be reused, use --status for details
+
+
+[2A[1B[1m> Starting Daemon[m[17D[1B[1A> IDLE[0K[6D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [91ms][m[38D[1B[1m> Evaluating settings[m[21D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [191ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [291ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [391ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [491ms][m[39D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [591ms][m[0K[38D[1B[1m> Loading projects[m[0K[18D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [691ms][m[38D[1B[1m> root project[m[0K[14D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [791ms][m[38D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [891ms][m[38D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [991ms][m[38D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [1s][m[0K[35D[2B[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [1s][m[37D[1B> IDLE[0K[6D[1B[2A[1m<[0;1m-------------> 0% EXECUTING [1s][m[0K[33D[1B[1m> :clean[m[8D[1B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [1s][m[34D[1B[1m> :compileGroovy[m[16D[1B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [2s][m[34D[1B[1m> :compileGroovy > Resolve dependencies of :compileClasspath[m[60D[1B[1A[1m> :compileGroovy > Resolve files of :compileClasspath[m[0K[53D[1B[1A[1m> :compileGroovy > Resolve dependencies of :detachedConfiguration2[m[66D[1B[1A[1m> :compileGroovy[m[0K[16D[1B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [3s][m[34D[2B[2A[1m<[0;32;1m=====[0;39;1m--------> 45% EXECUTING [3s][m[34D[1B[1m> :resolveTestPlugins > Resolve dependencies of :testPlugins[m[60D[1B[2A[1m<[0;32;1m=====[0;39;1m--------> 45% EXECUTING [4s][m[34D[2B[1A[1m> :resolveTestPlugins > Resolve files of :testPlugins[m[0K[53D[1B[1A[1m> :resolveTestPlugins[m[0K[21D[1B[2A[1m<[0;32;1m========[0;39;1m-----> 63% EXECUTING [5s][m[34D[1B[1m> :compileTestGroovy > Resolve dependencies of :testCompileClasspath[m[68D[1B[1A[1m> :compileTestGroovy > Resolve files of :testCompileClasspath[m[0K[61D[1B[1A[1m> :compileTestGroovy[m[0K[20D[1B[2A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [5s][m[34D[1B[1m> :test > 0 tests completed[m[27D[1B[2A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [6s][m[34D[2B
+[1A[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [7s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [8s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [9s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [10s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [11s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [12s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [13s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [14s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [15s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [16s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [17s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [18s][m[35D[3B[3A[0K
+[1m> Task :test[m[0K
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_master_branch_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [18s][m[35D[1B[1m> :test > 0 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [19s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [20s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [21s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_master_branch_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_new_branches_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [22s][m[35D[1B[1m> :test > 1 test completed[m[26D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_new_branches_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_tools_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [22s][m[35D[1B[1m> :test > 2 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_tools_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [22s][m[35D[1B[1m> :test > 3 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script osbs_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [22s][m[35D[1B[1m> :test > 4 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script osbs_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [22s][m[35D[1B[1m> :test > 5 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [23s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kogito_docs_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [23s][m[35D[1B[1m> :test > 6 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kogito_docs_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_development_version.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [23s][m[35D[1B[1m> :test > 7 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [24s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_development_version.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script send_UMB_trigger_after_version_upgrade.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [24s][m[35D[1B[1m> :test > 8 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script send_UMB_trigger_after_version_upgrade.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kieAll_meta_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [24s][m[35D[1B[1m> :test > 9 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [25s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [26s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kieAll_meta_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_docker_ui_webapp.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [26s][m[35D[1B[1m> :test > 10 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_docker_ui_webapp.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script downstream_production.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [26s][m[35D[1B[1m> :test > 11 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [27s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [28s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script downstream_production.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script turtleTests.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [28s][m[35D[1B[1m> :test > 12 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [29s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [30s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script turtleTests.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script compile_downstream_build.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [30s][m[35D[1B[1m> :test > 13 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [31s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script compile_downstream_build.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_jobs_7_x.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [31s][m[35D[1B[1m> :test > 14 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_jobs_7_x.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_jobs_7_x.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [31s][m[35D[1B[1m> :test > 15 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [32s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [33s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [34s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_jobs_7_x.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [34s][m[35D[1B[1m> :test > 16 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [35s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script downstream_pr_jobs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [35s][m[35D[1B[1m> :test > 17 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [36s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script downstream_pr_jobs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script automatic_web_publishing.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [36s][m[35D[1B[1m> :test > 18 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script automatic_web_publishing.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_docs_pr.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [36s][m[35D[1B[1m> :test > 19 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_docs_pr.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prodProjects_downstream_production.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [37s][m[35D[1B[1m> :test > 20 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prodProjects_downstream_production.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script upstream.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [37s][m[35D[1B[1m> :test > 21 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script upstream.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script communityRelease_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [37s][m[35D[1B[1m> :test > 22 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script communityRelease_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script jenkins_shared_libs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[1B[1m> :test > 23 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script jenkins_shared_libs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script srcclr_scan_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[1B[1m> :test > 24 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script srcclr_scan_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script errai_deploy.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[1B[1m> :test > 25 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script errai_deploy.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_jdk11_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[1B[1m> :test > 26 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [39s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_jdk11_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script errai_pr.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [39s][m[35D[1B[1m> :test > 27 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [40s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script errai_pr.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_prod_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [40s][m[35D[1B[1m> :test > 28 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_prod_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prodTag_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[1B[1m> :test > 29 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prodTag_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_jobs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[1B[1m> :test > 30 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_jobs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script springboot_pr_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[1B[1m> :test > 31 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script springboot_pr_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_jenkinsScripts_PR.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[1B[1m> :test > 32 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_jenkinsScripts_PR.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script reduced_drools_release.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[1B[1m> :test > 33 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script reduced_drools_release.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script sonarcloud_daily.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[1B[1m> :test > 34 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script sonarcloud_daily.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_jobs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[1B[1m> :test > 35 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [43s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_jobs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_droolsjbpm_tools.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [43s][m[35D[1B[1m> :test > 36 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [44s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_droolsjbpm_tools.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script srcclr_scan_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [44s][m[35D[1B[1m> :test > 37 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script srcclr_scan_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kogito_docs_upload.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [45s][m[35D[1B[1m> :test > 38 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kogito_docs_upload.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_prod_branch.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [45s][m[35D[1B[1m> :test > 39 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_prod_branch.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_kogito_properties_generator.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [45s][m[35D[1B[1m> :test > 40 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_kogito_properties_generator.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_offline_repo_builder.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [45s][m[35D[1B[1m> :test > 41 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_offline_repo_builder.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_properties_generator.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [45s][m[35D[1B[1m> :test > 42 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_properties_generator.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_replace_version.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [45s][m[35D[1B[1m> :test > 43 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_replace_version.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_replace_shared_libraries.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [45s][m[35D[1B[1m> :test > 44 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_replace_shared_libraries.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_shared_libraries_new_branch.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [45s][m[35D[1B[1m> :test > 45 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_shared_libraries_new_branch.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_staging.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [46s][m[35D[1B[1m> :test > 46 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_staging.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script osbs_seed_cloud_jobs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [46s][m[35D[1B[1m> :test > 47 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script osbs_seed_cloud_jobs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_slave_image_build_PR_test.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [46s][m[35D[1B[1m> :test > 48 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [47s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [48s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [49s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_slave_image_build_PR_test.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_smee_client.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [49s][m[35D[1B[1m> :test > 49 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [50s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [51s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [52s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [53s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_smee_client.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_verdaccio.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [53s][m[35D[1B[1m> :test > 50 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_verdaccio.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_cekit.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [53s][m[35D[1B[1m> :test > 51 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_cekit.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_delete.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [53s][m[35D[1B[1m> :test > 52 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_delete.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_execute_pig.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [53s][m[35D[1B[1m> :test > 53 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_execute_pig.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_docker_reg.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [53s][m[35D[1B[1m> :test > 54 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_docker_reg.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_slave_image_build.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [53s][m[35D[1B[1m> :test > 55 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_slave_image_build.groovy [32mPASSED[39m
+[1B[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [54s][m[0K[35D[1B[1m> :test > 56 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [55s][m[35D[3B[1A> IDLE[0K[6D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [56s][m[35D[3B[2A[1m> :test[m[0K[7D[2B[3A[0K
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.3/userguide/command_line_interface.html#sec:command_line_warnings
+
+[32;1mBUILD SUCCESSFUL[0;39m in 57s
+6 actionable tasks: 6 executed
+[0K
+[0K
+[0K
+[3A[1m<[0;1m-------------> 0% WAITING[m[26D[1B[1m> :test[m[7D[1B> IDLE[6D[1B[3A[2K[1B[2K[1B[2K[2A[0m[?12l[?25h]777;notify;Command completed;./gradlew clean test\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m66°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mcheckstyle.log[33m+[31m(B[m [1m±(B[m git push michibk checkstyle.log+[K
+Enumerating objects: 24, done.
+Counting objects:   4% (1/24)   Counting objects:   8% (2/24)   Counting objects:  12% (3/24)   Counting objects:  16% (4/24)   Counting objects:  20% (5/24)   Counting objects:  25% (6/24)   Counting objects:  29% (7/24)   Counting objects:  33% (8/24)   Counting objects:  37% (9/24)   Counting objects:  41% (10/24)   Counting objects:  45% (11/24)   Counting objects:  50% (12/24)   Counting objects:  54% (13/24)   Counting objects:  58% (14/24)   Counting objects:  62% (15/24)   Counting objects:  66% (16/24)   Counting objects:  70% (17/24)   Counting objects:  75% (18/24)   Counting objects:  79% (19/24)   Counting objects:  83% (20/24)   Counting objects:  87% (21/24)   Counting objects:  91% (22/24)   Counting objects:  95% (23/24)   Counting objects: 100% (24/24)   Counting objects: 100% (24/24), done.
+Delta compression using up to 8 threads
+Compressing objects:   7% (1/13)   Compressing objects:  15% (2/13)   Compressing objects:  23% (3/13)   Compressing objects:  30% (4/13)   Compressing objects:  38% (5/13)   Compressing objects:  46% (6/13)   Compressing objects:  53% (7/13)   Compressing objects:  61% (8/13)   Compressing objects:  69% (9/13)   Compressing objects:  76% (10/13)   Compressing objects:  84% (11/13)   Compressing objects:  92% (12/13)   Compressing objects: 100% (13/13)   Compressing objects: 100% (13/13), done.
+Writing objects:   7% (1/13)   Writing objects:  15% (2/13)   Writing objects:  23% (3/13)   Writing objects:  30% (4/13)   Writing objects:  38% (5/13)   Writing objects:  46% (6/13)   Writing objects:  53% (7/13)   Writing objects:  61% (8/13)   Writing objects:  69% (9/13)   Writing objects:  76% (10/13)   Writing objects:  84% (11/13)   Writing objects:  92% (12/13)   Writing objects: 100% (13/13)   Writing objects: 100% (13/13), 2.86 KiB | 732.00 KiB/s, done.
+Total 13 (delta 11), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/11)[Kremote: Resolving deltas:   9% (1/11)[Kremote: Resolving deltas:  18% (2/11)[Kremote: Resolving deltas:  27% (3/11)[Kremote: Resolving deltas:  36% (4/11)[Kremote: Resolving deltas:  45% (5/11)[Kremote: Resolving deltas:  54% (6/11)[Kremote: Resolving deltas:  63% (7/11)[Kremote: Resolving deltas:  72% (8/11)[Kremote: Resolving deltas:  81% (9/11)[Kremote: Resolving deltas:  90% (10/11)[Kremote: Resolving deltas: 100% (11/11)[Kremote: Resolving deltas: 100% (11/11), completed with 11 local objects.[K
+remote: 
+remote: Create a pull request for 'checkstyle.log' on GitHub by visiting:[K
+remote:      https://github.com/mbiarnes/kie-jenkins-scripts/pull/new/checkstyle.log[K
+remote: 
+To github.com:mbiarnes/kie-jenkins-scripts.git
+ * [new branch]      checkstyle.log -> checkstyle.log
+]777;notify;Command completed;git push michibk checkstyle.log\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mcheckstyle.log[33m+[31m(B[m [1m±(B[m git checkout -b checkstyle.log+[K-7.52.x 7.52.x
+Switched to a new branch 'checkstyle.log-7.52.x'
+]777;notify;Command completed;git checkout -b checkstyle.log-7.52.x 7.52.x\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mcheckstyle.log-7.52.x[33m+[31m(B[m [1m±(B[m git log -5 --pretty0oneline [1P[1@=[C[C[C[C[C[C[C[Ccheckstyle.log+[K
+[?1h=[33mf1bd8519cc02cf332dab43ab301457aa8e8d037d[m[33m ([m[1;31mmichibk/checkstyle.log[m[33m, [m[1;32mcheckstyle.log[m[33m)[m replaced checkstyle files[m
+[33m6af76cce05763beb96d8a16c86a2c3c6819448bc[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m [NIGHTLY] prod_*_properties_generator missing agent fixed (#97[m [33m[m[33m[m[1;31m[m[33m[m[1;31m[m[33m[m[1;32m[m[33m[m9)[m
+[33m2674b9004f75dfb8f8481452a01b185ec36a4d57[m changed credentialsBinding (#977)[m
+[33m7928b27187141bbe6ecb87e401ce1acbd1b782a4[m[33m ([m[1;31mmichibk/master[m[33m)[m Use a release repository group instead of replacing MRRC to include all necessary [m [33m[m[33m[m[1;31m[m[33m[mrepositories (#973)[m
+[33m9acfbad77dfa94dc97838dc412f049291976020f[m fixed typos (#976)[m
+[K[?1l>]777;notify;Command completed;git log -5 --pretty=oneline checkstyle.log\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mcheckstyle.log-7.52.x[33m+[31m(B[m [1m±(B[m git cherry-pick -x f1bd8519cc02cf332dab43ab301457aa8e8d037d
+error: could not apply f1bd851... replaced checkstyle files
+[33mhint: after resolving the conflicts, mark the corrected paths[m
+[33mhint: with 'git add <paths>' or 'git rm <paths>'[m
+[33mhint: and commit the result with 'git commit'[m
+]777;notify;Command completed;git cherry-pick -x f1bd8519cc02cf332dab43ab301457aa8e8d037d\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mcheckstyle.log-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m CHERRY-PICKING(B[m [35m1(B[m [1m±(B[m ll
+total 44
+drwxrwxr-x. 10 mbiarnes mbiarnes 4096 May  7 11:17 [0m[38;5;33mbuild[0m
+-rw-rw-r--.  1 mbiarnes mbiarnes 6666 May  7 11:24 build.gradle
+drwxrwxr-x.  3 mbiarnes mbiarnes 4096 Aug 26  2019 [38;5;33mgradle[0m
+-rw-rw-r--.  1 mbiarnes mbiarnes   42 May  3 16:52 gradle.properties
+-rwxrwxr-x.  1 mbiarnes mbiarnes 5299 Jun 16  2019 [38;5;40mgradlew[0m
+-rw-rw-r--.  1 mbiarnes mbiarnes 2176 Jun 16  2019 gradlew.bat
+drwxrwxr-x.  7 mbiarnes mbiarnes 4096 Mar 25 17:08 [38;5;33mjobs[0m
+-rw-rw-r--.  1 mbiarnes mbiarnes 1650 Mar 25 17:08 README.MD
+drwxrwxr-x.  4 mbiarnes mbiarnes 4096 Jun 16  2019 [38;5;33msrc[0m
+]777;notify;Command completed;ll\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mcheckstyle.log-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m CHERRY-PICKING(B[m [1m±(B[m cd jobs/
+]777;notify;Command completed;cd jobs/\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … kie-jenkins-scripts/job-dsls/jobs(B[m] [31mcheckstyle.log-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m CHERRY-PICKING(B[m [1m±(B[m ll
+total 20
+drwxrwxr-x. 5 mbiarnes mbiarnes 4096 Mar 25 17:08 [0m[38;5;33mkie[0m
+drwxrwxr-x. 2 mbiarnes mbiarnes 4096 Mar 25 17:08 [38;5;33mosbs[0m
+drwxrwxr-x. 2 mbiarnes mbiarnes 4096 May  7 11:24 [38;5;33mprod[0m
+drwxrwxr-x. 2 mbiarnes mbiarnes 4096 May  7 11:24 [38;5;33mseed_jobs[0m
+drwxrwxr-x. 2 mbiarnes mbiarnes 4096 May  7 11:24 [38;5;33mtools[0m
+]777;notify;Command completed;ll\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … kie-jenkins-scripts/job-dsls/jobs(B[m] [31mcheckstyle.log-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m CHERRY-PICKING(B[m [1m±(B[m cd kie/
+]777;notify;Command completed;cd kie/\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … jenkins-scripts/job-dsls/jobs/kie(B[m] [31mcheckstyle.log-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m CHERRY-PICKING(B[m [1m±(B[m cd master/
+]777;notify;Command completed;cd master/\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [31mcheckstyle.log-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m CHERRY-PICKING(B[m [1m±(B[m ll
+total 280
+-rw-rw-r--. 1 mbiarnes mbiarnes  6331 May  7 11:24 automatic_web_publishing.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 36093 May  7 11:24 communityRelease_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7340 May  7 11:25 compile_downstream_build.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 24559 May  3 16:52 dailyBuild_jdk11_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 28933 May  3 16:52 dailyBuild_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7343 May  3 16:52 dailyBuild_prod_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7573 May  7 11:25 deploy_jobs_7_x.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 12649 May  7 11:25 deploy_jobs.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7312 May  7 11:25 downstream_pr_jobs.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6875 May  7 11:24 downstream_production.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  1417 Mar 25 17:08 errai_deploy.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6576 Mar 25 17:08 errai_pr.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  3957 Mar 31 16:41 jenkins_shared_libs.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  1471 Mar 25 17:08 kie_docs_pr.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6785 Mar 25 17:08 kie_jenkinsScripts_PR.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  1421 Mar 25 17:08 pr_droolsjbpm_tools.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6544 May  7 11:25 pr_jobs_7_x.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 10285 May  7 11:25 pr_jobs.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  5437 May  7 11:24 prodProjects_downstream_production.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  9882 May  7 11:24 prodTag_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 10778 Mar 25 17:08 reduced_drools_release.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  5811 May  7 11:24 sonarcloud_daily.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7743 May  7 11:25 springboot_pr_job.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  2841 Mar 25 17:08 srcclr_scan_job.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  2589 Mar 25 17:08 srcclr_scan_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  5104 Mar 25 17:08 turtleTests.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6867 May  7 11:24 upstream.groovy
+]777;notify;Command completed;ll\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [31mcheckstyle.log-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m CHERRY-PICKING(B[m [1m±(B[m rm deploy_jobs_7_x.groovy[1@girm deploy_jobs_7_x.groovy [Aθ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [31mcheckstyle.log-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m CHERRY-PICKING(B[m [1m±(B[m [C[Ctrm deploy_jobs_7_x.groovy[Aθ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [31mcheckstyle.log-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m CHERRY-PICKING(B[m [1m±(B[m [C[C[C rm deploy_jobs_7_x.groovy[Aθ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [31mcheckstyle.log-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m CHERRY-PICKING(B[m [1m±(B[m [C[C[C[C
+
+error: the following file has changes staged in the index:
+    job-dsls/jobs/kie/master/deploy_jobs_7_x.groovy
+(use --cached to keep the file, or -f to force removal)
+]777;notify;Command completed;git rm deploy_jobs_7_x.groovy\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [31mcheckstyle.log-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m CHERRY-PICKING(B[m [35m1(B[m [1m±(B[m git rebase --continue[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kche[K[K[K[K[Kt add .
+]777;notify;Command completed;git add .\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [31mcheckstyle.log-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m CHERRY-PICKING(B[m [1m±(B[m git cherry-pick --continue
+hint: Waiting for your editor to close the file... [?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;35r[?12h[?12l[27m[23m[29m[m[H[2J[?25l[35;1H"~/Development/git/kie-jenkins-scripts/.git/COMMIT_EDITMSG" 30L, 1033C[2;1H▽[6n[2;1H  [1;1H[>c]11;?[1;1Hreplaced checkstyle files
+
+(cherry picked from commit f1bd8519cc02cf332dab43ab301457aa8e8d037d)
+
+# Conflicts:
+#[7Cjob-dsls/jobs/kie/master/pr_jobs_7_x.groovy
+#
+# It looks like you may be committing a cherry-pick.
+# If this is not correct, please remove the file
+#[7C.git/CHERRY_PICK_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Fri May 7 11:16:53 2021 +0200
+#
+# On branch checkstyle.log-7.52.x
+# You are currently cherry-picking commit f1bd851.
+#
+# Changes to be committed:
+#[7Cmodified:   job-dsls/jobs/kie/master/compile_downstream_build.groovy
+#[7Cmodified:   job-dsls/jobs/kie/master/deploy_jobs.groovy
+#[7Cmodified:   job-dsls/jobs/kie/master/deploy_jobs_7_x.groovy
+#[7Cmodified:   job-dsls/jobs/kie/master/downstream_pr_jobs.groovy
+#[7Cmodified:   job-dsls/jobs/kie/master/pr_jobs.groovy
+#[7Cnew file:   job-dsls/jobs/kie/master/pr_jobs_7_x.groovy
+#[7Cmodified:   job-dsls/jobs/kie/master/springboot_pr_job.groovy
+#
+[94m~                                                                                                                                           [32;1H~                                                                                                                                           [33;1H~                                                                                                                                           [34;1H~                                                                                                                                           [1;1H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[27m[23m[29m[m[H[2J[?25l[1;1Hreplaced checkstyle files
+
+(cherry picked from commit f1bd8519cc02cf332dab43ab301457aa8e8d037d)
+
+# Conflicts:
+#[7Cjob-dsls/jobs/kie/master/pr_jobs_7_x.groovy
+#
+# It looks like you may be committing a cherry-pick.
+# If this is not correct, please remove the file
+#[7C.git/CHERRY_PICK_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Fri May 7 11:16:53 2021 +0200
+#
+# On branch checkstyle.log-7.52.x
+# You are currently cherry-picking commit f1bd851.
+#
+# Changes to be committed:
+#[7Cmodified:   job-dsls/jobs/kie/master/compile_downstream_build.groovy
+#[7Cmodified:   job-dsls/jobs/kie/master/deploy_jobs.groovy
+#[7Cmodified:   job-dsls/jobs/kie/master/deploy_jobs_7_x.groovy
+#[7Cmodified:   job-dsls/jobs/kie/master/downstream_pr_jobs.groovy
+#[7Cmodified:   job-dsls/jobs/kie/master/pr_jobs.groovy
+#[7Cnew file:   job-dsls/jobs/kie/master/pr_jobs_7_x.groovy
+#[7Cmodified:   job-dsls/jobs/kie/master/springboot_pr_job.groovy
+#
+[94m~                                                                                                                                           [32;1H~                                                                                                                                           [33;1H~                                                                                                                                           [34;1H~                                                                                                                                           [m[35;1H"~/Development/git/kie-jenkins-scripts/.git/COMMIT_EDITMSG" 30L, 1033C[1;1H[?25h[?25l[35;1H[K[35;1H:[?2004h[?25hwq![?25l[?2004l".git/COMMIT_EDITMSG" 30L, 1033C written
+[?2004l[?1l>[?25h[>4;m[?1049l[23;0;0t[K[checkstyle.log-7.52.x 5a4df9e] replaced checkstyle files
+ Date: Fri May 7 11:16:53 2021 +0200
+ 7 files changed, 171 insertions(+), 6 deletions(-)
+ create mode 100644 job-dsls/jobs/kie/master/pr_jobs_7_x.groovy
+]777;notify;Command completed;git cherry-pick --continue\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [32mcheckstyle.log-7.52.x[33m+[31m(B[m [1m±(B[m git push mcihib[K[K[K[K[Kichibk checkstyle.log-7.52.x+[K
+Enumerating objects: 24, done.
+Counting objects:   4% (1/24)   Counting objects:   8% (2/24)   Counting objects:  12% (3/24)   Counting objects:  16% (4/24)   Counting objects:  20% (5/24)   Counting objects:  25% (6/24)   Counting objects:  29% (7/24)   Counting objects:  33% (8/24)   Counting objects:  37% (9/24)   Counting objects:  41% (10/24)   Counting objects:  45% (11/24)   Counting objects:  50% (12/24)   Counting objects:  54% (13/24)   Counting objects:  58% (14/24)   Counting objects:  62% (15/24)   Counting objects:  66% (16/24)   Counting objects:  70% (17/24)   Counting objects:  75% (18/24)   Counting objects:  79% (19/24)   Counting objects:  83% (20/24)   Counting objects:  87% (21/24)   Counting objects:  91% (22/24)   Counting objects:  95% (23/24)   Counting objects: 100% (24/24)   Counting objects: 100% (24/24), done.
+Delta compression using up to 8 threads
+Compressing objects:   7% (1/13)   Compressing objects:  15% (2/13)   Compressing objects:  23% (3/13)   Compressing objects:  30% (4/13)   Compressing objects:  38% (5/13)   Compressing objects:  46% (6/13)   Compressing objects:  53% (7/13)   Compressing objects:  61% (8/13)   Compressing objects:  69% (9/13)   Compressing objects:  76% (10/13)   Compressing objects:  84% (11/13)   Compressing objects:  92% (12/13)   Compressing objects: 100% (13/13)   Compressing objects: 100% (13/13), done.
+Writing objects:   7% (1/13)   Writing objects:  15% (2/13)   Writing objects:  23% (3/13)   Writing objects:  30% (4/13)   Writing objects:  38% (5/13)   Writing objects:  46% (6/13)   Writing objects:  53% (7/13)   Writing objects:  61% (8/13)   Writing objects:  69% (9/13)   Writing objects:  76% (10/13)   Writing objects:  84% (11/13)   Writing objects:  92% (12/13)   Writing objects: 100% (13/13)   Writing objects: 100% (13/13), 2.91 KiB | 2.92 MiB/s, done.
+Total 13 (delta 11), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/11)[Kremote: Resolving deltas:   9% (1/11)[Kremote: Resolving deltas:  18% (2/11)[Kremote: Resolving deltas:  27% (3/11)[Kremote: Resolving deltas:  36% (4/11)[Kremote: Resolving deltas:  45% (5/11)[Kremote: Resolving deltas:  54% (6/11)[Kremote: Resolving deltas:  63% (7/11)[Kremote: Resolving deltas:  72% (8/11)[Kremote: Resolving deltas:  81% (9/11)[Kremote: Resolving deltas:  90% (10/11)[Kremote: Resolving deltas: 100% (11/11)[Kremote: Resolving deltas: 100% (11/11), completed with 11 local objects.[K
+remote: 
+remote: Create a pull request for 'checkstyle.log-7.52.x' on GitHub by visiting:[K
+remote:      https://github.com/mbiarnes/kie-jenkins-scripts/pull/new/checkstyle.log-7.52.x[K
+remote: 
+To github.com:mbiarnes/kie-jenkins-scripts.git
+ * [new branch]      checkstyle.log-7.52.x -> checkstyle.log-7.52.x
+]777;notify;Command completed;git push michibk checkstyle.log-7.52.x\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [32mcheckstyle.log-7.52.x[33m+[31m(B[m [1m±(B[m clear
+[H[2J[3J]777;notify;Command completed;clear\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [32mcheckstyle.log-7.52.x[33m+[31m(B[m [1m±(B[m git fetch origin
+remote: Enumerating objects: 1, done.[K
+remote: Counting objects: 100% (1/1)[Kremote: Counting objects: 100% (1/1), done.[K
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0[K
+Unpacking objects: 100% (1/1)   Unpacking objects: 100% (1/1), done.
+From github.com:kiegroup/kie-jenkins-scripts
+   6af76cc..d4752d7  master     -> origin/master
+]777;notify;Command completed;git fetch origin\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [32mcheckstyle.log-7.52.x[33m+[31m(B[m [1m±(B[m git rebase origin/master master
+First, rewinding head to replay your work on top of it...
+Fast-forwarded master to origin/master.
+]777;notify;Command completed;git rebase origin/master master\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [32mmaster[33m+[31m(B[m [1m±(B[m git cke[K[Kheckout -b constantsCheckstyle master
+Switched to a new branch 'constantsCheckstyle'
+]777;notify;Command completed;git checkout -b constantsCheckstyle master\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [32mconstantsCheckstyle[33m+[31m(B[m [1m±(B[m ll
+total 284
+-rw-rw-r--. 1 mbiarnes mbiarnes  6330 May  7 11:31 automatic_web_publishing.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 40097 May  7 11:31 communityRelease_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7550 May  7 11:44 compile_downstream_build.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 24559 May  3 16:52 dailyBuild_jdk11_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 28933 May  3 16:52 dailyBuild_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7343 May  3 16:52 dailyBuild_prod_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7573 May  7 11:25 deploy_jobs_7_x.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 12786 May  7 11:52 deploy_jobs.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7522 May  7 11:48 downstream_pr_jobs.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6875 May  7 11:31 downstream_production.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  1417 Mar 25 17:08 errai_deploy.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6576 Mar 25 17:08 errai_pr.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  3957 Mar 31 16:41 jenkins_shared_libs.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  1471 Mar 25 17:08 kie_docs_pr.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6785 Mar 25 17:08 kie_jenkinsScripts_PR.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  1421 Mar 25 17:08 pr_droolsjbpm_tools.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6753 May  7 11:43 pr_jobs_7_x.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  9584 May  7 11:41 pr_jobs.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  5849 May  7 11:31 prodProjects_downstream_production.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  9883 May  7 11:31 prodTag_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 10778 Mar 25 17:08 reduced_drools_release.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  5655 May  7 11:31 sonarcloud_daily.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7743 May  7 11:25 springboot_pr_job.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  2841 Mar 25 17:08 srcclr_scan_job.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  2589 Mar 25 17:08 srcclr_scan_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  5104 Mar 25 17:08 turtleTests.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6871 May  7 11:31 upstream.groovy
+]777;notify;Command completed;ll\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [31mconstantsCheckstyle(B[m([35m+35/-17(B[m)[33m+[31m(B[m [1m±(B[m git reset --hard HEAD
+HEAD is now at d4752d7 replaced checkstyle files (#980)
+]777;notify;Command completed;git reset --hard HEAD\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [32mconstantsCheckstyle[33m+[31m(B[m [1m±(B[m clear
+[H[2J[3J]777;notify;Command completed;clear\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [32mconstantsCheckstyle[33m+[31m(B[m [1m±(B[m ll
+total 284
+-rw-rw-r--. 1 mbiarnes mbiarnes  6330 May  7 11:31 automatic_web_publishing.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 40097 May  7 11:31 communityRelease_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7340 May  7 11:52 compile_downstream_build.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 24559 May  3 16:52 dailyBuild_jdk11_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 28933 May  3 16:52 dailyBuild_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7343 May  3 16:52 dailyBuild_prod_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7573 May  7 11:25 deploy_jobs_7_x.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 12649 May  7 11:52 deploy_jobs.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7312 May  7 11:52 downstream_pr_jobs.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6875 May  7 11:31 downstream_production.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  1417 Mar 25 17:08 errai_deploy.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6576 Mar 25 17:08 errai_pr.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  3957 Mar 31 16:41 jenkins_shared_libs.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  1471 Mar 25 17:08 kie_docs_pr.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6785 Mar 25 17:08 kie_jenkinsScripts_PR.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  1421 Mar 25 17:08 pr_droolsjbpm_tools.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6544 May  7 11:52 pr_jobs_7_x.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  9373 May  7 11:52 pr_jobs.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  5849 May  7 11:31 prodProjects_downstream_production.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  9883 May  7 11:31 prodTag_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes 10778 Mar 25 17:08 reduced_drools_release.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  5655 May  7 11:31 sonarcloud_daily.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  7743 May  7 11:25 springboot_pr_job.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  2841 Mar 25 17:08 srcclr_scan_job.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  2589 Mar 25 17:08 srcclr_scan_pipeline.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  5104 Mar 25 17:08 turtleTests.groovy
+-rw-rw-r--. 1 mbiarnes mbiarnes  6871 May  7 11:31 upstream.groovy
+]777;notify;Command completed;ll\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [32mconstantsCheckstyle[33m+[31m(B[m [1m±(B[m ./gradlew clen [K[Kan test
+bash: ./gradlew: No such file or directory
+]777;notify;Command completed;./gradlew clean test\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie/master\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … -scripts/job-dsls/jobs/kie/master(B[m] [31mconstantsCheckstyle(B[m([35m+34/-20(B[m)[33m+[31m(B[m [35m127(B[m [1m±(B[m cd[K[Kcd ..
+]777;notify;Command completed;cd ..\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs/kie\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … jenkins-scripts/job-dsls/jobs/kie(B[m] [31mconstantsCheckstyle(B[m([35m+34/-20(B[m)[33m+[31m(B[m [1m±(B[m cd ..
+]777;notify;Command completed;cd ..\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls/jobs\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls/jobs\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development … kie-jenkins-scripts/job-dsls/jobs(B[m] [31mconstantsCheckstyle(B[m([35m+34/-20(B[m)[33m+[31m(B[m [1m±(B[m cd ..
+]777;notify;Command completed;cd ..\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mconstantsCheckstyle(B[m([35m+34/-20(B[m)[33m+[31m(B[m [1m±(B[m ./gradlew clean test
+
+
+[2A[1m<[0;1m-------------> 0% EXECUTING [98ms][m[35D[1B[1m> :clean[m[8D[1B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [198ms][m[37D[1B[1m> :compileGroovy[m[16D[1B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [298ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [398ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [498ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [598ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [698ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [798ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [898ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [998ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [1s][m[0K[34D[2B[2A[1m<[0;32;1m=====[0;39;1m--------> 45% EXECUTING [1s][m[34D[1B[1m> :resolveTestPlugins > Resolve dependencies of :testPlugins[m[60D[1B[1A[1m> :resolveTestPlugins > Resolve files of :testPlugins[m[0K[53D[1B[1A[1m> :resolveTestPlugins[m[0K[21D[1B[2A[1m<[0;32;1m========[0;39;1m-----> 63% EXECUTING [2s][m[34D[1B[1m> :compileTestGroovy > Resolve dependencies of :testCompileClasspath[m[68D[1B[1A[1m> :compileTestGroovy[m[0K[20D[1B[2A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [2s][m[34D[1B[1m> :test > Resolve dependencies of :testRuntimeClasspath[m[55D[1B[1A[1m> :test > 0 tests completed[m[0K[27D[1B[2A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [3s][m[34D[2B
+[1A[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [4s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [5s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [6s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [7s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [8s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [9s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [10s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [11s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [12s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [13s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [14s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [15s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [16s][m[35D[3B[3A[0K
+[1m> Task :test[m[0K
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_master_branch_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [16s][m[35D[1B[1m> :test > 0 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [17s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [18s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [19s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_master_branch_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_new_branches_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [19s][m[35D[1B[1m> :test > 1 test completed[m[26D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_new_branches_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_tools_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [20s][m[35D[1B[1m> :test > 2 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_tools_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [20s][m[35D[1B[1m> :test > 3 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script osbs_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [20s][m[35D[1B[1m> :test > 4 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script osbs_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [20s][m[35D[1B[1m> :test > 5 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kogito_docs_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [20s][m[35D[1B[1m> :test > 6 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kogito_docs_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_development_version.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [21s][m[35D[1B[1m> :test > 7 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_development_version.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script send_UMB_trigger_after_version_upgrade.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [21s][m[35D[1B[1m> :test > 8 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script send_UMB_trigger_after_version_upgrade.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kieAll_meta_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [21s][m[35D[1B[1m> :test > 9 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [22s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kieAll_meta_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_docker_ui_webapp.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [23s][m[35D[1B[1m> :test > 10 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_docker_ui_webapp.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script downstream_production.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [23s][m[35D[1B[1m> :test > 11 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [24s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [25s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script downstream_production.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script turtleTests.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [25s][m[35D[1B[1m> :test > 12 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [26s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [27s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script turtleTests.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script compile_downstream_build.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [27s][m[35D[1B[1m> :test > 13 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [28s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script compile_downstream_build.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_jobs_7_x.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [28s][m[35D[1B[1m> :test > 14 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_jobs_7_x.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_jobs_7_x.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [28s][m[35D[1B[1m> :test > 15 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [29s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [30s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [31s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_jobs_7_x.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [31s][m[35D[1B[1m> :test > 16 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [32s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script downstream_pr_jobs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [32s][m[35D[1B[1m> :test > 17 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [33s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script downstream_pr_jobs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script automatic_web_publishing.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [33s][m[35D[1B[1m> :test > 18 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [34s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script automatic_web_publishing.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_docs_pr.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [34s][m[35D[1B[1m> :test > 19 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_docs_pr.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prodProjects_downstream_production.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [34s][m[35D[1B[1m> :test > 20 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prodProjects_downstream_production.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script upstream.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [34s][m[35D[1B[1m> :test > 21 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [35s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script upstream.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script communityRelease_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [35s][m[35D[1B[1m> :test > 22 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script communityRelease_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script jenkins_shared_libs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [35s][m[35D[1B[1m> :test > 23 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script jenkins_shared_libs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script srcclr_scan_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [35s][m[35D[1B[1m> :test > 24 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [36s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script srcclr_scan_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script errai_deploy.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [36s][m[35D[1B[1m> :test > 25 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script errai_deploy.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_jdk11_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [36s][m[35D[1B[1m> :test > 26 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_jdk11_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script errai_pr.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [36s][m[35D[1B[1m> :test > 27 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [37s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script errai_pr.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_prod_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[1B[1m> :test > 28 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_prod_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prodTag_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[1B[1m> :test > 29 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prodTag_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_jobs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[1B[1m> :test > 30 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_jobs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script springboot_pr_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[1B[1m> :test > 31 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [39s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script springboot_pr_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_jenkinsScripts_PR.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [39s][m[35D[1B[1m> :test > 32 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_jenkinsScripts_PR.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script reduced_drools_release.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [39s][m[35D[1B[1m> :test > 33 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script reduced_drools_release.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script sonarcloud_daily.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [39s][m[35D[1B[1m> :test > 34 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script sonarcloud_daily.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_jobs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [40s][m[35D[1B[1m> :test > 35 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_jobs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_droolsjbpm_tools.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [40s][m[35D[1B[1m> :test > 36 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_droolsjbpm_tools.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script srcclr_scan_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[1B[1m> :test > 37 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script srcclr_scan_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kogito_docs_upload.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[1B[1m> :test > 38 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kogito_docs_upload.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_prod_branch.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[1B[1m> :test > 39 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_prod_branch.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_kogito_properties_generator.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[1B[1m> :test > 40 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_kogito_properties_generator.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_offline_repo_builder.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[1B[1m> :test > 41 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_offline_repo_builder.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_properties_generator.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[1B[1m> :test > 42 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_properties_generator.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_replace_version.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[1B[1m> :test > 43 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_replace_version.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_replace_shared_libraries.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[1B[1m> :test > 44 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_replace_shared_libraries.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_shared_libraries_new_branch.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[1B[1m> :test > 45 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [43s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_shared_libraries_new_branch.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_staging.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [43s][m[35D[1B[1m> :test > 46 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_staging.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script osbs_seed_cloud_jobs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [43s][m[35D[1B[1m> :test > 47 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script osbs_seed_cloud_jobs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_slave_image_build_PR_test.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [43s][m[35D[1B[1m> :test > 48 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [44s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [45s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [46s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_slave_image_build_PR_test.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_smee_client.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [46s][m[35D[1B[1m> :test > 49 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [47s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [48s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [49s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [50s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_smee_client.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_verdaccio.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [50s][m[35D[1B[1m> :test > 50 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_verdaccio.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_cekit.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [50s][m[35D[1B[1m> :test > 51 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_cekit.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_delete.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [50s][m[35D[1B[1m> :test > 52 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_delete.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_execute_pig.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [50s][m[35D[1B[1m> :test > 53 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_execute_pig.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_docker_reg.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [50s][m[35D[1B[1m> :test > 54 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_docker_reg.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_slave_image_build.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [51s][m[35D[1B[1m> :test > 55 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_slave_image_build.groovy [32mPASSED[39m
+[1B[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [51s][m[0K[35D[1B[1m> :test > 56 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [52s][m[35D[2B> IDLE[0K[6D[1B[3A[0K
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.3/userguide/command_line_interface.html#sec:command_line_warnings
+
+[32;1mBUILD SUCCESSFUL[0;39m in 53s
+6 actionable tasks: 6 executed
+[0K
+[0K
+[0K
+[3A[1m<[0;1m-------------> 0% WAITING[m[26D[1B[1m> :test > 56 tests completed[m[28D[1B> IDLE[6D[1B[3A[2K[1B[2K[1B[2K[2A[0m[?12l[?25h]777;notify;Command completed;./gradlew clean test\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m67°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mconstantsCheckstyle(B[m([35m+34/-20(B[m)[33m+[31m(B[m [1m±(B[m git log -5 --pretty=oneeline[1Pline
+[?1h=[33md4752d7b0446134def50a1b4449c301cf916676b[m[33m ([m[1;36mHEAD -> [m[1;32mconstantsCheckstyle[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m replaced checkstyle files (#980)[m
+[33m6af76cce05763beb96d8a16c86a2c3c6819448bc[m [NIGHTLY] prod_*_properties_generator missing agent fixed (#979)[m
+[33m2674b9004f75dfb8f8481452a01b185ec36a4d57[m changed credentialsBinding (#977)[m
+[33m7928b27187141bbe6ecb87e401ce1acbd1b782a4[m[33m ([m[1;31mmichibk/master[m[33m)[m Use a release repository group instead of replacing MRRC to include all necessary [m [33m[m[33m[m[1;31m[m[33m[mrepositories (#973)[m
+[33m9acfbad77dfa94dc97838dc412f049291976020f[m fixed typos (#976)[m
+[K[?1l>]777;notify;Command completed;git log -5 --pretty=oneline\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mconstantsCheckstyle(B[m([35m+34/-20(B[m)[33m+[31m(B[m [1m±(B[m git add .
+]777;notify;Command completed;git add .\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mconstantsCheckstyle(B[m([35m+0/-0(B[m)[33m+[31m(B[m [1m±(B[m git commit -m "added findbugFile and chestyleFi le to Constants"[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CcstyleFi[1@l[Aθ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mconstantsCheckstyle(B[m([35m+0/-0(B[m)[33m+[31m(B[m [1m±(B[m [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CkstyleF[1@i[Aθ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mconstantsCheckstyle(B[m([35m+0/-0(B[m)[33m+[31m(B[m [1m±(B[m [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CsFile and checkstyle[1@F[Aθ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mconstantsCheckstyle(B[m([35m+0/-0(B[m)[33m+[31m(B[m [1m±(B[m [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+[constantsCheckstyle 934807c] added findbugsFile and checkstyleFile to Constants
+ 8 files changed, 34 insertions(+), 20 deletions(-)
+]777;notify;Command completed;git commit -m "added findbugsFile and checkstyleFile to Constants"\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mconstantsCheckstyle[33m+[31m(B[m [1m±(B[m git push michibk constantsCheckstyle+[K
+Enumerating objects: 40, done.
+Counting objects:   2% (1/40)   Counting objects:   5% (2/40)   Counting objects:   7% (3/40)   Counting objects:  10% (4/40)   Counting objects:  12% (5/40)   Counting objects:  15% (6/40)   Counting objects:  17% (7/40)   Counting objects:  20% (8/40)   Counting objects:  22% (9/40)   Counting objects:  25% (10/40)   Counting objects:  27% (11/40)   Counting objects:  30% (12/40)   Counting objects:  32% (13/40)   Counting objects:  35% (14/40)   Counting objects:  37% (15/40)   Counting objects:  40% (16/40)   Counting objects:  42% (17/40)   Counting objects:  45% (18/40)   Counting objects:  47% (19/40)   Counting objects:  50% (20/40)   Counting objects:  52% (21/40)   Counting objects:  55% (22/40)   Counting objects:  57% (23/40)   Counting objects:  60% (24/40)   Counting objects:  62% (25/40)   Counting objects:  65% (26/40)   Counting objects:  67% (27/40)   Counting objects:  70% (28/40)   Counting objects:  72% (29/40)   Counting objects:  75% (30/40)   Counting objects:  77% (31/40)   Counting objects:  80% (32/40)   Counting objects:  82% (33/40)   Counting objects:  85% (34/40)   Counting objects:  87% (35/40)   Counting objects:  90% (36/40)   Counting objects:  92% (37/40)   Counting objects:  95% (38/40)   Counting objects:  97% (39/40)   Counting objects: 100% (40/40)   Counting objects: 100% (40/40), done.
+Delta compression using up to 8 threads
+Compressing objects:   5% (1/17)   Compressing objects:  11% (2/17)   Compressing objects:  17% (3/17)   Compressing objects:  23% (4/17)   Compressing objects:  29% (5/17)   Compressing objects:  35% (6/17)   Compressing objects:  41% (7/17)   Compressing objects:  47% (8/17)   Compressing objects:  52% (9/17)   Compressing objects:  58% (10/17)   Compressing objects:  64% (11/17)   Compressing objects:  70% (12/17)   Compressing objects:  76% (13/17)   Compressing objects:  82% (14/17)   Compressing objects:  88% (15/17)   Compressing objects:  94% (16/17)   Compressing objects: 100% (17/17)   Compressing objects: 100% (17/17), done.
+Writing objects:   4% (1/21)   Writing objects:   9% (2/21)   Writing objects:  14% (3/21)   Writing objects:  19% (4/21)   Writing objects:  23% (5/21)   Writing objects:  28% (6/21)   Writing objects:  33% (7/21)   Writing objects:  38% (8/21)   Writing objects:  42% (9/21)   Writing objects:  47% (10/21)   Writing objects:  52% (11/21)   Writing objects:  57% (12/21)   Writing objects:  61% (13/21)   Writing objects:  66% (14/21)   Writing objects:  71% (15/21)   Writing objects:  76% (16/21)   Writing objects:  80% (17/21)   Writing objects:  85% (18/21)   Writing objects:  90% (19/21)   Writing objects:  95% (20/21)   Writing objects: 100% (21/21)   Writing objects: 100% (21/21), 3.92 KiB | 501.00 KiB/s, done.
+Total 21 (delta 12), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/12)[Kremote: Resolving deltas:   8% (1/12)[Kremote: Resolving deltas:  16% (2/12)[Kremote: Resolving deltas:  25% (3/12)[Kremote: Resolving deltas:  33% (4/12)[Kremote: Resolving deltas:  41% (5/12)[Kremote: Resolving deltas:  50% (6/12)[Kremote: Resolving deltas:  58% (7/12)[Kremote: Resolving deltas:  66% (8/12)[Kremote: Resolving deltas:  75% (9/12)[Kremote: Resolving deltas:  83% (10/12)[Kremote: Resolving deltas:  91% (11/12)[Kremote: Resolving deltas: 100% (12/12)[Kremote: Resolving deltas: 100% (12/12), completed with 12 local objects.[K
+remote: 
+remote: Create a pull request for 'constantsCheckstyle' on GitHub by visiting:[K
+remote:      https://github.com/mbiarnes/kie-jenkins-scripts/pull/new/constantsCheckstyle[K
+remote: 
+To github.com:mbiarnes/kie-jenkins-scripts.git
+ * [new branch]      constantsCheckstyle -> constantsCheckstyle
+]777;notify;Command completed;git push michibk constantsCheckstyle\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mconstantsCheckstyle[33m+[31m(B[m [1m±(B[m git branch
+[?1h=  7.52.x[m[m
+  checkstyle.log[m[m
+  checkstyle.log-7.52.x[m[m
+* [32mconstantsCheckstyle[m[m
+  master[m[m
+  slave-image-build[m[m
+[K[?1l>]777;notify;Command completed;git branch\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mconstantsCheckstyle[33m+[31m(B[m [1m±(B[m git branch -D   checkstyle.log
+Deleted branch checkstyle.log (was f1bd851).
+]777;notify;Command completed;git branch -D   checkstyle.log\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mconstantsCheckstyle[33m+[31m(B[m [1m±(B[m git branch
+[?1h=  7.52.x[m[m
+  checkstyle.log-7.52.x[m[m
+* [32mconstantsCheckstyle[m[m
+  master[m[m
+  slave-image-build[m[m
+[K[?1l>]777;notify;Command completed;git branch\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mconstantsCheckstyle[33m+[31m(B[m [1m±(B[m git branch -D checkstyle.log-7.52.x slave-image-build
+Deleted branch checkstyle.log-7.52.x (was 5a4df9e).
+Deleted branch slave-image-build (was 509cc9f).
+]777;notify;Command completed;git branch -D checkstyle.log-7.52.x slave-image-build\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mconstantsCheckstyle[33m+[31m(B[m [1m±(B[m clear
+[H[2J[3J]777;notify;Command completed;clear\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mconstantsCheckstyle[33m+[31m(B[m [1m±(B[m git brabnch[K[K[K[Knch
+[?1h=  7.52.x[m[m
+* [32mconstantsCheckstyle[m[m
+  master[m[m
+[K[?1l>]777;notify;Command completed;git branch\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mconstantsCheckstyle[33m+[31m(B[m [1m±(B[m git fetch origin
+remote: Enumerating objects: 1, done.[K
+remote: Counting objects: 100% (1/1)[Kremote: Counting objects: 100% (1/1), done.[K
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0[K
+Unpacking objects: 100% (1/1)   Unpacking objects: 100% (1/1), done.
+From github.com:kiegroup/kie-jenkins-scripts
+   a8828a2..60aae51  7.52.x     -> origin/7.52.x
+]777;notify;Command completed;git fetch origin\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mconstantsCheckstyle[33m+[31m(B[m [1m±(B[m git rebase origin/7.52.x 7.52.x
+First, rewinding head to replay your work on top of it...
+Fast-forwarded 7.52.x to origin/7.52.x.
+]777;notify;Command completed;git rebase origin/7.52.x 7.52.x\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32m7.52.x[33m+[31m(B[m [1m±(B[m git checkout -b constantsCheckstyle-7.52.x 7.52.x
+Switched to a new branch 'constantsCheckstyle-7.52.x'
+]777;notify;Command completed;git checkout -b constantsCheckstyle-7.52.x 7.52.x\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mconstantsCheckstyle-7.52.x[33m+[31m(B[m [1m±(B[m clear
+[H[2J[3J]777;notify;Command completed;clear\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mconstantsCheckstyle-7.52.x[33m+[31m(B[m [1m±(B[m ll
+total 44
+drwxrwxr-x. 10 mbiarnes mbiarnes 4096 May  7 12:13 [0m[38;5;33mbuild[0m
+-rw-rw-r--.  1 mbiarnes mbiarnes 6666 May  7 12:18 build.gradle
+drwxrwxr-x.  3 mbiarnes mbiarnes 4096 Aug 26  2019 [38;5;33mgradle[0m
+-rw-rw-r--.  1 mbiarnes mbiarnes   42 May  3 16:52 gradle.properties
+-rwxrwxr-x.  1 mbiarnes mbiarnes 5299 Jun 16  2019 [38;5;40mgradlew[0m
+-rw-rw-r--.  1 mbiarnes mbiarnes 2176 Jun 16  2019 gradlew.bat
+drwxrwxr-x.  7 mbiarnes mbiarnes 4096 Mar 25 17:08 [38;5;33mjobs[0m
+-rw-rw-r--.  1 mbiarnes mbiarnes 1650 Mar 25 17:08 README.MD
+drwxrwxr-x.  4 mbiarnes mbiarnes 4096 Jun 16  2019 [38;5;33msrc[0m
+]777;notify;Command completed;ll\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mconstantsCheckstyle-7.52.x(B[m([35m+34/-19(B[m)[33m+[31m(B[m [1m±(B[m git status
+On branch constantsCheckstyle-7.52.x
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   jobs/kie/master/compile_downstream_build.groovy[m
+	[31mmodified:   jobs/kie/master/deploy_jobs.groovy[m
+	[31mmodified:   jobs/kie/master/deploy_jobs_7_x.groovy[m
+	[31mmodified:   jobs/kie/master/downstream_pr_jobs.groovy[m
+	[31mmodified:   jobs/kie/master/pr_jobs.groovy[m
+	[31mmodified:   jobs/kie/master/pr_jobs_7_x.groovy[m
+	[31mmodified:   jobs/kie/master/springboot_pr_job.groovy[m
+	[31mmodified:   src/main/groovy/org/kie/jenkins/jobdsl/Constants.groovy[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]777;notify;Command completed;git status\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mconstantsCheckstyle-7.52.x(B[m([35m+34/-19(B[m)[33m+[31m(B[m [1m±(B[m ./gradlew clen test[1@a
+
+[1A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [96ms][m[39D[1B
+[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [196ms][m[0K[37D[1B[1m> :compileGroovy[m[16D[1B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [296ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [396ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [496ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [596ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [696ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [796ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [896ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [996ms][m[37D[2B[2A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [1s][m[0K[34D[2B[2A[1m<[0;32;1m=====[0;39;1m--------> 45% EXECUTING [1s][m[34D[1B[1m> :resolveTestPlugins > Resolve dependencies of :testPlugins[m[60D[1B[1A[1m> :resolveTestPlugins[m[0K[21D[1B[2A[1m<[0;32;1m=====[0;39;1m--------> 45% EXECUTING [2s][m[34D[2B[2A[1m<[0;32;1m========[0;39;1m-----> 63% EXECUTING [2s][m[34D[1B[1m> :compileTestGroovy[m[0K[20D[1B[2A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [2s][m[34D[1B[1m> :test > 0 tests completed[m[27D[1B[2A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [3s][m[34D[2B
+[1A[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [4s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [5s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [6s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [7s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [8s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [9s][m[34D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [10s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [11s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [12s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [13s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [14s][m[35D[3B[3A[0K
+[1m> Task :test[m[0K
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_master_branch_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [14s][m[35D[1B[1m> :test > 0 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [15s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [16s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [17s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_master_branch_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_new_branches_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [17s][m[35D[1B[1m> :test > 1 test completed[m[26D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [18s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_new_branches_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_tools_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [18s][m[35D[1B[1m> :test > 2 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_tools_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [18s][m[35D[1B[1m> :test > 3 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script osbs_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [18s][m[35D[1B[1m> :test > 4 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script osbs_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script migration_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [18s][m[35D[1B[1m> :test > 5 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [19s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script migration_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [19s][m[35D[1B[1m> :test > 6 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kogito_docs_seed_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [19s][m[35D[1B[1m> :test > 7 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kogito_docs_seed_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_development_version.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [19s][m[35D[1B[1m> :test > 8 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [20s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_development_version.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script send_UMB_trigger_after_version_upgrade.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [20s][m[35D[1B[1m> :test > 9 tests completed[m[27D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script send_UMB_trigger_after_version_upgrade.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kieAll_meta_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [20s][m[35D[1B[1m> :test > 10 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [21s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kieAll_meta_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_docker_ui_webapp.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [21s][m[35D[1B[1m> :test > 11 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_docker_ui_webapp.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script downstream_production.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [22s][m[35D[1B[1m> :test > 12 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [23s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [24s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script downstream_production.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script turtleTests.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [24s][m[35D[1B[1m> :test > 13 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [25s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [26s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script turtleTests.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script compile_downstream_build.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [26s][m[35D[1B[1m> :test > 14 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [27s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script compile_downstream_build.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_jobs_7_x.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [27s][m[35D[1B[1m> :test > 15 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_jobs_7_x.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_jobs_7_x.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [27s][m[35D[1B[1m> :test > 16 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [28s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [29s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [30s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_jobs_7_x.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [30s][m[35D[1B[1m> :test > 17 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [31s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script downstream_pr_jobs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [31s][m[35D[1B[1m> :test > 18 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [32s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script downstream_pr_jobs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script automatic_web_publishing.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [32s][m[35D[1B[1m> :test > 19 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script automatic_web_publishing.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_docs_pr.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [32s][m[35D[1B[1m> :test > 20 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_docs_pr.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prodProjects_downstream_production.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [32s][m[35D[1B[1m> :test > 21 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prodProjects_downstream_production.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script upstream.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [33s][m[35D[1B[1m> :test > 22 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script upstream.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script communityRelease_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [33s][m[35D[1B[1m> :test > 23 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [34s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script communityRelease_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script jenkins_shared_libs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [34s][m[35D[1B[1m> :test > 24 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script jenkins_shared_libs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script srcclr_scan_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [34s][m[35D[1B[1m> :test > 25 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script srcclr_scan_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script errai_deploy.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [34s][m[35D[1B[1m> :test > 26 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script errai_deploy.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_jdk11_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [34s][m[35D[1B[1m> :test > 27 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [35s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_jdk11_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script errai_pr.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [35s][m[35D[1B[1m> :test > 28 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [36s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script errai_pr.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_prod_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [36s][m[35D[1B[1m> :test > 29 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script dailyBuild_prod_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prodTag_pipeline.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [37s][m[35D[1B[1m> :test > 30 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prodTag_pipeline.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_jobs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [37s][m[35D[1B[1m> :test > 31 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_jobs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script springboot_pr_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[1B[1m> :test > 32 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script springboot_pr_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_jenkinsScripts_PR.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[1B[1m> :test > 33 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kie_jenkinsScripts_PR.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script reduced_drools_release.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[1B[1m> :test > 34 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script reduced_drools_release.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script sonarcloud_daily.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [38s][m[35D[1B[1m> :test > 35 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script sonarcloud_daily.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_jobs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [39s][m[35D[1B[1m> :test > 36 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script deploy_jobs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_droolsjbpm_tools.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [39s][m[35D[1B[1m> :test > 37 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script pr_droolsjbpm_tools.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script srcclr_scan_job.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [39s][m[35D[1B[1m> :test > 38 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [40s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script srcclr_scan_job.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kogito_docs_upload.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [40s][m[35D[1B[1m> :test > 39 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script kogito_docs_upload.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_prod_branch.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [40s][m[35D[1B[1m> :test > 40 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_prod_branch.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_kogito_properties_generator.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[1B[1m> :test > 41 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_kogito_properties_generator.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_offline_repo_builder.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[1B[1m> :test > 42 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_offline_repo_builder.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_properties_generator.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[1B[1m> :test > 43 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_properties_generator.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_replace_version.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[1B[1m> :test > 44 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_replace_version.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_replace_shared_libraries.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[1B[1m> :test > 45 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_replace_shared_libraries.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_shared_libraries_new_branch.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[1B[1m> :test > 46 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_shared_libraries_new_branch.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_staging.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[1B[1m> :test > 47 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script prod_rhba_staging.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script osbs_seed_cloud_jobs.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [41s][m[35D[1B[1m> :test > 48 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script osbs_seed_cloud_jobs.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_slave_image_build_PR_test.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [42s][m[35D[1B[1m> :test > 49 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [43s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [44s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_slave_image_build_PR_test.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_smee_client.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [45s][m[35D[1B[1m> :test > 50 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [46s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [47s][m[35D[3B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [48s][m[35D[3B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_smee_client.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_verdaccio.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [48s][m[35D[1B[1m> :test > 51 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_verdaccio.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_cekit.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [48s][m[35D[1B[1m> :test > 52 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_cekit.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_delete.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [49s][m[35D[1B[1m> :test > 53 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_delete.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_execute_pig.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [49s][m[35D[1B[1m> :test > 54 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_execute_pig.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_docker_reg.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [49s][m[35D[1B[1m> :test > 55 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_provisioning_docker_reg.groovy [32mPASSED[39m
+[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_slave_image_build.groovy STARTED
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [49s][m[35D[1B[1m> :test > 56 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[0K
+org.kie.jenkins.jobdsl.JobScriptsSpec > test script tools_slave_image_build.groovy [32mPASSED[39m
+[1B[0K
+[0K
+[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [49s][m[0K[35D[1B[1m> :test > 57 tests completed[m[28D[1B[1m> :test > Executing test org.kie.jenkins.jobdsl.JobScriptsSpec[m[62D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [50s][m[35D[3B[1A> IDLE[0K[6D[1B[3A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [51s][m[35D[3B[2A[1m> :test[m[0K[7D[2B[3A[0K
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.3/userguide/command_line_interface.html#sec:command_line_warnings
+
+[32;1mBUILD SUCCESSFUL[0;39m in 52s
+6 actionable tasks: 6 executed
+[0K
+[0K
+[0K
+[3A[1m<[0;1m-------------> 0% WAITING[m[26D[1B[1m> :test[m[7D[1B> IDLE[6D[1B[3A[2K[1B[2K[1B[2K[2A[0m[?12l[?25h]777;notify;Command completed;./gradlew clean test\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m68°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mconstantsCheckstyle-7.52.x(B[m([35m+34/-19(B[m)[33m+[31m(B[m [1m±(B[m git add .
+]777;notify;Command completed;git add .\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mconstantsCheckstyle-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m(B[m [1m±(B[m his ccommit
+ 1053  his [01;31m[Kccommit[m[K
+]777;notify;Command completed;his ccommit\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mconstantsCheckstyle-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m(B[m [1m±(B[m his ccommit[1Pommit
+  103  git [01;31m[Kcommit[m[K --amend
+  150  git [01;31m[Kcommit[m[K -m "added exclusions for WildFly23 update"
+  160  git [01;31m[Kcommit[m[K -m "upgraded test plugins versions"
+  174  git [01;31m[Kcommit[m[K -m "upgarded to Jenkins version 2.277.2"
+  196  git [01;31m[Kcommit[m[K -m "upgraded plugins versions"
+  215  git [01;31m[Kcommit[m[K -m "removed obsolete plugin for testing"
+  230  git [01;31m[Kcommit[m[K -m "all needed updates for upgrade to Jenkins 2.277.2"
+  250  git [01;31m[Kcommit[m[K -m "added exclusions for WildFly23 upgrade"
+  259  git [01;31m[Kcommit[m[K --amend
+  266  git [01;31m[Kcommit[m[K --amend
+  272  git [01;31m[Kcommit[m[K --amend
+  299  git [01;31m[Kcommit[m[K -m "added timestamp for better seeing a jobs process"
+  304  his [01;31m[Kcommit[m[K
+  305  git [01;31m[Kcommit[m[K -m "added timestamp for better seeing a jobs process"
+  353  git [01;31m[Kcommit[m[K --amend
+  363  git [01;31m[Kcommit[m[K --amend
+  366  git [01;31m[Kcommit[m[K --amend
+  468  git [01;31m[Kcommit[m[K --amend
+  630  git [01;31m[Kcommit[m[K -m "selected new theme Neo2"
+  656  git [01;31m[Kcommit[m[K -m "fixed typo in main.yaml"
+  666  git [01;31m[Kcommit[m[K-m "added missing space"
+  667  git [01;31m[Kcommit[m[K -m "added missing space"
+  672  git [01;31m[Kcommit[m[K --amend
+  681  git [01;31m[Kcommit[m[K - m "fixed typos"
+  682  git [01;31m[Kcommit[m[K -m "fixed typos"
+  795  git [01;31m[Kcommit[m[K -m "modyfied secrets"
+  798  git [01;31m[Kcommit[m[K --amend
+  820  git [01;31m[Kcommit[m[K -m "changed credentalsBinding file type"
+  845  git [01;31m[Kcommit[m[K --amend
+  850  git [01;31m[Kcommit[m[K -m "added packer URL to constants"
+  854  git [01;31m[Kcommit[m[K --amend
+  857  git [01;31m[Kcommit[m[K --amend
+  860  git [01;31m[Kcommit[m[K --amend
+  868  git [01;31m[Kcommit[m[K --amend
+  873  git [01;31m[Kcommit[m[K --amend
+  876  git [01;31m[Kcommit[m[K --amend
+  879  git [01;31m[Kcommit[m[K --amend
+  889  git [01;31m[Kcommit[m[K -m "replaced findbugs and chekstyle calls in Jenkinsfile.buildchain"
+  890  git [01;31m[Kcommit[m[K --amend
+  899  git [01;31m[Kcommit[m[K -m "replaced double quotes by single quotes"
+  902  git [01;31m[Kcommit[m[K -amend
+  903  git [01;31m[Kcommit[m[K --amend
+  997  git [01;31m[Kcommit[m[K -m "added added new user groups, removed obsolte ones"
+ 1007  git [01;31m[Kcommit[m[K -m "replaced checkstyle files"
+ 1037  git [01;31m[Kcommit[m[K -m "added findbugsFile and checkstyleFile to Constants"
+ 1053  his c[01;31m[Kcommit[m[K
+ 1054  his [01;31m[Kcommit[m[K
+]777;notify;Command completed;his commit\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [31mconstantsCheckstyle-7.52.x(B[m([35m+0/-0(B[m)[33m+[31m(B[m [1m±(B[m git commit -m "added findbugsFile and checkstyleFile to Constants"
+[constantsCheckstyle-7.52.x 30d4d1c] added findbugsFile and checkstyleFile to Constants
+ 8 files changed, 34 insertions(+), 19 deletions(-)
+]777;notify;Command completed;git commit -m "added findbugsFile and checkstyleFile to Constants"\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/kie-jenkins-scripts/job-dsls\θ[31m65°(B[m [mbiarnes(B[m[32m:(B[m[1m~/Development/git/kie-jenkins-scripts/job-dsls(B[m] [32mconstantsCheckstyle-7.52.x[33m+[31m(B[m [1m±(B[m git push michibk constantsCheckstyle-7.52.x+[K
+Enumerating objects: 40, done.
+Counting objects:   2% (1/40)   Counting objects:   5% (2/40)   Counting objects:   7% (3/40)   Counting objects:  10% (4/40)   Counting objects:  12% (5/40)   Counting objects:  15% (6/40)   Counting objects:  17% (7/40)   Counting objects:  20% (8/40)   Counting objects:  22% (9/40)   Counting objects:  25% (10/40)   Counting objects:  27% (11/40)   Counting objects:  30% (12/40)   Counting objects:  32% (13/40)   Counting objects:  35% (14/40)   Counting objects:  37% (15/40)   Counting objects:  40% (16/40)   Counting objects:  42% (17/40)   Counting objects:  45% (18/40)   Counting objects:  47% (19/40)   Counting objects:  50% (20/40)   Counting objects:  52% (21/40)   Counting objects:  55% (22/40)   Counting objects:  57% (23/40)   Counting objects:  60% (24/40)   Counting objects:  62% (25/40)   Counting objects:  65% (26/40)   Counting objects:  67% (27/40)   Counting objects:  70% (28/40)   Counting objects:  72% (29/40)   Counting objects:  75% (30/40)   Counting objects:  77% (31/40)   Counting objects:  80% (32/40)   Counting objects:  82% (33/40)   Counting objects:  85% (34/40)   Counting objects:  87% (35/40)   Counting objects:  90% (36/40)   Counting objects:  92% (37/40)   Counting objects:  95% (38/40)   Counting objects:  97% (39/40)   Counting objects: 100% (40/40)   Counting objects: 100% (40/40), done.
+Delta compression using up to 8 threads
+Compressing objects:   5% (1/17)   Compressing objects:  11% (2/17)   Compressing objects:  17% (3/17)   Compressing objects:  23% (4/17)   Compressing objects:  29% (5/17)   Compressing objects:  35% (6/17)   Compressing objects:  41% (7/17)   Compressing objects:  47% (8/17)   Compressing objects:  52% (9/17)   Compressing objects:  58% (10/17)   Compressing objects:  64% (11/17)   Compressing objects:  70% (12/17)   Compressing objects:  76% (13/17)   Compressing objects:  82% (14/17)   Compressing objects:  88% (15/17)   Compressing objects:  94% (16/17)   Compressing objects: 100% (17/17)   Compressing objects: 100% (17/17), done.
+Writing objects:   4% (1/21)   Writing objects:   9% (2/21)   Writing objects:  14% (3/21)   Writing objects:  19% (4/21)   Writing objects:  23% (5/21)   Writing objects:  28% (6/21)   Writing objects:  33% (7/21)   Writing objects:  38% (8/21)   Writing objects:  42% (9/21)   Writing objects:  47% (10/21)   Writing objects:  52% (11/21)   Writing objects:  57% (12/21)   Writing objects:  61% (13/21)   Writing objects:  66% (14/21)   Writing objects:  71% (15/21)   Writing objects:  76% (16/21)   Writing objects:  80% (17/21)   Writing objects:  85% (18/21)   Writing objects:  90% (19/21)   Writing objects:  95% (20/21)   Writing objects: 100% (21/21)   Writing objects: 100% (21/21), 3.91 KiB | 445.00 KiB/s, done.
+Total 21 (delta 12), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/12)[Kremote: Resolving deltas:   8% (1/12)[Kremote: Resolving deltas:  16% (2/12)[Kremote: Resolving deltas:  25% (3/12)[Kremote: Resolving deltas:  33% (4/12)[Kremote: Resolving deltas:  41% (5/12)[Kremote: Resolving deltas:  50% (6/12)[Kremote: Resolving deltas:  58% (7/12)[Kremote: Resolving deltas:  66% (8/12)[Kremote: Resolving deltas:  75% (9/12)[Kremote: Resolving deltas:  83% (10/12)[Kremote: Resolving deltas:  91% (11/12)[Kremote: Resolving deltas: 100% (12/12)[Kremote: Resolving deltas: 100% (12/12), completed with 12 local objects.[K
+remote: 
+remote: Create a pull request for 'constantsCheckstyle-7.52.x' on GitHub by visiting:[K
+remote:      https://github.com/mbiarnes/kie-jenkins-scripts/pull/new/constantsCheckstyle-7.52.x[K
+remote: 
+To github.com:mbiarnes/kie-jenkins-scripts.git
+ * [new branch]      constantsCheckstyle-7.52.x -> constantsCheckstyle-7.52.x
+]777;notify;Command completed;git push michibk constantsCheckstyle-7.52.x\]0;mbiarnes@mbiarnesLaptop:~/Development/git/kie-jenkins-scripts/job-dsls\]7;file://mbiarnesLaptop/home/mbiarnes/Development/git/ki
