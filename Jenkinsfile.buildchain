@@ -19,6 +19,9 @@ pipeline {
         timestamps ()
         timeout(time: additionalTimeout, unit: 'MINUTES')
     }
+    environment {
+        FIREFOX_FOLDER = '/opt/tools/firefox-60esr'
+    }
     stages {
         stage('Initialize') {
             steps {
