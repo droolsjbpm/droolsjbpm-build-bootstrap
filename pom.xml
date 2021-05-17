@@ -299,7 +299,6 @@
     <version.org.drools.droolsjbpm-tools>${version.org.drools}</version.org.drools.droolsjbpm-tools>
     <version.org.jbpm.jbpm-designer>${version.org.jbpm}</version.org.jbpm.jbpm-designer>
     <version.org.jbpm.jbpm-wb>${version.org.jbpm}</version.org.jbpm.jbpm-wb>
-    <version.org.apache.xmlgraphics.commons>2.2</version.org.apache.xmlgraphics.commons>
 
     <!-- External dependency versions bom -->
     <!-- ################################################################################ -->
