@@ -433,6 +433,7 @@
     <version.org.kie.workbench.app>${version.org.kie}</version.org.kie.workbench.app>
 
     <version.thorntail>2.7.0.Final</version.thorntail>
+    <version.bootable>4.0.3.Final</version.bootable>
     <version.net.byte-buddy>1.10.3</version.net.byte-buddy>
     <version.docker-client>3.5.12</version.docker-client>
     <version.kubernetes-client>4.6.0</version.kubernetes-client>
@@ -1626,6 +1627,12 @@
           <groupId>io.smallrye</groupId>
           <artifactId>smallrye-open-api-maven-plugin</artifactId>
           <version>${version.io.smallrye.openapi.core}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.wildfly.plugins</groupId>
+          <artifactId>wildfly-jar-maven-plugin</artifactId>
+          <version>${version.bootable}</version>
         </plugin>
         <plugin>
           <groupId>io.thorntail</groupId>
