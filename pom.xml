@@ -103,6 +103,7 @@
     <version.guru.nidi>0.18.0</version.guru.nidi>
     <version.io.springfox>2.9.2</version.io.springfox>
     <version.io.smallrye.openapi.core>2.0.26</version.io.smallrye.openapi.core>
+    <version.io.strimzi.strimzi-test-container>0.23.0</version.io.strimzi.strimzi-test-container>
     <version.io.takari.maven.plugins.testing>2.9.2</version.io.takari.maven.plugins.testing>
     <version.io.undertow>2.0.28.Final</version.io.undertow>
     <version.javax.activation>1.1.1</version.javax.activation>
@@ -2577,6 +2578,13 @@
         <groupId>io.smallrye</groupId>
         <artifactId>smallrye-open-api-core</artifactId>
         <version>${version.io.smallrye.openapi.core}</version>
+      </dependency>
+      
+      <dependency>
+        <groupId>io.strimzi</groupId>
+        <artifactId>strimzi-test-container</artifactId>
+        <version>${version.io.strimzi.strimzi-test-container}</version>
+        <scope>test</scope>
       </dependency>
 
       <dependency>
