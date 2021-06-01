@@ -183,7 +183,7 @@
         <artifactId>kie-pmml-models-mining-evaluator</artifactId>
         <version>${version.org.kie}</version>
       </dependency>
-      <!-- Tree NO - CODEGEN -->
+      <!-- Tree - CODEGEN -->
       <dependency>
         <groupId>org.kie</groupId>
         <artifactId>kie-pmml-models-tree-model</artifactId>
@@ -197,6 +197,22 @@
       <dependency>
         <groupId>org.kie</groupId>
         <artifactId>kie-pmml-models-tree-evaluator</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <!-- Scorecard - CODEGEN -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-scorecard-model</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-scorecard-compiler</artifactId>
+        <version>${version.org.kie}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-scorecard-evaluator</artifactId>
         <version>${version.org.kie}</version>
       </dependency>
       <!-- Clustering -->
@@ -395,6 +411,25 @@
         <version>${version.org.kie}</version>
         <classifier>sources</classifier>
       </dependency>
+      <!-- Scorecard - CODEGEN -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-scorecard-model</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>sources</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-scorecard-compiler</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>sources</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-scorecard-evaluator</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>sources</classifier>
+      </dependency>
       <!-- EXTERNAL -->
       <!-- TEST -->
       <!-- Commons -->
@@ -443,7 +478,7 @@
         <classifier>tests</classifier>
         <version>${version.org.kie}</version>
       </dependency>
-      <!-- Tree No codegen -->
+      <!-- Tree Codegen -->
       <dependency>
         <groupId>org.kie</groupId>
         <artifactId>kie-pmml-models-tree-compiler</artifactId>
@@ -489,6 +524,19 @@
         <classifier>tests</classifier>
         <version>${version.org.kie}</version>
       </dependency>
+      <!-- Scorecard codegen -->
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-scorecard-compiler</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-models-scorecard-evaluator</artifactId>
+        <version>${version.org.kie}</version>
+        <classifier>tests</classifier>
+      </dependency>
       <!-- Mining -->
       <dependency>
         <groupId>org.kie</groupId>
@@ -502,7 +550,7 @@
         <classifier>tests</classifier>
         <version>${version.org.kie}</version>
       </dependency>
-      <!-- Scorecard -->
+      <!-- Clustering -->
       <dependency>
         <groupId>org.kie</groupId>
         <artifactId>kie-pmml-models-clustering-compiler</artifactId>
