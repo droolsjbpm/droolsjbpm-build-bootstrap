@@ -59,14 +59,14 @@ build:
   - project: kiegroup/optaweb-employee-rostering
     archive-artifacts:
       path: |
-        **/cypress/screenshots/**
-        **/cypress/videos/**
+        **/cypress/screenshots/**@always
+        **/cypress/videos/**@always
 
   - project: kiegroup/optaweb-vehicle-routing
     archive-artifacts:
       path: |
-        **/cypress/screenshots/**
-        **/cypress/videos/**
+        **/cypress/screenshots/**@always
+        **/cypress/videos/**@always
 
   - project: kiegroup/kie-wb-distributions
     build-command:
