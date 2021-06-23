@@ -105,7 +105,7 @@
     <version.io.smallrye.openapi.core>2.0.26</version.io.smallrye.openapi.core>
     <version.io.strimzi.strimzi-test-container>0.23.0</version.io.strimzi.strimzi-test-container>
     <version.io.takari.maven.plugins.testing>2.9.2</version.io.takari.maven.plugins.testing>
-    <version.io.undertow>2.0.28.Final</version.io.undertow>
+    <version.io.undertow>2.1.6.Final</version.io.undertow>
     <version.javax.activation>1.1.1</version.javax.activation>
     <version.javax.enterprise>2.0.SP1</version.javax.enterprise>
     <version.javax.inject>1</version.javax.inject>
