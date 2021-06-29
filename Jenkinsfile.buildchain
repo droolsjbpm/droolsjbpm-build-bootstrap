@@ -7,7 +7,7 @@ additionalExcludedArtifacts = "${env.ADDITIONAL_EXCLUDED_ARTIFACTS?.trim() ?: ''
 checkstyleFile = env.CHECKSTYLE_FILE?.trim() ?: null
 findbugsFile = env.FINDBUGS_FILE?.trim() ?: null
 pr_type = env.PR_TYPE?.trim() ?: null
-build_jdk_tool = env.BUILD_JDK_TOOL?.trim() ?: 'kie-jdk8'
+build_jdk_tool = env.BUILD_JDK_TOOL?.trim() ?: 'kie-jdk1.8'
 build_maven_tool = env.BUILD_MAVEN_TOOL?.trim() ?: 'kie-maven-3.6.3'
 
 pipeline {
