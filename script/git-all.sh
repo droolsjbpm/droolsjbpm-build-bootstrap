@@ -64,6 +64,7 @@ startDateTime=`date +%s`
 echo "Git arg. line=${GIT_ARG_LINE[@]}"
 cd "$droolsjbpmOrganizationDir"
 
+exitCode=0
 for repository in $REPOSITORY_LIST ; do
     echo
     if [ ! -d "$droolsjbpmOrganizationDir/$repository" ]; then
@@ -81,6 +82,7 @@ for repository in $REPOSITORY_LIST ; do
         returnCode=$?
         cd ..
         if [ $returnCode != 0 ] ; then
+            exitCode=returnCode
             echo -n "Error executing command for repository ${repository}. Should I continue? (Hit control-c to stop or enter to continue): "
             read ok
         fi
@@ -92,3 +94,5 @@ spentSeconds=`expr $endDateTime - $startDateTime`
 
 echo
 echo "Total time: ${spentSeconds}s"
+
+exit $exitCode
