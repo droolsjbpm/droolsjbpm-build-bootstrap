@@ -54,7 +54,7 @@ build:
 
   - project: kiegroup/kie-docs
     build-command:
-      current: mvn clean install
+      current: mvn -e clean install -Dmaven.test.failure.ignore=true -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.http.retryHandler.class=standard -Dmaven.wagon.http.retryHandler.count=3
 
   - project: kiegroup/optaweb-employee-rostering
     archive-artifacts:
