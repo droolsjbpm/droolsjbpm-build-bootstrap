@@ -8,7 +8,7 @@ checkstyleFile = env.CHECKSTYLE_FILE?.trim() ?: null
 findbugsFile = env.FINDBUGS_FILE?.trim() ?: null
 pr_type = env.PR_TYPE?.trim() ?: null
 build_jdk_tool = env.BUILD_JDK_TOOL?.trim() ?: 'kie-jdk1.8'
-build_maven_tool = env.BUILD_MAVEN_TOOL?.trim() ?: 'kie-maven-3.6.3'
+build_maven_tool = env.BUILD_MAVEN_TOOL?.trim() ?: 'kie-maven-3.8.1'
 
 pipeline {
     agent {
@@ -73,7 +73,7 @@ pipeline {
         stage('Sonar analysis') {
             tools {
               jdk "kie-jdk11"
-              maven 'kie-maven-3.6.3'
+              maven 'kie-maven-3.8.1'
             }
             steps {
                 script {
