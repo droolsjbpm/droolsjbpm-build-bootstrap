@@ -64,7 +64,7 @@ pipeline {
 
                     configFileProvider([configFile(fileId: SETTINGS_XML_ID, variable: 'MAVEN_SETTINGS_FILE')]) {
                         withCredentials([string(credentialsId: 'kie-ci1-token', variable: 'GITHUB_TOKEN')]) {
-                            sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/\${GROUP}/droolsjbpm-build-bootstrap/7.55.0.Final/.ci/${buildChainActionInfo.file}' -folder='bc' build ${buildChainActionInfo.action} -url=${env.ghprbPullLink} --skipParallelCheckout -cct '(^mvn .*)||\$1 -s ${MAVEN_SETTINGS_FILE} -Dmaven.wagon.http.ssl.insecure=true'"
+                            sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/\${GROUP}/droolsjbpm-build-bootstrap/\${BRANCH}/.ci/${buildChainActionInfo.file}' -folder='bc' build ${buildChainActionInfo.action} -url=${env.ghprbPullLink} --skipParallelCheckout -cct '(^mvn .*)||\$1 -s ${MAVEN_SETTINGS_FILE} -Dmaven.wagon.http.ssl.insecure=true'"
                         }
                     }
                 }
