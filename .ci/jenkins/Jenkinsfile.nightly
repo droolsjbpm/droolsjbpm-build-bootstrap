@@ -5,7 +5,7 @@ pipeline {
         label 'kie-rhel7 && kie-mem24g && !master'
     }
     tools {
-        maven 'kie-maven-3.8.1'
+        maven 'kie-maven-3.6.3'
         jdk 'kie-jdk1.8'
     }
     parameters {
