@@ -405,7 +405,7 @@
     <!-- Set to "true" on every project that has no violations. -->
     <spotbugs.failOnViolation>false</spotbugs.failOnViolation>
     <!-- org.eclipse.tycho plugin version -->
-    <version.org.eclipse.tycho>1.0.0</version.org.eclipse.tycho>
+    <version.org.eclipse.tycho>2.3.0</version.org.eclipse.tycho>
     <version.org.jboss.tools.tycho-plugins>1.0.0</version.org.jboss.tools.tycho-plugins>
     <!-- replaces findbugs-maven-plugin -->
     <version.com.github.spotbugs-maven-plugin>3.1.8</version.com.github.spotbugs-maven-plugin>
@@ -498,6 +498,17 @@
     <version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>0.14.0</version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>
     <version.org.mock-server>5.11.1</version.org.mock-server>
     <version.org.apache.kafka>2.6.0</version.org.apache.kafka>
+
+    <!-- ************** -->
+    <!-- Build settings -->
+    <!-- ************** -->
+
+    <version.shade.plugin>3.2.4</version.shade.plugin>
+
+    <!-- maven-compiler-plugin -->
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.release>11</maven.compiler.release>
   </properties>
 
   <repositories>
@@ -617,6 +628,21 @@
     </extensions>
     <pluginManagement>
       <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>${version.compiler.plugin}</version>
+            <configuration>
+              <showDeprecation>true</showDeprecation>
+              <showWarnings>true</showWarnings>
+              <release>${maven.compiler.release}</release>
+              <testSource>${maven.compiler.argument.testSource}</testSource>
+              <testTarget>${maven.compiler.argument.testTarget}</testTarget>
+              <compilerArgs>
+                <arg>-Xlint:unchecked</arg>
+              </compilerArgs>
+            </configuration>
+          </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
@@ -2504,7 +2530,7 @@
         <artifactId>nv-i18n</artifactId>
         <version>${version.com.neovisionaries}</version>
       </dependency>
-      
+
       <dependency>
         <groupId>com.networknt</groupId>
         <artifactId>json-schema-validator</artifactId>
@@ -2580,13 +2606,13 @@
         <artifactId>springfox-swagger-ui</artifactId>
         <version>${version.io.springfox}</version>
       </dependency>
-      
+
       <dependency>
         <groupId>io.smallrye</groupId>
         <artifactId>smallrye-open-api-core</artifactId>
         <version>${version.io.smallrye.openapi.core}</version>
       </dependency>
-      
+
       <dependency>
         <groupId>io.strimzi</groupId>
         <artifactId>strimzi-test-container</artifactId>
@@ -3520,7 +3546,7 @@
         <artifactId>batik-codec</artifactId>
         <version>${version.org.apache.xmlgraphics.batik}</version>
       </dependency>
-      
+
       <dependency>
         <groupId>org.asciidoctor</groupId>
         <artifactId>asciidoctorj</artifactId>
@@ -4205,7 +4231,7 @@
         <artifactId>mockito-core</artifactId>
         <version>${version.org.mockito}</version>
       </dependency>
-	  
+
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-inline</artifactId>
@@ -4997,7 +5023,7 @@
         <artifactId>swagger-models</artifactId>
         <version>${version.io.swagger}</version>
       </dependency>
-      
+
       <!-- OAS v3 -->
       <dependency>
         <groupId>io.swagger.core.v3</groupId>
@@ -5010,7 +5036,7 @@
         <version>${version.io.swagger.parser.v3}</version>
         <scope>test</scope>
         <exclusions><!-- banned for kie-server tests: -->
-          <exclusion> 
+          <exclusion>
             <groupId>javax.mail</groupId>
             <artifactId>mailapi</artifactId>
           </exclusion>
@@ -5020,21 +5046,21 @@
           </exclusion>
         </exclusions>
       </dependency>
-      
+
       <!-- swagger parser -->
       <dependency>
         <groupId>io.swagger</groupId>
         <artifactId>swagger-parser</artifactId>
         <version>${version.io.swagger.swagger-parser}</version>
       </dependency>
-      
+
       <dependency>
         <groupId>io.rest-assured</groupId>
         <artifactId>rest-assured</artifactId>
         <version>${version.io.rest-assured}</version>
         <scope>test</scope>
         <exclusions><!-- banned for kie-server tests: -->
-          <exclusion> 
+          <exclusion>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
           </exclusion>
@@ -5520,7 +5546,7 @@
         </exclusions>
         <scope>test</scope>
       </dependency>
-      
+
       <!-- Used by jgit -->
       <dependency>
         <groupId>org.bouncycastle</groupId>
