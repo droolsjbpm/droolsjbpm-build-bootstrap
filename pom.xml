@@ -73,9 +73,9 @@
     </version.com.ahome-it.lienzo.tooling.nativetools>
     <version.com.ahome-it.lienzo.tooling.common>1.0.190-RELEASE</version.com.ahome-it.lienzo.tooling.common>
     <version.com.allen-sauer.gwt.dnd>3.3.3</version.com.allen-sauer.gwt.dnd>
-    <version.com.fasterxml.jackson>2.10.4</version.com.fasterxml.jackson>
-    <version.com.fasterxml.jackson.databind>2.10.5.1</version.com.fasterxml.jackson.databind>
-    <version.com.fasterxml.jackson.annotations>2.9.10</version.com.fasterxml.jackson.annotations>
+    <version.com.fasterxml.jackson>2.12.1</version.com.fasterxml.jackson>
+    <version.com.fasterxml.jackson.databind>${version.com.fasterxml.jackson}</version.com.fasterxml.jackson.databind>
+    <version.com.fasterxml.jackson.annotations>${version.com.fasterxml.jackson}</version.com.fasterxml.jackson.annotations>
     <version.com.google.code.gson>2.8.6</version.com.google.code.gson>
     <version.org.jresearch.gwt.time>2.0.3</version.org.jresearch.gwt.time>
     <version.domino-slf4j-logger>1.0.1</version.domino-slf4j-logger>
@@ -103,7 +103,7 @@
     <version.guru.nidi>0.18.0</version.guru.nidi>
     <version.info.picocli>4.6.1</version.info.picocli>
     <version.io.springfox>2.9.2</version.io.springfox>
-    <version.io.smallrye.openapi.core>2.0.26</version.io.smallrye.openapi.core>
+    <version.io.smallrye.openapi.core>2.1.4</version.io.smallrye.openapi.core>
     <version.io.strimzi.strimzi-test-container>0.23.0</version.io.strimzi.strimzi-test-container>
     <version.io.takari.maven.plugins.testing>2.9.2</version.io.takari.maven.plugins.testing>
     <version.io.undertow>2.1.6.Final</version.io.undertow>
@@ -113,6 +113,7 @@
     <version.javax.mail>1.4.5</version.javax.mail>
     <version.javax.persistence-api>2.2</version.javax.persistence-api>
     <version.javax.xml.bind.jaxb-api>2.3.0</version.javax.xml.bind.jaxb-api>
+    <version.javax.transaction-api>1.3</version.javax.transaction-api>
     <version.jaxen>1.1.6</version.jaxen>
     <version.jivesoftware.smack>3.1.0</version.jivesoftware.smack>
     <version.joda-time>2.9.7</version.joda-time>
@@ -185,6 +186,7 @@
     <version.org.eclipse.jdt>3.18.0</version.org.eclipse.jdt>
     <version.org.eclipse.jetty>9.2.14.v20151106</version.org.eclipse.jetty>
     <version.org.eclipse.jgit>5.8.0.202006091008-r</version.org.eclipse.jgit>
+    <version.org.eclipse.microprofile.openapi>2.0</version.org.eclipse.microprofile.openapi>
     <version.org.eclipse.persistence>2.7.6</version.org.eclipse.persistence>
     <version.org.eclipse.sisu>0.3.2</version.org.eclipse.sisu>
     <version.org.eclipse.emf.gwt>2.9.0</version.org.eclipse.emf.gwt>
@@ -213,32 +215,27 @@
     <version.org.jboss.remote-naming>2.0.5.Final</version.org.jboss.remote-naming>
     <version.org.jboss.remoting>5.0.16.Final</version.org.jboss.remoting>
     <version.org.jboss.shrinkwrap.resolver>2.2.0</version.org.jboss.shrinkwrap.resolver>
-    <version.org.jboss.spec.javax.annotation.jboss-annotations-api_1.2_spec>1.0.0.Final
-    </version.org.jboss.spec.javax.annotation.jboss-annotations-api_1.2_spec>
-    <version.org.jboss.spec.javax.ejb.jboss-ejb-api_3.2_spec>1.0.1.Final
-    </version.org.jboss.spec.javax.ejb.jboss-ejb-api_3.2_spec>
-    <version.org.jboss.spec.javax.el.jboss-el-api_3.0_spec>1.0.12.Final
-    </version.org.jboss.spec.javax.el.jboss-el-api_3.0_spec>
-    <version.org.jboss.spec.javax.enterprise.concurrent>1.0.2.Final
-    </version.org.jboss.spec.javax.enterprise.concurrent>
-    <version.org.jboss.spec.javax.interceptor.jboss-interceptors-api_1.2_spec>1.0.1.Final
-    </version.org.jboss.spec.javax.interceptor.jboss-interceptors-api_1.2_spec>
-    <version.org.jboss.spec.javax.jms.jboss-jms-api_2.0_spec>1.0.2.Final
-    </version.org.jboss.spec.javax.jms.jboss-jms-api_2.0_spec>
-    <version.org.jboss.spec.javax.security.jacc.jboss-jacc-api_1.5_spec>1.0.2.Final
-    </version.org.jboss.spec.javax.security.jacc.jboss-jacc-api_1.5_spec>
-    <version.org.jboss.spec.javax.servlet.jboss-servlet-api_3.1_spec>1.0.2.Final
-    </version.org.jboss.spec.javax.servlet.jboss-servlet-api_3.1_spec>
-    <version.org.jboss.spec.javax.servlet.jsp.jboss-jsp-api_2.3_spec>1.0.3.Final
-    </version.org.jboss.spec.javax.servlet.jsp.jboss-jsp-api_2.3_spec>
-    <version.org.jboss.spec.javax.servlet.jstl.jboss-jstl-api_1.2_spec>1.1.3.Final
-    </version.org.jboss.spec.javax.servlet.jstl.jboss-jstl-api_1.2_spec>
-    <version.org.jboss.spec.javax.xml.ws.jboss-jaxws-api_2.3_spec>1.0.0.Final
-    </version.org.jboss.spec.javax.xml.ws.jboss-jaxws-api_2.3_spec>
-    <version.org.jboss.spec.javax.xml.bind.jboss-jaxb-api_2.3_spec>1.0.1.Final</version.org.jboss.spec.javax.xml.bind.jboss-jaxb-api_2.3_spec>
     <version.org.jboss.weld.weld>3.1.5.SP1</version.org.jboss.weld.weld>
     <version.org.jboss.weld.weld-api>3.1.SP1</version.org.jboss.weld.weld-api>
     <version.org.jboss.xnio>3.7.7.Final</version.org.jboss.xnio>
+    <version.jakarta.activation.jakarta.activation-api>1.2.2</version.jakarta.activation.jakarta.activation-api>
+    <version.jakarta.annotation.jakarta.annotation-api>1.3.5</version.jakarta.annotation.jakarta.annotation-api>
+    <version.jakarta.ejb.jakarta.ejb-api>3.2.6</version.jakarta.ejb.jakarta.ejb-api>
+    <version.jakarta.el.jakarta.el-api>3.0.3</version.jakarta.el.jakarta.el-api>
+    <version.jakarta.enterprise.concurrent.jakarta.enterprise.concurrent-api_spec>1.1.2</version.jakarta.enterprise.concurrent.jakarta.enterprise.concurrent-api_spec>
+    <version.jakarta.interceptor.jakarta.interceptor-api>1.2.5</version.jakarta.interceptor.jakarta.interceptor-api>
+    <version.jakarta.jms.jakarta.jms-api>2.0.3</version.jakarta.jms.jakarta.jms-api>
+    <version.jakarta.resource.jakarta.resource-api>1.7.4</version.jakarta.resource.jakarta.resource-api>
+    <version.jakarta.security.jacc.jakarta.security.jacc-api>1.6.1</version.jakarta.security.jacc.jakarta.security.jacc-api>
+    <version.jakarta.servlet.jsp.jakarta.servlet.jsp-api>2.3.6</version.jakarta.servlet.jsp.jakarta.servlet.jsp-api>
+    <version.jakarta.servlet.jsp.jstl.jakarta.servlet.jsp.jstl-api>2.0.0</version.jakarta.servlet.jsp.jstl.jakarta.servlet.jsp.jstl-api>
+    <version.jakarta.transaction.jakarta.transaction-api>1.3.3</version.jakarta.transaction.jakarta.transaction-api>
+    <version.jakarta.ws.rs.jakarta.ws.rs-api>2.1.6</version.jakarta.ws.rs.jakarta.ws.rs-api>
+    <version.jakarta.xml.ws.jakarta.xml.ws-api>2.3.3</version.jakarta.xml.ws.jakarta.xml.ws-api>
+    <version.jakarta.websocket.jakarta.websocket-api>2.0.0</version.jakarta.websocket.jakarta.websocket-api>
+    <version.jakarta.persistence.jakarta.persistence-api_spec>2.2.3</version.jakarta.persistence.jakarta.persistence-api_spec>
+    <version.jakarta.servlet-api>4.0.3</version.jakarta.servlet-api>
+    <version.jakarta.xml.bind-api>2.3.3</version.jakarta.xml.bind-api>
     <version.org.jdom>1.1.3</version.org.jdom>
     <version.org.jfree.jfreechart>1.5.0</version.org.jfree.jfreechart>
     <version.org.jpmml.model>1.5.1</version.org.jpmml.model> <!-- jpmml-model BSD 3C license - ATTENTION 1.5.1 intentional, because 1.5.1 evaluators works with 1.5.1 -->
@@ -274,10 +271,10 @@
     <version.org.testcontainers>1.15.2</version.org.testcontainers>
     <version.org.webjars.swagger-ui>2.2.10</version.org.webjars.swagger-ui>
     <version.org.webjars.npm.monaco-editor>0.20.0</version.org.webjars.npm.monaco-editor>
-    <version.org.wildfly>19.1.0.Final</version.org.wildfly>
-    <version.org.wildfly.arquillian>2.2.0.Final</version.org.wildfly.arquillian>
-    <version.org.wildfly.core>10.0.3.Final</version.org.wildfly.core>
-    <version.org.wildfly.common>1.5.1.Final</version.org.wildfly.common>
+    <version.org.wildfly>23.0.2.Final</version.org.wildfly>
+    <version.org.wildfly.arquillian>3.0.1.Final</version.org.wildfly.arquillian>
+    <version.org.wildfly.core>15.0.1.Final</version.org.wildfly.core>
+    <version.org.wildfly.common>1.5.2.Final</version.org.wildfly.common>
     <version.org.yaml.snakeyaml>1.26</version.org.yaml.snakeyaml>
     <version.org.mozilla.rhino>1.7.13</version.org.mozilla.rhino>
     <version.rome>1.0</version.rome>
@@ -318,27 +315,27 @@
     <version.org.antlr4>4.8</version.org.antlr4>
     <version.org.apache.cxf>3.2.14</version.org.apache.cxf>
     <version.org.apache.camel>2.24.0</version.org.apache.camel>
-    <version.org.codehaus.cargo>1.7.11</version.org.codehaus.cargo>
-    <version.org.freemarker>2.3.30</version.org.freemarker>
+    <version.org.codehaus.cargo>1.9.3</version.org.codehaus.cargo>
+    <version.org.freemarker>2.3.28</version.org.freemarker>
     <!-- Dependencies for selenium tests -->
     <version.org.jboss.arquillian.selenium>3.13.0</version.org.jboss.arquillian.selenium>
     <version.org.jboss.arquillian.extension.drone>2.5.1</version.org.jboss.arquillian.extension.drone>
     <version.org.jboss.arquillian.graphene>2.3.2</version.org.jboss.arquillian.graphene>
     <version.com.google.guava.for-selenium>23.0</version.com.google.guava.for-selenium>
-    <version.org.jboss.errai>4.11.0.Final</version.org.jboss.errai>
+    <version.org.jboss.errai>4.12.0.Final</version.org.jboss.errai>
     <version.com.google.elemental2>1.1.0</version.com.google.elemental2>
     <!-- WildFly version used together with  the GWT's Super Dev Mode -->
-    <version.org.jboss.errai.wildfly>19.1.0.SP1</version.org.jboss.errai.wildfly>
+    <version.org.jboss.errai.wildfly>23.0.2.Final</version.org.jboss.errai.wildfly>
     <!-- Required by jboss-remoting version above -->
     <version.org.ow2.asm>7.1</version.org.ow2.asm>
     <version.org.wildfly.security>1.10.7.Final</version.org.wildfly.security>
     <version.org.picketlink>2.6.0.Final</version.org.picketlink>
     <version.com.unboundid>3.2.0</version.com.unboundid>
     <version.com.wordnik.swagger>1.3.10</version.com.wordnik.swagger>
-    <version.io.swagger>1.5.20</version.io.swagger>
+    <version.io.swagger>1.6.2</version.io.swagger>
     <version.io.swagger.core.v3>2.0.6</version.io.swagger.core.v3>
     <version.io.swagger.parser.v3>2.0.6</version.io.swagger.parser.v3>
-    <version.io.swagger.swagger-parser>1.0.36</version.io.swagger.swagger-parser>
+    <version.io.swagger.swagger-parser>1.0.55</version.io.swagger.swagger-parser>
     <version.io.rest-assured>4.3.3</version.io.rest-assured>
     <version.org.jboss.byteman>4.0.13</version.org.jboss.byteman>
     <version.org.roboguice>3.0.1</version.org.roboguice>
@@ -449,12 +446,9 @@
     <revapi.oldKieVersion>7.52.0.Final</revapi.oldKieVersion>
     <revapi.newKieVersion>${project.version}</revapi.newKieVersion>
 
-    <version.org.jboss.spec.javax.websocket>1.1.3.Final</version.org.jboss.spec.javax.websocket>
-
     <version.javax.xml.soap>1.4.0</version.javax.xml.soap>
     <version.javax.jws>1.0-MR1</version.javax.jws>
 
-    <version.org.jboss.spec.javax.ws.rs.jboss-jaxrs-api_2.1_spec>1.0.2.Final</version.org.jboss.spec.javax.ws.rs.jboss-jaxrs-api_2.1_spec>
     <version.org.apache.maven.plugins.dependency>3.0.2</version.org.apache.maven.plugins.dependency>
 
     <version.org.postgresql>42.2.14</version.org.postgresql>
@@ -1137,7 +1131,7 @@
         </plugin>
         <plugin>
           <groupId>org.codehaus.cargo</groupId>
-          <artifactId>cargo-maven2-plugin</artifactId>
+          <artifactId>cargo-maven3-plugin</artifactId>
           <version>${version.org.codehaus.cargo}</version>
         </plugin>
         <plugin>
@@ -2013,10 +2007,10 @@
                 <source>${maven.compiler.source}</source>
                 <additionalDependencies>
                   <additionalDependency>
-                    <groupId>org.jboss.spec.javax.transaction</groupId>
-                    <artifactId>jboss-transaction-api_1.2_spec</artifactId>
+                    <groupId>jakarta.transaction</groupId>
+                    <artifactId>jakarta.transaction-api</artifactId>
                     <version>
-                      ${version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.2_spec}
+                      ${version.jakarta.transaction.jakarta.transaction-api}
                     </version>
                   </additionalDependency>
                 </additionalDependencies>
@@ -2644,8 +2638,6 @@
         <artifactId>activation</artifactId>
         <version>${version.javax.activation}</version>
       </dependency>
-      <!-- javax.ejb is specified by org.jboss.spec.javax.ejb-->
-      <!-- javax.el is specified by org.jboss.spec.javax.el-->
       <dependency>
         <groupId>javax.inject</groupId>
         <artifactId>javax.inject</artifactId>
@@ -2661,25 +2653,111 @@
         <artifactId>javax.persistence-api</artifactId>
         <version>${version.javax.persistence-api}</version>
       </dependency>
-      <!-- javax.servlet is specified by org.jboss.spec.javax.servlet-->
-      <!-- javax.servlet.jsp is specified by org.jboss.spec.javax.servlet.jsp-->
-      <!-- javax.security.jacc is specified by org.jboss.spec.javax.security.jacc-->
-      <!-- javax.transaction is specified by org.jboss.spec.javax.transaction-->
-      <!-- javax.ws.rs is specified by org.jboss.spec.javax.ws.rs-->
       <dependency>
         <groupId>javax.validation</groupId>
         <artifactId>validation-api</artifactId>
         <version>${version.javax.validation}</version>
       </dependency>
       <dependency>
-        <groupId>org.jboss.spec.javax.xml.bind</groupId>
-        <artifactId>jboss-jaxb-api_2.3_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.xml.bind.jboss-jaxb-api_2.3_spec}</version>
-      </dependency>
-      <dependency>
         <groupId>javax.xml.bind</groupId>
         <artifactId>jaxb-api</artifactId>
         <version>${version.javax.xml.bind.jaxb-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.transaction</groupId>
+        <artifactId>javax.transaction-api</artifactId>
+        <version>${version.javax.transaction-api}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>jakarta.activation</groupId>
+        <artifactId>jakarta.activation-api</artifactId>
+        <version>${version.jakarta.activation.jakarta.activation-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.annotation</groupId>
+        <artifactId>jakarta.annotation-api</artifactId>
+        <version>${version.jakarta.annotation.jakarta.annotation-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.ejb</groupId>
+        <artifactId>jakarta.ejb-api</artifactId>
+        <version>${version.jakarta.ejb.jakarta.ejb-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.enterprise.concurrent</groupId>
+        <artifactId>jakarta.enterprise.concurrent-api</artifactId>
+        <version>${version.jakarta.enterprise.concurrent.jakarta.enterprise.concurrent-api_spec}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.el</groupId>
+        <artifactId>jakarta.el-api</artifactId>
+        <version>${version.jakarta.el.jakarta.el-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.interceptor</groupId>
+        <artifactId>jakarta.interceptor-api</artifactId>
+        <version>${version.jakarta.interceptor.jakarta.interceptor-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.jms</groupId>
+        <artifactId>jakarta.jms-api</artifactId>
+        <version>${version.jakarta.jms.jakarta.jms-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.resource</groupId>
+        <artifactId>jakarta.resource-api</artifactId>
+        <version>${version.jakarta.resource.jakarta.resource-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.security.jacc</groupId>
+        <artifactId>jakarta.security.jacc-api</artifactId>
+        <version>${version.jakarta.security.jacc.jakarta.security.jacc-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.servlet.jsp</groupId>
+        <artifactId>jakarta.servlet.jsp-api</artifactId>
+        <version>${version.jakarta.servlet.jsp.jakarta.servlet.jsp-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.servlet.jsp.jstl</groupId>
+        <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+        <version>${version.jakarta.servlet.jsp.jstl.jakarta.servlet.jsp.jstl-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.transaction</groupId>
+        <artifactId>jakarta.transaction-api</artifactId>
+        <version>${version.jakarta.transaction.jakarta.transaction-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.ws.rs</groupId>
+        <artifactId>jakarta.ws.rs-api</artifactId>
+        <version>${version.jakarta.ws.rs.jakarta.ws.rs-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.xml.ws</groupId>
+        <artifactId>jakarta.xml.ws-api</artifactId>
+        <version>${version.jakarta.xml.ws.jakarta.xml.ws-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.websocket</groupId>
+        <artifactId>jakarta.websocket-api</artifactId>
+        <version>${version.jakarta.websocket.jakarta.websocket-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.persistence</groupId>
+        <artifactId>jakarta.persistence-api</artifactId>
+        <version>${version.jakarta.persistence.jakarta.persistence-api_spec}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <version>${version.jakarta.servlet-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.xml.bind</groupId>
+        <artifactId>jakarta.xml.bind-api</artifactId>
+        <version>${version.jakarta.xml.bind-api}</version>
       </dependency>
 
       <dependency>
@@ -3787,6 +3865,12 @@
       </dependency>
 
       <dependency>
+        <groupId>org.eclipse.microprofile.openapi</groupId>
+        <artifactId>microprofile-openapi-api</artifactId>
+        <version>${version.org.eclipse.microprofile.openapi}</version>
+      </dependency>
+
+      <dependency>
         <groupId>org.freemarker</groupId>
         <artifactId>freemarker</artifactId>
         <version>${version.org.freemarker}</version>
@@ -4046,67 +4130,6 @@
         <groupId>org.jboss.forge.roaster</groupId>
         <artifactId>roaster-jdt</artifactId>
         <version>${version.org.jboss.forge.roaster}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.jboss.spec.javax.annotation</groupId>
-        <artifactId>jboss-annotations-api_1.2_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.annotation.jboss-annotations-api_1.2_spec}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.spec.javax.ejb</groupId>
-        <artifactId>jboss-ejb-api_3.2_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.ejb.jboss-ejb-api_3.2_spec}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.spec.javax.enterprise.concurrent</groupId>
-        <artifactId>jboss-concurrency-api_1.0_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.enterprise.concurrent}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.spec.javax.el</groupId>
-        <artifactId>jboss-el-api_3.0_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.el.jboss-el-api_3.0_spec}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.spec.javax.interceptor</groupId>
-        <artifactId>jboss-interceptors-api_1.2_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.interceptor.jboss-interceptors-api_1.2_spec}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.spec.javax.jms</groupId>
-        <artifactId>jboss-jms-api_2.0_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.jms.jboss-jms-api_2.0_spec}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.spec.javax.security.jacc</groupId>
-        <artifactId>jboss-jacc-api_1.5_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.security.jacc.jboss-jacc-api_1.5_spec}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.spec.javax.servlet</groupId>
-        <artifactId>jboss-servlet-api_3.1_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.servlet.jboss-servlet-api_3.1_spec}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.spec.javax.servlet.jsp</groupId>
-        <artifactId>jboss-jsp-api_2.3_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.servlet.jsp.jboss-jsp-api_2.3_spec}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.spec.javax.servlet.jstl</groupId>
-        <artifactId>jboss-jstl-api_1.2_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.servlet.jstl.jboss-jstl-api_1.2_spec}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.spec.javax.ws.rs</groupId>
-        <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.ws.rs.jboss-jaxrs-api_2.1_spec}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.spec.javax.xml.ws</groupId>
-        <artifactId>jboss-jaxws-api_2.3_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.xml.ws.jboss-jaxws-api_2.3_spec}</version>
       </dependency>
 
       <dependency>
@@ -4737,13 +4760,6 @@
         <groupId>com.google.gwt.gwtmockito</groupId>
         <artifactId>gwtmockito</artifactId>
         <version>${version.com.google.gwt.gwtmockito}</version>
-        <exclusions>
-          <exclusion>
-            <!-- Collides with 'org.jboss.spec.javax.el:jboss-el-api_3.0_spec' -->
-            <groupId>org.mortbay.jasper</groupId>
-            <artifactId>apache-el</artifactId>
-          </exclusion>
-        </exclusions>
       </dependency>
 
       <dependency>
@@ -5027,7 +5043,6 @@
         <artifactId>swagger-parser</artifactId>
         <version>${version.io.swagger.swagger-parser}</version>
       </dependency>
-      
       <dependency>
         <groupId>io.rest-assured</groupId>
         <artifactId>rest-assured</artifactId>
@@ -5119,15 +5134,13 @@
         <version>${version.org.hibernate}</version>
         <exclusions>
           <exclusion>
-          <!-- We generally use JBoss Spec JARs. Instead of the Geronimo one use
-              'org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec'. -->
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jta_1.1_spec</artifactId>
+            <groupId>org.jboss.spec.javax.transaction</groupId>
+            <artifactId>jboss-transaction-api_1.2_spec</artifactId>
           </exclusion>
-          <!-- collides with javax.activation:javax.activation-api:jar:1.2.0:compile  -->
+          <!-- collides with jakarta.activation:jakarta.activation-api:jar:1.2.2:compile  -->
           <exclusion>
-            <groupId>jakarta.activation</groupId>
-            <artifactId>jakarta.activation-api</artifactId>
+            <groupId>javax.activation</groupId>
+            <artifactId>javax.activation-api</artifactId>
           </exclusion>
           <!-- collides with  javax.xml.bind:jaxb-api:jar:2.3.1:compile -->
           <exclusion>
@@ -5147,10 +5160,8 @@
         <version>${version.org.hibernate}</version>
         <exclusions>
           <exclusion>
-            <!-- We generally use JBoss Spec JARs. Instead of the Geronimo one use
-                             'org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec'. -->
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jta_1.1_spec</artifactId>
+            <groupId>org.jboss.spec.javax.transaction</groupId>
+            <artifactId>jboss-transaction-api_1.2_spec</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -5352,12 +5363,6 @@
       </dependency>
 
       <!-- kie server controller over websockets -->
-      <dependency>
-        <groupId>org.jboss.spec.javax.websocket</groupId>
-        <artifactId>jboss-websocket-api_1.1_spec</artifactId>
-        <version>${version.org.jboss.spec.javax.websocket}</version>
-      </dependency>
-
       <dependency>
         <groupId>ch.qos.logback</groupId>
         <artifactId>logback-classic</artifactId>
