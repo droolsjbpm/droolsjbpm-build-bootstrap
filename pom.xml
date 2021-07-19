@@ -3841,6 +3841,11 @@
         <artifactId>infinispan-core</artifactId>
         <version>${version.org.infinispan}</version>
       </dependency>
+      <dependency>
+        <groupId>org.infinispan</groupId>
+        <artifactId>infinispan-clustered-lock</artifactId>
+        <version>${version.org.infinispan}</version>
+      </dependency>
 
       <dependency>
         <groupId>org.infinispan</groupId>
