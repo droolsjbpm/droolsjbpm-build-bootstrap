@@ -461,6 +461,7 @@
     <version.mariadb-java-client>1.3.4</version.mariadb-java-client>
 
     <version.ch.obermuhlner>2.0.1</version.ch.obermuhlner>
+    <version.ch.obermuhlner.js>2.3.0</version.ch.obermuhlner.js>
     <version.org.jboss.jandex>2.1.1.Final</version.org.jboss.jandex>
     <version.jandex.plugin>1.0.6</version.jandex.plugin>
     <version.org.eclipse.yasson>1.0.6</version.org.eclipse.yasson>
@@ -5439,6 +5440,13 @@
         <groupId>ch.obermuhlner</groupId>
         <artifactId>big-math</artifactId>
         <version>${version.ch.obermuhlner}</version>
+      </dependency>
+
+      <!-- used by DMN JS version for BigDecimal arithmetics -->
+      <dependency>
+        <groupId>org.treblereel.gwt</groupId>
+        <artifactId>gwt-bigmath</artifactId>
+        <version>${version.ch.obermuhlner.js}</version>
       </dependency>
 
       <!-- used by DMN for general (runtime-agnostic) inspection of PMML model -->
