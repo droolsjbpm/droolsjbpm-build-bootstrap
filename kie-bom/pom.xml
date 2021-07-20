@@ -2725,7 +2725,7 @@
         <groupId>org.kie</groupId>
         <artifactId>kie-wb</artifactId>
         <version>${version.org.kie}</version>
-        <classifier>wildfly19</classifier>
+        <classifier>wildfly23</classifier>
         <type>war</type>
       </dependency>
       <dependency>
@@ -2739,7 +2739,7 @@
         <groupId>org.kie</groupId>
         <artifactId>business-monitoring</artifactId>
         <version>${version.org.kie}</version>
-        <classifier>wildfly19</classifier>
+        <classifier>wildfly23</classifier>
         <type>war</type>
       </dependency>
       <dependency>
