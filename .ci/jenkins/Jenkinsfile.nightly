@@ -52,7 +52,7 @@ pipeline {
                             def projectCollection = communityProjectListFile.readLines()
                             def productionProjectListFile = readFile "${env.PRODUCTION_PROJECT_LIST}"
                             projectCollection.addAll(productionProjectListFile.readLines())
-                            projectCollection.removeAll { 'droolsjbpm-tools'.equals(it.toLowerCase()) } // The droolsjbpm-tools is skiped
+                            projectCollection.removeAll { ['droolsjbpm-tools', 'process-migration-service'].contains(it.toLowerCase()) } // The droolsjbpm-tools and process-migration-service repos are skipped
                             println "File ${repositoryListPath} and ${env.PRODUCTION_PROJECT_LIST} jenkins file merged in ${projectCollection}"
 
                             def currentBranch = env.BRANCH_NAME ?: env.GIT_BRANCH

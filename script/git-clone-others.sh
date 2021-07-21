@@ -57,6 +57,8 @@ additionalGitOptions=()
 REPOSITORY_LIST=`cat "${scriptDir}/repository-list.txt"`
 # Repositories that need to use the branch 7.x instead of master
 BRANCHED_7_REPOSITORY_LIST=`cat "${scriptDir}/branched-7-repository-list.txt"`
+# Repositories thta ned to use branch main instead of master
+MAIN_BRANCH_REPOSITORIES_LIST=`cat "${scriptDir}/main-branch-repositories-list.txt"`
 
 for arg in "$@"
 do
@@ -115,6 +117,16 @@ for repository in $REPOSITORY_LIST ; do
                 fi
             else
                 repoAdditionalGitOptions=( "-b" "7.x" "${repoAdditionalGitOptions[@]}" )
+            fi
+        fi
+        if [ $(echo "$MAIN_BRANCH_REPOSITORIES_LIST" | grep "^$repository$") ] ; then
+            if [[ ${additionalGitOptions[0]} == "-b" ]] || [[ ${additionalGitOptions[0]} == "--branch" ]]; then
+                if [[ ${additionalGitOptions[1]} == "master" ]]; then
+                  repoAdditionalGitOptions[1]="main"
+                  echo -- additional Git options changed in ${repository} to: ${repoAdditionalGitOptions[@]} --
+                fi
+            else
+                repoAdditionalGitOptions=( "-b" "main" "${repoAdditionalGitOptions[@]}" )
             fi
         fi
         git clone "${repoAdditionalGitOptions[@]}" ${gitUrlPrefix}${repository}.git ${repository}
