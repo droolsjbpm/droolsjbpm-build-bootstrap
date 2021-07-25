@@ -4,7 +4,7 @@ import org.jenkinsci.plugins.workflow.libs.Library
 import org.kie.jenkins.MavenCommand
 
 repos = []
-masterRepos = []
+mainRepos = []
 branched7xRepos = []
 revapiProperties = [:]
 
@@ -27,7 +27,7 @@ pipeline {
         string(name: 'DISPLAY_NAME', defaultValue: '', description: 'Setup a specific build display name')
 
         // Git information
-        string(name: 'BUILD_BRANCH_NAME', defaultValue: 'master', description: 'Which branch to build? Set if you are not on a multibranch pipeline.')
+        string(name: 'BUILD_BRANCH_NAME', defaultValue: 'main', description: 'Which branch to build? Set if you are not on a multibranch pipeline.')
         string(name: 'GIT_AUTHOR', defaultValue: 'kiegroup', description: 'Which Git author repository ?')
         // Revapi branch name
         string(name: 'REVAPI_RELEASE_VERSION', defaultValue: '', description: 'Revapi release version to check against. E.g. 7.49.0.Final')
@@ -41,8 +41,8 @@ pipeline {
         booleanParam(name: 'SKIP_MAVEN_BUILD', defaultValue: false, description: 'Skip maven build validation')
 
         // Revapi repos
-        string(name: 'MASTER_REVAPI_REPOSITORIES', defaultValue: 'droolsjbpm-build-bootstrap,appformer,droolsjbpm-knowledge,drools,jbpm,droolsjbpm-integration', description: 'Master Revapi repositories')
-        string(name: 'BRANCHED_7_REVAPI_REPOSITORIES', defaultValue: 'optaplanner', description: 'Master Revapi repository for optaplanner')
+        string(name: 'MAIN_REVAPI_REPOSITORIES', defaultValue: 'droolsjbpm-build-bootstrap,appformer,droolsjbpm-knowledge,drools,jbpm,droolsjbpm-integration', description: 'Main Revapi repositories')
+        string(name: 'BRANCHED_7_REVAPI_REPOSITORIES', defaultValue: 'optaplanner', description: 'Main Revapi repository for optaplanner')
     }
 
     environment {
@@ -64,10 +64,10 @@ pipeline {
                     assert getProjectName() != ''
                     assert getRevapiReleaseVersion() != ''
                     assert getBranched7RevapiRepos() != ''
-                    assert getMasterRevapiRepos() != ''
+                    assert getMainRevapiRepos() != ''
 
                     setRevapiRepos()
-                    checkoutRepo(masterRepos, "master")
+                    checkoutRepo(mainRepos, "main")
                     checkoutRepo(branched7xRepos, "7.x")
                 }
             }
@@ -190,14 +190,14 @@ MavenCommand getMavenCommand(String repo){
 }
 
 void setRevapiRepos(){
-    masterRepos = getMasterRevapiRepos().split(",")
+    mainRepos = getMainRevapiRepos().split(",")
     branched7xRepos = getBranched7RevapiRepos().split(",")
-    repos = masterRepos
+    repos = mainRepos
     repos += branched7xRepos
 }
 
-String getMasterRevapiRepos(){
-    return params.MASTER_REVAPI_REPOSITORIES
+String getMainRevapiRepos(){
+    return params.MAIN_REVAPI_REPOSITORIES
 }
 
 String getBranched7RevapiRepos(){

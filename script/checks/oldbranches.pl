@@ -148,7 +148,7 @@ sub gbrh() {
     chomp;
     s/^..([^ ]+).*/$1/;
     if( s#remotes/$source/## ) { 
-      if( m/r?\d\.(\d\.(\d\.((M\d|Beta\d|GA)\.)?)?)?(x|Final)|HEAD|master$/ ) {
+      if( m/r?\d\.(\d\.(\d\.((M\d|Beta\d|GA)\.)?)?)?(x|Final)|HEAD|main$/ ) {
         if( $verbose ) { 
           print "  $_\n";
         }

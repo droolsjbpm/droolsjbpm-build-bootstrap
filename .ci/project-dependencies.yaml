@@ -41,10 +41,10 @@ dependencies:
       dependencies:
         default:
           - source: 7.x
-            target: master
+            target: main
       dependant:
         default:
-          - source: master
+          - source: main
             target: 7.x
       exclude:
         - kiegroup/optaweb-employee-rostering  
@@ -123,10 +123,10 @@ dependencies:
       dependencies:
         default:
           - source: 7.x
-            target: master
+            target: main
       dependant:
         default:
-          - source: master
+          - source: main
             target: 7.x
       exclude:
         - kiegroup/optaweb-vehicle-routing  
@@ -139,10 +139,10 @@ dependencies:
       dependencies:
         default:
           - source: 7.x
-            target: master
+            target: main
       dependant:
         default:
-          - source: master
+          - source: main
             target: 7.x
       exclude:
         - kiegroup/optaweb-employee-rostering  
@@ -161,12 +161,3 @@ dependencies:
   - project: kiegroup/process-migration-service
     dependencies:
       - project: kiegroup/droolsjbpm-integration
-    mapping:
-      dependencies:
-        default:
-          - source: main
-            target: master
-      dependant:
-        default:
-          - source: master
-            target: main

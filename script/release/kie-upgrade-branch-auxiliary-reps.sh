@@ -38,7 +38,7 @@ cloneBranch (){
 }
 
 checkoutNewBranch (){
-   git checkout -b "$newBranch" master
+   git checkout -b "$newBranch" main
 }
 
 commitBranch () {
@@ -47,11 +47,11 @@ commitBranch () {
 }
 
 pushBranch () {
-   git push origin master
+   git push origin main
 }
 
 pushBranches () {
-   git push origin master
+   git push origin main
    git push origin "$newBranch"
 }
 

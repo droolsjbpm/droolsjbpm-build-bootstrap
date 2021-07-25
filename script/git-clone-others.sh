@@ -55,7 +55,7 @@ additionalGitOptions=()
 
 # default repository list is stored in the repository-list.txt file
 REPOSITORY_LIST=`cat "${scriptDir}/repository-list.txt"`
-# Repositories that need to use the branch 7.x instead of master
+# Repositories that need to use the branch 7.x instead of main
 BRANCHED_7_REPOSITORY_LIST=`cat "${scriptDir}/branched-7-repository-list.txt"`
 
 for arg in "$@"
@@ -109,7 +109,7 @@ for repository in $REPOSITORY_LIST ; do
         repoAdditionalGitOptions=( "${additionalGitOptions[@]}" )
         if [ $(echo "$BRANCHED_7_REPOSITORY_LIST" | grep "^$repository$") ] ; then
             if [[ ${additionalGitOptions[0]} == "-b" ]] || [[ ${additionalGitOptions[0]} == "--branch" ]]; then
-                if [[ ${additionalGitOptions[1]} == "master" ]]; then
+                if [[ ${additionalGitOptions[1]} == "main" ]]; then
                   repoAdditionalGitOptions[1]="7.x"
                   echo -- additional Git options changed in ${repository} to: ${repoAdditionalGitOptions[@]} --
                 fi

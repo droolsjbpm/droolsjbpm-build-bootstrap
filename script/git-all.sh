@@ -54,7 +54,7 @@ if [ "x$GIT_ARG_LINE" = "x" ] ; then
     echo "  $0 fetch"
     echo "  $0 pull --rebase"
     echo "  $0 commit -m\"JIRAKEY-1 Fix typo\""
-    echo "  $0 checkout master --repo-list=drools,jbpm"
+    echo "  $0 checkout main --repo-list=drools,jbpm"
     echo
     exit 1
 fi

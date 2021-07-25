@@ -71,43 +71,43 @@ A new release branch name should always end start withy `r` so it looks differen
 
             * The new branch 7.33.x contained the releases 7.7.0.CR1, CR+ and 7.33.1-SNAPSHOT, ...
 
-    * Alpha/Beta releases are released directly from master, because we don't backport commits to Alpha/Beta's.
+    * Alpha/Beta releases are released directly from main, because we don't backport commits to Alpha/Beta's.
 
-* Alert the bsig mail list that you're going to branch master.
+* Alert the bsig mail list that you're going to branch main.
 
 * Pull the latest changes.
 
     ```shell
     $ ./droolsjbpm-build-bootstrap/script/git-all.sh fetch origin
-    $ ./droolsjbpm-build-bootstrap/script/git-all.sh rebase origin/master master
+    $ ./droolsjbpm-build-bootstrap/script/git-all.sh rebase origin/main main
     ```
 
-* Create a release branch (based on master branch):
+* Create a release branch (based on main branch):
 
     ```shell
-    $ ./droolsjbpm-build-bootstrap/git-all.sh checkout -b $releaseBranch master (i.e. rX.Y.Z = r7.x.x.Final)
+    $ ./droolsjbpm-build-bootstrap/git-all.sh checkout -b $releaseBranch main (i.e. rX.Y.Z = r7.x.x.Final)
     ```
 
 
-If required and a new branch has to be created based on master (i.e. 7.33.x for 7.7. product) following step has to be executed:
+If required and a new branch has to be created based on main (i.e. 7.33.x for 7.7. product) following step has to be executed:
 
-* Create new branch from master
+* Create new branch from main
 
       ```shell
-      $ ./droolsjpbm-build-bootstrap/git-all.sh checkout -b $newBranch master (i.e. newBranch = 7.33.x)
+      $ ./droolsjpbm-build-bootstrap/git-all.sh checkout -b $newBranch main (i.e. newBranch = 7.33.x)
       ```
 
 * Important:
 
   In case we are creating a new branch (i.e. 7.33.x) and a release branch (i.e. r7.33.0.Final) we will have three branches
   
-  master
+  main
   
   newBranch (i.e. 7.33.x)
   
   releaseBranch (i.e. r7.33.0.Final)
   
-  All these branches need to have their own version to avoid clashing the artifacts on Nexus of master and all other branches. The versions of each branch have to be upgraded.
+  All these branches need to have their own version to avoid clashing the artifacts on Nexus of main and all other branches. The versions of each branch have to be upgraded.
   Except the release branch the other two branches have to be upgraded to their new SNAPSHOT version.  
    
 * Switch to the new branches ($newBranch or $releaseBranch) for all git repositories
@@ -121,14 +121,14 @@ If required and a new branch has to be created based on master (i.e. 7.33.x for 
     * Swith to the new branch or release branch
 
         ```shell
-        $ ./droolsjbpm-build-bootstrap/script/git-checkout-all.sh $master or $newBranch or $releaseBranch (i.e. master or 7.33.x or r7.33.0.Final)
+        $ ./droolsjbpm-build-bootstrap/script/git-checkout-all.sh $main or $newBranch or $releaseBranch (i.e. main or 7.33.x or r7.33.0.Final)
         ```
 
     * Update versions:
 
-        master branch
+        main branch
         ```shell
-        $ ./droolsjbpm-build-bootstrap/script/release/update-version-all.sh $nextSNAPSHOT_master community (i.e. nextSNAPSHOT = 7.34.0-SNAPSHOT)
+        $ ./droolsjbpm-build-bootstrap/script/release/update-version-all.sh $nextSNAPSHOT_main community (i.e. nextSNAPSHOT = 7.34.0-SNAPSHOT)
         ```
         
         $releaseBranch
@@ -152,7 +152,7 @@ If required and a new branch has to be created based on master (i.e. 7.33.x for 
             ```
 
         * Note: 
-        $newVersion could be here or the release version or the upcoming -SNAPSHOT versions (master or new branch)
+        $newVersion could be here or the release version or the upcoming -SNAPSHOT versions (main or new branch)
         
         in either case it is important to search for `-SNAPSHOT`, as there are various hidden `-SNAPSHOT` dependencies in some pom.xml files and they should be prevented for releases
         
@@ -170,11 +170,11 @@ If required and a new branch has to be created based on master (i.e. 7.33.x for 
                 $ ./droolsjbpm-build-bootstrap/script/git-all.sh commit -m "Set version to: $newVersion"
                 ```
 
-    * Push the new `-SNAPSHOT` version to `master` of the blessed directory
+    * Push the new `-SNAPSHOT` version to `main` of the blessed directory
 
         ```shell
-        $ ./droolsjbpbm-build-bootstrap/script/git-all.sh pull --rebase origin master (pulls all changes for master that could be commited in the meantime and prevents merge problems when pushing commits)
-        $ ./droolsjbpm-build-bootstrap/script/git-all.sh push origin master (pushes all commits to master)
+        $ ./droolsjbpbm-build-bootstrap/script/git-all.sh pull --rebase origin main (pulls all changes for main that could be commited in the meantime and prevents merge problems when pushing commits)
+        $ ./droolsjbpm-build-bootstrap/script/git-all.sh push origin main (pushes all commits to main)
         ```
 
     * Switch back to the *new* or *release* branch name with `droolsjbpm-build-bootstrap/script/git-checkout-all.sh $newBranch or $releaseBranch` :
@@ -186,8 +186,8 @@ If required and a new branch has to be created based on master (i.e. 7.33.x for 
         
     *Important:
     
-    At this point in time we should have three upgraded branches on git hub. The new branch (i.e. 7.33.x), the release branch (i.e. r7.33.0.Final) and the upgraded master branch.
-    Depending on the need of a new branch (master branch has often to be upgraded but not branched) we will have one or two new branches on git hub. The new branch and the release branch.
+    At this point in time we should have three upgraded branches on git hub. The new branch (i.e. 7.33.x), the release branch (i.e. r7.33.0.Final) and the upgraded main branch.
+    Depending on the need of a new branch (main branch has often to be upgraded but not branched) we will have one or two new branches on git hub. The new branch and the release branch.
     To save storage the release branch of the previous release (i.e. r7.32.0.Final) will be removed, so that on git hub there is only one release branch. These release branches are only and exclusive fro the community 
     releases and no dev should commit to them.
     
@@ -203,7 +203,7 @@ If required and a new branch has to be created based on master (i.e. 7.33.x for 
       ```
 
 NOTE: the steps until here are explaining the manual way to create a release.
-At least the release branches of every repository in [repository-list.txt](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/script/repository-list.txt)      
+At least the release branches of every repository in [repository-list.txt](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/main/script/repository-list.txt)      
 were build and a "raw" release is available. All binaries are in the $deployDir.
 To finish a release there are still a few steps to be done (that are done automatically when executing the community-release-pipeline)
 
@@ -242,21 +242,21 @@ To finish a release there are still a few steps to be done (that are done automa
 
     * Add a new branch to kiegroup/kie-jenkins-jobs
 
-    * Edit the [jobs](https://github.com/kiegroup/kie-jenkins-scripts/tree/master/job-dsls) and do the needed adaptations for the new branch
+    * Edit the [jobs](https://github.com/kiegroup/kie-jenkins-scripts/tree/main/job-dsls) and do the needed adaptations for the new branch
 
     * Note:since all these Jenkins Jobs are done with a DSL Plugin there are two things that should be done so all jobs are available:
    
         - the Jenkins Jobs
         
-          https://github.com/kiegroup/kie-jenkins-scripts/tree/master/job-dsls/jobs/seed-job.groovy
+          https://github.com/kiegroup/kie-jenkins-scripts/tree/main/job-dsls/jobs/seed-job.groovy
         
-          should be updated to the new branch, because maybe bit all DSL scriptsare requiered. The file https://github.com/kiegroup/kie-jenkins-scripts/blob/master/job-dsls/src/main/groovy/org/kie/jenkins/jobdsl/Constants.groovy
+          should be updated to the new branch, because maybe bit all DSL scriptsare requiered. The file https://github.com/kiegroup/kie-jenkins-scripts/blob/main/job-dsls/src/main/groovy/org/kie/jenkins/jobdsl/Constants.groovy
           
           should be updated to0.
       
 #### NOTE:
 * at this point we have created a release branch
-* we have updated the master branch to the new development version (`*-SNAPSHOT`)
+* we have updated the main branch to the new development version (`*-SNAPSHOT`)
 * we have pushed the created release branches to origin
 * we have set up a new Jenkins view for the created "release branch"
 
@@ -266,7 +266,7 @@ Releasing from a release branch
 
 * Alert the IRC dev channels that you're starting the release.
 
-* Pull the latest changes of the branch that will be the base for the release (branchName == master or i.e. 7.33.x)
+* Pull the latest changes of the branch that will be the base for the release (branchName == main or i.e. 7.33.x)
 
     ```shell
     $ ./droolsjbpm-build-bootstrap/script/git-all.sh checkout <branchName>
@@ -399,13 +399,13 @@ Releasing from a release branch
 
 * Define the next development version an adjust the sources accordingly:
 
-    * Checkout to the master-branch or the branch which is the base for this release.
+    * Checkout to the main-branch or the branch which is the base for this release.
 
         ```shell
-        $  ./droolsjbpm-build-bootstrap/script/git-all.sh checkout master
+        $  ./droolsjbpm-build-bootstrap/script/git-all.sh checkout main
         ```
 
-    * Define the next development version on the master branch.
+    * Define the next development version on the main branch.
 
         * There are only 1 acceptable pattern:
 
@@ -428,7 +428,7 @@ Releasing from a release branch
         * Push all changes to the blessed repository:
 
             ```shell
-            $ ./droolsjbpm-build-bootstrap/script/git-all.sh push origin master
+            $ ./droolsjbpm-build-bootstrap/script/git-all.sh push origin main
             ```
     
 * Release your staging repository on [nexus](https://repository.jboss.org/nexus) and push the tags to GitHub
@@ -498,7 +498,7 @@ Releasing from a release branch
 
         * [http://docs.jboss.org/drools/release/latestFinal/](http://docs.jboss.org/drools/release/latestFinal/)
         
-* The script for [uploading](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/script/release/10_uploadBinariesToFilemgmt.sh) the binaries and docs should upload all needed stuff 
+* The script for [uploading](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/main/script/release/10_uploadBinariesToFilemgmt.sh) the binaries and docs should upload all needed stuff 
 for the web-pages
     
      https://www.drools.org
@@ -529,9 +529,9 @@ for the web-pages
 
     * The Drools XSD files are at http://www.drools.org/xsd/[http://www.drools.org/xsd/]
     
-    * Go to the https://github.com/kiegroup/droolsjbpm-knowledge/blob/master/kie-api/src/main/resources/org/kie/api/kmodule.xsd[kmodule.xsd] file (on master) and switch to the release tag.
+    * Go to the https://github.com/kiegroup/droolsjbpm-knowledge/blob/main/kie-api/src/main/resources/org/kie/api/kmodule.xsd[kmodule.xsd] file (on main) and switch to the release tag.
     
-    * Copy the raw file to https://github.com/kiegroup/drools-website/tree/master/xsd[drools-website's `xsd` directory].
+    * Copy the raw file to https://github.com/kiegroup/drools-website/tree/main/xsd[drools-website's `xsd` directory].
     
     * Rename it from `kmodule.xsd` to `kmodule_<major>_<minor>.xsd` so it includes its version (major and minor only, not hotfixes or quantifiers). For example for release `6.3.0.Final` it is renamed to `kmodule_6_3.xsd`. Do not overwrite an existing file as there should never be an existing file (because the XSD is only copied for Final, non-hotfix releases).
     
@@ -566,8 +566,8 @@ Building a Product Tag
 **This paragraph describes the building of a product tag**
 
 The community code repositories under the @kiegroup account contains all the code released as part of the community projects for Drools and jBPM. Every time a new minor or major version is released,
-a new community branch is created for that version. For instance, at the time of this writing, we have, for instance, branches **master, 7.5.x, 6.5.x**, etc for each minor/major version released and
-the *master* branch for future releases. Red Hat also has a mirror private repository that is used as a base for the product releases. This mirror repository contains all the code from the community
+a new community branch is created for that version. For instance, at the time of this writing, we have, for instance, branches **main, 7.5.x, 6.5.x**, etc for each minor/major version released and
+the *main* branch for future releases. Red Hat also has a mirror private repository that is used as a base for the product releases. This mirror repository contains all the code from the community
 repositories, plus a few product specific commits, comprising branding commits (changing names, for instance from Drools to BRMS), different icons/images, etc.
 
 This new tag will usually be based on the HEAD of a specific community branch with the product specific commits applied on top of it.

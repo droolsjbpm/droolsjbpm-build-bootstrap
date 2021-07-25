@@ -11,7 +11,7 @@ pipeline {
     parameters {
         string(description: 'The deployment URL', name: 'KIE_GROUP_DEPLOYMENT_REPO_URL')
         booleanParam(description: 'Skip Tests? True as default', name: 'SKIP_TESTS', defaultValue: true)
-        string(description: 'The UMB message version', name: 'UMB_VERSION', defaultValue: 'master')
+        string(description: 'The UMB message version', name: 'UMB_VERSION', defaultValue: 'main')
         string(description: 'The product version', name: 'PRODUCT_VERSION')
     }
     options {
@@ -39,7 +39,7 @@ pipeline {
                     def pipelineHelper = new PipelineHelper(this)
                     pipelineHelper.retry(
                     {
-                        def SETTINGS_XML_ID = "rhba-prod-master"
+                        def SETTINGS_XML_ID = "rhba-prod-main"
 
                         // This is the map project, variable to store the version from this project
                         def repositoryListPath = "./script/repository-list.txt"
@@ -57,7 +57,7 @@ pipeline {
 
                             def currentBranch = env.BRANCH_NAME ?: env.GIT_BRANCH
                             def additionalVariables = [:]
-                            if ('master' == currentBranch) {
+                            if ('main' == currentBranch) {
                                 def branched7RepositoryListFile = readFile branched7RepositoryListPath
                                 branched7RepositoryListFile.readLines().each { additionalVariables["${it}-scmRevision"] = '7.x' }
                             }

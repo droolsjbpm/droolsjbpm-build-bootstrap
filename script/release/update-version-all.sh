@@ -90,15 +90,15 @@ startDateTime=`date +%s`
 cd $droolsjbpmOrganizationDir
 
 # --- --- ---
-# Checks if repos in branched-7-repository-list.txt are on the right 7.x branch if all other repos are checked out to master.
-# For example, optaplanner 7.x branch has the same version as master on other kiegroup/reps.
+# Checks if repos in branched-7-repository-list.txt are on the right 7.x branch if all other repos are checked out to main.
+# For example, optaplanner 7.x branch has the same version as main on other kiegroup/reps.
 for branch7xRepo in $(cat "${scriptDir}/../branched-7-repository-list.txt"); do
   cd $branch7xRepo
   currentBranch=$(git rev-parse --abbrev-ref HEAD)
-  if [ $currentBranch == "master" ]; then
+  if [ $currentBranch == "main" ]; then
       echo ""
       echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-    echo " Can't update versions for master branches because $branch7xRepo is still on master and should be checked out to 7.x"
+    echo " Can't update versions for main branches because $branch7xRepo is still on main and should be checked out to 7.x"
     echo ""
       while true; do
           echo "a abort"

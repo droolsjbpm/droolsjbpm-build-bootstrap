@@ -27,7 +27,7 @@ if [ $# != 1 ]; then
     echo "Usage:"
     echo "  $0 branchName"
     echo "For example:"
-    echo "  $0 master"
+    echo "  $0 main"
     echo
     exit 1
 fi

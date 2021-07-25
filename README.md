@@ -6,10 +6,10 @@ Developing Drools and jBPM
 **This document will save you and us a lot of time by setting up your development environment correctly.**
 It solves all known pitfalls that can disrupt your development.
 It also describes all guidelines, tips and tricks.
-If you want your pull requests (or patches) to be merged into master, please respect those guidelines.
+If you want your pull requests (or patches) to be merged into main, please respect those guidelines.
 
 If you are reading this document with a normal text editor, please take a look
-at the more readable [formatted version](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/README.md).
+at the more readable [formatted version](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/main/README.md).
 
 If you discover pitfalls, tips and tricks not described in this document,
 please update it using the [markdown syntax](http://daringfireball.net/projects/markdown/syntax).
@@ -143,7 +143,7 @@ For more info on forking, read [GitHub's help on forking](http://help.github.com
 
     * Note: it's highly recommended to name the cloned directory the same as the repository (which is the default), so the helper scripts work.
 
-    * By default you will be looking at the sources of the master branch, which can be very unstable.
+    * By default you will be looking at the sources of the main branch, which can be very unstable.
 
         * Use git checkout to switch to a more stable branch or tag:
 
@@ -164,11 +164,11 @@ Working with git
 * First make a topic branch:
 
     ```shell
-    $ git checkout master
+    $ git checkout main
     $ git checkout -b myFirstTopic
     ```
 
-    * Don't litter your local `master` branch: keep it equal to `remotes/upstream/master`
+    * Don't litter your local `main` branch: keep it equal to `remotes/upstream/main`
 
     * 1 branch can have only 1 pull request, because the pull requests evolves as you add more commits on that branch.
 
@@ -186,26 +186,26 @@ Working with git
 
 * Get the latest changes from the blessed repository
 
-    * Set your master equal to the blessed master:
+    * Set your main equal to the blessed main:
 
         ```shell
         $ git fetch upstream
-        $ git checkout master
-        # Warning: this deletes all changes/commits on your local master branch, but you shouldn't have any!
-        $ git reset --hard upstream/master
+        $ git checkout main
+        # Warning: this deletes all changes/commits on your local main branch, but you shouldn't have any!
+        $ git reset --hard upstream/main
         ```
 
-    * Start a new topic branch and set the code the same as the blessed master:
+    * Start a new topic branch and set the code the same as the blessed main:
 
         ```shell
-        $ git fetch upstream && git checkout -b mySecondTopic && git reset --hard upstream/master
+        $ git fetch upstream && git checkout -b mySecondTopic && git reset --hard upstream/main
         ```
 
-    * If you have a long-running topic branch, merge master into it:
+    * If you have a long-running topic branch, merge main into it:
 
         ```shell
         $ git fetch upstream
-        $ git merge upstream/master
+        $ git merge upstream/main
         ```
 
         * If there are merge conflicts:
@@ -291,7 +291,7 @@ A pull request is like a patch file, but easier to apply, more powerful and you'
 
     * Review the changes
 
-    * Click the button *Merge help* on the bottom of the page and follow the instructions of github to apply those changes on the blessed master.
+    * Click the button *Merge help* on the bottom of the page and follow the instructions of github to apply those changes on the blessed main.
 
         * Or use the button *Merge* if there are no merge conflicts.
 
@@ -366,7 +366,7 @@ Running the build
     $ cd ~/projects/kiegroup
     $ ls 
     ```
-    the repositories displayed should be like listed here. [repository_list](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/script/repository-list.txt)
+    the repositories displayed should be like listed here. [repository_list](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/main/script/repository-list.txt)
     ```shell
     $ cd drools
     $ ls
@@ -589,7 +589,7 @@ Any dependency used in any KIE project must fulfill these hard requirements:
 
 Any dependency used in any KIE project should fulfill these soft requirements:
 
-* **Edit dependencies** in **[kie-parent](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/pom.xml)**.
+* **Edit dependencies** in **[kie-parent](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/main/pom.xml)**.
 
     * Dependencies in subprojects should avoid overwriting the dependency versions of kie-parent
         
@@ -696,11 +696,11 @@ Knowing what's going on
 
     * Subscribe to github repository commits:
 
-        * [droolsjbpm-build-bootstrap](https://github.com/kiegroup/droolsjbpm-build-bootstrap/commits/master.atom)
+        * [droolsjbpm-build-bootstrap](https://github.com/kiegroup/droolsjbpm-build-bootstrap/commits/main.atom)
 
-            * Example how to build a right URL: `https://github.com/kiegroup/<repository>/commits/master.atom`
+            * Example how to build a right URL: `https://github.com/kiegroup/<repository>/commits/main.atom`
 
-            * where you will find `<repository>` used in kiegroup here: [repositories](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/script/repository-list.txt)
+            * where you will find `<repository>` used in kiegroup here: [repositories](https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/main/script/repository-list.txt)
 
 * Join us on Zulip: [Chat](https://kie.zulipchat.com/)
 
