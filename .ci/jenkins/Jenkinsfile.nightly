@@ -37,9 +37,7 @@ pipeline {
         stage('Build Nightly projects') {
             steps {
                 script {
-                    def pipelineHelper = new PipelineHelper(this)
-                    pipelineHelper.retry(
-                    {
+                    timeout(time: 12, unit: 'HOURS') {
                         def SETTINGS_XML_ID = "rhba-prod-main"
 
                         // This is the map project, variable to store the version from this project
@@ -63,9 +61,11 @@ pipeline {
                                 branched7RepositoryListFile.readLines().each { additionalVariables["${it}-scmRevision"] = '7.x' }
                             }
 
-                            pmebuild.buildProjects(projectCollection, "${SETTINGS_XML_ID}", "$WORKSPACE/build_config/rhba/nightly", "${env.PME_CLI_PATH}", projectVariableMap, additionalVariables, [:])
+			    retry(3) {
+                                pmebuild.buildProjects(projectCollection, "${SETTINGS_XML_ID}", "$WORKSPACE/build_config/rhba/nightly", "${env.PME_CLI_PATH}", projectVariableMap, additionalVariables, [:])
+                            }
                         }
-                    }, 2, 480*60)
+                    }
                 }
             }
         }
