@@ -6,7 +6,7 @@ set -e
 #
 # export SETTINGS_XML_FILE="<full path>/settings.xml"
 #
-# and run the script > sh update-version-all.sh newVersion newAppformerVersion custom.
+# and run the script > sh update-version-all.sh new_kieVersion custom.
 
 
 # Updates the version for all kiegroup repositories
@@ -56,7 +56,6 @@ if [ $# != 1 ] && [ $# != 2 ]; then
     echo "  $0 newVersion releaseType"
     echo "For example:"
     echo "  $0 7.5.0.Final community"
-    echo "  $0 7.5.0.20171120-prod productized"
     echo
     exit 1
 fi
@@ -64,7 +63,7 @@ fi
 newVersion=$1
 echo "New version is $newVersion"
 
-releaseType=$3
+releaseType=$2
 # check if the release type was set, if not default to "community"
 if [ "x$releaseType" == "x" ]; then
     releaseType="community"
