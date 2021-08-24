@@ -448,6 +448,14 @@
       </dependency>
       <dependency>
         <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-compiler-api</artifactId>
+        <version>${version.org.kie}</version>
+        <type>test-jar</type>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.kie</groupId>
         <artifactId>kie-pmml-compiler-commons</artifactId>
         <classifier>tests</classifier>
         <version>${version.org.kie}</version>
