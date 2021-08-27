@@ -198,7 +198,7 @@ for repository in `cat ${scriptDir}/../repository-list.txt` ; do
 
         elif [ "$repository" == "process-migration-service" ]; then
             # extract old kie version
-            kieOldVersion=$(grep -oP -m 1 '(?<=<version>).*(?=</version)' pom.xml)
+            kieOldVersion=$(grep -oP -m 2 '(?<=<version>).*(?=</version)' pom.xml | sed -n 2p)
           # update version since no mvn command works
             sed -i "s/<version>$kieOldVersion<\/version>/<version>$newVersion<\/version>/" pom.xml
             returnCode=$?
