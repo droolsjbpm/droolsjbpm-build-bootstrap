@@ -38,7 +38,10 @@ initializeWorkingDirAndScriptDir
 droolsjbpmOrganizationDir="$scriptDir/../.."
 
 # default repository list is stored in the repository-list.txt file
-REPOSITORY_LIST=`cat "${scriptDir}/repository-list.txt"`
+# REPOSITORY_LIST=`cat "${scriptDir}/repository-list.txt"`
+# since process-migration-service has to be compiled with jdk11 as workaround we will remove this rep from he list
+# since all jobs using mvn-all.sh are using jdk1.8
+REPOSITORY_LIST=`cat "${scriptDir}/repository-list.txt" | sed 's/process-migration-service//g'`
 MVN_ARG_LINE=()
 
 for arg in "$@"
