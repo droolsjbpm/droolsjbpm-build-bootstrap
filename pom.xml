@@ -103,6 +103,7 @@
     <version.org.dom4j>2.1.3</version.org.dom4j>
     <version.guru.nidi>0.18.0</version.guru.nidi>
     <version.info.picocli>4.6.1</version.info.picocli>
+    <version.io.micrometer>1.7.3</version.io.micrometer>
     <version.io.springfox>2.9.2</version.io.springfox>
     <version.io.smallrye.openapi.core>2.1.4</version.io.smallrye.openapi.core>
     <version.io.strimzi.strimzi-test-container>0.23.0</version.io.strimzi.strimzi-test-container>
@@ -6452,6 +6453,14 @@
         <version>${version.org.apache.kafka}</version>
         <classifier>test</classifier>
       </dependency>
+
+      <!-- Used by drools-metric -->
+      <dependency>
+        <groupId>io.micrometer</groupId>
+        <artifactId>micrometer-core</artifactId>
+        <version>${version.io.micrometer}</version>
+      </dependency>
+
     </dependencies>
 
   </dependencyManagement>
