@@ -19,7 +19,6 @@ jbpm-wb
 optaplanner-wb
 kie-wb-distributions
 openshift-drools-hacep
-process-migration-service
 optaweb-employee-rostering
 optaweb-vehicle-routing
 kie-docs
