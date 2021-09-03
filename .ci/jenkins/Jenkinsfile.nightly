@@ -38,7 +38,7 @@ pipeline {
         stage('Build Nightly projects') {
             steps {
                 script {
-                    timeout(time: 12, unit: 'HOURS') {
+                    timeout(time: 18, unit: 'HOURS') {
                         def SETTINGS_XML_ID = "rhba-prod-main"
 
                         // This is the map project, variable to store the version from this project
