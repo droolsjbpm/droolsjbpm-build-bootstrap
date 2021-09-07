@@ -371,6 +371,7 @@
     <org.kie.productized>false</org.kie.productized>
 
     <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+
     <!-- This property needs to be defined in all modules that use the packaging 'jar' or 'bundle'. It is
          being used by different plugins to make sure the module/bundle names are consistent. -->
     <java.module.name/>
@@ -2051,6 +2052,7 @@
       </activation>
       <properties>
         <javadoc.additional.params>-Xdoclint:none</javadoc.additional.params>
+        <maven.compiler.release>8</maven.compiler.release>
       </properties>
       <build>
         <pluginManagement>
