@@ -41,8 +41,12 @@ build:
       current: mvn -e -nsu -B --builder smart -T1C clean install -Dfull -Pjenkins-pr-builder -DskipTests -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
       downstream: mvn -e -nsu clean install -Dfull -Pbusiness-central,wildfly,sourcemaps,no-showcase,jenkins-pr-builder -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-60esr/firefox-bin -Dgwt.skipCompilation=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
 
+  - project: kiegroup/process-migration-service
+    skip: true
+
   - project: kiegroup/kie-docs
     skip: true
 
   - project: kiegroup/droolsjbpm-tools
     skip: true
+

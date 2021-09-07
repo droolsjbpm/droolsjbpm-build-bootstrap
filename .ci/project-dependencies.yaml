@@ -157,3 +157,7 @@ dependencies:
       - project: kiegroup/appformer
       - project: kiegroup/kie-uberfire-extensions
       - project: kiegroup/optaplanner-wb
+
+  - project: kiegroup/process-migration-service
+    dependencies:
+      - project: kiegroup/droolsjbpm-integration

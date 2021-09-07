@@ -82,7 +82,3 @@ build:
         **/target/business-central*eap*.war
         **/target/business-central*wildfly*.war
         **/target/jbpm-server*dist*.zip
-
-  - project: kiegroup/process-migration-service
-    dependencies:
-      - project: kiegroup/droolsjbpm-integration

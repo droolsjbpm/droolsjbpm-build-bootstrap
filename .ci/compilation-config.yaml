@@ -36,6 +36,9 @@ build:
       path: |
         **/target/screenshots/**
 
+  - project: kiegroup/process-migration-service
+    skip: true
+    
   - project: kiegroup/kie-docs
     skip: true
 
