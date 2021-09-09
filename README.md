@@ -321,7 +321,7 @@ Installing Maven
 
             ```shell
             $ cd ~/opt/build/
-            $ ln -s apache-maven-3.5.2 apache-maven
+            $ ln -s apache-maven-3.6.3 apache-maven
             ```
 
             Next time you only have to remove the link and recreate the link to the new version.
@@ -351,7 +351,7 @@ Installing Maven
 
     ```shell
     $ mvn --version
-    Apache Maven 3.5.2 (...)
+    Apache Maven 3.6.3 (...)
     Java version: 1.8.0_112
     ```
 
