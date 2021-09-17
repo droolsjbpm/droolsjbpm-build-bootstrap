@@ -45,6 +45,13 @@ pipeline {
                 }
             }
         }
+        stage('Remove partially downloaded deps') {
+            steps {
+                script{
+                    util.rmPartialDeps()
+                }
+            }
+        }
         stage('Build projects') {
             tools {
               jdk build_jdk_tool
