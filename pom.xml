@@ -4465,7 +4465,15 @@
           </exclusion>
           <exclusion>
             <groupId>org.jboss.spec.javax.resource</groupId>
+            <artifactId>jboss-connector-api_1.5_spec</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.jboss.spec.javax.resource</groupId>
             <artifactId>jboss-connector-api_1.7_spec</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.jboss</groupId>
+            <artifactId>jboss-transaction-spi</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
