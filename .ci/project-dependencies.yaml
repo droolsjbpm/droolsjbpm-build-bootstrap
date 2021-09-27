@@ -23,11 +23,39 @@ dependencies:
   - project: kiegroup/droolsjbpm-knowledge
     dependencies:
       - project: kiegroup/kie-soup
+    mapping:
+      dependencies:
+        default:
+          - source: 7.x
+            target: main
+      dependant:
+        default:
+          - source: main
+            target: 7.x
+      exclude:
+        - kiegroup/optaweb-employee-rostering
+        - kiegroup/optaweb-vehicle-routing
+        - kiegroup/optaplanner
+        - kiegroup/drools
 
   - project: kiegroup/drools
     dependencies:
       - project: kiegroup/kie-soup
-      - project: kiegroup/droolsjbpm-knowledge
+      - project: kiegroup/droolsjbpm-knowledge        
+    mapping:
+      dependencies:
+        default:
+          - source: 7.x
+            target: main
+      dependant:
+        default:
+          - source: main
+            target: 7.x
+      exclude:
+        - kiegroup/optaweb-employee-rostering
+        - kiegroup/optaweb-vehicle-routing
+        - kiegroup/optaplanner          
+        - kiegroup/droolsjbpm-knowledge          
 
   - project: kiegroup/jbpm
     dependencies:
@@ -49,6 +77,8 @@ dependencies:
       exclude:
         - kiegroup/optaweb-employee-rostering  
         - kiegroup/optaweb-vehicle-routing
+        - kiegroup/drools
+        - kiegroup/droolsjbpm-knowledge
 
   - project: kiegroup/kie-jpmml-integration
     dependencies:
@@ -131,6 +161,8 @@ dependencies:
       exclude:
         - kiegroup/optaweb-vehicle-routing  
         - kiegroup/optaplanner
+        - kiegroup/drools
+        - kiegroup/droolsjbpm-knowledge
 
   - project: kiegroup/optaweb-vehicle-routing
     dependencies:
@@ -147,6 +179,9 @@ dependencies:
       exclude:
         - kiegroup/optaweb-employee-rostering  
         - kiegroup/optaplanner
+        - kiegroup/drools
+        - kiegroup/droolsjbpm-knowledge
+
 
   - project: kiegroup/kie-wb-distributions
     dependencies:
