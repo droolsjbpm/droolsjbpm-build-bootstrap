@@ -70,6 +70,12 @@ dependencies:
         default:
           - source: 7.x
             target: main
+        kiegroup/drools:
+          - source: main
+            target: 7.x
+        kiegroup/droolsjbpm-knowledge:
+          - source: main
+            target: 7.x
       dependant:
         default:
           - source: main
@@ -77,8 +83,6 @@ dependencies:
       exclude:
         - kiegroup/optaweb-employee-rostering  
         - kiegroup/optaweb-vehicle-routing
-        - kiegroup/drools
-        - kiegroup/droolsjbpm-knowledge
 
   - project: kiegroup/kie-jpmml-integration
     dependencies:
@@ -154,6 +158,12 @@ dependencies:
         default:
           - source: 7.x
             target: main
+        kiegroup/drools:
+          - source: main
+            target: 7.x
+        kiegroup/droolsjbpm-knowledge:
+          - source: main
+            target: 7.x
       dependant:
         default:
           - source: main
@@ -161,8 +171,6 @@ dependencies:
       exclude:
         - kiegroup/optaweb-vehicle-routing  
         - kiegroup/optaplanner
-        - kiegroup/drools
-        - kiegroup/droolsjbpm-knowledge
 
   - project: kiegroup/optaweb-vehicle-routing
     dependencies:
@@ -172,6 +180,12 @@ dependencies:
         default:
           - source: 7.x
             target: main
+        kiegroup/drools:
+          - source: main
+            target: 7.x
+        kiegroup/droolsjbpm-knowledge:
+          - source: main
+            target: 7.x
       dependant:
         default:
           - source: main
@@ -179,8 +193,6 @@ dependencies:
       exclude:
         - kiegroup/optaweb-employee-rostering  
         - kiegroup/optaplanner
-        - kiegroup/drools
-        - kiegroup/droolsjbpm-knowledge
 
 
   - project: kiegroup/kie-wb-distributions
