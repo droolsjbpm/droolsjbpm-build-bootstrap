@@ -13,7 +13,7 @@ pipeline {
         booleanParam(description: 'Skip Tests? True as default', name: 'SKIP_TESTS', defaultValue: true)
         string(description: 'The UMB message version', name: 'UMB_VERSION', defaultValue: 'main')
         string(description: 'The product version', name: 'PRODUCT_VERSION')
-        string(description: 'The config repository branch', name: 'DEFAULT_CONFIG_BRANCH', defaultValue: 'main')
+        string(description: 'The config repository branch', name: 'CONFIG_BRANCH', defaultValue: 'main')
     }
     options {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
@@ -29,7 +29,7 @@ pipeline {
         stage('Clone build configuration repo') {
             steps {
                 script {
-                    def currentBranch = env.DEFAULT_CONFIG_BRANCH ?: env.BRANCH_NAME ?: env.GIT_BRANCH
+                    def currentBranch = env.CONFIG_BRANCH ?: env.DEFAULT_CONFIG_BRANCH ?: env.BRANCH_NAME ?: env.GIT_BRANCH
                     println "Checking out ${env.BUILD_CONFIGURATION_REPO_URL}:${currentBranch} into build_config folder"
                     sh "git clone -b ${currentBranch} --single-branch ${env.BUILD_CONFIGURATION_REPO_URL} build_config"
                 }
