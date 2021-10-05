@@ -26,6 +26,13 @@ pipeline {
 
             }
         }
+        stage('Remove partially downloaded deps') {
+            steps {
+                script{
+                    util.rmPartialDeps()
+                }
+            }
+        }
         stage('Clone build configuration repo') {
             steps {
                 script {
@@ -169,7 +176,9 @@ pipeline {
             archiveArtifacts artifacts: '**/*.maven.log', fingerprint: false, defaultExcludes: true, caseSensitive: true, allowEmptyArchive: true
         }
         cleanup {
-            cleanWs()
+            script {
+                util.cleanNode()
+            }
         }
     }
 }
