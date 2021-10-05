@@ -77,13 +77,13 @@ pipeline {
                 }
             }
         }
-        stage('Generate Properties Files') {
+        stage('Generate RHPAM Properties Files') {
             steps {
                 script {
                     def PME_BUILD_VARIABLES = env.PME_BUILD_VARIABLES.split(";").collect{ it.split("=")}.inject([:]) {map, item -> map << [(item.length == 2 ? item[0] : null): (item.length == 2 ? item[1] : null)]}
 
-                    build job: env.RHBA_PROPERTIES_GENERATOR_PATH, parameters: [
-                        [$class: 'BooleanParameterValue', name: 'IS_PROD', value: false],
+                    build job: env.RHPAM_PROPERTIES_GENERATOR_PATH, parameters: [
+                        [$class: 'BooleanParameterValue', name: 'IS_RELEASE', value: false],
                         [$class: 'StringParameterValue', name: 'BRANCH_NAME', value: env.BRANCH_NAME],
                         [$class: 'StringParameterValue', name: 'KIE_VERSION', value: PME_BUILD_VARIABLES['kieVersion']],
                         [$class: 'StringParameterValue', name: 'PRODUCT_VERSION', value: PME_BUILD_VARIABLES['productVersion']],
