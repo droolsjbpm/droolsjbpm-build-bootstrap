@@ -73,8 +73,12 @@ dependencies:
         kiegroup/drools:
           - source: main
             target: 7.x
+          - source: 7.x
+            target: 7.x
         kiegroup/droolsjbpm-knowledge:
           - source: main
+            target: 7.x
+          - source: 7.x
             target: 7.x
       dependant:
         default:
@@ -161,8 +165,12 @@ dependencies:
         kiegroup/drools:
           - source: main
             target: 7.x
+          - source: 7.x
+            target: 7.x
         kiegroup/droolsjbpm-knowledge:
           - source: main
+            target: 7.x
+          - source: 7.x
             target: 7.x
       dependant:
         default:
@@ -183,8 +191,12 @@ dependencies:
         kiegroup/drools:
           - source: main
             target: 7.x
+          - source: 7.x
+            target: 7.x
         kiegroup/droolsjbpm-knowledge:
           - source: main
+            target: 7.x
+          - source: 7.x
             target: 7.x
       dependant:
         default:
@@ -208,3 +220,4 @@ dependencies:
   - project: kiegroup/process-migration-service
     dependencies:
       - project: kiegroup/droolsjbpm-integration
+
