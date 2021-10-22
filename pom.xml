@@ -5394,7 +5394,6 @@
         <groupId>org.wildfly.client</groupId>
         <artifactId>wildfly-client-config</artifactId>
         <version>${version.org.wildfly.client}</version>
-        <scope>test</scope>
       </dependency>
 
       <dependency>
