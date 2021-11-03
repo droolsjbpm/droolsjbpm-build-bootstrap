@@ -29,16 +29,6 @@ cp  $deployDir/org/optaplanner/optaplanner-docs/$kieVersion/optaplanner-docs-$ki
 unzip optaplanner-docs/optaplanner-docs-$kieVersion.zip -d optaplanner-docs/
 rm optaplanner-docs/optaplanner-docs-$kieVersion.zip
 
-mkdir optaweb-employee-rostering-docs
-cp  $deployDir/org/optaweb/employeerostering/optaweb-employee-rostering-docs/$kieVersion/optaweb-employee-rostering-docs-$kieVersion.zip optaweb-employee-rostering-docs/
-unzip optaweb-employee-rostering-docs/optaweb-employee-rostering-docs-$kieVersion.zip -d optaweb-employee-rostering-docs/
-rm optaweb-employee-rostering-docs/optaweb-employee-rostering-docs-$kieVersion.zip
-
-mkdir optaweb-vehicle-routing-docs
-cp  $deployDir/org/optaweb/vehiclerouting/optaweb-vehicle-routing-docs/$kieVersion/optaweb-vehicle-routing-docs-$kieVersion.zip optaweb-vehicle-routing-docs/
-unzip optaweb-vehicle-routing-docs/optaweb-vehicle-routing-docs-$kieVersion.zip -d optaweb-vehicle-routing-docs/
-rm optaweb-vehicle-routing-docs/optaweb-vehicle-routing-docs-$kieVersion.zip
-
 # drools
 cp $deployDir/org/drools/drools-distribution/$kieVersion/drools-distribution-$kieVersion.zip .
 cp $deployDir/org/drools/droolsjbpm-integration-distribution/$kieVersion/droolsjbpm-integration-distribution-$kieVersion.zip .
@@ -52,8 +42,6 @@ cp $deployDir/org/kie/jbpm-server-distribution/$kieVersion/jbpm-server-distribut
 
 # optaplanner
 cp $deployDir/org/optaplanner/optaplanner-distribution/$kieVersion/optaplanner-distribution-$kieVersion.zip .
-cp $deployDir/org/optaweb/employeerostering/optaweb-employee-rostering-distribution/$kieVersion/optaweb-employee-rostering-distribution-$kieVersion.zip .
-cp $deployDir/org/optaweb/vehiclerouting/optaweb-vehicle-routing-distribution/$kieVersion/optaweb-vehicle-routing-distribution-$kieVersion.zip .
 
 # copies binaries + docs that are only available in /target directories - they are not deployed
 mkdir service-repository
