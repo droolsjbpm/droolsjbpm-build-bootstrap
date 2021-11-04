@@ -1,0 +1,18 @@
+name: 'Surefire Report'
+description: 'Generates a test report'
+inputs:
+  report_paths:
+    description: "Glob expression to surefire or failsafe report paths."
+    required: false
+    default: "**/surefire-reports/TEST-*.xml"
+
+runs:
+  using: "composite"
+  steps: 
+    - name: Check Surefire Report
+      uses: ScaCap/action-surefire-report@v1.0.10
+      with:
+        fail_on_test_failures: true
+        fail_if_no_tests: false
+        skip_publishing: true
+        report_paths: ${{ inputs.report_paths }}

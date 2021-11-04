@@ -1,0 +1,9 @@
+name: 'Support long paths'
+description: 'Sets up the environment to support long paths'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Support long paths
+      run: git config --system core.longpaths true
+      shell: bash
