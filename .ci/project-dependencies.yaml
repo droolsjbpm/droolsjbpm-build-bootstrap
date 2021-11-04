@@ -96,7 +96,6 @@ dependencies:
   - project: kiegroup/droolsjbpm-integration
     dependencies:
       - project: kiegroup/optaplanner
-      - project: kiegroup/kie-jpmml-integration
       - project: kiegroup/drools
       - project: kiegroup/jbpm
 
