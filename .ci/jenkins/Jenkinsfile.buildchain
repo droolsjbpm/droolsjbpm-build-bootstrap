@@ -10,7 +10,7 @@ pr_type = env.PR_TYPE?.trim() ?: null
 build_jdk_tool = env.BUILD_JDK_TOOL?.trim() ?: 'kie-jdk11'
 build_maven_tool = env.BUILD_MAVEN_TOOL?.trim() ?: 'kie-maven-3.8.1'
 buildChainGroup = env.BUILDCHAIN_GROUP?.trim() ?: '\${GROUP}'
-buildChainBranch = env.BUILDCHAIN_BRANCH?.trim() ?: '\${BRANCH}'
+buildChainBranch = env.BUILDCHAIN_BRANCH?.trim() ?: '\${BRANCH:main}'
 
 pipeline {
     agent {
