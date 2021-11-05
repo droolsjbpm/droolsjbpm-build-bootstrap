@@ -30,7 +30,7 @@ runs:
   steps:
     - name: Build Chain Tool Execution
       id: build-chain
-      uses: kiegroup/github-action-build-chain@v2.6.15
+      uses: kiegroup/github-action-build-chain@v2.6.17
       with:
         definition-file: ${{ inputs.definition-file }}
         flow-type: ${{ inputs.flow-type }}
