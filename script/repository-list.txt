@@ -23,8 +23,3 @@ process-migration-service
 optaweb-employee-rostering
 optaweb-vehicle-routing
 kie-docs
-kogito-pipelines
-kogito-runtimes
-kogito-apps
-kogito-examples
-kie-jenkins-scripts
