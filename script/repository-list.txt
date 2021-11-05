@@ -8,7 +8,6 @@ lienzo-tests
 appformer
 kie-uberfire-extensions
 jbpm
-kie-jpmml-integration
 droolsjbpm-integration
 kie-wb-playground
 kie-wb-common
@@ -22,4 +21,5 @@ openshift-drools-hacep
 process-migration-service
 optaweb-employee-rostering
 optaweb-vehicle-routing
+kie-jpmml-integration
 kie-docs
