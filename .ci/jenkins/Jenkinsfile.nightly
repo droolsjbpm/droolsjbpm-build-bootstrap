@@ -130,28 +130,6 @@ pipeline {
                 }
             }
         }
-        stage ("Send RHDM UMB Message to QE.") {
-            steps {
-                script {
-                    echo "[INFO] Sending RHDM UMB message to QE."
-                    def PME_BUILD_VARIABLES = env.PME_BUILD_VARIABLES.split(";").collect{ it.split("=")}.inject([:]) {map, item -> map << [(item.length == 2 ? item[0] : null): (item.length == 2 ? item[1] : null)]}
-
-                    def propertiesFileUrl = "${env.STAGING_SERVER_URL}/rhdm/RHDM-${PME_BUILD_VARIABLES['productVersion']}.${PME_BUILD_VARIABLES['milestone']}/rhdm-${PME_BUILD_VARIABLES['datetimeSuffix']}.properties"
-                    def topic = "VirtualTopic.qe.ci.ba.rhdm.${env.UMB_VERSION}.nightly.trigger"
-                    def eventType = "rhdm-${env.UMB_VERSION}-nightly-qe-trigger"
-
-                    echo "[INFO] Message Body: ${propertiesFileUrl}"
-                    echo "[INFO] Topic: ${topic}"
-                    echo "[INFO] Event Type: ${eventType}"
-                    build job: env.SEND_UMB_MESSAGE_JOB_PATH, parameters: [
-                            [$class: 'StringParameterValue', name: 'MESSAGE_BODY', value: propertiesFileUrl],
-                            [$class: 'StringParameterValue', name: 'TOPIC', value: topic],
-                            [$class: 'StringParameterValue', name: 'EVENT_TYPE', value: eventType]
-                    ]
-                    echo "[SUCCESS] Message was successfully sent."
-                }
-            }
-        }
     }
     post {
         failure {
