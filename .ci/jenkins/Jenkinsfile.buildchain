@@ -54,6 +54,21 @@ pipeline {
                 }
             }
         }
+        stage('Install build-chain tool') {
+            steps {
+                script {
+                    println "[INFO] Getting build-chain version from composite action file"
+                    def buildChainVersion = buildChain.getBuildChainVersionFromCompositeActionFile()
+                    if([null, 'null'].contains(buildChainVersion)) {
+                        def errorMessage = "[ERROR] The build-chain version can't be recovered. Please contact administrator"
+                        println errorMessage
+                        error(errorMessage)
+                    }
+                    println "[INFO] build-chain version recovered '${buildChainVersion}'"
+                    sh "npm install -g @kie/build-chain-action@${buildChainVersion} -registry=${NPM_REGISTRY_URL}"
+                }
+            }
+        }
         stage('Build projects') {
             tools {
               jdk build_jdk_tool
