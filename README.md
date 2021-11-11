@@ -384,7 +384,7 @@ Running the build
     The first build will take a long time, because a lot of dependencies will be downloaded (and cached locally).
 
     It might even fail, if certain servers are offline or experience hiccups.
-    In that case, you 'll see an IO error, so just run the build again.
+    In that case, you'll see an IO error, so just run the build again.
 
     If you consistently get `Could not transfer artifact ... Connection timed out`
     and you are behind a non-transparent proxy server,
@@ -422,13 +422,13 @@ Running the build
 
 * Warning: The first `mvn` build of a day will download the latest SNAPSHOT dependencies of other kiegroup projects,
 unless you build all those kiegroup projects from source.
-Those SNAPSHOTS were build and deployed last night by Jenkins jobs.
+Those SNAPSHOTS were built and deployed last night by Jenkins jobs.
 
     * If you've pulled all changes (or cloned a repository) today, this is a good thing:
     it saves you from having to download and build all those other latest kiegroup projects from source.
 
     * If you haven't pulled all changes today, this is probably a bad thing:
-    you 're probably not ready to deal with those new snapshots.
+    you're probably not ready to deal with those new snapshots.
 
         In that case, add `-nsu` (= `--no-snapshot-updates`) to the `mvn` command to avoid downloading those snapshots:
 
@@ -653,7 +653,7 @@ Team workflows
 * Fixing a community issue in JIRA:
 
     * Find/create the issue in JIRA ([Drools](https://issues.redhat.com/projects/DROOLS/issues/),
-    [OptaPlanner](https://issues.redhat.com/projects/PLANNER/issues), [jBPM](https://issues.redhat.com/projects/JBPM/issues)
+    [OptaPlanner](https://issues.redhat.com/projects/PLANNER/issues), [jBPM](https://issues.redhat.com/projects/JBPM/issues))
 
     * Fix the issue and push those changes to the appropriate branch(es) on github.
 
