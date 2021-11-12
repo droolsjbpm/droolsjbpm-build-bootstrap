@@ -7,7 +7,7 @@ inputs:
   definition-file:
     description: 'The `definition-file` input for the build-chain'
     required: false
-    default: 'https://raw.githubusercontent.com/${GROUP}/droolsjbpm-build-bootstrap/${BRANCH:main}/.ci/pull-request-config.yaml'
+    default: 'https://raw.githubusercontent.com/${GROUP:kiegroup}/droolsjbpm-build-bootstrap/${BRANCH:main}/.ci/pull-request-config.yaml'
   flow-type:
     description: "the flow to execute, it can be 'pull-request', 'full-downstream', 'single' or 'branch'"
     default: "pull-request"
