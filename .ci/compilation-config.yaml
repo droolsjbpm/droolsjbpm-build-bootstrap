@@ -8,7 +8,12 @@ default:
     upstream: mvn -e --builder smart -T1C clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
     downstream: mvn -e -nsu -fae --builder smart -T1C clean install -Dfull -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
     after:
-      upstream: rm -rf ./*
+      upstream: |
+        rm -rf ./*
+        df -h
+      downstream: |
+        rm -rf ./*
+        df -h
 
 build:
   - project: kiegroup/appformer
