@@ -23,6 +23,9 @@ inputs:
     description: "The prefix for the annotations title"
     default: ''
     required: false
+  additional-flags:
+    description: "The chance to define additional flags for the execution, as it is done on the CLI side. Just semicolon (;) separated, like '--skipParallelCheckout;--skipExecution;-cct (mvn .*)||$1 -s settings.xml'"
+    required: false
 
 
 runs:
@@ -30,12 +33,13 @@ runs:
   steps:
     - name: Build Chain Tool Execution
       id: build-chain
-      uses: kiegroup/github-action-build-chain@v2.6.20
+      uses: kiegroup/github-action-build-chain@v2.6.21
       with:
         definition-file: ${{ inputs.definition-file }}
         flow-type: ${{ inputs.flow-type }}
         starting-project: ${{ inputs.starting-project }}
         logger-level: ${{ inputs.logger-level }}
         annotations-prefix: ${{ inputs.annotations-prefix }}
+        additional-flags: ${{ inputs.additional-flags }}
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
