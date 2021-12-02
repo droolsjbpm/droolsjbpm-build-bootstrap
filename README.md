@@ -21,6 +21,8 @@ Table of content
 
 * **[Building with Maven](#building-with-maven)**
 
+* **[CI Information](#ci-information)**
+
 * **[Team communication](#team-communication)**
 
 * **[Writing documentation](#writing-documentation)**
@@ -641,6 +643,11 @@ kiegroup project structure
 ==================
 ![Project hierarchy](/docs/project-dependencies-hierarchy.png)
 
+
+CI Information
+==================
+
+See [CI Information document](.ci)
 
 Team communication
 ==================
