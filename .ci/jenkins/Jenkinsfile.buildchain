@@ -65,7 +65,13 @@ pipeline {
                         error(errorMessage)
                     }
                     println "[INFO] build-chain version recovered '${buildChainVersion}'"
-                    sh "npm install -g @kie/build-chain-action@${buildChainVersion} -registry=${NPM_REGISTRY_URL}"
+
+                    try {
+                        sh "npm install -g @kie/build-chain-action@${buildChainVersion} -registry=${NPM_REGISTRY_URL}"
+                    } catch(e) {
+                        println "[WARNING] Error installing @kie/build-chain-action@${buildChainVersion}. Did you check the version is already published at https://www.npmjs.com/package/@kie/build-chain-action ? In case it is you should wait few minutes for ${NPM_REGISTRY_URL} to be synched up. Otherwise check latest 'Publish' action at https://github.com/kiegroup/github-action-build-chain/actions or contact kiegroup/github-action-build-chain responsible."
+                        println "[INFO] Final @kie/build-chain-action version to be used: ${sh(returnStdout: true, script: 'npm @kie/build-chain-action -v').trim()}"
+                    }
                 }
             }
         }
