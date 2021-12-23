@@ -2,29 +2,33 @@ version: "2.1"
 
 dependencies: ./project-dependencies.yaml
 
+pre: |
+  export BUILD_MVN_OPTS="${{ env.BUILD_MVN_OPTS }} dependency:tree -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+  echo "BUILD_MVN_OPTS=${{ env.BUILD_MVN_OPTS }}"
+
 default:
   build-command:
-    current: mvn -e -nsu -Dfull -Pwildfly clean install -Prun-code-coverage  -Dcontainer.profile=wildfly -Dcontainer=wildfly -Dintegration-tests=true -Dmaven.test.failure.ignore=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
-    upstream: mvn -e --builder smart -T1C clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+    current: mvn -e -nsu -Dfull -Pwildfly clean install -Prun-code-coverage  -Dcontainer.profile=wildfly -Dcontainer=wildfly -Dintegration-tests=true -Dmaven.test.failure.ignore=true ${{ env.BUILD_MVN_OPTS }}
+    upstream: mvn -e --builder smart -T1C clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
     after:
       upstream: rm -rf ./*
 
 build:
   - project: kiegroup/appformer
     build-command:
-      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
     archive-artifacts:
       path: |
         **/dashbuilder-runtime.war
 
   - project: kiegroup/drools
     build-command:
-      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
 
   - project: kiegroup/optaplanner
     build-command:
-      current: mvn -e clean install -nsu -Prun-code-coverage,wildfly -Dfull  -Dintegration-tests=true -Dmaven.test.failure.ignore=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
-      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+      current: mvn -e clean install -nsu -Prun-code-coverage,wildfly -Dfull  -Dintegration-tests=true -Dmaven.test.failure.ignore=true ${{ env.BUILD_MVN_OPTS }}
+      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
 
   - project: kiegroup/jbpm
     archive-artifacts:
@@ -33,15 +37,15 @@ build:
 
   - project: kiegroup/droolsjbpm-integration
     build-command:
-      current: mvn -e -nsu -Dfull -Pwildfly clean install -Pjenkins-pr-builder -Prun-code-coverage  -Dcontainer.profile=wildfly -Dcontainer=wildfly -Dintegration-tests=true -Dmaven.test.failure.ignore=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+      current: mvn -e -nsu -Dfull -Pwildfly clean install -Pjenkins-pr-builder -Prun-code-coverage  -Dcontainer.profile=wildfly -Dcontainer=wildfly -Dintegration-tests=true -Dmaven.test.failure.ignore=true ${{ env.BUILD_MVN_OPTS }}
     archive-artifacts:
       path: |
         **/gclog
 
   - project: kiegroup/kie-wb-common
     build-command:
-      current: mvn -e -nsu -Dfull clean install -Prun-code-coverage -Pwildfly -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dmaven.test.failure.ignore=true -Dwebdriver.firefox.bin=/opt/tools/firefox-60esr/firefox-bin -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
-      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+      current: mvn -e -nsu -Dfull clean install -Prun-code-coverage -Pwildfly -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dmaven.test.failure.ignore=true -Dwebdriver.firefox.bin=/opt/tools/firefox-60esr/firefox-bin ${{ env.BUILD_MVN_OPTS }}
+      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
     archive-artifacts:
       path: |
         **/target/screenshots/**
@@ -58,7 +62,7 @@ build:
 
   - project: kiegroup/optaweb-employee-rostering
     build-command:
-      current: mvn -e -nsu clean install -Dfull -Prun-code-coverage -Dintegration-tests=true -Dmaven.test.failure.ignore=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+      current: mvn -e -nsu clean install -Dfull -Prun-code-coverage -Dintegration-tests=true -Dmaven.test.failure.ignore=true ${{ env.BUILD_MVN_OPTS }}
     archive-artifacts:
       path: |
         **/cypress/screenshots/**@always
@@ -66,7 +70,7 @@ build:
 
   - project: kiegroup/optaweb-vehicle-routing
     build-command:
-      current: mvn -e -nsu clean install -Dfull -Prun-code-coverage -Dintegration-tests=true -Dmaven.test.failure.ignore=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+      current: mvn -e -nsu clean install -Dfull -Prun-code-coverage -Dintegration-tests=true -Dmaven.test.failure.ignore=true ${{ env.BUILD_MVN_OPTS }}
     archive-artifacts:
       path: |
         **/cypress/screenshots/**@always
@@ -74,7 +78,7 @@ build:
 
   - project: kiegroup/kie-wb-distributions
     build-command:
-      current: mvn -e -nsu clean install -Dfull -Prun-code-coverage -Pwildfly -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dmaven.test.failure.ignore=true -Pbusiness-central -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=${{ env.FIREFOX_FOLDER }}/firefox-bin -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+      current: mvn -e -nsu clean install -Dfull -Prun-code-coverage -Pwildfly -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dmaven.test.failure.ignore=true -Pbusiness-central -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=${{ env.FIREFOX_FOLDER }}/firefox-bin ${{ env.BUILD_MVN_OPTS }}
     archive-artifacts:
       path: |
         **/target/screenshots/**

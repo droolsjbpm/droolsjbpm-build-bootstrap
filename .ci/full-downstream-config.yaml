@@ -2,44 +2,48 @@ version: "2.1"
 
 dependencies: ./project-dependencies.yaml
 
+pre: |
+  export BUILD_MVN_OPTS="${{ env.BUILD_MVN_OPTS }} dependency:tree -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+  echo "BUILD_MVN_OPTS=${{ env.BUILD_MVN_OPTS }}"
+
 default:
   build-command:
-    current: mvn -e -nsu --builder smart -T1C clean install -Dfull -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
-    upstream: mvn -e --builder smart -T1C clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
-    downstream: mvn -e -nsu clean install -Dfull -Pbusiness-central,wildfly,sourcemaps,no-showcase -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-60esr/firefox-bin -Dgwt.skipCompilation=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+    current: mvn -e -nsu --builder smart -T1C clean install -Dfull ${{ env.BUILD_MVN_OPTS }}
+    upstream: mvn -e --builder smart -T1C clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+    downstream: mvn -e -nsu clean install -Dfull -Pbusiness-central,wildfly,sourcemaps,no-showcase -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-60esr/firefox-bin -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
     after:
       upstream: rm -rf ./*
 
 build:
   - project: kiegroup/appformer
     build-command:
-      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
     archive-artifacts:
       path: |
         **/dashbuilder-runtime.war
 
   - project: kiegroup/drools
     build-command:
-      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
 
   - project: kiegroup/optaplanner
     build-command:
-      current: mvn -e -fae -nsu clean install -Dfull -DskipTests -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
-      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+      current: mvn -e -fae -nsu clean install -Dfull -DskipTests ${{ env.BUILD_MVN_OPTS }}
+      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
 
   - project: kiegroup/kie-wb-common
     build-command:
-      current: mvn -e -nsu --builder smart -T1C clean install -Dfull -DskipTests -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
-      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
-      downstream: mvn -e -nsu clean install -Dfull -Pbusiness-central,wildfly,sourcemaps,no-showcase -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-60esr/firefox-bin -Dgwt.skipCompilation=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+      current: mvn -e -nsu --builder smart -T1C clean install -Dfull -DskipTests ${{ env.BUILD_MVN_OPTS }}
+      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+      downstream: mvn -e -nsu clean install -Dfull -Pbusiness-central,wildfly,sourcemaps,no-showcase -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-60esr/firefox-bin -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
     archive-artifacts:
       path: |
         **/target/screenshots/**
 
   - project: kiegroup/droolsjbpm-integration
     build-command:
-      current: mvn -e -nsu -B --builder smart -T1C clean install -Dfull -Pjenkins-pr-builder -DskipTests -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
-      downstream: mvn -e -nsu clean install -Dfull -Pbusiness-central,wildfly,sourcemaps,no-showcase,jenkins-pr-builder -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-60esr/firefox-bin -Dgwt.skipCompilation=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+      current: mvn -e -nsu -B --builder smart -T1C clean install -Dfull -Pjenkins-pr-builder -DskipTests ${{ env.BUILD_MVN_OPTS }}
+      downstream: mvn -e -nsu clean install -Dfull -Pbusiness-central,wildfly,sourcemaps,no-showcase,jenkins-pr-builder -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-60esr/firefox-bin -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
 
   - project: kiegroup/process-migration-service
     skip: true
