@@ -55,7 +55,7 @@
     -->
     <version.aopalliance>1.0</version.aopalliance>
     <version.ch.qos.cal10n>0.8.1</version.ch.qos.cal10n>
-    <version.ch.qos.logback>1.2.3</version.ch.qos.logback>
+    <version.ch.qos.logback>1.2.8</version.ch.qos.logback>
     <version.commons-beanutils>1.9.4</version.commons-beanutils>
     <version.commons-cli>1.4</version.commons-cli>
     <version.commons-codec>1.15</version.commons-codec>
@@ -244,8 +244,8 @@
     <version.org.jsoup>1.14.2</version.org.jsoup>
     <version.org.junit>5.5.2</version.org.junit>
     <version.org.keycloak>13.0.0</version.org.keycloak>
-    <version.org.apache.logging.log4j>2.13.2</version.org.apache.logging.log4j>
     <version.org.mvel>2.4.14.Final</version.org.mvel>
+    <version.org.apache.logging.log4j>2.17.1</version.org.apache.logging.log4j>
     <version.org.ocpsoft.prettytime>3.0.2.Final</version.org.ocpsoft.prettytime>
     <!--EAP 6.4 use 4.2.0.redhat-8 which is not OSGi compatible, so stay on 4.3.1-->
     <version.org.osgi>4.3.1</version.org.osgi>
