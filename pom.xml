@@ -478,7 +478,7 @@
     <version.yarn>v1.22.4</version.yarn>
 
     <version.org.awaitility>3.0.0</version.org.awaitility>
-    <version.io.github.bonigarcia>3.8.1</version.io.github.bonigarcia>
+    <version.io.github.bonigarcia>5.0.3</version.io.github.bonigarcia>
 
     <version.org.kogito.gwt-jsonix-schema-compiler>1.2.1</version.org.kogito.gwt-jsonix-schema-compiler>
     <version.org.hisrc.jsonix.jsonix-scripts>3.0.0</version.org.hisrc.jsonix.jsonix-scripts>
