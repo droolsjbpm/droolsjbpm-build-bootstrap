@@ -187,7 +187,7 @@
     <version.org.glassfish.jaxb>2.3.2</version.org.glassfish.jaxb>
     <version.org.gwtbootstrap3>1.0.1</version.org.gwtbootstrap3>
     <version.org.gwtbootstrap3-extras>1.0.2</version.org.gwtbootstrap3-extras>
-    <version.org.hibernate>5.4.24.Final</version.org.hibernate>
+    <version.org.hibernate>5.3.20.Final</version.org.hibernate>
     <version.org.hibernate.validator>6.0.20.Final</version.org.hibernate.validator>
     <version.org.hibernate.commons.annotations>5.0.5.Final</version.org.hibernate.commons.annotations>
     <version.org.hornetq>2.4.7.Final</version.org.hornetq>
