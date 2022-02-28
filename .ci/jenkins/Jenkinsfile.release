@@ -1,0 +1,486 @@
+@Library('jenkins-pipeline-shared-libraries')_
+import org.jenkinsci.plugins.workflow.libs.Library
+import org.kie.jenkins.MavenCommand
+import org.kie.jenkins.MavenStagingHelper
+
+
+baseBranch = "${env.BASE_BRANCH}"
+releaseBranch = "${env.RELEASE_BRANCH}"
+agentLabel = "${env.AGENT_LABEL}"
+kieVersion = "${env.KIE_VERSION}"
+mvnTool = "${env.MVN_TOOL}"
+jdkVersion = "${env.JAVADK}"
+ghOrgUnit = "${env.GH_ORG_UNIT}"
+reBuild = "${env.RE_BUILD}"
+commitMsg = "${env.COMMIT_MSG}"
+zipDir = "${env.ZIP_DIR}"
+nexusUrl = "${env.NEXUS_URL}"
+buildNr = "${env.BUILD_NR}"
+toolsVer = "${env.TOOLS_VER}"
+
+
+buildChainGroup = env.BUILDCHAIN_GROUP?.trim() ?: 'kiegroup'
+buildChainBranch = env.BUILDCHAIN_BRANCH?.trim() ?: 'main'
+
+retry=0
+pipeline {
+    agent {
+        label agentLabel
+    }
+    options{
+        timestamps()
+    }
+    tools {
+        nodejs 'nodejs-12.16.3'
+        maven mvnTool
+        jdk jdkVersion
+    }
+    environment {
+        FIREFOX_FOLDER = '/opt/tools/firefox-60esr'
+        MAVEN_DIR = "${env.M2DIR}"
+        B_BRANCH = "${env.BASE_BRANCH}"
+        R_BRANCH = "${env.RELEASE_BRANCH}"
+        COM_MSG = "${env.COMMIT_MSG}"
+    }
+    stages {
+        stage('Initialize') {
+            steps {
+                sh 'printenv'
+            }
+        }
+        stage('Create clean up script') {
+            steps {
+                sh 'cat > "$WORKSPACE/clean-up.sh" << EOT \n' +
+                        'cd \\$1 \n' +
+                        '# Add test reports to the index to prevent their removal in the following step \n' +
+                        'git add --force **target/*-reports/TEST-*.xml \n' +
+                        'git clean -ffdx \n' +
+                        'EOT'
+                sh 'chmod 755 $WORKSPACE/clean-up.sh'
+            }
+        }
+        stage('Does the release branch already exist'){
+             steps{
+                 sshagent(['kie-ci-user-key']) {
+                     script {
+                         env.R_BRANCH_EXIST = sh(script: "git ls-remote --heads https://github.com/${ghOrgUnit}/droolsjbpm-build-bootstrap ${releaseBranch} | wc -l", returnStdout: true).trim()
+                         echo "R_BRANCH_EXIST: ${env.R_BRANCH_EXIST}"
+                         if ( "${env.R_BRANCH_EXIST}" == "1" ) {
+                             echo "release branch exists"
+                         } else {
+                             echo "release branch does not yes exist"
+                         }
+                     }
+                 }
+             }
+        }
+        stage('CHECKOUT_BRANCH = BASE_BRANCH since RELEASE_BRANCH doesn\'t yet exist'){
+            when{
+                expression { env.R_BRANCH_EXIST == '0' }
+            }
+            steps {
+                script {
+                    env.CHECKOUT_BRANCH = "${env.B_BRANCH}"
+                    echo "CHECKOUT_BRANCH=${env.CHECKOUT_BRANCH}"
+                }
+            }
+        }
+        stage('CHECKOUT_BRANCH =  RELEASE_BRANCH'){
+            when{
+                expression { env.R_BRANCH_EXIST == '1' }
+            }
+            steps {
+                script {
+                    env.CHECKOUT_BRANCH = "${env.R_BRANCH}"
+                    echo "CHECKOUT_BRANCH=${env.CHECKOUT_BRANCH}"
+                }
+            }
+        }
+        // email send automatically when release starts and the release branches are not created
+        stage ('Send email: release start') {
+            when{
+                expression { env.R_BRANCH_EXIST == '0'}
+            }
+            steps {
+                emailext body: 'The build for community release ${kieVersion} started. \n' +
+                ' \n' +
+                '@leads: Please look at the sanity checks: https://docs.google.com/spreadsheets/d/1jPtRilvcOji__qN0QmVoXw6KSi4Nkq8Nz_coKIVfX6A/edit#gid=167259416 \n' +
+                'and assign tasks to people who should run these checks (if not done yet) \n' +
+                ' \n' +
+                'Thank you', subject: "build for community-release ${kieVersion} started", to: 'bsig@redhat.com etirelli@redhat.com lazarotti@redhat.com dward@redhat.com dgutierr@redhat.com aparedes@redhat.com doliver@redhat.com'
+            }
+        }
+        stage('Install build-chain tool') {
+            when{
+                expression { reBuild == 'YES'}
+            }
+            steps {
+                script {
+                    println "[INFO] Getting build-chain version from composite action file"
+                    def buildChainVersion = buildChain.getBuildChainVersionFromCompositeActionFile()
+                    if([null, 'null'].contains(buildChainVersion)) {
+                        def errorMessage = "[ERROR] The build-chain version can't be recovered. Please contact administrator"
+                        println errorMessage
+                        error(errorMessage)
+                    }
+                    println "[INFO] build-chain version recovered '${buildChainVersion}'"
+
+                    try {
+                        sh "npm install -g @kie/build-chain-action@${buildChainVersion} -registry=${NPM_REGISTRY_URL}"
+                    } catch(e) {
+                        println "[WARNING] Error installing @kie/build-chain-action@${buildChainVersion}. Did you check the version is already published at https://www.npmjs.com/package/@kie/build-chain-action ? In case it is you should wait few minutes for ${NPM_REGISTRY_URL} to be synched up. Otherwise check latest 'Publish' action at https://github.com/kiegroup/github-action-build-chain/actions or contact kiegroup/github-action-build-chain responsible."
+                        println "[INFO] Final @kie/build-chain-action version to be used: ${sh(returnStdout: true, script: 'npm @kie/build-chain-action -v').trim()}"
+                    }
+                }
+            }
+        }
+        stage('Update versions and push release branches to github'){
+            when{
+                  allOf{
+                      expression { reBuild == 'YES' }
+                      expression { env.R_BRANCH_EXIST == '0' }
+                  }
+            }
+            steps{
+                script {
+                    def buildChainActionInfo = [action: 'branch', file: 'update-versions-release.yaml']
+                    withCredentials([string(credentialsId: 'kie-ci1-token', variable: 'GITHUB_TOKEN')]) {
+                        sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/${buildChainGroup}/droolsjbpm-build-bootstrap/${buildChainBranch}/.ci/${buildChainActionInfo.file}' -folder='bc' build ${buildChainActionInfo.action} -p='${buildChainGroup}/droolsjbpm-build-bootstrap' -sp='${buildChainGroup}/droolsjbpm-build-bootstrap' -b='${env.CHECKOUT_BRANCH}' --fullProjectDependencyTree --skipParallelCheckout"
+                    }
+                }
+            }
+        }
+        stage('Build projects') {
+            when{
+                expression { reBuild == 'YES'}
+            }          
+            steps {
+                script {
+                    def buildChainActionInfo = [action: 'branch', file: 'release-config.yaml']
+                    def SETTINGS_XML_ID = '771ff52a-a8b4-40e6-9b22-d54c7314aa1e'
+                    configFileProvider([configFile(fileId: SETTINGS_XML_ID, variable: 'MAVEN_SETTINGS_FILE')]) {
+                        withCredentials([string(credentialsId: 'kie-ci1-token', variable: 'GITHUB_TOKEN')]) {
+                            sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/${buildChainGroup}/droolsjbpm-build-bootstrap/${buildChainBranch}/.ci/${buildChainActionInfo.file}' -folder='bc' build ${buildChainActionInfo.action} -p='${buildChainGroup}/droolsjbpm-build-bootstrap' -sp='${buildChainGroup}/droolsjbpm-build-bootstrap' -b='${env.CHECKOUT_BRANCH}' --fullProjectDependencyTree --skipParallelCheckout -cct '(^mvn .*)||\$1 -s ${MAVEN_SETTINGS_FILE} -Dkie.maven.settings.custom=${MAVEN_SETTINGS_FILE} -Dmaven.wagon.http.ssl.insecure=true'"
+                        }
+                    }
+                }
+            }
+        }
+        stage ('Send mail only if build fails') {
+            when{
+                expression { currentBuild.currentResult == 'FAILURE'}
+            }
+            steps {
+                emailext body: "Status of community build for ${kieVersion} was: ${currentBuild.currentResult} \n" +
+                    "Please look here: ${BUILD_URL} \n" +
+                    " \n" +
+                    "${BUILD_LOG, maxLines=750}", subject: "community-release for ${kieVersion} failed", to: 'bsig@redhat.com'
+            }
+        }
+        stage('Publish JUnit test results reports') {
+            when{
+                expression { reBuild == 'YES'}
+            }
+            steps {
+                execute {
+                    junit '**/target/*-reports/TEST-*.xml'
+                }
+            }
+        }
+        stage('tar.gz deployed binaries'){
+            when{
+                expression { reBuild == 'YES'}
+            }
+            steps {
+                sh "tar -czvf ${kieVersion}_binaries.tar.gz community-deploy-dir"
+                archiveArtifacts '*.tar.gz'
+                // remove file to save disk space
+                sh "rm -rf ${kieVersion}_binaries.tar.gz"
+            }
+        }
+        // binaries will be compressed and uploaded to Nexus
+        stage('Upload binaries to staging repository on Nexus') {
+            when{
+                expression { reBuild == 'YES'}
+            }
+            steps {
+                script {
+                    execute {
+                        withCredentials([usernameColonPassword(credentialsId: 'kie_upload_Nexus', variable: 'CREDS')]) {
+                            sh """
+                                cd $zipDir
+                                zip -r kiegroup .
+                                repoID=\$(curl --header 'Content-Type: application/xml' -X POST -u $CREDS --data "<promoteRequest><data><description>kie-${kieVersion}</description></data></promoteRequest>" -v $nexusUrl/service/local/staging/profiles/15c58a1abc895b/start | grep -oP '(?<=stagedRepositoryId)[^<]+' | sed 's/>//' | tr -d '\n')
+                                curl --silent --upload-file kiegroup.zip -u \$CREDS -v $nexusUrl/service/local/repositories/\$repoID/content-compressed
+                                curl --header "Content-Type: application/xml" -X POST -u \$CREDS --data "<promoteRequest><data><stagedRepositoryId>\${repoID}</stagedRepositoryId><description>kie-${kieVersion}</description></data></promoteRequest>" -v $nexusUrl/service/local/staging/profiles/15c58a1abc895b/finish
+                                """
+                        }
+                    }
+                }
+            }
+        }
+        stage('CURLS for sanity checks and additional kie tests'){
+            when{
+                expression { reBuild == 'YES'}
+            }
+            steps{
+            sleep(time:5,unit:"MINUTES")
+                script{
+                    execute {
+                        def repositories='kie-group'
+                        def suffixList=['kie-wb-distributions', 'business-central', 'business-central-webapp', 'business-monitoring-webapp', 'jbpm-server-distribution']
+                        suffixList.each{ suffix ->
+                            def artefacts=sh(returnStdout: true, script:"curl https://origin-repository.jboss.org/nexus/content/groups/$repositories/org/kie/$suffix/$kieVersion/ | grep href=.*$suffix | sed 's/^.*$suffix.*\">//p' | sed 's/<\\/a><\\/td>//p'| uniq").split("\\r?\\n")
+                            artefacts.each { println it }
+                            artefacts.each { artefact ->
+                                sh "curl --head https://proxy01-repository.jboss.org/nexus/content/groups/$repositories/org/kie/$suffix/$kieVersion/$artefact"
+                                sh "curl --head https://proxy02-repository.jboss.org/nexus/content/groups/$repositories/org/kie/$suffix/$kieVersion/$artefact"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        stage('Curls for additional drools tests'){
+            when{
+                expression { reBuild == 'YES'}
+            }
+            steps{
+                script{
+                    execute {
+                        def repositories='kie-group'
+                        def suffixList=['droolsjbpm-integration']
+                        suffixList.each{ suffix ->
+                            def artefacts=sh(returnStdout: true, script:"curl https://origin-repository.jboss.org/nexus/content/groups/$repositories/org/drools/$suffix/$kieVersion/ | grep href=.*$suffix | sed 's/^.*$suffix.*\">//p' | sed 's/<\\/a>.*//p' | uniq").split("\\r?\\n")
+                            artefacts.each { println it }
+                            artefacts.each { artefact ->
+                                sh "curl --head https://proxy01-repository.jboss.org/nexus/content/groups/$repositories/org/drools/$suffix/$kieVersion/$artefact"
+                                sh "curl --head https://proxy02-repository.jboss.org/nexus/content/groups/$repositories/org/drools/$suffix/$kieVersion/$artefact"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+         stage('Curls for additional jbpm tests'){
+            when{
+                expression { reBuild == 'YES'}
+            }
+             steps{
+                 script{
+                    execute {
+                        def repositories='kie-group'
+                        def suffixList=['jbpm']
+                        suffixList.each{ suffix ->
+                            def artefacts=sh(returnStdout: true, script:"curl https://origin-repository.jboss.org/nexus/content/groups/$repositories/org/drools/$suffix/$kieVersion/ | grep href=.*$suffix | sed 's/^.*$suffix.*\">//p' | sed 's/<\\/a>.*//p' | uniq").split("\\r?\\n")
+                            artefacts.each { println it }
+                            artefacts.each { artefact ->
+                                sh "curl --head https://proxy01-repository.jboss.org/nexus/content/groups/$repositories/org/jbpm/$suffix/$kieVersion/$artefact"
+                                sh "curl --head https://proxy02-repository.jboss.org/nexus/content/groups/$repositories/org/jbpm/$suffix/$kieVersion/$artefact"
+                            }
+                        }
+                    }
+                 }
+             }
+         }
+         stage('Additional tests for community') {
+             when{
+                 expression { reBuild == 'YES'}
+             }
+             parallel{
+                stage('jbpmTestCoverageMatrix'){
+                    steps{
+                        build job: "jbpmTestCoverageMatrix", propagate: false, parameters: [[$class: 'StringParameterValue', name: 'kieVersion', value: kieVersion]]
+                    }
+                }
+                stage('kieWbTestMatrix'){
+                    steps{
+                        build job: "kieWbTestMatrix", propagate: false, parameters: [[$class: 'StringParameterValue', name: 'kieVersion', value: kieVersion]]
+                    }
+                }
+                stage('kieServerMatrix'){
+                    steps{
+                        build job: "kieServerMatrix", propagate: false, parameters: [[$class: 'StringParameterValue', name: 'kieVersion', value: kieVersion]]
+                    }
+                }
+             }
+         }
+        // send email for Sanity Checks
+        stage ('Email send with BUILD result') {
+            when{
+                expression { reBuild == 'YES' }
+            }
+            steps {
+                emailext body: "Build of community ${kieVersion} was:  ${currentBuild.currentResult} \n" +
+                    " \n" +
+                    "Failed tests: ${BUILD_URL}/testReport \n" +
+                    " \n" +
+                    " \n" +
+                    "The artifacts are available here \n" +
+                    " \n" +
+                    "business-central artifacts: https://repository.jboss.org/nexus/content/groups/kie-group/org/kie/business-central/${kieVersion}/ \n" +
+                    "business-central-webapp: https://repository.jboss.org/nexus/content/groups/kie-group/org/kie/business-central-webapp/${kieVersion}/ \n" +
+                    "business-monitoring-webapp: https://repository.jboss.org/nexus/content/groups/kie-group/org/kie/business-monitoring-webapp/${kieVersion}/ \n" +
+                    " \n" +
+                    "Please download for sanity checks: jbpm-server-distribution.zip: https://repository.jboss.org/nexus/content/groups/kie-group/org/kie/jbpm-server-distribution/${kieVersion}/ \n" +
+                    " \n" +
+                    " \n" +
+                    "Please download the needed binaries, fill in your assigned test scenarios and check the failing tests \n" +
+                    "sanity checks: https://docs.google.com/spreadsheets/d/1jPtRilvcOji__qN0QmVoXw6KSi4Nkq8Nz_coKIVfX6A/edit#gid=167259416 \n" +
+                    " \n" +
+                    "In case Sanity Checks were already done and this kind of mail arrives the second time, please verify if the bugs reported in Sanity Checks are fixed now. \n" +
+                    " \n" +
+                    "KIE version: ${kieVersion}", subject: "community-release-${baseBranch} ${kieVersion} status and artefacts for sanity checks", to: "bsig@redhat.com"
+            }
+        }
+        // user interaction required: continue or abort
+        stage('Approval (ATTENTION: the point of NO RETURN was reached)') {
+            steps {
+                input message: 'Was the build stable enough to continue releasing? \n Please release the staging repository on Nexus before continuing the pipeline', ok: 'Continue'
+            }
+        }
+        // the tags of the release will be created and pushed to github
+        stage('Push community tags'){
+            steps{
+                execute {
+                    script {
+                        def buildChainActionInfo = [action: 'branch', file: 'create-push-tags.yaml']
+                        withCredentials([string(credentialsId: 'kie-ci1-token', variable: 'GITHUB_TOKEN')]) {
+                            sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/${buildChainGroup}/droolsjbpm-build-bootstrap/${buildChainBranch}/.ci/${buildChainActionInfo.file}' -folder='bc' build ${buildChainActionInfo.action} -p='${buildChainGroup}/droolsjbpm-build-bootstrap' -sp='${buildChainGroup}/droolsjbpm-build-bootstrap' -b='${env.CHECKOUT_BRANCH}' --fullProjectDependencyTree --skipParallelCheckout"
+                        }
+                    }
+                }
+            }
+        }
+        // load URL for repositories.jboss.org to prevent using origin-repositories.jboss.org
+        stage('CURLS for released binaries'){
+            when{
+                expression { reBuild == 'YES'}
+            }
+            steps{
+            sleep(time:3,unit:"MINUTES")
+                script{
+                    excute {
+                        def repositories = 'public-jboss'
+                        def suffixList=['kie-wb-distributions', 'business-central', 'business-central-webapp', 'business-monitoring-webapp', 'jbpm-server-distribution']
+                        suffixList.each{ suffix ->
+                            def artefacts = sh(returnStdout: true, script:"curl https://origin-repository.jboss.org/nexus/content/groups/$repositories/org/kie/$suffix/$kieVersion/ | grep href=.*$suffix | sed 's/^.*$suffix.*\">//p' | sed 's/<\\/a>.*//p' | uniq").split("\\r?\\n")
+                            artefacts.each { println it }
+                            artefacts.each { artefact ->
+                                sh "curl --head https://proxy01-repository.jboss.org/nexus/content/groups/$repositories/org/kie/$suffix/$kieVersion/$artefact"
+                                sh "curl --head https://proxy02-repository.jboss.org/nexus/content/groups/$repositories/org/kie/$suffix/$kieVersion/$artefact"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        stage ('Send email to BSIG') {
+            steps {
+                emailext body: 'The community ${kieVersion} was released. \n' +
+                ' \n' +
+                'The tags are pushed and the binaries for the webs will be uploaded soon to filemgmt.jboss.org. \n' +
+                ' \n' +
+                ' \n' +
+                'You can download the artifacts..: \n' +
+                ' \n' +
+                'business-central artifacts: https://repository.jboss.org/nexus/content/groups/public-jboss/org/kie/business-central/$kieVersion/ \n' +
+                'business-central-webapp: https://repository.jboss.org/nexus/content/groups/public-jboss/org/kie/business-central-webapp/$kieVersion/ \n' +
+                'business-monitoring-webapp: https://repository.jboss.org/nexus/content/groups/public-jboss/org/kie/business-monitoring-webapp/$kieVersion/ \n' +
+                'jbpm-server-distribution (single zip): https://repository.jboss.org/nexus/content/groups/public-jboss/org/kie/jbpm-server-distribution/$kieVersion/ \n' +
+                '\n' +
+                'Component version:\n' +
+                'kie = $kieVersion', subject: 'community-release-$baseBranch $kieVersion was released', to: 'bsig@redhat.com'
+            }
+        }
+        // if the pipeline job was executed again but without building, the binaries uploaded to filemgmt.jboss.org are needed
+        stage('BUILD NUMBER of desired binaries') {
+            when{
+                expression { reBuild == 'NO'}
+            }
+            //interactive step: user should select the BUILD Nr of the artifacts to restore
+            steps {
+                script {
+                    execute {
+                        buildNr = input id: 'binariesID', message: 'Which build number has the desired binaries \n DBN (desired build number)', parameters: [string(defaultValue: '', description: '', name: 'DBN')]
+                        echo 'BUILD_NUMBER= ' + "$buildNr"
+                    }
+                }
+            }
+        }
+        // fetch binaries to upload to filemgmt.jbosss.org
+        stage('Pull binaries of previous build') {
+            when{
+                expression { reBuild == 'NO'}
+            }
+            steps {
+                echo 'BUILD NUMBER= ' + "$buildNr"
+                step([  $class: 'CopyArtifact',
+                    filter: '*.tar.gz',
+                    fingerprintArtifacts: true,
+                    projectName: '${JOB_NAME}',
+                    selector: [$class: 'SpecificBuildSelector', buildNumber: "$buildNr"]
+                ])
+                sh 'tar -xzvf "${kieVersion}"_binaries.tar.gz \n' +
+                   'ls -al'
+            }
+        }
+        stage('Create jbpm installers') {
+            steps {
+                script {
+                    execute {
+                        sh './script/release/09_createjBPM_installers.sh $toolsVer'
+                    }
+                }
+            }
+        }
+        stage('Drools binaries upload'){
+            steps{
+                script {
+                    execute {
+                        withCredentials([sshUserPrivateKey(credentialsId: 'drools-filemgmt', keyFileVariable: 'DROOLS_FILEMGMT_KEY')]) {
+                            sh './script/release/10a_drools_upload_filemgmt.sh $DROOLS_FILEMGMT_KEY'
+                        }
+                    }
+                }
+            }
+        }
+        stage('Jbpm binaries upload'){
+            steps{
+                script {
+                    execute {
+                        withCredentials([sshUserPrivateKey(credentialsId: 'jbpm-filemgmt', keyFileVariable: 'JBPM_FILEMGMT_KEY')]) {
+                            sh './script/release/10b_jbpm_upload_filemgmt.sh $JBPM_FILEMGMT_KEY'
+                        }
+                    }
+                }
+            }
+        }
+        stage('Optaplanner binaries upload'){
+            steps{
+                script {
+                    execute {
+                        withCredentials([sshUserPrivateKey(credentialsId: 'optaplanner-filemgmt', keyFileVariable: 'OPTAPLANNER_FILEMGMT_KEY')]) {
+                            sh './script/release/10c_optaplanner_upload_filemgmt.sh $OPTAPLANNER_FILEMGMT_KEY'
+                        }
+                    }
+                }
+            }
+        }
+    }
+    post{
+        always{
+            cleanWs()
+        }
+    }
+}
+void execute(Closure closure) {
+    try {
+        closure()
+    } catch(error) {
+        input "Retry step?"
+        retry++
+        echo "This is retry number ${retry}"
+        execute(closure)
+    }
+}

@@ -1,0 +1,14 @@
+version: "2.1"
+
+dependencies: ./project-dependencies.yaml
+
+pre: |
+  export CREATE_TAG_COMMAND=git tag -a ${{ env.KIE_VERSION }} -m tagged_${{ env.KIE_VERSION }}
+  export PUSH_TAG_COMMAND=git push origin ${{ env.KIE_VERSION }}
+  echo "CREATE_TAG_COMMAND=" ${{ env.CREATE_TAG_COMMAND }}
+  echo "PUSH_TAG_COMMAND=" ${{ env.PUSH_TAG_COMMAND }}
+default:
+  build-command:
+    current: |
+      ${{ env.CREATE_TAG_COMMAND }}
+      ${{ env.PUSH_TAG_COMMAND }}
