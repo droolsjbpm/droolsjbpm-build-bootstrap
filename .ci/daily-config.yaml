@@ -14,7 +14,7 @@ default:
       ${{ env.WORKSPACE }}/clean-up.sh `pwd`
 
 build:
-  - project: mbiarnes/droolsjbpm-build-bootstrap
+  - project: kiegroup/droolsjbpm-build-bootstrap
     build-command:
       before:
         current: |
