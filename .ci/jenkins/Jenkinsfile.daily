@@ -1,0 +1,169 @@
+@Library('jenkins-pipeline-shared-libraries')_
+import org.jenkinsci.plugins.workflow.libs.Library
+import org.kie.jenkins.MavenCommand
+import org.kie.jenkins.MavenStagingHelper
+
+additionalMavenFlag = "${env.ADDITIONAL_MAVEN_FLAG?.trim() ?: ''}"
+baseBranch= "${env.BASE_BRANCH}"
+agentLabel= "${env.AGENT_LABEL}"
+kieVersion = "${env.KIE_VERSION}"
+mvnTool = "${env.MVN_TOOL}"
+jdkVersion = "${env.JDK_VERSION}"
+buildName = "${env.BUILD_NAME}"
+
+buildChainGroup = env.BUILDCHAIN_GROUP?.trim() ?: 'kiegroup'
+buildChainBranch = env.BUILDCHAIN_BRANCH?.trim() ?: 'main'
+
+pipeline {
+    agent {
+        label agentLabel
+    }
+    tools {
+        nodejs 'nodejs-12.16.3'
+        maven mvnTool
+        jdk jdkVersion
+    }
+    options {
+        timestamps ()
+    }
+    environment {
+        FIREFOX_FOLDER = '/opt/tools/firefox-60esr'
+        MAVEN_DIR = "${env.M2DIR}"
+    }
+    stages {
+        stage('Initialize') {
+            steps {
+                sh 'printenv'
+            }
+        }
+        stage('check space before build') {
+            steps {
+                script{
+                    util.spaceLeft()
+                }
+            }
+        }
+        stage('Remove partially downloaded deps') {
+            steps {
+                script{
+                    util.rmPartialDeps()
+                }
+            }
+        }
+        stage('Calculate versions') {
+            steps {
+                script {
+                    data = new Date().format('yyMMdd-hh')
+                    kieVersion = "${kieVersion}.${data}"
+                    echo "data: ${data}"
+                    echo "kieVersion: ${kieVersion}"
+                    env.KIE_VERSION = "${kieVersion}"
+                }
+            }
+        }
+        stage('Create clean up script') {
+            steps {
+                sh 'cat > "$WORKSPACE/clean-up.sh" << EOT \n' +
+                        'cd \\$1 \n' +
+                        '# Add test reports to the index to prevent their removal in the following step \n' +
+                        'git add --force **target/*-reports/TEST-*.xml \n' +
+                        'git clean -ffdx \n' +
+                        'EOT'
+                sh 'chmod 755 $WORKSPACE/clean-up.sh'
+            }
+        }
+        stage('Install build-chain tool') {
+            steps {
+                script {
+                    println "[INFO] Getting build-chain version from composite action file"
+                    def buildChainVersion = buildChain.getBuildChainVersionFromCompositeActionFile()
+                    if([null, 'null'].contains(buildChainVersion)) {
+                        def errorMessage = "[ERROR] The build-chain version can't be recovered. Please contact administrator"
+                        println errorMessage
+                        error(errorMessage)
+                    }
+                    println "[INFO] build-chain version recovered '${buildChainVersion}'"
+
+                    try {
+                        sh "npm install -g @kie/build-chain-action@${buildChainVersion} -registry=${NPM_REGISTRY_URL}"
+                    } catch(e) {
+                        println "[WARNING] Error installing @kie/build-chain-action@${buildChainVersion}. Did you check the version is already published at https://www.npmjs.com/package/@kie/build-chain-action ? In case it is you should wait few minutes for ${NPM_REGISTRY_URL} to be synched up. Otherwise check latest 'Publish' action at https://github.com/kiegroup/github-action-build-chain/actions or contact kiegroup/github-action-build-chain responsible."
+                        println "[INFO] Final @kie/build-chain-action version to be used: ${sh(returnStdout: true, script: 'npm @kie/build-chain-action -v').trim()}"
+                    }
+                }
+            }
+        }
+        stage('Build projects') {
+            steps {
+                script {
+                    def buildChainActionInfo = [action: 'branch', file: 'daily-config.yaml']
+                    def SETTINGS_XML_ID = '771ff52a-a8b4-40e6-9b22-d54c7314aa1e'
+                    configFileProvider([configFile(fileId: SETTINGS_XML_ID, variable: 'MAVEN_SETTINGS_FILE')]) {
+                        withCredentials([string(credentialsId: 'kie-ci1-token', variable: 'GITHUB_TOKEN')]) {
+                            sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/${buildChainGroup}/droolsjbpm-build-bootstrap/${buildChainBranch}/.ci/${buildChainActionInfo.file}' -folder='bc' build ${buildChainActionInfo.action} -p='${buildChainGroup}/droolsjbpm-build-bootstrap' -sp='${buildChainGroup}/droolsjbpm-build-bootstrap' -b=${baseBranch} --fullProjectDependencyTree --skipParallelCheckout -spc '${buildChainGroup}/optaweb-vehicle-routing=./' '${buildChainGroup}/optaweb-employee-rostering=./' -cct '(^mvn .*)||\$1 -s ${MAVEN_SETTINGS_FILE} -Dkie.maven.settings.custom=${MAVEN_SETTINGS_FILE} -Dmaven.wagon.http.ssl.insecure=true ${additionalMavenFlag}'"
+                        }
+                    }
+                }
+            }
+        }
+        stage('check space after build') {
+            steps {
+                script{
+                    util.spaceLeft()
+                }
+            }
+        }         
+        stage('Unpack zip of artifacts to QA Nexus') {
+            when {
+                expression { (jdkVersion == 'kie-jdk11' || jdkVersion == 'kie-jdk1.8') && additionalMavenFlag != '-Dproductized' }
+            }
+            steps {
+                withCredentials([usernameColonPassword(credentialsId: 'unpacks-zip-on-qa-nexus', variable: 'kieUnpack')]) {
+                    // unpack zip to QA Nexus
+                    sh 'cd $WORKSPACE/deploy-dir\n' +
+                       'zip -r kiegroup .\n' +
+                       'curl --silent --upload-file kiegroup.zip -u $kieUnpack -v http://\${LOCAL_NEXUS_IP}:8081/nexus/service/local/repositories/kieAllBuild-$baseBranch/content-compressed \n' +
+                       'cd ..'
+                }
+            }
+        }
+        stage('Additional tests for jdk11 and jdk8') {
+            when {
+                expression { (jdkVersion == 'kie-jdk11' || jdkVersion == 'kie-jdk1.8') && additionalMavenFlag != '-Dproductized' }
+            }
+            steps {
+                parallel (
+                    "jbpmTestCoverageMatrix" : {
+                        build job: "jbpmTestCoverageMatrix", propagate: false, parameters: [[$class: 'StringParameterValue', name: 'kieVersion', value: kieVersion], [$class: 'StringParameterValue', name: 'baseBranch', value: baseBranch]]
+                    },
+                     "jbpmContainerTestMatrix" : {
+                         build job: "jbpmContainerTestMatrix", propagate: false, parameters: [[$class: 'StringParameterValue', name: 'kieVersion', value: kieVersion], [$class: 'StringParameterValue', name: 'baseBranch', value: baseBranch]]
+                     },
+                    "kieWbTestMatrix" : {
+                        build job: "kieWbTestMatrix", propagate: false, parameters: [[$class: 'StringParameterValue', name: 'kieVersion', value: kieVersion], [$class: 'StringParameterValue', name: 'baseBranch', value: baseBranch]]
+                    },
+                    "kieServerMatrix" : {
+                        build job: "kieServerMatrix", propagate: false, parameters: [[$class: 'StringParameterValue', name: 'kieVersion', value: kieVersion], [$class: 'StringParameterValue', name: 'baseBranch', value: baseBranch]]
+                    }
+                )    
+            } 
+        } 
+    }
+    post {
+        always {
+            junit '**/target/surefire-reports/**/*.xml'
+            withCredentials([string(credentialsId: 'KIE_CI_EMAIL_TO', variable: 'KIE_TO')]) {
+                sendNotification()
+            }
+            cleanWs()
+        }
+    }      
+}
+
+void sendNotification() {
+    if (currentBuild.result != "SUCCESS") {
+        mailer.sendMarkdownTestSummaryNotification("daily build ${buildName} of ${baseBranch}", "daily build ${buildName} of ${baseBranch}", ["${KIE_TO}"])
+    } else {
+        echo 'No notification sent per configuration'
+    }
+}

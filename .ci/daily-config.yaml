@@ -1,0 +1,30 @@
+version: "2.1"
+
+dependencies: ./project-dependencies.yaml
+
+pre: |
+  export MAVEN_COMMAND=mvn -B -e -U clean deploy -Dfull -Drelease -DaltDeploymentRepository=local::default::file://${{ env.WORKSPACE }}/deploy-dir -Dmaven.test.redirectTestOutputToFile=true -Dmaven.test.failure.ignore=true -Dgwt.memory.settings="-Xmx10g" -Prun-code-coverage -Dcontainer.profile=wildfly -Dcontainer=wildfly -Dintegration-tests=true -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+  echo "MAVEN_COMMAND=" ${{ env.MAVEN_COMMAND }}
+  echo "WORKSPACE=" ${{ env.WORKSPACE }}
+
+default:
+  build-command:
+    current: |
+      ${{ env.MAVEN_COMMAND }}
+      ${{ env.WORKSPACE }}/clean-up.sh `pwd`
+
+build:
+  - project: mbiarnes/droolsjbpm-build-bootstrap
+    build-command:
+      before:
+        current: |
+          ./script/release/eraseM2.sh ${{ env.MAVEN_DIR }}
+          ./script/release/update-versions-build-chain.sh ${{ env.KIE_VERSION }} community
+      current: |
+        ${{ env.MAVEN_COMMAND }}
+        ${{ env.WORKSPACE }}/clean-up.sh `pwd`
+  - project: kiegroup/optaweb-vehicle-routing
+    skip: true
+  - project: kiegroup/optaweb-employee-rostering
+    skip: true
+
