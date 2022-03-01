@@ -122,7 +122,7 @@ pipeline {
                     // unpack zip to QA Nexus
                     sh 'cd $WORKSPACE/deploy-dir\n' +
                        'zip -r kiegroup .\n' +
-                       'curl --silent --upload-file kiegroup.zip -u $kieUnpack -v http://\${LOCAL_NEXUS_IP}:8081/nexus/service/local/repositories/kieAllBuild-$baseBranch/content-compressed \n' +
+                       'curl --silent --upload-file kiegroup.zip -u $kieUnpack -v http://\${LOCAL_NEXUS_IP}:8081/nexus/service/local/repositories/kieAllBuild-${baseBranch}/content-compressed \n' +
                        'cd ..'
                 }
             }
