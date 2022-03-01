@@ -106,6 +106,18 @@ pipeline {
                 }
             }
         }
+        stage('Deploy process-migration-service locally with jdk11'){
+            tools {
+              jdk 'kie-jdk11'
+            }
+            steps {
+                dir("${WORKSPACE}/bc/kiegroup_process_migration_service") {
+                    configFileProvider([configFile(fileId: '771ff52a-a8b4-40e6-9b22-d54c7314aa1e', targetLocation: 'jenkins-settings.xml', variable: 'SETTINGS_XML_FILE')]) {
+                          sh 'mvn -B -e -U clean deploy -Dfull -Drelease -DaltDeploymentRepository=local::default::file://$WORKSPACE/deploy-dir -s $SETTINGS_XML_FILE -Dkie.maven.settings.custom=$SETTINGS_XML_FILE -Dmaven.test.redirectTestOutputToFile=true -Dmaven.test.failure.ignore=true -Dgwt.memory.settings="-Xmx10g" --clean-up-script="$WORKSPACE/clean-up.sh"'
+                    }
+                }
+            }
+        }        
         stage('check space after build') {
             steps {
                 script{
@@ -121,8 +133,8 @@ pipeline {
                 withCredentials([usernameColonPassword(credentialsId: 'unpacks-zip-on-qa-nexus', variable: 'kieUnpack')]) {
                     // unpack zip to QA Nexus
                     sh 'cd $WORKSPACE/deploy-dir\n' +
-                       'zip -r kiegroup .\n' +
-                       'curl --silent --upload-file kiegroup.zip -u $kieUnpack -v http://\${LOCAL_NEXUS_IP}:8081/nexus/service/local/repositories/kieAllBuild-${baseBranch}/content-compressed \n' +
+                       'zip -qr kiegroup .\n' +
+                       'curl --silent --upload-file kiegroup.zip -u $kieUnpack -v http://\${LOCAL_NEXUS_IP}:8081/nexus/service/local/repositories/kieAllBuild-$baseBranch/content-compressed \n' +
                        'cd ..'
                 }
             }
