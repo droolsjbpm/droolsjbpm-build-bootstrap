@@ -94,8 +94,6 @@ cd $scriptDir
 
 sed -i "s/-/_/g" ../repository-list.txt
 sed -i "s/-/_/g" ../branched-7-repository-list.txt
-sed -i "/optaweb*/d" ../repository-list.txt
-sed -i "/optaweb*/d" ../branched-7-repository-list.txt
 
 cd $droolsjbpmOrganizationDir
 

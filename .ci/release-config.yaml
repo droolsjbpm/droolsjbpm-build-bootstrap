@@ -11,8 +11,8 @@ default:
       ${{ env.MAVEN_COMMAND }}
       ${{ env.WORKSPACE }}/clean-up.sh `pwd`
 build:
-  - project: kiegroup/optaweb-vehicle-routing
-    skip: true
   - project: kiegroup/optaweb-employee-rostering
+    skip: true
+  - project: kiegroup/optaweb-vehicle-routing
     skip: true
 

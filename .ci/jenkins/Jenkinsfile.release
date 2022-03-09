@@ -96,20 +96,6 @@ pipeline {
                 }
             }
         }
-        // email send automatically when release starts and the release branches are not created
-        stage ('Send email: release start') {
-            when{
-                expression { env.R_BRANCH_EXIST == '0'}
-            }
-            steps {
-                emailext body: 'The build for community release ${kieVersion} started. \n' +
-                ' \n' +
-                '@leads: Please look at the sanity checks: https://docs.google.com/spreadsheets/d/1jPtRilvcOji__qN0QmVoXw6KSi4Nkq8Nz_coKIVfX6A/edit#gid=167259416 \n' +
-                'and assign tasks to people who should run these checks (if not done yet) \n' +
-                ' \n' +
-                'Thank you', subject: "build for community-release ${kieVersion} started", to: 'bsig@redhat.com etirelli@redhat.com lazarotti@redhat.com dward@redhat.com dgutierr@redhat.com aparedes@redhat.com doliver@redhat.com'
-            }
-        }
         stage('Install build-chain tool') {
             when{
                 expression { reBuild == 'YES'}
@@ -150,6 +136,19 @@ pipeline {
                 }
             }
         }
+        // email send automatically when release starts and the release branches are not created
+        stage('send email when release starts'){
+            steps {
+                emailext body: """
+                The build for community release ${kieVersion} started.
+
+                @leads: Please look at the sanity checks: https://docs.google.com/spreadsheets/d/1jPtRilvcOji__qN0QmVoXw6KSi4Nkq8Nz_coKIVfX6A/edit#gid=167259416
+                and assign tasks to people who should run these checks (if not done yet)
+
+
+                Thank you""", subject: "start of community-release ${kieVersion}", to: "bsig@redhat.com etirelli@redhat.com lazarotti@redhat.com dward@redhat.com dgutierr@redhat.com aparedes@redhat.com doliver@redhat.com"
+            }
+        }
         stage('Build projects') {
             when{
                 expression { reBuild == 'YES'}
@@ -166,15 +165,18 @@ pipeline {
                 }
             }
         }
-        stage ('Send mail only if build fails') {
+        //send mail if build fails
+        stage('send mail only if build fails'){
             when{
                 expression { currentBuild.currentResult == 'FAILURE'}
             }
-            steps {
-                emailext body: "Status of community build for ${kieVersion} was: ${currentBuild.currentResult} \n" +
-                    "Please look here: ${BUILD_URL} \n" +
-                    " \n" +
-                    "${BUILD_LOG, maxLines=750}", subject: "community-release for ${kieVersion} failed", to: 'bsig@redhat.com'
+            steps{
+                emailext body: """
+                Build of community release ${kieVersion} failed.
+
+                Please look here: ${BUILD_URL}consoleText
+
+                LOG: attached""", subject: "community-release ${kieVersion} failed", to: "bsig@redhat.com", attachLog:true
             }
         }
         stage('Publish JUnit test results reports') {
@@ -209,7 +211,7 @@ pipeline {
                         withCredentials([usernameColonPassword(credentialsId: 'kie_upload_Nexus', variable: 'CREDS')]) {
                             sh """
                                 cd $zipDir
-                                zip -r kiegroup .
+                                zip -qr kiegroup .
                                 repoID=\$(curl --header 'Content-Type: application/xml' -X POST -u $CREDS --data "<promoteRequest><data><description>kie-${kieVersion}</description></data></promoteRequest>" -v $nexusUrl/service/local/staging/profiles/15c58a1abc895b/start | grep -oP '(?<=stagedRepositoryId)[^<]+' | sed 's/>//' | tr -d '\n')
                                 curl --silent --upload-file kiegroup.zip -u \$CREDS -v $nexusUrl/service/local/repositories/\$repoID/content-compressed
                                 curl --header "Content-Type: application/xml" -X POST -u \$CREDS --data "<promoteRequest><data><stagedRepositoryId>\${repoID}</stagedRepositoryId><description>kie-${kieVersion}</description></data></promoteRequest>" -v $nexusUrl/service/local/staging/profiles/15c58a1abc895b/finish
@@ -306,31 +308,24 @@ pipeline {
              }
          }
         // send email for Sanity Checks
-        stage ('Email send with BUILD result') {
-            when{
-                expression { reBuild == 'YES' }
-            }
-            steps {
-                emailext body: "Build of community ${kieVersion} was:  ${currentBuild.currentResult} \n" +
-                    " \n" +
-                    "Failed tests: ${BUILD_URL}/testReport \n" +
-                    " \n" +
-                    " \n" +
-                    "The artifacts are available here \n" +
-                    " \n" +
-                    "business-central artifacts: https://repository.jboss.org/nexus/content/groups/kie-group/org/kie/business-central/${kieVersion}/ \n" +
-                    "business-central-webapp: https://repository.jboss.org/nexus/content/groups/kie-group/org/kie/business-central-webapp/${kieVersion}/ \n" +
-                    "business-monitoring-webapp: https://repository.jboss.org/nexus/content/groups/kie-group/org/kie/business-monitoring-webapp/${kieVersion}/ \n" +
-                    " \n" +
-                    "Please download for sanity checks: jbpm-server-distribution.zip: https://repository.jboss.org/nexus/content/groups/kie-group/org/kie/jbpm-server-distribution/${kieVersion}/ \n" +
-                    " \n" +
-                    " \n" +
-                    "Please download the needed binaries, fill in your assigned test scenarios and check the failing tests \n" +
-                    "sanity checks: https://docs.google.com/spreadsheets/d/1jPtRilvcOji__qN0QmVoXw6KSi4Nkq8Nz_coKIVfX6A/edit#gid=167259416 \n" +
-                    " \n" +
-                    "In case Sanity Checks were already done and this kind of mail arrives the second time, please verify if the bugs reported in Sanity Checks are fixed now. \n" +
-                    " \n" +
-                    "KIE version: ${kieVersion}", subject: "community-release-${baseBranch} ${kieVersion} status and artefacts for sanity checks", to: "bsig@redhat.com"
+        stage('send email with build result'){
+            steps{
+                emailext body: """
+                The satus of community release ${kieVersion} was ${currentBuild.currentResult}
+
+                Failed tests: ${BUILD_URL}testReport
+
+                The artifacts are available here..:
+                business-central artifacts: https://repository.jboss.org/nexus/content/groups/kie-group/org/kie/business-central/${kieVersion}/
+                business-central-webapp: https://repository.jboss.org/nexus/content/groups/kie-group/org/kie/business-central-webapp/${kieVersion}/
+                business-monitoring-webapp: https://repository.jboss.org/nexus/content/groups/kie-group/org/kie/business-monitoring-webapp/${kieVersion}/
+
+                Please download for sanity checks: jbpm-server-distribution.zip: https://repository.jboss.org/nexus/content/groups/kie-group/org/kie/jbpm-server-distribution/${kieVersion}/
+                Please download the needed binaries, fill in your assigned test scenarios and check the failing tests
+                sanity checks: https://docs.google.com/spreadsheets/d/1jPtRilvcOji__qN0QmVoXw6KSi4Nkq8Nz_coKIVfX6A/edit#gid=167259416
+                In case Sanity Checks were already done and this kind of mail arrives the second time, please verify if the bugs reported in Sanity Checks are fixed now.
+
+                Component version: KIE version =  ${kieVersion}""", subject: "build for community-release ${kieVersion}: ${currentBuild.currentResult}", to: "bsig@redhat.com"
             }
         }
         // user interaction required: continue or abort
@@ -377,20 +372,18 @@ pipeline {
         }
         stage ('Send email to BSIG') {
             steps {
-                emailext body: 'The community ${kieVersion} was released. \n' +
-                ' \n' +
-                'The tags are pushed and the binaries for the webs will be uploaded soon to filemgmt.jboss.org. \n' +
-                ' \n' +
-                ' \n' +
-                'You can download the artifacts..: \n' +
-                ' \n' +
-                'business-central artifacts: https://repository.jboss.org/nexus/content/groups/public-jboss/org/kie/business-central/$kieVersion/ \n' +
-                'business-central-webapp: https://repository.jboss.org/nexus/content/groups/public-jboss/org/kie/business-central-webapp/$kieVersion/ \n' +
-                'business-monitoring-webapp: https://repository.jboss.org/nexus/content/groups/public-jboss/org/kie/business-monitoring-webapp/$kieVersion/ \n' +
-                'jbpm-server-distribution (single zip): https://repository.jboss.org/nexus/content/groups/public-jboss/org/kie/jbpm-server-distribution/$kieVersion/ \n' +
-                '\n' +
-                'Component version:\n' +
-                'kie = $kieVersion', subject: 'community-release-$baseBranch $kieVersion was released', to: 'bsig@redhat.com'
+                emailext body: """
+                The community ${kieVersion} was released.
+
+                The tags are pushed and the binaries for the webs will be uploaded soon to filemgmt.jboss.org.
+
+                You can download the artifacts..:
+                business-central artifacts: https://repository.jboss.org/nexus/content/groups/public-jboss/org/kie/business-central/${kieVersion}/
+                business-central-webapp: https://repository.jboss.org/nexus/content/groups/public-jboss/org/kie/business-central-webapp/${kieVersion}/
+                business-monitoring-webapp: https://repository.jboss.org/nexus/content/groups/public-jboss/org/kie/business-monitoring-webapp/${kieVersion}/
+                jbpm-server-distribution (single zip): https://repository.jboss.org/nexus/content/groups/public-jboss/org/kie/jbpm-server-distribution/${kieVersion}/
+
+                Component version: KIE Version = ${kieVersion}""", subject: "community-release ${kieVersion} was released", to: "bsig@redhat.com"
             }
         }
         // if the pipeline job was executed again but without building, the binaries uploaded to filemgmt.jboss.org are needed

@@ -12,8 +12,3 @@ default:
     current: |
       ${{ env.CREATE_TAG_COMMAND }}
       ${{ env.PUSH_TAG_COMMAND }}
-build:
-  - project: kiegroup/optaweb-vehicle-routing
-    skip: true
-  - project: kiegroup/optaweb-employee-rostering
-    skip: true
