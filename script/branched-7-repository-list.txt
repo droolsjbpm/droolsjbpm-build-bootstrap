@@ -1,5 +1,5 @@
-droolsjbpm-knowledge
+droolsjbpm_knowledge
 drools
 optaplanner
-optaweb-employee-rostering
-optaweb-vehicle-routing
+optaweb_employee_rostering
+optaweb_vehicle_routing
