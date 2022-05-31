@@ -1,0 +1,30 @@
+dependencies: ./project-dependencies.yaml
+
+pre: |
+  export COMMIT_COMMAND=git commit -am ${{ env.COMMIT_MSG }}
+  export CREATE_COMMAND=git checkout -b ${{ env.R_BRANCH }}
+  export PUSH_COMMAND=git push origin ${{ env.R_BRANCH }}
+  echo "COMMIT_COMMAND=" ${{ env.COMMIT_COMMAND }}
+  echo "CREATE_COMMAND=" ${{ env.CREATE_COMMAND }}
+  echo "PUSH_COMMAND=" ${{ env.PUSH_COMMAND }}
+default:
+  build-command:
+    current: |
+      ${{ env.COMMIT_COMMAND }}
+      ${{ env.CREATE_COMMAND }}
+      ${{ env.PUSH_COMMAND }}
+build:
+  - project: kiegroup/droolsjbpm-build-bootstrap
+    build-command:
+      before:
+        current: |
+          echo "RELEASE_BRANCH= " ${{ env.R_BRANCH }}
+          echo "BASE_BRANCH= " ${{ env.B_BRANCH }}
+          echo "R_BRANCH_EXIST= " ${{ env.R_BRANCH_EXIST }}
+          echo "CHECKOUT_BRANCH= " ${{ env.CHECKOUT_BRANCH }}
+          ./script/release/eraseM2.sh ${{ env.MAVEN_DIR }}
+          ./script/release/update-versions-build-chain.sh ${{ env.KIE_VERSION }} community
+      current: |
+        ${{ env.COMMIT_COMMAND }}
+        ${{ env.CREATE_COMMAND }}
+        ${{ env.PUSH_COMMAND }}

@@ -1,0 +1,188 @@
+@Library('jenkins-pipeline-shared-libraries')_
+import org.jenkinsci.plugins.workflow.libs.Library
+import org.kie.jenkins.MavenCommand
+import org.kie.jenkins.MavenStagingHelper
+
+
+baseBranch = "${env.BASE_BRANCH}"
+createBranch = "${env.RELEASE_BRANCH}"
+agentLabel = "${env.AGENT_LABEL}"
+kieVersion = "${env.KIE_VERSION}"
+mvnTool = "${env.MVN_TOOL}"
+jdkVersion = "${env.JAVADK}"
+ghOrgUnit = "${env.GH_ORG_UNIT}"
+commitMsg = "${env.COMMIT_MSG}"
+
+buildChainGroup = env.BUILDCHAIN_GROUP?.trim() ?: 'kiegroup'
+buildChainBranch = env.BUILDCHAIN_BRANCH?.trim() ?: 'main'
+
+retry=0
+pipeline {
+    agent {
+        label agentLabel
+    }
+    options{
+        timestamps()
+    }
+    tools {
+        nodejs 'nodejs-12.16.3'
+        maven mvnTool
+        jdk jdkVersion
+    }
+    environment {
+        MAVEN_DIR = "${env.M2DIR}"
+        BASE_BRANCH = "${env.BASE_BRANCH}"
+        CREATE_BRANCH = "${env.CREATE_BRANCH}"
+        COMMIT_MSG = "${env.COMMIT_MSG}"
+    }
+    stages {
+        stage('Initialize') {
+            steps {
+                sh 'printenv'
+            }
+        }
+        stage('CHECKOUT_BRANCH = BASE_BRANCH ){
+            steps {
+                script {
+                    env.CHECKOUT_BRANCH = "${env.BASE_BRANCH}"
+                    echo "CHECKOUT_BRANCH=${env.CHECKOUT_BRANCH}"
+                }
+            }
+        }
+        stage('Install build-chain tool') {
+            steps {
+                script {
+                    println "[INFO] Getting build-chain version from composite action file"
+                    def buildChainVersion = buildChain.getBuildChainVersionFromCompositeActionFile()
+                    if([null, 'null'].contains(buildChainVersion)) {
+                        def errorMessage = "[ERROR] The build-chain version can't be recovered. Please contact administrator"
+                        println errorMessage
+                        error(errorMessage)
+                    }
+                    println "[INFO] build-chain version recovered '${buildChainVersion}'"
+
+                    try {
+                        sh "npm install -g @kie/build-chain-action@${buildChainVersion} -registry=${NPM_REGISTRY_URL}"
+                    } catch(e) {
+                        println "[WARNING] Error installing @kie/build-chain-action@${buildChainVersion}. Did you check the version is already published at https://www.npmjs.com/package/@kie/build-chain-action ? In case it is you should wait few minutes for ${NPM_REGISTRY_URL} to be synched up. Otherwise check latest 'Publish' action at https://github.com/kiegroup/github-action-build-chain/actions or contact kiegroup/github-action-build-chain responsible."
+                        println "[INFO] Final @kie/build-chain-action version to be used: ${sh(returnStdout: true, script: 'npm @kie/build-chain-action -v').trim()}"
+                    }
+                }
+            }
+        }
+        stage('Update versions and push new branches to github'){
+            steps{
+                script {
+                    def buildChainActionInfo = [action: 'branch', file: 'update-versions-release.yaml']
+                    withCredentials([string(credentialsId: 'kie-ci5-token', variable: 'GITHUB_TOKEN')]) {
+                        sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/${buildChainGroup}/droolsjbpm-build-bootstrap/${buildChainBranch}/.ci/${buildChainActionInfo.file}' -folder='bc' build ${buildChainActionInfo.action} -sp='${buildChainGroup}/droolsjbpm-build-bootstrap' -b='${env.CHECKOUT_BRANCH}' --fullProjectDependencyTree --skipParallelCheckout"
+                    }
+                }
+            }
+        }
+        // email send automatically when release starts and the release branches are not created
+        stage('send email when release starts'){
+            when{
+                expression { env.R_BRANCH_EXIST == '0' }
+            }
+            steps {
+                emailext body: """
+                The build for community release ${kieVersion} started.
+
+                @leads: Please look at the sanity checks: https://docs.google.com/spreadsheets/d/1jPtRilvcOji__qN0QmVoXw6KSi4Nkq8Nz_coKIVfX6A/edit#gid=167259416
+                and assign tasks to people who should run these checks (if not done yet)
+
+
+                Thank you""", subject: "start of community-release ${kieVersion}", to: "bsig@redhat.com etirelli@redhat.com lazarotti@redhat.com dward@redhat.com dgutierr@redhat.com aparedes@redhat.com doliver@redhat.com"
+            }
+        }
+        stage('Build projects') {
+            when{
+                expression { runBuild == 'YES'}
+            }
+            steps {
+                script {
+                    def buildChainActionInfo = [action: 'branch', file: 'release-config.yaml']
+                    def SETTINGS_XML_ID = '771ff52a-a8b4-40e6-9b22-d54c7314aa1e'
+                    configFileProvider([configFile(fileId: SETTINGS_XML_ID, variable: 'MAVEN_SETTINGS_FILE')]) {
+                        withCredentials([string(credentialsId: 'kie-ci1-token', variable: 'GITHUB_TOKEN')]) {
+                            sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/${buildChainGroup}/droolsjbpm-build-bootstrap/${buildChainBranch}/.ci/${buildChainActionInfo.file}' -folder='bc' build ${buildChainActionInfo.action} -sp='${buildChainGroup}/droolsjbpm-build-bootstrap' -b='${env.CHECKOUT_BRANCH}' --fullProjectDependencyTree --skipParallelCheckout -cct '(^mvn .*)||\$1 -s ${MAVEN_SETTINGS_FILE} -Dkie.maven.settings.custom=${MAVEN_SETTINGS_FILE} -Dmaven.wagon.http.ssl.insecure=true'"
+                        }
+                    }
+                }
+            }
+        }
+        stage('Publish JUnit test results reports') {
+            when{
+                expression { runBuild == 'YES'}
+            }
+            steps {
+                execute {
+                    junit '**/target/*-reports/TEST-*.xml'
+                }
+            }
+        }
+        //send mail if build fails
+        stage('send mail only if build fails'){
+            when{
+                expression { currentBuild.currentResult == 'FAILURE'}
+            }
+            steps{
+                emailext body: """
+                Build of community release ${kieVersion} failed.
+
+                Please look here: ${BUILD_URL}consoleText
+
+                LOG: attached""", subject: "community-release ${kieVersion} failed", to: "bsig@redhat.com", attachLog:true
+            }
+        }
+         // create a local directory for archiving artifacts
+         stage('Create upload dir') {
+             when{
+                 expression { runBuild == 'YES'}
+             }
+             steps {
+                 script {
+                     execute {
+                         // creates a directory ${kieVersion}"_uploadBinaries with binaries for the web-pages
+                         sh './script/release/prepareUploadDir.sh'
+                     }
+                 }
+             }
+         }
+         // the directory of ${kieVersion}_uploadBinaries will be compressed
+         stage('tar.gz uploadDir & archive artifacts'){
+             when{
+                 expression { runBuild == 'YES'}
+             }
+             steps {
+                script {
+                    execute {
+                        sh "tar -czvf ${kieVersion}_uploadBinaries.tar.gz ${kieVersion}_uploadBinaries"
+                        archiveArtifacts '*.tar.gz'
+                        sh "rm -rf ${kieVersion}_uploadBinaries.tar.gz"
+                    }
+                }
+             }
+         }
+        // binaries will be compressed and uploaded to Nexus
+        stage('Upload binaries to staging repository on Nexus') {
+            when{
+                expression { runBuild == 'YES'}
+            }
+            steps {
+                script {
+                    execute {
+                        withCredentials([usernameColonPassword(credentialsId: 'kie_upload_Nexus', variable: 'CREDS')]) {
+                            sh """
+                                cd $zipDir
+                                zip -qr kiegroup .
+                                repoID=\$(curl --header 'Content-Type: application/xml' -X POST -u $CREDS --data "<promoteRequest><data><description>kie-${kieVersion}</description></data></promoteRequest>" -v https://repository.jboss.org/nexus/service/local/staging/profiles/15c58a1abc895b/start -H "Connection: close" | grep -oP '(?<=stagedRepositoryId>).*[0-9]')
+                                curl --silent --upload-file kiegroup.zip -u \$CREDS -v https://repository.jboss.org/nexus/service/local/repositories/\$repoID/content-compressed -H "Connection: close"
+                                curl --header "Content-Type: application/xml" -X POST -u \$CREDS --data "<promoteRequest><data><stagedRepositoryId>\${repoID}</stagedRepositoryId><description>kie-${kieVersion}</description></data></promoteRequest>" -v https://repository.jboss.org/nexus/service/local/staging/profiles/15c58a1abc895b/finish -H "Connection: close"
+                                """
+                        }
+                    }
+                }
+            }
+        }

@@ -14,7 +14,7 @@
   <groupId>org.kie</groupId>
   <artifactId>kie-user-bom-parent</artifactId>
   <packaging>pom</packaging>
-  <version>7.67.1-SNAPSHOT</version>
+  <version>7.67.2-SNAPSHOT</version>
 
   <name>KIE (Drools, jBPM, OptaPlanner) user BOM parent</name>
   <description>
