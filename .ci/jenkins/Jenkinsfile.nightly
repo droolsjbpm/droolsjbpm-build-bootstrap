@@ -90,7 +90,8 @@ pipeline {
                         [$class: 'StringParameterValue', name: 'TIME_STAMP', value: "${PME_BUILD_VARIABLES['datetimeSuffix']}"],
                         [$class: 'StringParameterValue', name: 'MVEL_VERSION', value: PME_BUILD_VARIABLES['mvelVersion']],
                         [$class: 'StringParameterValue', name: 'IZPACK_VERSION', value: PME_BUILD_VARIABLES['izpackVersion']],
-                        [$class: 'StringParameterValue', name: 'INSTALLER_COMMONS_VERSION', value: PME_BUILD_VARIABLES['installerCommonsVersion']]
+                        [$class: 'StringParameterValue', name: 'INSTALLER_COMMONS_VERSION', value: PME_BUILD_VARIABLES['installerCommonsVersion']],
+                        [$class: 'StringParameterValue', name: 'NIGHTLY_FILE_ID', value: 'bamoe-nightly-properties-template']
                     ]
                 }
             }
