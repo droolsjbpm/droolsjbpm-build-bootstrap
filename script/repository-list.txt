@@ -15,7 +15,6 @@ drools-wb
 jbpm-designer
 jbpm-work-items
 jbpm-wb
-optaplanner-wb
 kie-wb-distributions
 openshift-drools-hacep
 process-migration-service

@@ -22,7 +22,7 @@ A week in advance:
 
 * All external dependencies must be on a non-SNAPSHOT version, to avoid failing to *close* the staging repo on nexus near the end of the release.
 
-* Ask kiegroup modules (appformer, kie-wb-common, drools-wb, jbpm-wb, jbpm-designer, optaplanner-wb and kie-wb-distributions) leads to update the i18n translations:
+* Ask kiegroup modules (appformer, kie-wb-common, drools-wb, jbpm-wb, jbpm-designer and kie-wb-distributions) leads to update the i18n translations:
 
     * Translations are at the time beeing a manual process since Zanata shut down
 

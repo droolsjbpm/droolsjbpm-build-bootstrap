@@ -124,17 +124,6 @@ dependencies:
       - project: kiegroup/lienzo-core
       - project: kiegroup/kie-wb-common
 
-  - project: kiegroup/optaplanner-wb
-    dependencies:
-      - project: kiegroup/appformer
-      - project: kiegroup/kie-uberfire-extensions
-      - project: kiegroup/drools-wb
-      - project: kiegroup/drools
-      - project: kiegroup/optaplanner
-      - project: kiegroup/kie-soup
-      - project: kiegroup/kie-wb-common
-      - project: kiegroup/kie-wb-playground
-
   - project: kiegroup/jbpm-designer
     dependencies:
       - project: kiegroup/kie-wb-common
@@ -214,7 +203,6 @@ dependencies:
       - project: kiegroup/jbpm-wb
       - project: kiegroup/appformer
       - project: kiegroup/kie-uberfire-extensions
-      - project: kiegroup/optaplanner-wb
 
   - project: kiegroup/process-migration-service
     dependencies:
