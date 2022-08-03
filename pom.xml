@@ -114,7 +114,7 @@
     <version.joda-time>2.9.7</version.joda-time>
     <version.junit>4.13.1</version.junit>
     <version.enforcer.plugin>3.0.0-M3</version.enforcer.plugin>
-    <version.mysql.connector-java>8.0.27</version.mysql.connector-java>
+    <version.mysql.connector-java>8.0.28</version.mysql.connector-java>
     <version.net.jcip>1.0</version.net.jcip>
     <version.net.java.dev.glazedlists>1.8.0</version.net.java.dev.glazedlists>
     <version.net.sf.opencsv>2.3</version.net.sf.opencsv>
