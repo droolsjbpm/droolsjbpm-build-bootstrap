@@ -5,6 +5,7 @@ dependencies: ./project-dependencies.yaml
 pre: |
   export BUILD_MVN_OPTS="${{ env.BUILD_MVN_OPTS }} dependency:tree -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
   echo "BUILD_MVN_OPTS=${{ env.BUILD_MVN_OPTS }}"
+  java -version
 
 default:
   build-command:
