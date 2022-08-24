@@ -1,5 +1,7 @@
 @Library('jenkins-pipeline-shared-libraries')_
 
+localNexusRepositoryId = "${env.LOCAL_NEXUS_REPOSITORY_ID?.trim() ? LOCAL_NEXUS_REPOSITORY_ID : 'rhba-8.0-nightly'}"
+
 pipeline {
     agent {
         label 'kie-rhel7-pipeline && kie-mem24g && !master'
@@ -7,6 +9,9 @@ pipeline {
     tools {
         maven 'kie-maven-3.8.1'
         jdk 'kie-jdk11'
+    }
+    environment {
+        LOCAL_NEXUS_REPOSITORY_ID = "${localNexusRepositoryId}"
     }
     parameters {
         string(description: 'The deployment URL', name: 'KIE_GROUP_DEPLOYMENT_REPO_URL')
