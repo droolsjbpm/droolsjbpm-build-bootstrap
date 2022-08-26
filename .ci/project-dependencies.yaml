@@ -99,10 +99,6 @@ dependencies:
       - project: kiegroup/drools
       - project: kiegroup/jbpm
 
-  - project: kiegroup/openshift-drools-hacep
-    dependencies:
-      - project: kiegroup/droolsjbpm-integration
-
   - project: kiegroup/kie-uberfire-extensions
     dependencies:
       - project: kiegroup/appformer
