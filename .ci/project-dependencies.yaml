@@ -120,10 +120,6 @@ dependencies:
       - project: kiegroup/lienzo-core
       - project: kiegroup/kie-wb-common
 
-  - project: kiegroup/jbpm-designer
-    dependencies:
-      - project: kiegroup/kie-wb-common
-
   - project: kiegroup/jbpm-work-items
     dependencies:
       - project: kiegroup/jbpm
@@ -133,7 +129,7 @@ dependencies:
     dependencies:
       - project: kiegroup/kie-uberfire-extensions
       - project: kiegroup/drools-wb
-      - project: kiegroup/jbpm-designer
+      - project: kiegroup/kie-wb-common
       - project: kiegroup/jbpm-work-items
 
   - project: kiegroup/kie-docs
