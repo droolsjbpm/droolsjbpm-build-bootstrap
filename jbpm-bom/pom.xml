@@ -676,45 +676,6 @@
         <classifier>sources</classifier>
       </dependency>
 
-      <!-- jbpm-designer -->
-      <dependency>
-        <groupId>org.jbpm</groupId>
-        <artifactId>jbpm-designer-api</artifactId>
-        <version>${version.org.kie}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jbpm</groupId>
-        <artifactId>jbpm-designer-backend</artifactId>
-        <version>${version.org.kie}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jbpm</groupId>
-        <artifactId>jbpm-designer-client</artifactId>
-        <version>${version.org.kie}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jbpm</groupId>
-        <artifactId>jbpm-designer-standalone</artifactId>
-        <version>${version.org.kie}</version>
-        <type>war</type>
-      </dependency>
-
-      <!-- jbpm-designer wars -->
-      <dependency>
-        <groupId>org.jbpm</groupId>
-        <artifactId>jbpm-designer-distribution-wars</artifactId>
-        <version>${version.org.kie}</version>
-        <classifier>tomcat8</classifier>
-        <type>war</type>
-      </dependency>
-      <dependency>
-        <groupId>org.jbpm</groupId>
-        <artifactId>jbpm-designer-distribution-wars</artifactId>
-        <version>${version.org.kie}</version>
-        <classifier>wildfly8</classifier>
-        <type>war</type>
-      </dependency>
-
       <!-- jBPM WB -->
       <dependency>
          <groupId>org.jbpm</groupId>
