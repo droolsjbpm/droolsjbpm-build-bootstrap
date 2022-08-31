@@ -2,7 +2,6 @@ droolsjbpm-build-bootstrap
 kie-soup
 droolsjbpm-knowledge
 drools
-optaplanner
 lienzo-core
 lienzo-tests
 appformer
@@ -16,7 +15,5 @@ jbpm-work-items
 jbpm-wb
 kie-wb-distributions
 process-migration-service
-optaweb-employee-rostering
-optaweb-vehicle-routing
 kie-jpmml-integration
 kie-docs
