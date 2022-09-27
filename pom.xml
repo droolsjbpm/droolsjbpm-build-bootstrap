@@ -2214,7 +2214,6 @@
     <module>kie-soup-bom</module>
     <module>uberfire-bom</module>
     <module>drools-bom</module>
-    <module>optaplanner-bom</module>
     <module>jbpm-bom</module>
     <module>kie-uberfire-extensions-bom</module>
     <module>kie-dmn-bom</module>

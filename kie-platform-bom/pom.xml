@@ -45,13 +45,6 @@
         <scope>import</scope>
       </dependency>
       <dependency>
-        <groupId>org.optaplanner</groupId>
-        <artifactId>optaplanner-bom</artifactId>
-        <type>pom</type>
-        <version>${version.org.kie}</version>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
         <groupId>org.jbpm</groupId>
         <artifactId>jbpm-bom</artifactId>
         <type>pom</type>
