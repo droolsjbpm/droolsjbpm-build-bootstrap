@@ -4,7 +4,7 @@ localNexusRepositoryId = "${env.LOCAL_NEXUS_REPOSITORY_ID?.trim() ? LOCAL_NEXUS_
 
 pipeline {
     agent {
-        label 'kie-rhel7-pipeline && kie-mem24g && !master'
+        label 'kie-rhel7-pipeline && kie-mem24g && !built-in'
     }
     tools {
         maven 'kie-maven-3.8.1'

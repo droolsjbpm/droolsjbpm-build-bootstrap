@@ -1,6 +1,6 @@
 @Library('jenkins-pipeline-shared-libraries')_
 
-agentLabel = "${env.ADDITIONAL_LABEL?.trim() ? ADDITIONAL_LABEL : 'kie-rhel7-pipeline && kie-mem24g'} && !master"
+agentLabel = "${env.ADDITIONAL_LABEL?.trim() ? ADDITIONAL_LABEL : 'kie-rhel7-pipeline && kie-mem24g'} && !built-in"
 additionalArtifactsToArchive = "${env.ADDITIONAL_ARTIFACTS_TO_ARCHIVE?.trim() ?: ''}"
 additionalTimeout = "${env.ADDITIONAL_TIMEOUT?.trim() ?: 1200}"
 additionalExcludedArtifacts = "${env.ADDITIONAL_EXCLUDED_ARTIFACTS?.trim() ?: ''}"
