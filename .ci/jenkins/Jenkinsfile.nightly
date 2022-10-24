@@ -75,7 +75,7 @@ pipeline {
 
                         retry(3) {
                             timeout(time: 8, unit: 'HOURS') {
-                                pmebuild.buildProjects(projectCollection, "${SETTINGS_XML_ID}", "$WORKSPACE/build_config/rhba/nightly", "${env.PME_CLI_PATH}", projectVariableMap, additionalVariables, [:])
+                                pmebuild.buildProjects(projectCollection, "${SETTINGS_XML_ID}", "$WORKSPACE/build_config/bamoe/nightly", "${env.PME_CLI_PATH}", projectVariableMap, additionalVariables, [:])
                             }
                         }
                     }
