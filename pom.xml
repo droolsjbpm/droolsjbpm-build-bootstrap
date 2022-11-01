@@ -301,6 +301,7 @@
     <version.org.drools.droolsjbpm-tools>${version.org.drools}</version.org.drools.droolsjbpm-tools>
     <version.org.jbpm.jbpm-designer>${version.org.jbpm}</version.org.jbpm.jbpm-designer>
     <version.org.jbpm.jbpm-wb>${version.org.jbpm}</version.org.jbpm.jbpm-wb>
+    <version.org.kie.lienzo>${version.org.kie}</version.org.kie.lienzo>
 
     <!-- External dependency versions bom -->
     <!-- ################################################################################ -->

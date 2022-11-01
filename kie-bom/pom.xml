@@ -681,23 +681,23 @@
       <dependency>
         <groupId>org.kie</groupId>
         <artifactId>lienzo-core</artifactId>
-        <version>${version.org.kie}</version>
+        <version>${version.org.kie.lienzo}</version>
       </dependency>
       <dependency>
         <groupId>org.kie</groupId>
         <artifactId>lienzo-core</artifactId>
-        <version>${version.org.kie}</version>
+        <version>${version.org.kie.lienzo}</version>
         <classifier>sources</classifier>
       </dependency>
       <dependency>
         <groupId>org.kie</groupId>
         <artifactId>lienzo-tests</artifactId>
-        <version>${version.org.kie}</version>
+        <version>${version.org.kie.lienzo}</version>
       </dependency>
       <dependency>
         <groupId>org.kie</groupId>
         <artifactId>lienzo-tests</artifactId>
-        <version>${version.org.kie}</version>
+        <version>${version.org.kie.lienzo}</version>
         <classifier>sources</classifier>
       </dependency>
 
