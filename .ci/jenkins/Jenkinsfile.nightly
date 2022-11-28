@@ -1,6 +1,7 @@
 @Library('jenkins-pipeline-shared-libraries')_
 
 localNexusRepositoryId = "${env.LOCAL_NEXUS_REPOSITORY_ID?.trim() ? LOCAL_NEXUS_REPOSITORY_ID : 'rhba-8.0-nightly'}"
+def tagName = "nightly-${PRODUCT_VERSION}.redhat-${new Date().format('yyyyMMddHHmm')}"
 
 pipeline {
     agent {
@@ -82,6 +83,25 @@ pipeline {
                 }
             }
         }
+        stage ("Create tags in prod repositories") {
+            steps {
+                script {
+                    def projectsToTagWithProdRepoName = ["jboss-integration/bxms-patch-tools": "bxms-patch-tools"]
+                    projectsToTagWithProdRepoName.each { project ->
+                        def projectGroupName = util.getProjectGroupName(project.key)
+                        def group = projectGroupName[0]
+                        def name = projectGroupName[1]
+                        dir("${env.WORKSPACE}/${group}_${name}") {
+                            def remoteName = "prod"
+                            githubscm.commitChanges("PME changes for ${tagName}")
+                            githubscm.tagRepository(tagName)
+                            githubscm.addRemote(remoteName, "${env.PRODUCTIZATION_REPOSITORY_BASE_URL}/${project.value}")
+                            githubscm.pushRemoteTag(remoteName, tagName, "gerrit-user")
+                        }
+                    }
+                }
+            }
+        }
         stage('Generate RHPAM Properties Files') {
             steps {
                 script {
@@ -90,6 +110,7 @@ pipeline {
                     build job: env.RHPAM_PROPERTIES_GENERATOR_PATH, parameters: [
                         [$class: 'BooleanParameterValue', name: 'IS_RELEASE', value: false],
                         [$class: 'StringParameterValue', name: 'BRANCH_NAME', value: env.BRANCH_NAME],
+                        [$class: 'StringParameterValue', name: 'TAG_HASH', value: tagName],
                         [$class: 'StringParameterValue', name: 'KIE_VERSION', value: PME_BUILD_VARIABLES['kieVersion']],
                         [$class: 'StringParameterValue', name: 'PRODUCT_VERSION', value: PME_BUILD_VARIABLES['productVersion']],
                         [$class: 'StringParameterValue', name: 'TIME_STAMP', value: "${PME_BUILD_VARIABLES['datetimeSuffix']}"],
