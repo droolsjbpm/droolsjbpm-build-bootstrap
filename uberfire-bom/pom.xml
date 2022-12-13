@@ -596,19 +596,6 @@
 
       <dependency>
         <groupId>org.uberfire</groupId>
-        <artifactId>uberfire-metadata-backend-elasticsearch</artifactId>
-        <version>${version.org.uberfire}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.uberfire</groupId>
-        <artifactId>uberfire-metadata-backend-elasticsearch</artifactId>
-        <version>${version.org.uberfire}</version>
-        <classifier>sources</classifier>
-      </dependency>
-
-      <dependency>
-        <groupId>org.uberfire</groupId>
         <artifactId>uberfire-metadata-backend-infinispan</artifactId>
         <version>${version.org.uberfire}</version>
       </dependency>
