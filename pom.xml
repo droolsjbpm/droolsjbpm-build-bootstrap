@@ -69,7 +69,7 @@
     <version.commons-net>2.2</version.commons-net>
     <version.commons-pool>1.6</version.commons-pool>
     <version.commons-io>2.7</version.commons-io>
-    <version.common-text>1.9</version.common-text>
+    <version.common-text>1.10.0</version.common-text>
     <version.com.ahome-it.lienzo.tooling.nativetools>1.0.195-RELEASE
     </version.com.ahome-it.lienzo.tooling.nativetools>
     <version.com.ahome-it.lienzo.tooling.common>1.0.190-RELEASE</version.com.ahome-it.lienzo.tooling.common>
