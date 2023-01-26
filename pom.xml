@@ -275,7 +275,7 @@
     <version.org.wildfly.client>1.0.1.Final</version.org.wildfly.client>
     <version.org.wildfly.core>17.0.0.Final</version.org.wildfly.core>
     <version.org.wildfly.common>1.5.4.Final</version.org.wildfly.common>
-    <version.org.yaml.snakeyaml>1.31</version.org.yaml.snakeyaml>
+    <version.org.yaml.snakeyaml>1.32</version.org.yaml.snakeyaml>
     <version.org.mozilla.rhino>1.7.13</version.org.mozilla.rhino>
     <version.rome>1.0</version.rome>
     <version.tomcat>9.0.22</version.tomcat>
