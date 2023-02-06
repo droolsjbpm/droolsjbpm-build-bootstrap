@@ -83,17 +83,17 @@ pipeline {
             steps {
                 script {
                     def buildChainActionInfo =
-                                isFDBP() ? [action: 'fd', file: 'downstream-production-config.yaml'] :
-                                isFDB() ? [action: 'fd', file: 'full-downstream-config.yaml'] :
-                                isCompile() ? [action: 'fd', file: 'compilation-config.yaml'] :
-                                [action: 'pr', file: 'pull-request-config.yaml']
+                                isFDBP() ? [action: 'full_downstream', file: 'downstream-production-config.yaml'] :
+                                isFDB() ? [action: 'full_downstream', file: 'full-downstream-config.yaml'] :
+                                isCompile() ? [action: 'full_downstream', file: 'compilation-config.yaml'] :
+                                [action: 'cross_pr', file: 'pull-request-config.yaml']
                     def SETTINGS_XML_ID =
                                 isFDBP() ? '5d9884a1-178a-4d67-a3ac-9735d2df2cef' :
                                 '771ff52a-a8b4-40e6-9b22-d54c7314aa1e'
 
                     configFileProvider([configFile(fileId: SETTINGS_XML_ID, variable: 'MAVEN_SETTINGS_FILE')]) {
-                        withCredentials([string(credentialsId: 'kie-ci1-token', variable: 'GITHUB_TOKEN')]) {
-                            sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/${buildChainGroup}/droolsjbpm-build-bootstrap/${buildChainBranch}/.ci/${buildChainActionInfo.file}' -folder='bc' build ${buildChainActionInfo.action} -url=${env.ghprbPullLink} --skipParallelCheckout -cct '(^mvn .*)||\$1 -s ${MAVEN_SETTINGS_FILE} -Dmaven.wagon.http.ssl.insecure=true'"
+                        withCredentials([string(credentialsId: 'kie-ci2-token', variable: 'GITHUB_TOKEN')]) {
+                            sh "build-chain build ${buildChainActionInfo.action} --token ${GITHUB_TOKEN} -f 'https://raw.githubusercontent.com/${buildChainGroup}/droolsjbpm-build-bootstrap/${buildChainBranch}/.ci/${buildChainActionInfo.file}' -o bc -u ${env.ghprbPullLink} --skipParallelCheckout -t '(^mvn .*)||\$1 -s ${MAVEN_SETTINGS_FILE} -Dmaven.wagon.http.ssl.insecure=true'"
                         }
                     }
                 }

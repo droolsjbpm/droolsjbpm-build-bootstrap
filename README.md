@@ -440,6 +440,38 @@ Those SNAPSHOTS were built and deployed last night by Jenkins jobs.
 
         Note that using `-nsu` will also make the build faster.
 
+### **Full build from sources**
+
+If the purpose, instead, is to build the full set of projects that are dependent on each other, the recommendation is to use the [build-chain](https://github.com/kiegroup/github-action-build-chain) tool. This tool allows to build multiple projects from different repositories in one single command.
+
+* Install **build-chain-action** npm tool (node/npm must be installed):
+    
+    ```shell
+    $ npm i @kie/build-chain-action -g
+    ```
+
+Now in according to then need, the *build-chain-action* command line tool should be run with proper arguments. Check [build-chain](https://github.com/kiegroup/github-action-build-chain#github-action-build-chain) documentation for further details on commands and arguments. Below one of the most common use cases you might face into. 
+
+* **Branch Flow**, this allows to build the *whole set of projects* from RHBA community stream, either following upstream or downstream flow:
+
+    ``` shell
+    $ build-chain build branch -f https://raw.githubusercontent.com/kiegroup/droolsjbpm-build-bootstrap/main/.ci/compilation-config.yaml -b main --fullProjectDependencyTree -p kiegroup/droolsjbpm-build-bootstrap [--skipExecution]
+    ```
+
+    > Consider to change `main` by the branch/tag to build
+
+    This command clones all repositories starting from specific project (in this case *kiegroup/droolsjbpm-build-bootstrap*, see [project structure](#kiegroup-project-structure)), checkouts one by one all projects and build them in according to their specific build instructions that are defined in the definition file you provided.
+    
+   
+    - `build branch`, build functionality with flow type as branch.
+    -  - `-f <definition-file>`, url or path to the build-chain definition file (more details [here](https://github.com/kiegroup/build-chain-configuration-reader)).
+    - `-b <br>`, checkout projects in according to their branch starting from `<br>` branch in `<starting-project>` project.
+    - `--fullProjectDependencyTree`, checks out and execute the whole tree instead of the upstream build, if omitted the upstream flow is used.
+    - `-p <starting-project>`, from which project (in the tree structure) start from.
+    - `--skipExecution`, add this if you only want to clone all repositories without building them.
+    
+    More info on *branch flow* arguments usage in [Execution Build Action - Branch flow arguments](https://github.com/kiegroup/github-action-build-chain#execution-build-action---branch-flow-arguments)
+
 Running tests
 -------------
 
@@ -448,6 +480,15 @@ Running tests
     ```shell
     $ cd ~/projects/kiegroup/drools
     $ mvn test [-Dtest=ATestClassName]
+    ```
+
+
+* Full build with tests
+    
+    This can be reached using the `build-chain` tool, introduced in [Running the Build](#running-the-build) section. Omitting the `--skipExecution` flag it will check out and build the whole set of RHBA projects (also executing all tests).
+
+    ```shell
+    $ build-chain build branch -f <definition-file> -b <br> --fullProjectDependencyTree -p <starting-project>
     ```
 
 Running code-coverage checks

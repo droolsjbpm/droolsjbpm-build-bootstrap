@@ -130,8 +130,8 @@ pipeline {
             steps{
                 script {
                     def buildChainActionInfo = [action: 'branch', file: 'update-versions-release.yaml']
-                    withCredentials([string(credentialsId: 'kie-ci1-token', variable: 'GITHUB_TOKEN')]) {
-                        sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/${buildChainGroup}/droolsjbpm-build-bootstrap/${buildChainBranch}/.ci/${buildChainActionInfo.file}' -folder='bc' build ${buildChainActionInfo.action} -p='${buildChainGroup}/droolsjbpm-build-bootstrap' -sp='${buildChainGroup}/droolsjbpm-build-bootstrap' -b='${env.CHECKOUT_BRANCH}' --fullProjectDependencyTree --skipParallelCheckout"
+                    withCredentials([string(credentialsId: 'kie-ci5-token', variable: 'GITHUB_TOKEN')]) {
+                        sh "build-chain build ${buildChainActionInfo.action} --token=${GITHUB_TOKEN} -f 'https://raw.githubusercontent.com/${buildChainGroup}/droolsjbpm-build-bootstrap/${buildChainBranch}/.ci/${buildChainActionInfo.file}' -o 'bc' -p '${buildChainGroup}/droolsjbpm-build-bootstrap' -b '${env.CHECKOUT_BRANCH}' --fullProjectDependencyTree --skipParallelCheckout"
                     }
                 }
             }

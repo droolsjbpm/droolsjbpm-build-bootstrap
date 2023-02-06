@@ -99,8 +99,8 @@ pipeline {
                     def buildChainActionInfo = [action: 'branch', file: 'daily-config.yaml']
                     def SETTINGS_XML_ID = '771ff52a-a8b4-40e6-9b22-d54c7314aa1e'
                     configFileProvider([configFile(fileId: SETTINGS_XML_ID, variable: 'MAVEN_SETTINGS_FILE')]) {
-                        withCredentials([string(credentialsId: 'kie-ci1-token', variable: 'GITHUB_TOKEN')]) {
-                            sh "build-chain-action -token=${GITHUB_TOKEN} -df='https://raw.githubusercontent.com/${buildChainGroup}/droolsjbpm-build-bootstrap/${buildChainBranch}/.ci/${buildChainActionInfo.file}' -folder='bc' build ${buildChainActionInfo.action} -p='${buildChainGroup}/droolsjbpm-build-bootstrap' -sp='${buildChainGroup}/droolsjbpm-build-bootstrap' -b=${baseBranch} --fullProjectDependencyTree --skipParallelCheckout -cct '(^mvn .*)||\$1 -s ${MAVEN_SETTINGS_FILE} -Dkie.maven.settings.custom=${MAVEN_SETTINGS_FILE} -Dmaven.wagon.http.ssl.insecure=true ${additionalMavenFlag}'"
+                        withCredentials([string(credentialsId: 'kie-ci4-token', variable: 'GITHUB_TOKEN')]) {
+                            sh "build-chain build ${buildChainActionInfo.action} --token=${GITHUB_TOKEN} -f 'https://raw.githubusercontent.com/${buildChainGroup}/droolsjbpm-build-bootstrap/${buildChainBranch}/.ci/${buildChainActionInfo.file}' -o 'bc' -p '${buildChainGroup}/droolsjbpm-build-bootstrap' -b ${baseBranch} --fullProjectDependencyTree --skipParallelCheckout -t '(^mvn .*)||\$1 -s ${MAVEN_SETTINGS_FILE} -Dkie.maven.settings.custom=${MAVEN_SETTINGS_FILE} -Dmaven.wagon.http.ssl.insecure=true ${additionalMavenFlag}'"
                         }
                     }
                 }
