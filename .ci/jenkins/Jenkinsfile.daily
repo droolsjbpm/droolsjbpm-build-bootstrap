@@ -19,7 +19,7 @@ pipeline {
         label agentLabel
     }
     tools {
-        nodejs 'nodejs-12.16.3'
+        nodejs 'nodejs-16.2.0'
         maven mvnTool
         jdk jdkVersion
     }
