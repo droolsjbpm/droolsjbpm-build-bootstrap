@@ -102,12 +102,12 @@ pipeline {
                 }
             }
         }
-        stage('Generate RHPAM Properties Files') {
+        stage('Generate BAMOE Properties Files') {
             steps {
                 script {
                     def PME_BUILD_VARIABLES = env.PME_BUILD_VARIABLES.split(";").collect{ it.split("=")}.inject([:]) {map, item -> map << [(item.length == 2 ? item[0] : null): (item.length == 2 ? item[1] : null)]}
 
-                    build job: env.RHPAM_PROPERTIES_GENERATOR_PATH, parameters: [
+                    build job: env.BAMOE_PROPERTIES_GENERATOR_PATH, parameters: [
                         [$class: 'BooleanParameterValue', name: 'IS_RELEASE', value: false],
                         [$class: 'StringParameterValue', name: 'BRANCH_NAME', value: env.BRANCH_NAME],
                         [$class: 'StringParameterValue', name: 'TAG_HASH', value: tagName],
@@ -116,8 +116,7 @@ pipeline {
                         [$class: 'StringParameterValue', name: 'TIME_STAMP', value: "${PME_BUILD_VARIABLES['datetimeSuffix']}"],
                         [$class: 'StringParameterValue', name: 'MVEL_VERSION', value: PME_BUILD_VARIABLES['mvelVersion']],
                         [$class: 'StringParameterValue', name: 'IZPACK_VERSION', value: PME_BUILD_VARIABLES['izpackVersion']],
-                        [$class: 'StringParameterValue', name: 'INSTALLER_COMMONS_VERSION', value: PME_BUILD_VARIABLES['installerCommonsVersion']],
-                        [$class: 'StringParameterValue', name: 'NIGHTLY_FILE_ID', value: 'bamoe-nightly-properties-template']
+                        [$class: 'StringParameterValue', name: 'INSTALLER_COMMONS_VERSION', value: PME_BUILD_VARIABLES['installerCommonsVersion']]
                     ]
                 }
             }
@@ -135,15 +134,15 @@ pipeline {
                 }
             }
         }
-        stage ("Send RHPAM UMB Message to QE.") {
+        stage ("Send BAMOE UMB Message to QE.") {
             steps {
                 script {
-                    echo "[INFO] Sending RHPAM UMB message to QE."
+                    echo "[INFO] Sending BAMOE UMB message to QE."
                     def PME_BUILD_VARIABLES = env.PME_BUILD_VARIABLES.split(";").collect{ it.split("=")}.inject([:]) {map, item -> map << [(item.length == 2 ? item[0] : null): (item.length == 2 ? item[1] : null)]}
 
-                    def propertiesFileUrl = "${env.STAGING_SERVER_URL}/rhpam/RHPAM-${PME_BUILD_VARIABLES['productVersion']}.${PME_BUILD_VARIABLES['milestone']}/rhpam-${PME_BUILD_VARIABLES['datetimeSuffix']}.properties"
-                    def topic = "VirtualTopic.qe.ci.ba.rhpam.${env.UMB_VERSION}.nightly.trigger"
-                    def eventType = "rhpam-${env.UMB_VERSION}-nightly-qe-trigger"
+                    def propertiesFileUrl = "${env.STAGING_SERVER_URL}/bamoe/BAMOE-${PME_BUILD_VARIABLES['productVersion']}.${PME_BUILD_VARIABLES['milestone']}/bamoe-${PME_BUILD_VARIABLES['datetimeSuffix']}.properties"
+                    def topic = "VirtualTopic.qe.ci.ba.bamoe.${env.UMB_VERSION}.nightly.trigger"
+                    def eventType = "bamoe-${env.UMB_VERSION}-nightly-qe-trigger"
 
                     echo "[INFO] Message Body: ${propertiesFileUrl}"
                     echo "[INFO] Topic: ${topic}"
