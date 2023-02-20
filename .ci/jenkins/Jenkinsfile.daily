@@ -107,11 +107,11 @@ pipeline {
             }
         }
         stage('Deploy process-migration-service locally with jdk11'){
-            tools {
-              jdk 'kie-jdk11'
-            }
+            when {
+                expression { (jdkVersion == 'kie-jdk11.0.15') }
+            }    
             steps {
-                dir("${WORKSPACE}/bc/kiegroup_process_migration_service") {
+                dir("${WORKSPACE}/bc/kiegroup_process-migration-service") {
                     configFileProvider([configFile(fileId: '771ff52a-a8b4-40e6-9b22-d54c7314aa1e', targetLocation: 'jenkins-settings.xml', variable: 'SETTINGS_XML_FILE')]) {
                           sh 'mvn -B -e -U clean deploy -Dfull -Drelease -DaltDeploymentRepository=local::default::file://$WORKSPACE/deploy-dir -s $SETTINGS_XML_FILE -Dkie.maven.settings.custom=$SETTINGS_XML_FILE -Dmaven.test.redirectTestOutputToFile=true -Dmaven.test.failure.ignore=true -Dgwt.memory.settings="-Xmx10g" '
                     }
