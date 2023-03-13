@@ -243,7 +243,7 @@
     <version.org.jsoup>1.15.3</version.org.jsoup>
     <version.org.junit>5.5.2</version.org.junit>
     <version.org.keycloak>20.0.3</version.org.keycloak>
-    <version.org.mvel>2.4.14.Final</version.org.mvel>
+    <version.org.mvel>2.4.15.Final</version.org.mvel>
     <version.org.apache.logging.log4j>2.17.1</version.org.apache.logging.log4j>
     <version.org.ocpsoft.prettytime>3.0.2.Final</version.org.ocpsoft.prettytime>
     <!--EAP 6.4 use 4.2.0.redhat-8 which is not OSGi compatible, so stay on 4.3.1-->
