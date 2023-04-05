@@ -168,7 +168,7 @@
     <version.org.codehaus.plexus.plexus-classworlds>2.5.2</version.org.codehaus.plexus.plexus-classworlds>
     <version.org.codehaus.plexus.plexus-containers>1.6</version.org.codehaus.plexus.plexus-containers>
     <version.org.codehaus.plexus.plexus-interpolation>1.21</version.org.codehaus.plexus.plexus-interpolation>
-    <version.org.codehaus.plexus.plexus-utils>3.0.22</version.org.codehaus.plexus.plexus-utils>
+    <version.org.codehaus.plexus.plexus-utils>3.0.24</version.org.codehaus.plexus.plexus-utils>
     <version.org.codehaus.woodstox>4.4.1</version.org.codehaus.woodstox>
     <version.org.easytesting.fest>2.0M6</version.org.easytesting.fest>
     <version.org.easymock>3.0</version.org.easymock>
