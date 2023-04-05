@@ -106,7 +106,7 @@
     <version.io.micrometer>1.7.3</version.io.micrometer>
     <version.io.springfox>2.9.2</version.io.springfox>
     <version.io.smallrye.openapi.core>2.1.4</version.io.smallrye.openapi.core>
-    <version.io.strimzi.strimzi-test-container>0.23.0</version.io.strimzi.strimzi-test-container>
+    <version.io.strimzi.strimzi-test-container>0.101.0</version.io.strimzi.strimzi-test-container>
     <version.io.takari.maven.plugins.testing>2.9.2</version.io.takari.maven.plugins.testing>
     <version.io.undertow>2.2.15.Final</version.io.undertow>
     <version.jaxen>1.1.6</version.jaxen>
