@@ -74,8 +74,8 @@
     </version.com.ahome-it.lienzo.tooling.nativetools>
     <version.com.ahome-it.lienzo.tooling.common>1.0.190-RELEASE</version.com.ahome-it.lienzo.tooling.common>
     <version.com.allen-sauer.gwt.dnd>3.3.3</version.com.allen-sauer.gwt.dnd>
-    <version.com.fasterxml.jackson>2.12.6</version.com.fasterxml.jackson>
-    <version.com.fasterxml.jackson.databind>2.12.6.1</version.com.fasterxml.jackson.databind>
+    <version.com.fasterxml.jackson>2.12.7</version.com.fasterxml.jackson>
+    <version.com.fasterxml.jackson.databind>2.12.7.1</version.com.fasterxml.jackson.databind>
     <version.com.fasterxml.jackson.annotations>${version.com.fasterxml.jackson}</version.com.fasterxml.jackson.annotations>
     <version.com.google.code.gson>2.8.9</version.com.google.code.gson>
     <version.org.jresearch.gwt.time>2.0.3</version.org.jresearch.gwt.time>
