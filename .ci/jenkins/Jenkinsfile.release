@@ -36,7 +36,7 @@ pipeline {
         jdk jdkVersion
     }
     environment {
-        FIREFOX_FOLDER = '/opt/tools/firefox-60esr'
+        FIREFOX_FOLDER = '/opt/tools/firefox-91esr'
         MAVEN_DIR = "${env.M2DIR}"
         B_BRANCH = "${env.BASE_BRANCH}"
         R_BRANCH = "${env.RELEASE_BRANCH}"

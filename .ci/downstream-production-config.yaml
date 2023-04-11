@@ -4,6 +4,6 @@ dependencies: ./product-projects-dependencies.yaml
 
 default:
   build-command:
-    current: mvn clean install -Dproductized=true -Dmaven.test.failure.ignore=true -Dwebdriver.firefox.bin=/opt/tools/firefox-60esr/firefox-bin -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+    current: mvn clean install -Dproductized=true -Dmaven.test.failure.ignore=true -Dwebdriver.firefox.bin=/opt/tools/firefox-91esr/firefox-bin -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
     after:
       upstream: rm -rf ./*

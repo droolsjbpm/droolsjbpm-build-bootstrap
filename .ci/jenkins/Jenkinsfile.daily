@@ -27,7 +27,7 @@ pipeline {
         timestamps ()
     }
     environment {
-        FIREFOX_FOLDER = '/opt/tools/firefox-60esr'
+        FIREFOX_FOLDER = '/opt/tools/firefox-91esr'
         MAVEN_DIR = "${env.M2DIR}"
     }
     stages {
