@@ -1,8 +1,8 @@
+lienzo-core
 droolsjbpm-build-bootstrap
 kie-soup
 droolsjbpm-knowledge
 drools
-lienzo-core
 lienzo-tests
 appformer
 kie-uberfire-extensions
