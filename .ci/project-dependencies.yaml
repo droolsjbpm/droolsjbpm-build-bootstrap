@@ -8,6 +8,8 @@ dependencies:
       - project: kiegroup/lienzo-core
 
   - project: kiegroup/droolsjbpm-build-bootstrap
+    dependencies:
+      - project: kiegroup/lienzo-core
 
   - project: kiegroup/kie-soup
     dependencies:
