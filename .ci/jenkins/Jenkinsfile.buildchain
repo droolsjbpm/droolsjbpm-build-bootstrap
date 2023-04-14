@@ -9,7 +9,7 @@ findbugsFile = env.FINDBUGS_FILE?.trim() ?: null
 pr_type = env.PR_TYPE?.trim() ?: null
 build_jdk_tool = env.BUILD_JDK_TOOL?.trim() ?: 'kie-jdk11.0.15'
 build_maven_tool = env.BUILD_MAVEN_TOOL?.trim() ?: 'kie-maven-3.8.1'
-buildChainGroup = env.BUILDCHAIN_GROUP?.trim() ?: '\${GROUP}'
+buildChainGroup = env.BUILDCHAIN_GROUP?.trim() ?: '\${GROUP:kiegroup}'
 buildChainBranch = env.BUILDCHAIN_BRANCH?.trim() ?: '\${BRANCH:main}'
 
 pipeline {
