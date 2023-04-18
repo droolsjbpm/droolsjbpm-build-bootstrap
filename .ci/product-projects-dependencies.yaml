@@ -10,13 +10,10 @@ dependencies:
       - project: jboss-integration/izpack
 
   - project: jboss-integration/rhba-boms
-    dependencies:
-        - project: kiegroup/optaplanner
 
   - project: jboss-integration/rhba
     dependencies:
       - project: kiegroup/kie-wb-distributions
-      - project: kiegroup/optaweb-employee-rostering
 
   - project: jboss-integration/rhba-installers
     dependencies:
