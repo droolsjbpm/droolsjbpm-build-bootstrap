@@ -152,7 +152,7 @@
     <version.org.apache.maven.wagon>3.0.0</version.org.apache.maven.wagon>
     <version.org.apache.neethi>3.1.1</version.org.apache.neethi>
     <version.org.apache.poi>4.1.2</version.org.apache.poi>
-    <version.org.apache.sshd>2.3.0</version.org.apache.sshd>
+    <version.org.apache.sshd>2.9.2</version.org.apache.sshd>
     <version.org.apache.tomcat>6.0.32</version.org.apache.tomcat>
     <version.org.apache.velocity>1.7</version.org.apache.velocity>
     <version.org.apache.xmlbeans>3.1.0</version.org.apache.xmlbeans>
@@ -270,7 +270,7 @@
     <version.org.testcontainers>1.15.2</version.org.testcontainers>
     <version.org.webjars.swagger-ui>2.2.10</version.org.webjars.swagger-ui>
     <version.org.webjars.npm.monaco-editor>0.20.0</version.org.webjars.npm.monaco-editor>
-    <version.org.wildfly>23.0.2.Final</version.org.wildfly>
+    <version.org.wildfly>23.0.0.Final</version.org.wildfly>
     <version.org.wildfly.arquillian>3.0.1.Final</version.org.wildfly.arquillian>
     <version.org.wildfly.client>1.0.1.Final</version.org.wildfly.client>
     <version.org.wildfly.core>17.0.0.Final</version.org.wildfly.core>
@@ -324,7 +324,7 @@
     <version.org.jboss.errai>4.15.0.Final</version.org.jboss.errai>
     <version.com.google.elemental2>1.1.0</version.com.google.elemental2>
     <!-- WildFly version used together with  the GWT's Super Dev Mode -->
-    <version.org.jboss.errai.wildfly>23.0.2.Final</version.org.jboss.errai.wildfly>
+    <version.org.jboss.errai.wildfly>23.0.0.Final</version.org.jboss.errai.wildfly>
     <!-- Required by jboss-remoting version above -->
     <version.org.ow2.asm>7.1</version.org.ow2.asm>
     <version.org.wildfly.security>1.15.5.Final</version.org.wildfly.security>
