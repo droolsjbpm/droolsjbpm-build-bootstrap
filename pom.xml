@@ -6107,6 +6107,11 @@
         <artifactId>wildfly-elytron</artifactId>
         <version>${version.org.wildfly.security}</version>
       </dependency>
+      <dependency>
+        <groupId>org.wildfly.security</groupId>
+        <artifactId>wildfly-elytron-auth-server</artifactId>
+        <version>${version.org.wildfly.security}</version>
+      </dependency>
 
       <!-- Data source management libraries -->
       <dependency>
