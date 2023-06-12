@@ -9,8 +9,8 @@ pre: |
 
 default:
   build-command:
-    current: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu --builder smart -T1C clean install -Dfull
-    upstream: mvn ${{ env.BUILD_MVN_OPTS }} -e --builder smart -T1C clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true
+    current: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu -T1C clean install -Dfull
+    upstream: mvn ${{ env.BUILD_MVN_OPTS }} -e -T1C clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true
     downstream: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu clean install -Dfull -Pbusiness-central,wildfly,sourcemaps,no-showcase -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-91esr/firefox-bin -Dgwt.skipCompilation=true
     after:
       upstream: rm -rf ./*
@@ -34,7 +34,7 @@ build:
 
   - project: kiegroup/kie-wb-common
     build-command:
-      current: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu --builder smart -T1C clean install -Dfull -DskipTests
+      current: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu -T1C clean install -Dfull -DskipTests
       upstream: mvn ${{ env.BUILD_MVN_OPTS }} -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true
       downstream: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu clean install -Dfull -Pbusiness-central,wildfly,sourcemaps,no-showcase -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-91esr/firefox-bin -Dgwt.skipCompilation=true
     archive-artifacts:
@@ -43,7 +43,7 @@ build:
 
   - project: kiegroup/droolsjbpm-integration
     build-command:
-      current: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu -B --builder smart -T1C clean install -Dfull -Pjenkins-pr-builder -DskipTests
+      current: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu -B -T1C clean install -Dfull -Pjenkins-pr-builder -DskipTests
       downstream: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu clean install -Dfull -Pbusiness-central,wildfly,sourcemaps,no-showcase,jenkins-pr-builder -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-91esr/firefox-bin -Dgwt.skipCompilation=true
 
   - project: kiegroup/process-migration-service

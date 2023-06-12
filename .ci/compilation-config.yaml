@@ -9,9 +9,9 @@ pre: |
 
 default:
   build-command:
-    current: mvn -e -fae -nsu --builder smart --builder smart -T1C clean install -Dfull -DskipTests ${{ env.BUILD_MVN_OPTS }}
-    upstream: mvn -e --builder smart -T1C clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
-    downstream: mvn -e -nsu -fae --builder smart -T1C clean install -Dfull -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
+    current: mvn ${{ env.BUILD_MVN_OPTS }} -e -fae -nsu -T1C clean install -Dfull -DskipTests
+    upstream: mvn ${{ env.BUILD_MVN_OPTS }} -e -T1C clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true
+    downstream: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu -fae -T1C clean install -Dfull -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true
     after:
       upstream: |
         rm -rf ./*
