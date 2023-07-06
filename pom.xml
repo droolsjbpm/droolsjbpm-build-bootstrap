@@ -178,7 +178,7 @@
     <version.org.eclipse.emf.ecore.xmi>2.5.0.v20100521-1846</version.org.eclipse.emf.ecore.xmi>
     <version.org.eclipse.jdt>3.18.0</version.org.eclipse.jdt>
     <!-- Jetty's version is aligned with CXF -->
-    <version.org.eclipse.jetty>9.4.41.v20210516</version.org.eclipse.jetty>
+    <version.org.eclipse.jetty>9.4.51.v20230217</version.org.eclipse.jetty>
     <version.org.eclipse.jgit>5.10.0.202012080955-r</version.org.eclipse.jgit>
     <version.org.eclipse.sisu>0.3.2</version.org.eclipse.sisu>
     <version.org.eclipse.emf.gwt>2.9.0</version.org.eclipse.emf.gwt>
