@@ -2079,7 +2079,7 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.organization>kiegroup</sonar.organization>
         <!--suppress UnresolvedMavenProperty -->
-        <sonar.login>${env.SONARCLOUD_TOKEN}</sonar.login>
+        <sonar.token>${env.SONARCLOUD_TOKEN}</sonar.token>
       </properties>
       <build>
         <plugins>
