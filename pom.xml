@@ -153,7 +153,7 @@
     <version.org.apache.neethi>3.1.1</version.org.apache.neethi>
     <version.org.apache.poi>4.1.2</version.org.apache.poi>
     <version.org.apache.sshd>2.9.2</version.org.apache.sshd>
-    <version.org.apache.tomcat>9.0.62</version.org.apache.tomcat>
+    <version.org.apache.tomcat>9.0.83</version.org.apache.tomcat>
     <version.org.apache.velocity>1.7</version.org.apache.velocity>
     <version.org.apache.xmlbeans>3.1.0</version.org.apache.xmlbeans>
     <version.org.apache.ws.xmlschema>2.2.5</version.org.apache.ws.xmlschema>

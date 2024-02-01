@@ -24,7 +24,7 @@
     <!-- narayana dependencies for tomcat and kie server -->
     <version.org.jboss.narayana.tomcat>5.9.0.Final</version.org.jboss.narayana.tomcat>
     <!-- DBCP connection pooling for Narayana -->
-    <version.org.apache.tomcat.tomcat-dbcp>9.0.62</version.org.apache.tomcat.tomcat-dbcp>
+    <version.org.apache.tomcat.tomcat-dbcp>9.0.83</version.org.apache.tomcat.tomcat-dbcp>
 
     <version.org.jboss.transaction.spi>7.6.1.Final</version.org.jboss.transaction.spi>
     <version.jakarta.transaction-api>1.3.3</version.jakarta.transaction-api>
