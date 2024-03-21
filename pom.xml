@@ -418,6 +418,7 @@
     <latestReleasedVersionFromThisBranch>7.67.0.Final</latestReleasedVersionFromThisBranch>
     <version.io.takari.maven.plugins.compiler>1.13.5</version.io.takari.maven.plugins.compiler>
 
+    <version.com.auth0-jwt>4.4.0</version.com.auth0-jwt>
     <version.org.codehaus.plexus.plexus-io>3.0.0</version.org.codehaus.plexus.plexus-io>
     <version.org.apache.maven.shared.maven-artifact-transfer>0.9.1
     </version.org.apache.maven.shared.maven-artifact-transfer>
@@ -6481,6 +6482,11 @@
         <version>${version.io.micrometer}</version>
       </dependency>
 
+      <dependency>
+        <groupId>com.auth0</groupId>
+        <artifactId>java-jwt</artifactId>
+        <version>${version.com.auth0-jwt}</version>
+      </dependency>
     </dependencies>
 
   </dependencyManagement>
