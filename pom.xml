@@ -145,11 +145,11 @@
     <version.org.apache.httpcomponents.httpcore>4.4.14</version.org.apache.httpcomponents.httpcore>
     <version.org.apache.karaf>2.4.0</version.org.apache.karaf>
     <version.org.apache.lucene>6.6.6</version.org.apache.lucene>
-    <version.org.apache.maven>3.3.9</version.org.apache.maven>
-    <version.org.apache.maven.utils>3.2.1</version.org.apache.maven.utils>
+    <version.org.apache.maven>3.8.6</version.org.apache.maven>
+    <version.org.apache.maven.utils>3.3.4</version.org.apache.maven.utils>
     <version.org.apache.maven.archiver>3.3.0</version.org.apache.maven.archiver>
     <version.org.apache.maven.plugin-tools>3.4</version.org.apache.maven.plugin-tools>
-    <version.org.apache.maven.wagon>3.0.0</version.org.apache.maven.wagon>
+    <version.org.apache.maven.wagon>3.5.1</version.org.apache.maven.wagon>
     <version.org.apache.neethi>3.1.1</version.org.apache.neethi>
     <version.org.apache.poi>4.1.2</version.org.apache.poi>
     <version.org.apache.sshd>2.9.2</version.org.apache.sshd>
@@ -165,22 +165,22 @@
     <version.org.codehaus.groovy>2.0.5</version.org.codehaus.groovy>
     <version.org.codehaus.jackson>1.9.13</version.org.codehaus.jackson>
     <version.org.codehaus.jettison>1.5.4</version.org.codehaus.jettison>
-    <version.org.codehaus.plexus.plexus-classworlds>2.5.2</version.org.codehaus.plexus.plexus-classworlds>
+    <version.org.codehaus.plexus.plexus-classworlds>2.6.0</version.org.codehaus.plexus.plexus-classworlds>
     <version.org.codehaus.plexus.plexus-containers>1.6</version.org.codehaus.plexus.plexus-containers>
-    <version.org.codehaus.plexus.plexus-interpolation>1.21</version.org.codehaus.plexus.plexus-interpolation>
-    <version.org.codehaus.plexus.plexus-utils>3.0.24</version.org.codehaus.plexus.plexus-utils>
+    <version.org.codehaus.plexus.plexus-interpolation>1.26</version.org.codehaus.plexus.plexus-interpolation>
+    <version.org.codehaus.plexus.plexus-utils>3.3.1</version.org.codehaus.plexus.plexus-utils>
     <version.org.codehaus.woodstox>4.4.1</version.org.codehaus.woodstox>
     <version.org.easytesting.fest>2.0M6</version.org.easytesting.fest>
     <version.org.easymock>3.0</version.org.easymock>
     <version.org.eclipse.bpmn2>0.8.2-jboss</version.org.eclipse.bpmn2>
-    <version.org.eclipse.aether>1.1.0</version.org.eclipse.aether>
+    <version.org.apache.maven.resolver>1.6.3</version.org.apache.maven.resolver>
     <version.org.eclipse.emf>2.6.0.v20100614-1136</version.org.eclipse.emf>
     <version.org.eclipse.emf.ecore.xmi>2.5.0.v20100521-1846</version.org.eclipse.emf.ecore.xmi>
     <version.org.eclipse.jdt>3.18.0</version.org.eclipse.jdt>
     <!-- Jetty's version is aligned with CXF -->
     <version.org.eclipse.jetty>9.4.53.v20231009</version.org.eclipse.jetty>
     <version.org.eclipse.jgit>5.10.0.202012080955-r</version.org.eclipse.jgit>
-    <version.org.eclipse.sisu>0.3.2</version.org.eclipse.sisu>
+    <version.org.eclipse.sisu>0.3.5</version.org.eclipse.sisu>
     <version.org.eclipse.emf.gwt>2.9.0</version.org.eclipse.emf.gwt>
     <version.org.glassfish>3.1.2</version.org.glassfish>
     <version.org.glassfish.jaxb>2.3.2</version.org.glassfish.jaxb>
@@ -258,8 +258,8 @@
     <version.org.scannotation>1.0.3</version.org.scannotation>
     <version.org.slf4j>1.7.30</version.org.slf4j>
     <version.org.sonatype.aether>1.13.1</version.org.sonatype.aether>
-    <version.org.sonatype.plexus.plexus-cipher>1.7</version.org.sonatype.plexus.plexus-cipher>
-    <version.org.sonatype.plexus.plexus-sec-dispatcher>1.3</version.org.sonatype.plexus.plexus-sec-dispatcher>
+    <version.org.sonatype.plexus.plexus-cipher>2.0</version.org.sonatype.plexus.plexus-cipher>
+    <version.org.sonatype.plexus.plexus-sec-dispatcher>2.0</version.org.sonatype.plexus.plexus-sec-dispatcher>
     <version.org.sonatype.sisu>2.3.0</version.org.sonatype.sisu>
     <version.org.sonatype.sisu.sisu-guice>3.2.3</version.org.sonatype.sisu.sisu-guice>
     <version.org.springframework>5.3.27</version.org.springframework>
@@ -352,7 +352,7 @@
     <!-- The version greater than 1.0.0.GA is not compatible with GWT 2.8.x -->
     <!-- therefore the property is rewritten in that repository parent -->
     <version.javax.validation>2.0.1.Final</version.javax.validation>
-    <version.org.ops4j.pax.url>2.2.0</version.org.ops4j.pax.url>
+    <version.org.ops4j.pax.url>2.6.10</version.org.ops4j.pax.url>
     <!-- simple-jndi is a small library that helps us avoid JNDI error messages during testing -->
     <version.simple-jndi>0.11.4.1</version.simple-jndi>
     <version.org.asciidoctor.asciidoctorj>2.2.0</version.org.asciidoctor.asciidoctorj>
@@ -420,8 +420,7 @@
 
     <version.com.auth0-jwt>4.4.0</version.com.auth0-jwt>
     <version.org.codehaus.plexus.plexus-io>3.0.0</version.org.codehaus.plexus.plexus-io>
-    <version.org.apache.maven.shared.maven-artifact-transfer>0.9.1
-    </version.org.apache.maven.shared.maven-artifact-transfer>
+    <version.org.apache.maven.shared.maven-artifact-transfer>0.13.1</version.org.apache.maven.shared.maven-artifact-transfer>
     <version.compiler.plugin>3.8.1</version.compiler.plugin>
     <version.net.openhft.chronicle-queue>5.16.10</version.net.openhft.chronicle-queue>
     <version.net.openhft.chronicle-core>1.16.16</version.net.openhft.chronicle-core>
@@ -473,7 +472,7 @@
     <project.root.dir>${maven.multiModuleProjectDirectory}</project.root.dir>
     <jacoco.exec.file>${project.root.dir}/target/jacoco.exec</jacoco.exec.file>
     <!-- com.github.eirslett:frontend-maven-plugin version -->
-    <version.frontend-maven-plugin>1.8.0</version.frontend-maven-plugin>
+    <version.frontend-maven-plugin>1.15.0</version.frontend-maven-plugin>
     <version.node>v12.16.2</version.node>
     <version.npm>7.15.1</version.npm>
     <version.yarn>v1.22.4</version.yarn>
@@ -3913,6 +3912,16 @@
         <groupId>org.apache.maven</groupId>
         <artifactId>maven-embedder</artifactId>
         <version>${version.org.apache.maven}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.maven</groupId>
@@ -3922,6 +3931,10 @@
           <exclusion>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -3944,6 +3957,12 @@
         <groupId>org.apache.maven</groupId>
         <artifactId>maven-model-builder</artifactId>
         <version>${version.org.apache.maven}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.maven</groupId>
@@ -3952,8 +3971,14 @@
       </dependency>
       <dependency>
         <groupId>org.apache.maven</groupId>
-        <artifactId>maven-aether-provider</artifactId>
+        <artifactId>maven-resolver-provider</artifactId>
         <version>${version.org.apache.maven}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.maven</groupId>
@@ -3969,6 +3994,12 @@
         <groupId>org.apache.maven</groupId>
         <artifactId>maven-settings-builder</artifactId>
         <version>${version.org.apache.maven}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugin-tools</groupId>
@@ -4357,52 +4388,55 @@
       </dependency>
 
       <dependency>
-        <groupId>org.eclipse.aether</groupId>
-        <artifactId>aether-api</artifactId>
-        <version>${version.org.eclipse.aether}</version>
+        <groupId>org.apache.maven.resolver</groupId>
+        <artifactId>maven-resolver-api</artifactId>
+        <version>${version.org.apache.maven.resolver}</version>
       </dependency>
       <dependency>
-        <groupId>org.eclipse.aether</groupId>
-        <artifactId>aether-spi</artifactId>
-        <version>${version.org.eclipse.aether}</version>
+        <groupId>org.apache.maven.resolver</groupId>
+        <artifactId>maven-resolver-spi</artifactId>
+        <version>${version.org.apache.maven.resolver}</version>
       </dependency>
       <dependency>
-        <groupId>org.eclipse.aether</groupId>
-        <artifactId>aether-util</artifactId>
-        <version>${version.org.eclipse.aether}</version>
+        <groupId>org.apache.maven.resolver</groupId>
+        <artifactId>maven-resolver-util</artifactId>
+        <version>${version.org.apache.maven.resolver}</version>
       </dependency>
       <dependency>
-        <groupId>org.eclipse.aether</groupId>
-        <artifactId>aether-impl</artifactId>
-        <version>${version.org.eclipse.aether}</version>
+        <groupId>org.apache.maven.resolver</groupId>
+        <artifactId>maven-resolver-impl</artifactId>
+        <version>${version.org.apache.maven.resolver}</version>
       </dependency>
       <dependency>
-        <groupId>org.eclipse.aether</groupId>
-        <artifactId>aether-transport-file</artifactId>
-        <version>${version.org.eclipse.aether}</version>
+        <groupId>org.apache.maven.resolver</groupId>
+        <artifactId>maven-resolver-transport-file</artifactId>
+        <version>${version.org.apache.maven.resolver}</version>
       </dependency>
       <dependency>
-        <groupId>org.eclipse.aether</groupId>
-        <artifactId>aether-transport-http</artifactId>
-        <version>${version.org.eclipse.aether}</version>
+        <groupId>org.apache.maven.resolver</groupId>
+        <artifactId>maven-resolver-transport-http</artifactId>
+        <version>${version.org.apache.maven.resolver}</version>
       </dependency>
       <dependency>
-        <groupId>org.eclipse.aether</groupId>
-        <artifactId>aether-transport-wagon</artifactId>
-        <version>${version.org.eclipse.aether}</version>
+        <groupId>org.apache.maven.resolver</groupId>
+        <artifactId>maven-resolver-transport-wagon</artifactId>
+        <version>${version.org.apache.maven.resolver}</version>
       </dependency>
       <dependency>
-        <groupId>org.eclipse.aether</groupId>
-        <artifactId>aether-connector-basic</artifactId>
-        <version>${version.org.eclipse.aether}</version>
+        <groupId>org.apache.maven.resolver</groupId>
+        <artifactId>maven-resolver-connector-basic</artifactId>
+        <version>${version.org.apache.maven.resolver}</version>
       </dependency>
 
       <dependency>
         <groupId>org.eclipse.sisu</groupId>
         <artifactId>org.eclipse.sisu.plexus</artifactId>
         <version>${version.org.eclipse.sisu}</version>
-
         <exclusions>
+          <exclusion>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
@@ -5177,14 +5211,26 @@
       </dependency>
 
       <dependency>
-        <groupId>org.sonatype.plexus</groupId>
+        <groupId>org.codehaus.plexus</groupId>
         <artifactId>plexus-cipher</artifactId>
         <version>${version.org.sonatype.plexus.plexus-cipher}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
-        <groupId>org.sonatype.plexus</groupId>
+        <groupId>org.codehaus.plexus</groupId>
         <artifactId>plexus-sec-dispatcher</artifactId>
         <version>${version.org.sonatype.plexus.plexus-sec-dispatcher}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
 
       <dependency>
