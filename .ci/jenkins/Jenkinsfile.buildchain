@@ -108,7 +108,7 @@ pipeline {
                 script {
                     if(isPR()) {
                         def project = util.getProjectTriggeringJob()[1]
-                        if(["drools", "appformer", "jbpm", "drools-wb", "kie-soup", "droolsjbpm-integration", "kie-wb-common"].contains(project)) {
+                        if(["optaplanner", "appformer", "jbpm", "drools-wb", "kie-soup", "droolsjbpm-integration", "kie-wb-common"].contains(project)) {
                             dir("bc/kiegroup_${project}") {
                                 maven.runMavenWithSettingsSonar("771ff52a-a8b4-40e6-9b22-d54c7314aa1e", "-nsu generate-resources -Psonarcloud-analysis -Denforcer.skip=true", "SONARCLOUD_TOKEN", "sonar_analysis.maven.log")
                             }
