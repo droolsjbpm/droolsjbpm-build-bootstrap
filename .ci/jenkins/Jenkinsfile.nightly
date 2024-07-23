@@ -96,7 +96,7 @@ pipeline {
                             githubscm.commitChanges("PME changes for ${tagName}")
                             githubscm.tagRepository(tagName)
                             githubscm.addRemote(remoteName, "${env.PRODUCTIZATION_REPOSITORY_BASE_URL}/${project.value}")
-                            githubscm.pushRemoteTag(remoteName, tagName, "gerrit-user")
+                            githubscm.pushRemoteTag(remoteName, tagName, "gitlab-user")
                         }
                     }
                 }
