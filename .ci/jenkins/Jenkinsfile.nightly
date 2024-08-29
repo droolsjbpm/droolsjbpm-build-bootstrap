@@ -5,7 +5,7 @@ def tagName = "nightly-${PRODUCT_VERSION}.redhat-${new Date().format('yyyyMMddHH
 
 pipeline {
     agent {
-        label 'kie-rhel7-pipeline && kie-mem24g && !built-in'
+        label 'kie-rhel8 && kie-mem24g && !built-in'
     }
     tools {
         maven 'kie-maven-3.8.1'
