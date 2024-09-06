@@ -68,7 +68,7 @@
     <version.commons-logging>1.1.1</version.commons-logging>
     <version.commons-net>2.2</version.commons-net>
     <version.commons-pool>1.6</version.commons-pool>
-    <version.commons-io>2.7</version.commons-io>
+    <version.commons-io>2.15.1</version.commons-io>
     <version.common-text>1.10.0</version.common-text>
     <version.com.ahome-it.lienzo.tooling.nativetools>1.0.195-RELEASE
     </version.com.ahome-it.lienzo.tooling.nativetools>
@@ -151,11 +151,11 @@
     <version.org.apache.maven.plugin-tools>3.4</version.org.apache.maven.plugin-tools>
     <version.org.apache.maven.wagon>3.5.1</version.org.apache.maven.wagon>
     <version.org.apache.neethi>3.1.1</version.org.apache.neethi>
-    <version.org.apache.poi>4.1.2</version.org.apache.poi>
+    <version.org.apache.poi>5.2.5</version.org.apache.poi>
     <version.org.apache.sshd>2.9.2</version.org.apache.sshd>
     <version.org.apache.tomcat>9.0.86</version.org.apache.tomcat>
     <version.org.apache.velocity>2.3</version.org.apache.velocity>
-    <version.org.apache.xmlbeans>3.1.0</version.org.apache.xmlbeans>
+    <version.org.apache.xmlbeans>5.2.1</version.org.apache.xmlbeans>
     <version.org.apache.ws.xmlschema>2.2.5</version.org.apache.ws.xmlschema>
     <version.org.apache.xmlgraphics.batik>1.17</version.org.apache.xmlgraphics.batik>
     <version.org.apache.xmlgraphics.commons>2.6</version.org.apache.xmlgraphics.commons>
