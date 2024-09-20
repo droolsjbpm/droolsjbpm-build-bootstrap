@@ -268,7 +268,6 @@
     <version.org.springframework.boot>2.7.18</version.org.springframework.boot>
     <version.org.springframework.osgi>1.2.1</version.org.springframework.osgi>
     <!-- spring-security.version and tomcat.version overrides version from spring-boot-dependencies bom -->
-    <spring-security.version>5.7.12</spring-security.version>
     <tomcat.version>9.0.86</tomcat.version>
     <version.org.subethamail>1.2</version.org.subethamail>
     <version.org.subethamail.subethasmtp>3.1.6</version.org.subethamail.subethasmtp>
