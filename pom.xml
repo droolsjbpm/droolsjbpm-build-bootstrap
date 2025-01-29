@@ -381,7 +381,7 @@
     <!-- Make OSGi happy -->
     <osgi.snapshot.qualifier>${maven.build.timestamp}</osgi.snapshot.qualifier>
 
-    <version.io.netty>4.1.108.Final</version.io.netty>
+    <version.io.netty>4.1.117.Final</version.io.netty>
     <!-- IMPORTANT: Don't use this dependency. The right dependency version is the one named as "version.io.netty".
          This is just needed by Elasticsearch Transport Plugin because it has a compatibility mode with netty 3 and
          it can't be removed -->
