@@ -316,7 +316,7 @@
     <version.com.google.testing.compile>0.11</version.com.google.testing.compile>
     <version.org.antlr4>4.9.2</version.org.antlr4>
     <!-- CXF's version is aligned with Jetty -->
-    <version.org.apache.cxf>3.4.10</version.org.apache.cxf>
+    <version.org.apache.cxf>3.5.10</version.org.apache.cxf>
     <version.org.apache.camel>2.25.4</version.org.apache.camel>
     <version.org.codehaus.cargo>1.9.3</version.org.codehaus.cargo>
     <version.org.freemarker>2.3.30</version.org.freemarker>
