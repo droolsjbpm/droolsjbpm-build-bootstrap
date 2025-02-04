@@ -98,7 +98,7 @@
     <version.com.neovisionaries>1.27</version.com.neovisionaries>
     <version.com.networknt.json-schema-validator>1.0.43</version.com.networknt.json-schema-validator>
     <version.com.sun.xml.bind>2.3.0</version.com.sun.xml.bind>
-    <version.com.thoughtworks.xstream>1.4.20</version.com.thoughtworks.xstream>
+    <version.com.thoughtworks.xstream>1.4.21</version.com.thoughtworks.xstream>
     <version.de.benediktmeurer.gwt-slf4j>0.0.2</version.de.benediktmeurer.gwt-slf4j>
     <version.org.dom4j>2.1.3</version.org.dom4j>
     <version.guru.nidi>0.18.0</version.guru.nidi>
@@ -333,6 +333,8 @@
     <version.org.ow2.asm>9.2</version.org.ow2.asm>
     <version.org.wildfly.security>1.15.16.Final</version.org.wildfly.security>
     <version.org.picketlink>2.7.1.Final</version.org.picketlink>
+    <version.org.revapi>0.9.5</version.org.revapi>
+    <version.org.revapi.java>0.14.3</version.org.revapi.java>
     <version.com.unboundid>4.0.5</version.com.unboundid>
     <version.com.wordnik.swagger>1.3.10</version.com.wordnik.swagger>
     <version.io.swagger>1.6.2</version.io.swagger>
@@ -1070,12 +1072,12 @@
         <plugin>
           <groupId>org.revapi</groupId>
           <artifactId>revapi-maven-plugin</artifactId>
-          <version>0.9.5</version>
+          <version>${version.org.revapi}</version>
           <dependencies>
             <dependency>
               <groupId>org.revapi</groupId>
               <artifactId>revapi-java</artifactId>
-              <version>0.14.3</version>
+              <version>${version.org.revapi.java}</version>
             </dependency>
           </dependencies>
           <configuration>
