@@ -264,7 +264,7 @@
     <version.org.sonatype.plexus.plexus-sec-dispatcher>2.0</version.org.sonatype.plexus.plexus-sec-dispatcher>
     <version.org.sonatype.sisu>2.3.0</version.org.sonatype.sisu>
     <version.org.sonatype.sisu.sisu-guice>3.2.3</version.org.sonatype.sisu.sisu-guice>
-    <version.org.springframework>5.3.34</version.org.springframework>
+    <version.org.springframework>5.3.39</version.org.springframework>
     <version.org.springframework.boot>2.7.18</version.org.springframework.boot>
     <version.org.springframework.osgi>1.2.1</version.org.springframework.osgi>
     <!-- spring-security.version and tomcat.version overrides version from spring-boot-dependencies bom -->
