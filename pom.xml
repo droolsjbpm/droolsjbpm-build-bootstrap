@@ -89,7 +89,7 @@
     <version.com.google.gwt.gwtmockito>1.1.9</version.com.google.gwt.gwtmockito>
     <version.com.google.jsinterop.base>1.0.0</version.com.google.jsinterop.base>
     <version.com.google.jsinterop.annotations>2.0.0</version.com.google.jsinterop.annotations>
-    <version.com.google.protobuf>3.19.6</version.com.google.protobuf>
+    <version.com.google.protobuf>3.25.5</version.com.google.protobuf>
     <version.com.h2database>2.2.220</version.com.h2database>
     <version.com.jcraft>0.1.54</version.com.jcraft>
     <version.com.lowagie.itext>2.1.7</version.com.lowagie.itext>
