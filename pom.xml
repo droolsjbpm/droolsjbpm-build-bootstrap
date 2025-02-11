@@ -108,7 +108,7 @@
     <version.io.smallrye.openapi.core>2.1.4</version.io.smallrye.openapi.core>
     <version.io.strimzi.strimzi-test-container>0.106.0</version.io.strimzi.strimzi-test-container>
     <version.io.takari.maven.plugins.testing>2.9.2</version.io.takari.maven.plugins.testing>
-    <version.io.undertow>2.2.33.Final</version.io.undertow>
+    <version.io.undertow>2.2.37.Final</version.io.undertow>
     <version.jaxen>1.1.6</version.jaxen>
     <version.jivesoftware.smack>3.1.0</version.jivesoftware.smack>
     <version.joda-time>2.9.7</version.joda-time>
