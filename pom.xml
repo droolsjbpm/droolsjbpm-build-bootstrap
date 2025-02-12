@@ -331,7 +331,7 @@
     <version.org.jboss.errai.wildfly>23.0.0.Final</version.org.jboss.errai.wildfly>
     <!-- Required by jboss-remoting version above -->
     <version.org.ow2.asm>9.2</version.org.ow2.asm>
-    <version.org.wildfly.security>1.15.16.Final</version.org.wildfly.security>
+    <version.org.wildfly.security>1.15.24.Final</version.org.wildfly.security>
     <version.org.picketlink>2.7.1.Final</version.org.picketlink>
     <version.org.revapi>0.9.5</version.org.revapi>
     <version.org.revapi.java>0.14.3</version.org.revapi.java>
