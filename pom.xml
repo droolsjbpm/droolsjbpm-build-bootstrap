@@ -207,7 +207,7 @@
     <version.org.jboss.marshalling>2.0.11.Final</version.org.jboss.marshalling>
     <version.org.jboss.forge.roaster>2.19.5.Final</version.org.jboss.forge.roaster>
     <version.org.jboss.remote-naming>2.0.5.Final</version.org.jboss.remote-naming>
-    <version.org.jboss.remoting>5.0.20.Final</version.org.jboss.remoting>
+    <version.org.jboss.remoting>5.0.30.Final</version.org.jboss.remoting>
     <version.org.jboss.shrinkwrap.resolver>2.2.0</version.org.jboss.shrinkwrap.resolver>
     <version.org.jboss.weld.weld>3.1.6.Final</version.org.jboss.weld.weld>
     <version.org.jboss.weld.weld-api>3.1.SP3</version.org.jboss.weld.weld-api>
