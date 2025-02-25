@@ -119,7 +119,7 @@
     <version.net.jcip>1.0</version.net.jcip>
     <version.net.java.dev.glazedlists>1.8.0</version.net.java.dev.glazedlists>
     <version.net.sf.opencsv>2.3</version.net.sf.opencsv>
-    <version.okhttp>3.12.12</version.okhttp>
+    <version.okhttp>4.12.0</version.okhttp>
     <version.antlr>2.7.7</version.antlr>
     <version.org.antlr>3.5.2</version.org.antlr>
     <version.org.antlrgwt>4.8.2</version.org.antlrgwt>
@@ -440,7 +440,7 @@
     <version.net.byte-buddy>1.10.3</version.net.byte-buddy>
     <version.docker-client>3.5.12</version.docker-client>
     <version.kubernetes-client>4.7.2</version.kubernetes-client>
-    <version.com.squareup.okio>1.17.6</version.com.squareup.okio>
+    <version.com.squareup.okio>3.6.0</version.com.squareup.okio>
     <version.zjsonpatch>0.3.0</version.zjsonpatch>
     <version.arquillian-cube>1.0.0.Alpha15</version.arquillian-cube>
     <jboss.releases.repo.url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/
@@ -6567,6 +6567,22 @@
         <artifactId>java-jwt</artifactId>
         <version>${version.com.auth0-jwt}</version>
       </dependency>
+      <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcprov-jdk15to18</artifactId>
+        <version>${version.org.bouncycastle}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcpkix-jdk15to18</artifactId>
+        <version>${version.org.bouncycastle}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcpg-jdk15to18</artifactId>
+        <version>${version.org.bouncycastle}</version>
+      </dependency>
+
     </dependencies>
 
   </dependencyManagement>
