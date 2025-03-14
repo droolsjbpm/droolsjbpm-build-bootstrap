@@ -3090,6 +3090,12 @@
         <artifactId>logging-interceptor</artifactId>
         <version>${version.okhttp}</version>
       </dependency>
+      <dependency>
+        <groupId>com.squareup.okhttp3</groupId>
+        <artifactId>mockwebserver</artifactId>
+        <version>${version.okhttp}</version>
+        <scope>test</scope>
+      </dependency>
 
       <dependency>
         <groupId>org.apache.abdera</groupId>
