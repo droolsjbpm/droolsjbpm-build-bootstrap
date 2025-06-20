@@ -154,7 +154,7 @@
     <version.org.apache.neethi>3.1.1</version.org.apache.neethi>
     <version.org.apache.poi>5.2.5</version.org.apache.poi>
     <version.org.apache.sshd>2.9.2</version.org.apache.sshd>
-    <version.org.apache.tomcat>9.0.99</version.org.apache.tomcat>
+    <version.org.apache.tomcat>9.0.105</version.org.apache.tomcat>
     <version.org.apache.velocity>2.3</version.org.apache.velocity>
     <version.org.apache.xmlbeans>5.2.1</version.org.apache.xmlbeans>
     <version.org.apache.ws.xmlschema>2.2.5</version.org.apache.ws.xmlschema>
@@ -268,8 +268,6 @@
     <version.org.springframework>5.3.39</version.org.springframework>
     <version.org.springframework.boot>2.7.18</version.org.springframework.boot>
     <version.org.springframework.osgi>1.2.1</version.org.springframework.osgi>
-    <!-- spring-security.version and tomcat.version overrides version from spring-boot-dependencies bom -->
-    <tomcat.version>9.0.86</tomcat.version>
     <version.org.subethamail>1.2</version.org.subethamail>
     <version.org.subethamail.subethasmtp>3.1.6</version.org.subethamail.subethasmtp>
     <version.org.testcontainers>1.15.2</version.org.testcontainers>
@@ -4078,6 +4076,18 @@
         <groupId>org.apache.sshd</groupId>
         <artifactId>sshd-core</artifactId>
         <version>${version.org.apache.sshd}</version>
+      </dependency>
+
+
+      <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-core</artifactId>
+        <version>${version.org.apache.tomcat}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-websocket</artifactId>
+        <version>${version.org.apache.tomcat}</version>
       </dependency>
 
       <dependency>
