@@ -324,7 +324,7 @@
     <version.org.jboss.arquillian.extension.drone>2.5.1</version.org.jboss.arquillian.extension.drone>
     <version.org.jboss.arquillian.graphene>2.3.2</version.org.jboss.arquillian.graphene>
     <version.com.google.guava.for-selenium>33.2.1-jre</version.com.google.guava.for-selenium>
-    <version.org.jboss.errai>4.16.0.Final</version.org.jboss.errai>
+    <version.org.jboss.errai>4.17.0.Final</version.org.jboss.errai>
     <version.com.google.elemental2>1.1.0</version.com.google.elemental2>
     <!-- WildFly version used together with  the GWT's Super Dev Mode -->
     <version.org.jboss.errai.wildfly>23.0.0.Final</version.org.jboss.errai.wildfly>
