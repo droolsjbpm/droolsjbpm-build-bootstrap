@@ -60,7 +60,6 @@
     <version.commons-cli>1.4</version.commons-cli>
     <version.commons-codec>1.18.0</version.commons-codec>
     <version.commons-collections>3.2.2</version.commons-collections>
-    <version.commons-configuration>1.6</version.commons-configuration>
     <version.commons-dbcp>1.4</version.commons-dbcp>
     <version.commons-digester>1.8</version.commons-digester>
     <version.commons-fileupload>1.6.0</version.commons-fileupload>
@@ -2323,25 +2322,6 @@
         <groupId>commons-collections</groupId>
         <artifactId>commons-collections</artifactId>
         <version>${version.commons-collections}</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-configuration</groupId>
-        <artifactId>commons-configuration</artifactId>
-        <version>${version.commons-configuration}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>commons-digester</groupId>
-            <artifactId>commons-digester</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils-core</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-          </exclusion>
-        </exclusions>
       </dependency>
       <dependency>
         <groupId>commons-digester</groupId>
