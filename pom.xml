@@ -91,7 +91,7 @@
     <version.com.google.protobuf>3.25.5</version.com.google.protobuf>
     <version.com.h2database>2.2.220</version.com.h2database>
     <version.com.jcraft>0.1.54</version.com.jcraft>
-    <version.com.lowagie.itext>2.1.7</version.com.lowagie.itext>
+    <version.openpdf>1.3.30</version.openpdf>
     <version.com.miglayout>3.7.4</version.com.miglayout>
     <!-- Only used by optaweb-vehicle-routing, but is required -->
     <version.com.neovisionaries>1.27</version.com.neovisionaries>
@@ -2528,9 +2528,9 @@
       </dependency>
 
       <dependency>
-        <groupId>com.lowagie</groupId>
-        <artifactId>itext</artifactId>
-        <version>${version.com.lowagie.itext}</version>
+        <groupId>com.github.librepdf</groupId>
+        <artifactId>openpdf</artifactId>
+        <version>${version.openpdf}</version>
         <exclusions>
           <!-- The bouncycastle dependencies should be optional=true in itext's pom -->
           <exclusion>
