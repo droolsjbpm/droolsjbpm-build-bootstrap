@@ -491,6 +491,7 @@
     <version.lock-treatment-tool>^0.2.2</version.lock-treatment-tool>
 
     <version.com.microsoft.sqlserver.jdbc>11.2.4.jre11</version.com.microsoft.sqlserver.jdbc>
+    <version.jose4j>0.9.6</version.jose4j>
   </properties>
 
   <repositories>
@@ -2246,6 +2247,11 @@
         <groupId>com.microsoft.sqlserver</groupId>
         <artifactId>mssql-jdbc</artifactId>
         <version>${version.com.microsoft.sqlserver.jdbc}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.bitbucket.b_c</groupId>
+        <artifactId>jose4j</artifactId>
+        <version>${version.jose4j}</version>
       </dependency>
       <!-- dependencies from jboss-ip-bom -->
       <!--
