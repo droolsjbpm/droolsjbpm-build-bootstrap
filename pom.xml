@@ -55,7 +55,7 @@
     -->
     <version.aopalliance>1.0</version.aopalliance>
     <version.ch.qos.cal10n>0.8.1</version.ch.qos.cal10n>
-    <version.ch.qos.logback>1.2.13</version.ch.qos.logback>
+    <version.ch.qos.logback>1.5.15</version.ch.qos.logback>
     <version.commons-beanutils>1.11.0</version.commons-beanutils>
     <version.commons-cli>1.4</version.commons-cli>
     <version.commons-codec>1.18.0</version.commons-codec>
@@ -260,7 +260,8 @@
     <version.org.reflections>0.9.11</version.org.reflections>
     <!-- Avoid using scannotation in favor of its successor org.reflections -->
     <version.org.scannotation>1.0.3</version.org.scannotation>
-    <version.org.slf4j>1.7.30</version.org.slf4j>
+    <!-- DBACLD-189752  Upgraded slf4j version to 2.x to make it compatible with logback-classic -->
+    <version.org.slf4j>2.0.15</version.org.slf4j>
     <version.org.sonatype.aether>1.13.1</version.org.sonatype.aether>
     <version.org.sonatype.plexus.plexus-cipher>2.0</version.org.sonatype.plexus.plexus-cipher>
     <version.org.sonatype.plexus.plexus-sec-dispatcher>2.0</version.org.sonatype.plexus.plexus-sec-dispatcher>
