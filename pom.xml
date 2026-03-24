@@ -435,6 +435,7 @@
     <version.bootable>6.1.2.Final</version.bootable>
     <version.net.byte-buddy>1.10.3</version.net.byte-buddy>
     <version.docker-client>3.5.12</version.docker-client>
+    <version.docker-java>3.4.2</version.docker-java>
     <version.kubernetes-client>4.7.2</version.kubernetes-client>
     <version.com.squareup.okio>3.6.0</version.com.squareup.okio>
     <version.zjsonpatch>0.3.0</version.zjsonpatch>
@@ -6337,6 +6338,21 @@
         </exclusions>
       </dependency>
       <dependency>
+        <groupId>com.github.docker-java</groupId>
+        <artifactId>docker-java-core</artifactId>
+        <version>${version.docker-java}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.docker-java</groupId>
+        <artifactId>docker-java-api</artifactId>
+        <version>${version.docker-java}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.docker-java</groupId>
+        <artifactId>docker-java-transport-httpclient5</artifactId>
+        <version>${version.docker-java}</version>
+      </dependency>
+      <dependency>
         <groupId>com.squareup.okio</groupId>
         <artifactId>okio</artifactId>
         <version>${version.com.squareup.okio}</version>
@@ -6666,19 +6682,20 @@
         <artifactId>java-jwt</artifactId>
         <version>${version.com.auth0-jwt}</version>
       </dependency>
+   
       <dependency>
         <groupId>org.bouncycastle</groupId>
-        <artifactId>bcprov-jdk15to18</artifactId>
+        <artifactId>bcprov-jdk18on</artifactId>
         <version>${version.org.bouncycastle}</version>
       </dependency>
       <dependency>
         <groupId>org.bouncycastle</groupId>
-        <artifactId>bcpkix-jdk15to18</artifactId>
+        <artifactId>bcpkix-jdk18on</artifactId>
         <version>${version.org.bouncycastle}</version>
       </dependency>
       <dependency>
         <groupId>org.bouncycastle</groupId>
-        <artifactId>bcpg-jdk15to18</artifactId>
+        <artifactId>bcutil-jdk18on</artifactId>
         <version>${version.org.bouncycastle}</version>
       </dependency>
 
