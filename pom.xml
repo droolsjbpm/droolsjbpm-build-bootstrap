@@ -6632,26 +6632,6 @@
         <scope>test</scope>
       </dependency>
 
-      <!-- Used by jgit -->
-      <dependency>
-        <groupId>org.bouncycastle</groupId>
-        <artifactId>bcprov-jdk15to18</artifactId>
-        <version>${version.org.bouncycastle}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.bouncycastle</groupId>
-        <artifactId>bcpkix-jdk15to18</artifactId>
-        <version>${version.org.bouncycastle}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.bouncycastle</groupId>
-        <artifactId>bcpg-jdk15to18</artifactId>
-        <version>${version.org.bouncycastle}</version>
-        <scope>test</scope>
-      </dependency>
-
       <!-- Used by kie-pmml-trusty projects -->
       <dependency>
         <groupId>org.kie</groupId>
