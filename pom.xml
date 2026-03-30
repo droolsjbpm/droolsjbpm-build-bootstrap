@@ -188,7 +188,7 @@
     <version.org.gwtbootstrap3>1.0.1</version.org.gwtbootstrap3>
     <version.org.gwtbootstrap3-extras>1.0.2</version.org.gwtbootstrap3-extras>
     <version.org.hibernate>5.4.24.Final</version.org.hibernate>
-    <version.org.hibernate.validator>6.0.20.Final</version.org.hibernate.validator>
+    <version.org.hibernate.validator>6.2.0.Final</version.org.hibernate.validator>
     <version.org.hibernate.commons.annotations>5.0.5.Final</version.org.hibernate.commons.annotations>
     <version.org.hornetq>2.4.7.Final</version.org.hornetq>
     <version.org.infinispan>14.0.27.Final</version.org.infinispan>
@@ -4692,7 +4692,6 @@
         <artifactId>hamcrest-core</artifactId>
         <version>${version.org.hamcrest}</version>
       </dependency>
-
       <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-envers</artifactId>
@@ -4714,7 +4713,6 @@
           </exclusion>
         </exclusions>
       </dependency>
-
       <dependency>
         <groupId>org.hsqldb</groupId>
         <artifactId>hsqldb</artifactId>
