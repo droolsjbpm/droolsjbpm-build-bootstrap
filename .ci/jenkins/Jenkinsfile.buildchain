@@ -17,7 +17,7 @@ pipeline {
         label agentLabel
     }
     tools {
-        nodejs 'nodejs-16.2.0'
+        nodejs 'nodejs-20.14.0'
     }
     options {
         timestamps ()
