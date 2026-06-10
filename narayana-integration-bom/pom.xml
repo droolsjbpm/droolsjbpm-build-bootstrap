@@ -18,17 +18,18 @@
   </description>
 
   <properties>
-    <version.org.jboss.jbossts.jta>4.17.29.Final</version.org.jboss.jbossts.jta>
+    <!-- Narayana 7.0.0+ is Jakarta EE 10 compatible -->
+    <version.org.jboss.jbossts.jta>7.0.2.Final</version.org.jboss.jbossts.jta>
     <!-- Tomcat integration with Narayana -->
-    <version.org.jboss.integration.narayana-tomcat>1.0.0.Final</version.org.jboss.integration.narayana-tomcat>
+    <version.org.jboss.integration.narayana-tomcat>2.0.0.Final</version.org.jboss.integration.narayana-tomcat>
     <!-- narayana dependencies for tomcat and kie server -->
-    <version.org.jboss.narayana.tomcat>5.9.0.Final</version.org.jboss.narayana.tomcat>
+    <version.org.jboss.narayana.tomcat>7.0.2.Final</version.org.jboss.narayana.tomcat>
     <!-- DBCP connection pooling for Narayana -->
-    <version.org.apache.tomcat.tomcat-dbcp>9.0.111</version.org.apache.tomcat.tomcat-dbcp>
+    <version.org.apache.tomcat.tomcat-dbcp>10.1.34</version.org.apache.tomcat.tomcat-dbcp>
 
-    <version.org.jboss.transaction.spi>7.6.1.Final</version.org.jboss.transaction.spi>
-    <version.jakarta.transaction-api>1.3.3</version.jakarta.transaction-api>
-    <version.org.jboss.logging.jboss-logging>3.4.1.Final</version.org.jboss.logging.jboss-logging>
+    <version.org.jboss.transaction.spi>8.0.0.Final</version.org.jboss.transaction.spi>
+    <version.jakarta.transaction-api>2.0.1</version.jakarta.transaction-api>
+    <version.org.jboss.logging.jboss-logging>3.6.1.Final</version.org.jboss.logging.jboss-logging>
   </properties>
 
   <!-- IMPORTANT: Do not declare any build things here! Declare them in kie-user-bom-parent. -->
