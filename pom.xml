@@ -744,7 +744,8 @@
                       <exclude>javax.activation:activation</exclude>
                       <exclude>javax.annotation:javax.annotation-api</exclude>
                       <exclude>javax.enterprise:cdi-api</exclude>
-                      <exclude>javax.inject:javax.inject</exclude>
+                      <!-- We need the following one to have kie-ci related components still working without rewriting them from scratch -->
+                      <!--<exclude>javax.inject:javax.inject</exclude>-->
                       <exclude>javax.interceptor:javax.interceptor-api</exclude>
                       <exclude>javax.jws:javax.jws-api</exclude>
                       <exclude>javax.jws:jsr181-api</exclude>
