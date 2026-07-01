@@ -1181,6 +1181,10 @@
               <exclude>**/*IntegrationTest.java</exclude>
             </excludes>
             <argLine>-Xmx1024m -Dfile.encoding=UTF-8</argLine>
+            <argLine>
+              --add-opens=java.base/java.lang=ALL-UNNAMED
+              --add-opens=java.base/java.util=ALL-UNNAMED
+            </argLine>
             <systemPropertyVariables>
               <apple.awt.UIElement>true</apple.awt.UIElement>
               <org.uberfire.nio.git.daemon.enabled>false</org.uberfire.nio.git.daemon.enabled>
