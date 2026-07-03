@@ -210,6 +210,8 @@
     <version.org.jboss.shrinkwrap.resolver>2.2.0</version.org.jboss.shrinkwrap.resolver>
     <version.org.jboss.weld.weld>5.0.0.Final</version.org.jboss.weld.weld>
     <version.org.jboss.weld.weld-api>5.0.SP3</version.org.jboss.weld.weld-api>
+    <version.com.sun.jakarta.mail>2.0.2</version.com.sun.jakarta.mail>
+    <version.com.sun.jakarta.activation>2.0.1</version.com.sun.jakarta.activation>
     <version.jakarta.mail-api>2.1.5</version.jakarta.mail-api>
     <version.jakarta.enterprise.cdi-api>4.1.0</version.jakarta.enterprise.cdi-api>
     <version.jakarta.activation-api>2.1.4</version.jakarta.activation-api>
@@ -279,7 +281,7 @@
     <version.org.webjars.npm.monaco-editor>0.20.0</version.org.webjars.npm.monaco-editor>
     <version.org.wildfly>35.0.0.Final</version.org.wildfly>
     <version.org.wildfly.arquillian>5.1.0.Final</version.org.wildfly.arquillian>
-    <version.org.wildfly.client>2.0.2.Final</version.org.wildfly.client>
+    <version.org.wildfly.client>1.0.1.Final</version.org.wildfly.client>
     <version.org.wildfly.core>27.0.0.Final</version.org.wildfly.core>
     <version.org.wildfly.common>1.7.0.Final</version.org.wildfly.common>
     <version.org.yaml.snakeyaml>2.0</version.org.yaml.snakeyaml>
@@ -314,12 +316,13 @@
     <!-- ################################################################################ -->
 
     <version.com.android-dx>1.10</version.com.android-dx>
+    <version.com.icegreen.greenmail>2.1.9</version.com.icegreen.greenmail>
     <version.com.github.tomakehurst.wiremock>1.53</version.com.github.tomakehurst.wiremock>
     <version.com.google.android>4.1.1.4</version.com.google.android>
     <version.com.google.testing.compile>0.11</version.com.google.testing.compile>
     <version.org.antlr4>4.9.2</version.org.antlr4>
     <!-- CXF's version is aligned with Jetty -->
-    <version.org.apache.cxf>3.6.8</version.org.apache.cxf>
+    <version.org.apache.cxf>4.2.2</version.org.apache.cxf>
     <version.org.apache.camel>2.25.4</version.org.apache.camel>
     <version.org.codehaus.cargo>1.9.3</version.org.codehaus.cargo>
     <version.org.freemarker>2.3.30</version.org.freemarker>
@@ -1340,6 +1343,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-war-plugin</artifactId>
+          <version>3.5.1</version>
           <dependencies>
             <!-- Workaround for JDK9. Should be removed once we upgrade the plugin to version which depends directly on plexus-archiver 3.0.3+ -->
             <dependency>
@@ -2554,6 +2558,12 @@
       </dependency>
 
       <dependency>
+        <groupId>com.icegreen</groupId>
+        <artifactId>greenmail</artifactId>
+        <version>${version.com.icegreen.greenmail}</version>
+      </dependency>
+
+      <dependency>
         <groupId>com.jcraft</groupId>
         <artifactId>jsch</artifactId>
         <version>${version.com.jcraft}</version>
@@ -2809,7 +2819,7 @@
       <dependency>
         <groupId>com.sun.mail</groupId>
         <artifactId>jakarta.mail</artifactId>
-        <version>${version.jakarta.mail-api}</version>
+        <version>${version.com.sun.jakarta.mail}</version>
       </dependency>
       <dependency>
         <groupId>jakarta.mail</groupId>
@@ -2820,7 +2830,7 @@
       <dependency>
         <groupId>com.sun.activation</groupId>
         <artifactId>jakarta.activation</artifactId>
-        <version>${version.jakarta.activation-api}</version>
+        <version>${version.com.sun.jakarta.activation}</version>
       </dependency>
       <dependency>
         <groupId>jakarta.activation</groupId>
