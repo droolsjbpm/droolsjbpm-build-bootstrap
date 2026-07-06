@@ -179,7 +179,7 @@
     <version.org.eclipse.emf.ecore.xmi>2.5.0.v20100521-1846</version.org.eclipse.emf.ecore.xmi>
     <version.org.eclipse.jdt>3.18.0</version.org.eclipse.jdt>
     <!-- Jetty's version is aligned with CXF -->
-    <version.org.eclipse.jetty>9.4.57.v20241219</version.org.eclipse.jetty>
+    <version.org.eclipse.jetty>11.0.26</version.org.eclipse.jetty>
     <version.org.eclipse.jgit>6.10.1.202505221210-r</version.org.eclipse.jgit>
     <version.org.eclipse.sisu>1.0.1</version.org.eclipse.sisu>
     <version.org.eclipse.emf.gwt>2.9.0</version.org.eclipse.emf.gwt>
@@ -224,7 +224,7 @@
     <version.jakarta.interceptor-api>2.2.0</version.jakarta.interceptor-api>
     <version.jakarta.jms-api>3.1.0</version.jakarta.jms-api>
     <version.jakarta.resource-api>2.1.0</version.jakarta.resource-api>
-    <version.jakarta.security.jacc-api>2.1.0</version.jakarta.security.jacc-api>
+    <version.jakarta.security.jacc-api>1.6.1</version.jakarta.security.jacc-api>
     <version.jakarta.servlet.jsp-api>3.1.0</version.jakarta.servlet.jsp-api>
     <version.jakarta.servlet.jsp.jstl-api>3.0.0</version.jakarta.servlet.jsp.jstl-api>
     <version.jakarta.transaction-api>2.0.1</version.jakarta.transaction-api>
@@ -424,7 +424,7 @@
     <gwt.compiler.localWorkers>1</gwt.compiler.localWorkers>
     <!-- property for productisation to know the last released version -->
     <latestReleasedVersionFromThisBranch>7.67.0.Final</latestReleasedVersionFromThisBranch>
-    <version.io.takari.maven.plugins.compiler>1.13.5</version.io.takari.maven.plugins.compiler>
+    <version.io.takari.maven.plugins.compiler>2.3.0</version.io.takari.maven.plugins.compiler>
 
     <version.com.auth0-jwt>4.4.0</version.com.auth0-jwt>
     <version.org.codehaus.plexus.plexus-io>3.0.0</version.org.codehaus.plexus.plexus-io>
@@ -4909,7 +4909,7 @@
       </dependency>
       <dependency>
         <groupId>org.jboss.resteasy</groupId>
-        <artifactId>resteasy-jaxrs</artifactId>
+        <artifactId>resteasy-core-spi</artifactId>
         <version>${version.org.jboss.resteasy}</version>
         <exclusions>
           <exclusion>
