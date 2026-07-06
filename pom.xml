@@ -224,7 +224,7 @@
     <version.jakarta.interceptor-api>2.2.0</version.jakarta.interceptor-api>
     <version.jakarta.jms-api>3.1.0</version.jakarta.jms-api>
     <version.jakarta.resource-api>2.1.0</version.jakarta.resource-api>
-    <version.jakarta.security.jacc-api>2.1.0</version.jakarta.security.jacc-api>
+    <version.jakarta.security.jacc-api>1.6.1</version.jakarta.security.jacc-api>
     <version.jakarta.servlet.jsp-api>3.1.0</version.jakarta.servlet.jsp-api>
     <version.jakarta.servlet.jsp.jstl-api>3.0.0</version.jakarta.servlet.jsp.jstl-api>
     <version.jakarta.transaction-api>2.0.1</version.jakarta.transaction-api>
