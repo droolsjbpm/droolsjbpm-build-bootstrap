@@ -4909,7 +4909,7 @@
       </dependency>
       <dependency>
         <groupId>org.jboss.resteasy</groupId>
-        <artifactId>resteasy-jaxrs</artifactId>
+        <artifactId>resteasy-core-spi</artifactId>
         <version>${version.org.jboss.resteasy}</version>
         <exclusions>
           <exclusion>
