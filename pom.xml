@@ -391,10 +391,6 @@
 
     <version.io.netty>4.1.128.Final</version.io.netty>
 
-    <!-- Plugin version overrides.
-         IMPORTANT: always explain the reason for overriding the plugin version! -->
-    <!-- Surefire version 2.19.1 coming from parent is buggy and kie-osgi tests in droolsjbpm-integration are failing because of that. -->
-    <version.surefire.plugin>2.22.1</version.surefire.plugin>
     <!-- Jacoco plugin configurations -->
     <jacoco.haltOnFailure>false</jacoco.haltOnFailure>
     <jacoco.line.coveredratio.minimum>0.9</jacoco.line.coveredratio.minimum>
