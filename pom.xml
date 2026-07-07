@@ -462,7 +462,7 @@
     <version.ch.obermuhlner>2.0.1</version.ch.obermuhlner>
     <version.org.jboss.jandex>2.2.3.Final</version.org.jboss.jandex>
     <version.jandex.plugin>1.0.6</version.jandex.plugin>
-    <version.org.eclipse.yasson>1.0.6</version.org.eclipse.yasson>
+    <version.org.eclipse.yasson>3.0.4</version.org.eclipse.yasson>
     <version.com.sun.xml.messaging.saaj>1.5.0</version.com.sun.xml.messaging.saaj>
 
     <!-- specifal versions to support different version of hibernate for ee7 servers such as WAS and WLS -->
