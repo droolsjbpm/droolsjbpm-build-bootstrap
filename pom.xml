@@ -391,10 +391,6 @@
 
     <version.io.netty>4.1.128.Final</version.io.netty>
 
-    <!-- Plugin version overrides.
-         IMPORTANT: always explain the reason for overriding the plugin version! -->
-    <!-- Surefire version 2.19.1 coming from parent is buggy and kie-osgi tests in droolsjbpm-integration are failing because of that. -->
-    <version.surefire.plugin>2.22.1</version.surefire.plugin>
     <!-- Jacoco plugin configurations -->
     <jacoco.haltOnFailure>false</jacoco.haltOnFailure>
     <jacoco.line.coveredratio.minimum>0.9</jacoco.line.coveredratio.minimum>
@@ -462,7 +458,7 @@
     <version.ch.obermuhlner>2.0.1</version.ch.obermuhlner>
     <version.org.jboss.jandex>2.2.3.Final</version.org.jboss.jandex>
     <version.jandex.plugin>1.0.6</version.jandex.plugin>
-    <version.org.eclipse.yasson>1.0.6</version.org.eclipse.yasson>
+    <version.org.eclipse.yasson>3.0.4</version.org.eclipse.yasson>
     <version.com.sun.xml.messaging.saaj>1.5.0</version.com.sun.xml.messaging.saaj>
 
     <!-- specifal versions to support different version of hibernate for ee7 servers such as WAS and WLS -->
