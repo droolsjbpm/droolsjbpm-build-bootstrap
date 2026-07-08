@@ -2913,6 +2913,11 @@
         <version>${version.jakarta.websocket-api}</version>
       </dependency>
       <dependency>
+        <groupId>jakarta.websocket</groupId>
+        <artifactId>jakarta.websocket-client-api</artifactId>
+        <version>${version.jakarta.websocket-api}</version>
+      </dependency>
+      <dependency>
         <groupId>jakarta.persistence</groupId>
         <artifactId>jakarta.persistence-api</artifactId>
         <version>${version.jakarta.persistence-api}</version>
