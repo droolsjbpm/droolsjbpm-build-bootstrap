@@ -13,7 +13,7 @@ dependencies:
 
   - project: jboss-integration/rhba
     dependencies:
-      - project: kiegroup/kie-wb-distributions
+      - project: dba/kiegroup-kie-wb-distributions
 
   - project: jboss-integration/rhba-installers
     dependencies:

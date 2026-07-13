@@ -15,7 +15,7 @@ default:
       ${{ env.WORKSPACE }}/clean-up.sh `pwd`
 
 build:
-  - project: kiegroup/droolsjbpm-build-bootstrap
+  - project: dba/kiegroup-droolsjbpm-build-bootstrap
     build-command:
       before:
         current: |
@@ -24,7 +24,7 @@ build:
       current: |
         ${{ env.MAVEN_COMMAND }}
         ${{ env.WORKSPACE }}/clean-up.sh `pwd`
-  - project: kiegroup/process-migration-service
+  - project: dba/kiegroup-process-migration-service
     build-command:
       current: echo 'skip'
 

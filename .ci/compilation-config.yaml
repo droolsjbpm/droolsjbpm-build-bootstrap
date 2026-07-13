@@ -21,24 +21,24 @@ default:
         df -h
 
 build:
-  - project: kiegroup/appformer
+  - project: dba/kiegroup-appformer
     build-command:
       upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
     archive-artifacts:
       path: |
         **/dashbuilder-runtime.war
 
-  - project: kiegroup/drools
+  - project: dba/kiegroup-drools
     build-command:
       upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
 
-  - project: kiegroup/optaplanner
+  - project: dba/kiegroup-optaplanner
     build-command:
       current: mvn -e -fae -nsu clean install -Dfull -DskipTests ${{ env.BUILD_MVN_OPTS }}
       upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
       downstream: mvn -e -nsu -fae clean install -Dfull -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
 
-  - project: kiegroup/kie-wb-common
+  - project: dba/kiegroup-kie-wb-common
     build-command:
       current: mvn -e -fae -nsu clean install -Dfull -DskipTests ${{ env.BUILD_MVN_OPTS }}
       upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
@@ -46,11 +46,11 @@ build:
       path: |
         **/target/screenshots/**
 
-  - project: kiegroup/process-migration-service
+  - project: dba/kiegroup-process-migration-service
     skip: true
     
-  - project: kiegroup/kie-docs
+  - project: dba/kiegroup-kie-docs
     skip: true
 
-  - project: kiegroup/kie-jpmml-integration
+  - project: dba/kiegroup-kie-jpmml-integration
     skip: true

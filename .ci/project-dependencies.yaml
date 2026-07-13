@@ -1,30 +1,30 @@
 version: "2.1"
 
 dependencies:
-  - project: kiegroup/lienzo-core
+  - project: dba/kiegroup-lienzo-core
 
-  - project: kiegroup/lienzo-tests
+  - project: dba/kiegroup-lienzo-tests
     dependencies:
-      - project: kiegroup/lienzo-core
+      - project: dba/kiegroup-lienzo-core
 
-  - project: kiegroup/droolsjbpm-build-bootstrap
+  - project: dba/kiegroup-droolsjbpm-build-bootstrap
     dependencies:
-      - project: kiegroup/lienzo-core
+      - project: dba/kiegroup-lienzo-core
 
-  - project: kiegroup/kie-soup
+  - project: dba/kiegroup-kie-soup
     dependencies:
-      - project: kiegroup/droolsjbpm-build-bootstrap
+      - project: dba/kiegroup-droolsjbpm-build-bootstrap
 
-  - project: kiegroup/appformer
+  - project: dba/kiegroup-appformer
     dependencies:    
-      - project: kiegroup/lienzo-core
-      - project: kiegroup/droolsjbpm-build-bootstrap
-      - project: kiegroup/lienzo-tests
-      - project: kiegroup/kie-soup
+      - project: dba/kiegroup-lienzo-core
+      - project: dba/kiegroup-droolsjbpm-build-bootstrap
+      - project: dba/kiegroup-lienzo-tests
+      - project: dba/kiegroup-kie-soup
 
-  - project: kiegroup/droolsjbpm-knowledge
+  - project: dba/kiegroup-droolsjbpm-knowledge
     dependencies:
-      - project: kiegroup/kie-soup
+      - project: dba/kiegroup-kie-soup
     mapping:
       dependencies:
         default:
@@ -35,12 +35,12 @@ dependencies:
           - source: main
             target: 7.x
       exclude:
-        - kiegroup/drools
+        - dba/kiegroup-drools
 
-  - project: kiegroup/drools
+  - project: dba/kiegroup-drools
     dependencies:
-      - project: kiegroup/kie-soup
-      - project: kiegroup/droolsjbpm-knowledge        
+      - project: dba/kiegroup-kie-soup
+      - project: dba/kiegroup-droolsjbpm-knowledge        
     mapping:
       dependencies:
         default:
@@ -51,67 +51,67 @@ dependencies:
           - source: main
             target: 7.x
       exclude:
-        - kiegroup/droolsjbpm-knowledge          
+        - dba/kiegroup-droolsjbpm-knowledge          
 
-  - project: kiegroup/jbpm
+  - project: dba/kiegroup-jbpm
     dependencies:
-      - project: kiegroup/drools
-      - project: kiegroup/kie-soup
+      - project: dba/kiegroup-drools
+      - project: dba/kiegroup-kie-soup
 
-  - project: kiegroup/kie-jpmml-integration
+  - project: dba/kiegroup-kie-jpmml-integration
     dependencies:
-      - project: kiegroup/drools
-      - project: kiegroup/jbpm
+      - project: dba/kiegroup-drools
+      - project: dba/kiegroup-jbpm
 
-  - project: kiegroup/droolsjbpm-integration
+  - project: dba/kiegroup-droolsjbpm-integration
     dependencies:
-      - project: kiegroup/drools
-      - project: kiegroup/jbpm
+      - project: dba/kiegroup-drools
+      - project: dba/kiegroup-jbpm
 
-  - project: kiegroup/kie-uberfire-extensions
+  - project: dba/kiegroup-kie-uberfire-extensions
     dependencies:
-      - project: kiegroup/appformer
+      - project: dba/kiegroup-appformer
 
-  - project: kiegroup/kie-wb-playground
+  - project: dba/kiegroup-kie-wb-playground
     dependencies:
-      - project: kiegroup/droolsjbpm-integration
+      - project: dba/kiegroup-droolsjbpm-integration
 
-  - project: kiegroup/kie-wb-common
+  - project: dba/kiegroup-kie-wb-common
     dependencies:
-      - project: kiegroup/lienzo-core
-      - project: kiegroup/appformer
-      - project: kiegroup/kie-uberfire-extensions
-      - project: kiegroup/kie-wb-playground
-      - project: kiegroup/droolsjbpm-integration
+      - project: dba/kiegroup-lienzo-core
+      - project: dba/kiegroup-appformer
+      - project: dba/kiegroup-kie-uberfire-extensions
+      - project: dba/kiegroup-kie-wb-playground
+      - project: dba/kiegroup-droolsjbpm-integration
 
-  - project: kiegroup/drools-wb
+  - project: dba/kiegroup-drools-wb
     dependencies:
-      - project: kiegroup/lienzo-core
-      - project: kiegroup/kie-wb-common
+      - project: dba/kiegroup-lienzo-core
+      - project: dba/kiegroup-kie-wb-common
 
-  - project: kiegroup/jbpm-work-items
+  - project: dba/kiegroup-jbpm-work-items
     dependencies:
-      - project: kiegroup/jbpm
-      - project: kiegroup/droolsjbpm-integration
+      - project: dba/kiegroup-jbpm
+      - project: dba/kiegroup-droolsjbpm-integration
 
-  - project: kiegroup/jbpm-wb
+  - project: dba/kiegroup-jbpm-wb
     dependencies:
-      - project: kiegroup/kie-uberfire-extensions
-      - project: kiegroup/drools-wb
-      - project: kiegroup/kie-wb-common
-      - project: kiegroup/jbpm-work-items
+      - project: dba/kiegroup-kie-uberfire-extensions
+      - project: dba/kiegroup-drools-wb
+      - project: dba/kiegroup-kie-wb-common
+      - project: dba/kiegroup-jbpm-work-items
 
-  - project: kiegroup/kie-docs
+  - project: dba/kiegroup-kie-docs
 
-  - project: kiegroup/kie-wb-distributions
+  - project: dba/kiegroup-kie-wb-distributions
     dependencies:
-      - project: kiegroup/kie-soup
-      - project: kiegroup/drools
-      - project: kiegroup/jbpm-wb
-      - project: kiegroup/appformer
-      - project: kiegroup/kie-uberfire-extensions
+      - project: dba/kiegroup-kie-soup
+      - project: dba/kiegroup-drools
+      - project: dba/kiegroup-jbpm-wb
+      - project: dba/kiegroup-appformer
+      - project: dba/kiegroup-kie-uberfire-extensions
 
-  - project: kiegroup/process-migration-service
+  - project: dba/kiegroup-process-migration-service
     dependencies:
-      - project: kiegroup/droolsjbpm-integration
+      - project: dba/kiegroup-droolsjbpm-integration
 

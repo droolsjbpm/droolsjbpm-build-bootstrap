@@ -14,7 +14,7 @@ default:
       ${{ env.CREATE_COMMAND }}
       ${{ env.PUSH_COMMAND }}
 build:
-  - project: kiegroup/droolsjbpm-build-bootstrap
+  - project: dba/kiegroup-droolsjbpm-build-bootstrap
     build-command:
       before:
         current: |
