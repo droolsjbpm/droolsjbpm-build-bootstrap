@@ -317,7 +317,7 @@
 
     <version.com.android-dx>1.10</version.com.android-dx>
     <version.com.icegreen.greenmail>2.1.9</version.com.icegreen.greenmail>
-    <version.com.github.tomakehurst.wiremock>1.53</version.com.github.tomakehurst.wiremock>
+    <version.com.github.wiremock>3.13.2</version.com.github.wiremock>
     <version.com.google.android>4.1.1.4</version.com.google.android>
     <version.com.google.testing.compile>0.11</version.com.google.testing.compile>
     <version.org.antlr4>4.10.1</version.org.antlr4>
@@ -5756,10 +5756,10 @@
       </dependency>
 
       <dependency>
-        <groupId>com.github.tomakehurst</groupId>
+        <groupId>org.wiremock</groupId>
         <artifactId>wiremock</artifactId>
         <classifier>standalone</classifier>
-        <version>${version.com.github.tomakehurst.wiremock}</version>
+        <version>${version.com.github.wiremock}</version>
         <exclusions>
           <exclusion>
             <groupId>commons-logging</groupId>
@@ -5773,9 +5773,9 @@
       </dependency>
 
       <dependency>
-        <groupId>com.github.tomakehurst</groupId>
+        <groupId>org.wiremock</groupId>
         <artifactId>wiremock</artifactId>
-        <version>${version.com.github.tomakehurst.wiremock}</version>
+        <version>${version.com.github.wiremock}</version>
         <exclusions>
           <exclusion>
             <groupId>commons-logging</groupId>
