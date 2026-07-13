@@ -2620,6 +2620,16 @@
         <groupId>org.glassfish.jaxb</groupId>
         <artifactId>jaxb-runtime</artifactId>
         <version>${version.org.glassfish.jaxb}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>javax.activation</groupId>
+            <artifactId>javax.activation-api</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.glassfish.jaxb</groupId>
@@ -2780,21 +2790,6 @@
         <groupId>org.glassfish</groupId>
         <artifactId>jakarta.json</artifactId>
         <version>${version.jakarta.json-api}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.glassfish.jaxb</groupId>
-        <artifactId>jaxb-runtime</artifactId>
-        <version>${version.org.glassfish.jaxb}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>javax.activation</groupId>
-            <artifactId>javax.activation-api</artifactId>
-          </exclusion>
-        </exclusions>
       </dependency>
       <dependency>
         <groupId>jakarta.jws</groupId>
