@@ -1183,6 +1183,7 @@
             <argLine>
               --add-opens=java.base/java.lang=ALL-UNNAMED
               --add-opens=java.base/java.util=ALL-UNNAMED
+              --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
             </argLine>
             <systemPropertyVariables>
               <apple.awt.UIElement>true</apple.awt.UIElement>
