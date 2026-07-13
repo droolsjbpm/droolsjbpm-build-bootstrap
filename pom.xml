@@ -4906,6 +4906,11 @@
       </dependency>
       <dependency>
         <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-core</artifactId>
+        <version>${version.org.jboss.resteasy}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.resteasy</groupId>
         <artifactId>resteasy-core-spi</artifactId>
         <version>${version.org.jboss.resteasy}</version>
         <exclusions>
@@ -5242,7 +5247,7 @@
         <version>${version.org.quartz-scheduler}</version>
       </dependency>
 
-     
+
       <dependency>
         <groupId>com.mchange</groupId>
         <artifactId>mchange-commons-java</artifactId>
@@ -6669,7 +6674,7 @@
         <artifactId>java-jwt</artifactId>
         <version>${version.com.auth0-jwt}</version>
       </dependency>
-   
+
       <dependency>
         <groupId>org.bouncycastle</groupId>
         <artifactId>bcprov-jdk18on</artifactId>
