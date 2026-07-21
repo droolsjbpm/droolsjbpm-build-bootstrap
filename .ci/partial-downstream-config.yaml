@@ -1,0 +1,88 @@
+version: "2.1"
+
+dependencies: ./project-dependencies.yaml
+
+pre: |
+  export BUILD_MVN_OPTS="${{ env.BUILD_MVN_OPTS }} dependency:tree -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+  echo "BUILD_MVN_OPTS=${{ env.BUILD_MVN_OPTS }}"
+  java -version
+
+default:
+  build-command:
+    current: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu -T1C clean install -Dfull
+    upstream: mvn ${{ env.BUILD_MVN_OPTS }} -e -T1C clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true
+    downstream: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu clean install -Dfull -Pbusiness-central,wildfly,sourcemaps,no-showcase -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-91esr/firefox-bin -Dgwt.skipCompilation=true
+    after:
+      upstream: rm -rf ./*
+
+build:
+  - project: dba/kiegroup-drools
+    build-command:
+      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+
+  - project: dba/kiegroup-appformer
+    skip: true
+#    build-command:
+#      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+#    archive-artifacts:
+#      path: |
+#        **/dashbuilder-runtime.war
+
+  - project: dba/kiegroup-kie-uberfire-extensions
+    skip: true
+
+  - project: dba/kiegroup-jbpm
+    build-command:
+      current: mvn -e -fae -nsu clean install -Dfull -DskipTests ${{ env.BUILD_MVN_OPTS }}
+      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+
+  - project: dba/kiegroup-droolsjbpm-integration
+    build-command:
+      current: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu -B -T1C clean install -Dfull -Pjenkins-pr-builder -DskipTests
+      downstream: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu clean install -Dfull -Pbusiness-central,wildfly,sourcemaps,no-showcase,jenkins-pr-builder -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-91esr/firefox-bin -Dgwt.skipCompilation=true
+
+  - project: dba/kiegroup-kie-wb-playground
+    skip: true
+
+  - project: dba/kiegroup-kie-wb-common
+    skip: true
+#    build-command:
+#      current: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu -T1C clean install -Dfull -DskipTests
+#      upstream: mvn ${{ env.BUILD_MVN_OPTS }} -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true
+#      downstream: mvn ${{ env.BUILD_MVN_OPTS }} -e -nsu clean install -Dfull -Pbusiness-central,wildfly,sourcemaps,no-showcase -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dwebdriver.firefox.bin=/opt/tools/firefox-91esr/firefox-bin -Dgwt.skipCompilation=true
+#    archive-artifacts:
+#      path: |
+#        **/target/screenshots/**
+
+  - project: dba/kiegroup-drools-wb
+    skip: true
+
+  - project: dba/kiegroup-jbpm-work-items
+    build-command:
+      current: mvn -e clean install -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+
+  - project: dba/kiegroup-jbpm-wb
+    skip: true
+
+  - project: dba/kiegroup-kie-wb-distributions
+    skip: true
+
+#  - project: dba/kiegroup-optaplanner
+#    build-command:
+#      current: mvn -e -fae -nsu clean install -Dfull -DskipTests ${{ env.BUILD_MVN_OPTS }}
+#      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+
+  - project: dba/kiegroup-process-migration-service
+    build-command:
+      current: mvn -e clean install -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+
+  - project: dba/kiegroup-kie-jpmml-integration
+    build-command:
+      current: mvn -e clean install -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+
+  - project: dba/kiegroup-kie-docs
+    skip: true
+
+  - project: dba/kiegroup-droolsjbpm-tools
+    skip: true
+
