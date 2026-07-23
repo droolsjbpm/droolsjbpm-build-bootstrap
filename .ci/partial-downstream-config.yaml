@@ -18,9 +18,9 @@ default:
 build:
   - project: dba/kiegroup-drools
     build-command:
-      current: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
-      upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
-      downstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+      current: mvn -DargLine="-Xmx24G" -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
+      upstream: mvn -DargLine="-Xmx24G" -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
+      downstream: mvn -DargLine="-Xmx24G" -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
 
   - project: dba/kiegroup-appformer
     build-command:

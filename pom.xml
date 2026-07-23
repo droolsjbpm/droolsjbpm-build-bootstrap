@@ -78,7 +78,7 @@
     <version.com.fasterxml.jackson.annotations>2.22</version.com.fasterxml.jackson.annotations>
     <version.com.google.code.gson>2.11.0</version.com.google.code.gson>
     <version.org.jresearch.gwt.time>2.0.11</version.org.jresearch.gwt.time>
-    <version.domino-slf4j-logger>1.0.1</version.domino-slf4j-logger>
+    <version.domino-slf4j-logger>1.0.4</version.domino-slf4j-logger>
     <!-- failureaccess is required for karaf features.xml to expose com.google.common.util.concurrent.internal package -->
     <version.com.google.guava>33.2.1-jre</version.com.google.guava>
     <version.com.google.guava.failureaccess>1.0.1</version.com.google.guava.failureaccess>
