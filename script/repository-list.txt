@@ -10,6 +10,7 @@ jbpm
 droolsjbpm-integration
 kie-wb-playground
 kie-wb-common
+kie-gwthelper-maven-plugin
 drools-wb
 jbpm-work-items
 jbpm-wb

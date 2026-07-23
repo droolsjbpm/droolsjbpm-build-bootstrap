@@ -65,6 +65,13 @@ build:
 #      path: |
 #        **/target/screenshots/**
 
+  - project: dba/kiegroup-kie-gwthelper-maven-plugin
+    build-command:
+      current: mvn -e clean install ${{ env.BUILD_MVN_OPTS }}
+      upstream: mvn -e clean install ${{ env.BUILD_MVN_OPTS }}
+      downstream: mvn -e clean install ${{ env.BUILD_MVN_OPTS }}
+
+
   - project: dba/kiegroup-drools-wb
     skip: true
 

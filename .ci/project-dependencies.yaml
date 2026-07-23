@@ -84,10 +84,15 @@ dependencies:
       - project: dba/kiegroup-kie-wb-playground
       - project: dba/kiegroup-droolsjbpm-integration
 
+  - project: dba/kiegroup-kie-gwthelper-maven-plugin
+    dependencies:
+      - project: dba/kiegroup-kie-wb-common
+
   - project: dba/kiegroup-drools-wb
     dependencies:
       - project: dba/kiegroup-lienzo-core
       - project: dba/kiegroup-kie-wb-common
+      - project: dba/kiegroup-kie-gwthelper-maven-plugin
 
   - project: dba/kiegroup-jbpm-work-items
     dependencies:
