@@ -3,7 +3,7 @@ version: "2.1"
 dependencies: ./project-dependencies.yaml
 
 pre: |
-  export BUILD_MVN_OPTS="${{ env.BUILD_MVN_OPTS }} dependency:tree -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
+  export BUILD_MVN_OPTS=${{ env.BUILD_MVN_OPTS }} -DargLine="-Xmx24G" -Dmaven.wagon.httpconnectionManager.ttlSeconds=25 -Dmaven.wagon.http.retryHandler.count=3
   echo "BUILD_MVN_OPTS=${{ env.BUILD_MVN_OPTS }}"
   java -version
 
@@ -18,9 +18,9 @@ default:
 build:
   - project: dba/kiegroup-drools
     build-command:
-      current: mvn -DargLine="-Xmx24G" -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
-      upstream: mvn -DargLine="-Xmx24G" -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
-      downstream: mvn -DargLine="-Xmx24G" -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
+      current: mvn -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
+      upstream: mvn -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
+      downstream: mvn -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
 
   - project: dba/kiegroup-appformer
     build-command:
