@@ -362,6 +362,8 @@
     <!-- please look at https://github.com/fredsa/gwt-dnd/wiki/GettingStarted -->
     <version.net.ltgt.gwt.maven>1.0-rc-6</version.net.ltgt.gwt.maven>
     <version.org.kie.gwthelper.maven>1.3</version.org.kie.gwthelper.maven>
+    <!-- hibernate-validator 4.x used in frontend only (appformer, kie-wb-common, drools-wb ..) needs javax.xml.bind (removed from JDK 11+); needed at GWT compile time only. -->
+    <version.javax.xml.bind>2.3.1</version.javax.xml.bind>
     <!-- The version greater than 1.0.0.GA is not compatible with GWT 2.8.x -->
     <!-- therefore the property is rewritten in that repository parent -->
     <version.javax.validation>2.0.1.Final</version.javax.validation>
@@ -6329,6 +6331,18 @@
         <groupId>javax.validation</groupId>
         <artifactId>validation-api</artifactId>
         <version>${version.javax.validation}</version>
+        <classifier>sources</classifier>
+      </dependency>
+      <!-- GWT / hibernate-validator 4.x still needs this -->
+      <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>${version.javax.xml.bind}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>${version.javax.xml.bind}</version>
         <classifier>sources</classifier>
       </dependency>
 
