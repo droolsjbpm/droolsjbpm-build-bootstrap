@@ -334,7 +334,7 @@
     <version.org.jboss.arquillian.extension.drone>2.5.1</version.org.jboss.arquillian.extension.drone>
     <version.org.jboss.arquillian.graphene>2.3.2</version.org.jboss.arquillian.graphene>
     <version.com.google.guava.for-selenium>33.2.1-jre</version.com.google.guava.for-selenium>
-    <version.org.jboss.errai>4.19.0-SNAPSHOT</version.org.jboss.errai>
+    <version.org.jboss.errai>5.0.0-SNAPSHOT</version.org.jboss.errai>
     <version.com.google.elemental2>1.1.0</version.com.google.elemental2>
     <!-- Required by jboss-remoting version above -->
     <version.org.ow2.asm>9.6</version.org.ow2.asm>
