@@ -32,6 +32,12 @@ This is the BOM/parent POM repository. All changes are in `pom.xml` (property ve
 | `version.jakarta.ws.rs-api` | `2.1.6` | `4.0.0` |
 | `version.jakarta.xml.ws-api` | `2.3.3` | `4.0.3` |
 | `version.jakarta.validation-api` | _(absent)_ | `3.1.1` |
+| `version.org.apache.maven` | `3.8.6` | `3.9.16` |
+| `version.org.apache.maven.resolver` | `1.6.3` | `1.9.27` |
+| `version.org.apache.maven.wagon` | `3.5.1` | `3.5.3` |
+| `version.org.codehaus.plexus.plexus-classworlds` | `2.6.0` | `2.11.0` |
+| `version.org.eclipse.sisu` | `0.3.5` | `1.0.1` |
+
 
 ### Root `pom.xml` — Third-party library versions
 
@@ -118,3 +124,4 @@ No Java source files in this repository — it is a pure BOM/parent POM project.
 | `commons-fileupload` 1.x → 2.x | API breaking change; multipart upload code must use `commons-fileupload2-jakarta-servlet6` |
 | Swagger `swagger-parser` → `swagger-parser-v3` | Different artifact coordinates and API |
 | GWT 2.11 → 2.13 | Dev-mode Jetty removed; integration-test setups using GWT dev mode must be updated |
+

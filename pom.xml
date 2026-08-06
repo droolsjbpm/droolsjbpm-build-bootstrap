@@ -144,11 +144,11 @@
     <version.org.apache.httpcomponents.httpcore>4.4.14</version.org.apache.httpcomponents.httpcore>
     <version.org.apache.karaf>2.4.0</version.org.apache.karaf>
     <version.org.apache.lucene>6.6.6</version.org.apache.lucene>
-    <version.org.apache.maven>3.8.6</version.org.apache.maven>
+    <version.org.apache.maven>3.9.16</version.org.apache.maven>
     <version.org.apache.maven.utils>3.3.4</version.org.apache.maven.utils>
     <version.org.apache.maven.archiver>3.3.0</version.org.apache.maven.archiver>
     <version.org.apache.maven.plugin-tools>3.4</version.org.apache.maven.plugin-tools>
-    <version.org.apache.maven.wagon>3.5.1</version.org.apache.maven.wagon>
+    <version.org.apache.maven.wagon>3.5.3</version.org.apache.maven.wagon>
     <version.org.apache.neethi>3.2.2</version.org.apache.neethi>
     <version.org.apache.poi>5.4.1</version.org.apache.poi>
     <version.org.apache.sshd>2.13.2</version.org.apache.sshd>
@@ -166,7 +166,7 @@
     <version.org.codehaus.jettison>1.5.4</version.org.codehaus.jettison>
     <!-- The latest released version of gwt-maven-plugin is 2.10.0 -->
     <version.org.codehaus.mojo.gwt.maven.plugin>2.10.0</version.org.codehaus.mojo.gwt.maven.plugin>
-    <version.org.codehaus.plexus.plexus-classworlds>2.6.0</version.org.codehaus.plexus.plexus-classworlds>
+    <version.org.codehaus.plexus.plexus-classworlds>2.11.0</version.org.codehaus.plexus.plexus-classworlds>
     <version.org.codehaus.plexus.plexus-containers>1.6</version.org.codehaus.plexus.plexus-containers>
     <version.org.codehaus.plexus.plexus-interpolation>1.26</version.org.codehaus.plexus.plexus-interpolation>
     <version.org.codehaus.plexus.plexus-utils>3.6.1</version.org.codehaus.plexus.plexus-utils>
@@ -174,7 +174,7 @@
     <version.org.easytesting.fest>2.0M6</version.org.easytesting.fest>
     <version.org.easymock>3.0</version.org.easymock>
     <version.org.eclipse.bpmn2>0.8.2-jboss</version.org.eclipse.bpmn2>
-    <version.org.apache.maven.resolver>1.6.3</version.org.apache.maven.resolver>
+    <version.org.apache.maven.resolver>1.9.27</version.org.apache.maven.resolver>
     <version.org.eclipse.emf>2.6.0.v20100614-1136</version.org.eclipse.emf>
     <version.org.eclipse.emf.ecore.xmi>2.5.0.v20100521-1846</version.org.eclipse.emf.ecore.xmi>
     <version.org.eclipse.jdt>3.33.0</version.org.eclipse.jdt>
@@ -4018,6 +4018,10 @@
         <version>${version.org.apache.maven}</version>
         <exclusions>
           <exclusion>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+          </exclusion>
+          <exclusion>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
           </exclusion>
@@ -4041,6 +4045,10 @@
         <artifactId>maven-core</artifactId>
         <version>${version.org.apache.maven}</version>
         <exclusions>
+          <exclusion>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
@@ -4104,6 +4112,12 @@
         <groupId>org.apache.maven</groupId>
         <artifactId>maven-compat</artifactId>
         <version>${version.org.apache.maven}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.maven</groupId>
@@ -4113,6 +4127,10 @@
           <exclusion>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -4548,6 +4566,12 @@
         <groupId>org.apache.maven.resolver</groupId>
         <artifactId>maven-resolver-util</artifactId>
         <version>${version.org.apache.maven.resolver}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.resolver</groupId>
