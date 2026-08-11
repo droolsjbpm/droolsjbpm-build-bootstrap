@@ -46,8 +46,8 @@ build:
 
   - project: dba/kiegroup-jbpm
     build-command:
-      current: mvn -e -fae -nsu clean install -DskipTests -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
-      downstream: mvn -e -fae -nsu clean install -DskipTests -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+      current: mvn -e -fae -nsu clean install -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+      downstream: mvn -e -fae -nsu clean install -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
 
   - project: dba/kiegroup-droolsjbpm-integration
     build-command:
