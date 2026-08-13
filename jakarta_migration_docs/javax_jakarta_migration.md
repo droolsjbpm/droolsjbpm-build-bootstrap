@@ -17,13 +17,13 @@ This is the BOM/parent POM repository. All changes are in `pom.xml` (property ve
 | `version.jakarta.ejb-api` | `3.2.6` | `4.0.1` |
 | `version.jakarta.el` | `3.0.3` | `5.0.0` |
 | `version.jakarta.el-api` | `3.0.3` | `5.0.1` |
-| `version.jakarta.enterprise.cdi-api` | `2.0.2` | `4.0.1` |
-| `version.jakarta.enterprise.concurrent-api` | `1.1.2` | `3.0.4` |
+| `version.jakarta.enterprise.cdi-api` | `2.0.2` | `4.1.0` |
+| `version.jakarta.enterprise.concurrent-api` | `1.1.2` | `3.1.1` |
 | `version.jakarta.interceptor-api` | `1.2.5` | `2.2.0` |
 | `version.jakarta.inject-api` | `1.0.3` | `2.0.1` |
 | `version.jakarta.jms-api` | `2.0.3` | `3.1.0` |
 | `version.jakarta.mail-api` | `1.6.8` | `2.1.5` |
-| `version.jakarta.persistence-api` | `2.2.3` | `3.1.0` |
+| `version.jakarta.persistence-api` | `2.2.3` | `3.2.0` |
 | `version.jakarta.resource-api` | `1.7.4` | `2.1.0` |
 | `version.jakarta.servlet-api` | `4.0.3` | `6.1.0` |
 | `version.jakarta.servlet.jsp-api` | `2.3.6` | `3.1.1` |
@@ -55,11 +55,11 @@ This is the BOM/parent POM repository. All changes are in `pom.xml` (property ve
 | `version.org.jboss.ejb.client` | `4.0.39.Final` | `5.0.0.Final` |
 | `version.org.jboss.logging.jboss-logging` | `3.4.1.Final` | `3.6.1.Final` |
 | `version.org.apache.tomcat` | `9.0.111` | `10.1.56` |
-| `version.org.apache.tomcat.tomcat-dbcp` | `9.0.111` | `10.1.34` |
+| `version.org.apache.tomcat.tomcat-dbcp` | `9.0.111` | _removed_ (absorbed into `version.org.apache.tomcat`) |
 | `version.org.apache.deltaspike.core` | `1.9.4` | `2.0.1` |
 | `version.org.eclipse.jdt` | `3.18.0` | `3.33.0` |
 | `version.org.eclipse.jetty` | `9.4.57.v20241219` | `11.0.26` |
-| `version.org.eclipse.jgit` | `6.10.1.x` | `7.7.0.x` |
+| `version.org.eclipse.jgit` | `6.10.1.x` | `7.7.0.202606012155-r` |
 | `version.org.eclipse.sisu` | `0.3.5` | `1.0.1` |
 | `version.org.eclipse.parsson` | _(absent)_ | `1.1.9` |
 | `version.org.glassfish.jaxb` | `2.3.2` | `4.0.5` |

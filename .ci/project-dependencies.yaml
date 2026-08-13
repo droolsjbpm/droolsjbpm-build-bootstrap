@@ -40,18 +40,7 @@ dependencies:
   - project: dba/kiegroup-drools
     dependencies:
       - project: dba/kiegroup-kie-soup
-      - project: dba/kiegroup-droolsjbpm-knowledge        
-    mapping:
-      dependencies:
-        default:
-          - source: 7.x
-            target: main
-      dependant:
-        default:
-          - source: main
-            target: 7.x
-      exclude:
-        - dba/kiegroup-droolsjbpm-knowledge          
+      - project: dba/kiegroup-droolsjbpm-knowledge      
 
   - project: dba/kiegroup-jbpm
     dependencies:

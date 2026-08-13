@@ -107,7 +107,7 @@
     <version.io.smallrye.openapi.core>2.1.4</version.io.smallrye.openapi.core>
     <version.io.strimzi.strimzi-test-container>0.111.0</version.io.strimzi.strimzi-test-container>
     <version.io.takari.maven.plugins.testing>2.9.2</version.io.takari.maven.plugins.testing>
-    <version.io.undertow>2.2.38.Final</version.io.undertow>
+    <version.io.undertow>2.3.24.Final</version.io.undertow>
     <version.jaxen>1.1.6</version.jaxen>
     <version.org.igniterealtime.smack>4.1.9</version.org.igniterealtime.smack>
     <version.joda-time>2.9.7</version.joda-time>
@@ -220,26 +220,26 @@
     <version.com.sun.jakarta.mail>2.0.2</version.com.sun.jakarta.mail>
     <version.com.sun.jakarta.activation>2.0.1</version.com.sun.jakarta.activation>
     <version.jakarta.mail-api>2.1.5</version.jakarta.mail-api>
-    <version.jakarta.enterprise.cdi-api>4.0.1</version.jakarta.enterprise.cdi-api>
+    <version.jakarta.enterprise.cdi-api>4.1.0</version.jakarta.enterprise.cdi-api>
     <version.jakarta.activation-api>2.1.4</version.jakarta.activation-api>
     <version.jakarta.inject-api>2.0.1</version.jakarta.inject-api>
     <version.jakarta.annotation-api>2.1.1</version.jakarta.annotation-api>
     <version.jakarta.ejb-api>4.0.1</version.jakarta.ejb-api>
     <version.jakarta.el>5.0.0</version.jakarta.el>
     <version.jakarta.el-api>5.0.1</version.jakarta.el-api>
-    <version.jakarta.enterprise.concurrent-api>3.0.4</version.jakarta.enterprise.concurrent-api>
+    <version.jakarta.enterprise.concurrent-api>3.1.1</version.jakarta.enterprise.concurrent-api>
     <version.jakarta.interceptor-api>2.2.0</version.jakarta.interceptor-api>
     <version.jakarta.jms-api>3.1.0</version.jakarta.jms-api>
     <version.jakarta.resource-api>2.1.0</version.jakarta.resource-api>
-    <version.jakarta.security.jacc-api>1.6.1</version.jakarta.security.jacc-api>
+    <version.jakarta.authorization.api>3.0.0</version.jakarta.authorization.api>
     <version.jakarta.servlet.jsp-api>3.1.1</version.jakarta.servlet.jsp-api>
     <version.jakarta.servlet.jsp.jstl-api>3.0.2</version.jakarta.servlet.jsp.jstl-api>
     <version.jakarta.transaction-api>2.0.1</version.jakarta.transaction-api>
     <version.jakarta.ws.rs-api>4.0.0</version.jakarta.ws.rs-api>
     <version.jakarta.xml.ws-api>4.0.3</version.jakarta.xml.ws-api>
     <version.jakarta.xml.soap-api>3.0.2</version.jakarta.xml.soap-api>
-    <version.jakarta.websocket-api>2.1.1</version.jakarta.websocket-api>
-    <version.jakarta.persistence-api>3.1.0</version.jakarta.persistence-api>
+    <version.jakarta.websocket-api>2.2.0</version.jakarta.websocket-api>
+    <version.jakarta.persistence-api>3.2.0</version.jakarta.persistence-api>
     <version.jakarta.servlet-api>6.1.0</version.jakarta.servlet-api>
     <version.jakarta.xml.bind-api>4.0.5</version.jakarta.xml.bind-api>
     <version.jakarta-regexp>1.4</version.jakarta-regexp>
@@ -440,7 +440,8 @@
     <!-- Version of the KIE Workbench application. Shown for example in About dialog. Will be usually overridden by productisation. -->
     <version.org.kie.workbench.app>${version.org.kie}</version.org.kie.workbench.app>
 
-    <version.bootable>13.0.0.Final</version.bootable>
+    <version.wildfly.maven.plugin>5.1.5.Final</version.wildfly.maven.plugin>
+    <version.wildfly.jar.maven.plugin>13.0.0.Final</version.wildfly.jar.maven.plugin>
     <version.net.byte-buddy>1.14.18</version.net.byte-buddy>
     <version.docker-client>3.5.12</version.docker-client>
     <version.docker-java>3.4.2</version.docker-java>
@@ -503,7 +504,6 @@
 
     <version.com.microsoft.sqlserver.jdbc>11.2.4.jre11</version.com.microsoft.sqlserver.jdbc>
     <version.jose4j>0.9.6</version.jose4j>
-    <version.jakarta.authorization.api>3.0.0</version.jakarta.authorization.api>
   </properties>
 
   <repositories>
@@ -1747,7 +1747,7 @@
         <plugin>
           <groupId>org.wildfly.plugins</groupId>
           <artifactId>wildfly-maven-plugin</artifactId>
-          <version>4.2.2.Final</version>
+          <version>${version.wildfly.maven.plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.sonarsource.scanner.maven</groupId>
@@ -2869,9 +2869,9 @@
         <version>${version.jakarta.resource-api}</version>
       </dependency>
       <dependency>
-        <groupId>jakarta.security.jacc</groupId>
-        <artifactId>jakarta.security.jacc-api</artifactId>
-        <version>${version.jakarta.security.jacc-api}</version>
+        <groupId>jakarta.authorization</groupId>
+        <artifactId>jakarta.authorization-api</artifactId>
+        <version>${version.jakarta.authorization.api}</version>
       </dependency>
       <dependency>
         <groupId>jakarta.servlet.jsp</groupId>
@@ -6848,12 +6848,6 @@
         <artifactId>bcutil-jdk18on</artifactId>
         <version>${version.org.bouncycastle}</version>
       </dependency>
-      <dependency>
-        <groupId>jakarta.authorization</groupId>
-        <artifactId>jakarta.authorization-api</artifactId>
-        <version>${version.jakarta.authorization.api}</version>
-      </dependency>
-
     </dependencies>
 
   </dependencyManagement>
