@@ -33,8 +33,8 @@ build:
 
   - project: dba/kiegroup-appformer
     build-command:
-      current: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
-      downstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+      current: mvn -e clean install -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+      downstream: mvn -e clean install -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
     archive-artifacts:
       path: |
         **/dashbuilder-runtime.war
