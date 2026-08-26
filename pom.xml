@@ -73,7 +73,7 @@
     </version.com.ahome-it.lienzo.tooling.nativetools>
     <version.com.ahome-it.lienzo.tooling.common>1.0.190-RELEASE</version.com.ahome-it.lienzo.tooling.common>
     <version.com.allen-sauer.gwt.dnd>3.3.3</version.com.allen-sauer.gwt.dnd>
-    <version.com.fasterxml.jackson>2.20.0</version.com.fasterxml.jackson>
+    <version.com.fasterxml.jackson>2.21.4</version.com.fasterxml.jackson>
     <version.com.fasterxml.jackson.databind>${version.com.fasterxml.jackson}</version.com.fasterxml.jackson.databind>
     <version.com.fasterxml.jackson.annotations>2.22</version.com.fasterxml.jackson.annotations>
     <version.com.google.code.gson>2.11.0</version.com.google.code.gson>
@@ -103,7 +103,7 @@
     <version.guru.nidi>0.18.0</version.guru.nidi>
     <version.info.picocli>4.6.1</version.info.picocli>
     <version.io.micrometer>1.7.3</version.io.micrometer>
-    <version.io.springfox>2.9.2</version.io.springfox>
+    <version.io.springfox>2.10.0</version.io.springfox>
     <version.io.smallrye.openapi.core>2.1.4</version.io.smallrye.openapi.core>
     <version.io.strimzi.strimzi-test-container>0.111.0</version.io.strimzi.strimzi-test-container>
     <version.io.takari.maven.plugins.testing>2.9.2</version.io.takari.maven.plugins.testing>
@@ -235,7 +235,7 @@
     <version.jakarta.servlet.jsp-api>3.1.1</version.jakarta.servlet.jsp-api>
     <version.jakarta.servlet.jsp.jstl-api>3.0.2</version.jakarta.servlet.jsp.jstl-api>
     <version.jakarta.transaction-api>2.0.1</version.jakarta.transaction-api>
-    <version.jakarta.ws.rs-api>4.0.0</version.jakarta.ws.rs-api>
+    <version.jakarta.ws.rs-api>3.1.0</version.jakarta.ws.rs-api>
     <version.jakarta.xml.ws-api>4.0.3</version.jakarta.xml.ws-api>
     <version.jakarta.xml.soap-api>3.0.2</version.jakarta.xml.soap-api>
     <version.jakarta.websocket-api>2.2.0</version.jakarta.websocket-api>
@@ -6072,28 +6072,6 @@
           <exclusion>
             <groupId>org.mortbay.jasper</groupId>
             <artifactId>apache-el</artifactId>
-          </exclusion>
-          <!-- The Embedded Jetty in GWT Dev Mode is deprecated and unmaintained. GWT imports a CVE-affected version -->
-          <exclusion>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-webapp</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlets</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-annotations</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>apache-jsp</artifactId>
-          </exclusion>
-          <!-- Used for dev / test purposes. No longer maintained. GWT imports a CVE-affected version -->
-          <exclusion>
-            <groupId>net.sourceforge.htmlunit</groupId>
-            <artifactId>htmlunit</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
