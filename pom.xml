@@ -82,7 +82,7 @@
     <!-- failureaccess is required for karaf features.xml to expose com.google.common.util.concurrent.internal package -->
     <version.com.google.guava>33.2.1-jre</version.com.google.guava>
     <version.com.google.guava.failureaccess>1.0.1</version.com.google.guava.failureaccess>
-    <version.com.google.inject.guice>4.0</version.com.google.inject.guice>
+    <version.com.google.inject.guice>5.1.0</version.com.google.inject.guice>
     <version.com.google.gwt>2.13.1</version.com.google.gwt>
     <version.org.google.gwt-charts>0.9.9</version.org.google.gwt-charts>
     <version.com.google.gwt.gwtmockito>1.1.9</version.com.google.gwt.gwtmockito>
@@ -2509,7 +2509,7 @@
         <groupId>com.google.inject</groupId>
         <artifactId>guice</artifactId>
         <version>${version.com.google.inject.guice}</version>
-        <classifier>no_aop</classifier>
+        <classifier>classes</classifier>
         <exclusions>
           <exclusion>
             <groupId>javax.inject</groupId>
