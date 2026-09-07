@@ -188,9 +188,9 @@
     <version.org.glassfish.jaxb>4.0.5</version.org.glassfish.jaxb>
     <version.org.gwtbootstrap3>1.0.1</version.org.gwtbootstrap3>
     <version.org.gwtbootstrap3-extras>1.0.2</version.org.gwtbootstrap3-extras>
-    <version.org.hibernate>6.2.13.Final</version.org.hibernate>
-    <version.org.hibernate.validator>8.0.1.Final</version.org.hibernate.validator>
-    <version.org.hibernate.commons.annotations>6.0.6.Final</version.org.hibernate.commons.annotations>
+    <version.org.hibernate>6.6.18.Final</version.org.hibernate>
+    <version.org.hibernate.validator>8.0.2.Final</version.org.hibernate.validator>
+    <version.org.hibernate.commons.annotations>7.0.3.Final</version.org.hibernate.commons.annotations>
     <version.org.hornetq>2.4.7.Final</version.org.hornetq>
     <version.org.infinispan>15.0.20.Final</version.org.infinispan>
     <!--This needs to be in sync with JUnit-->
@@ -239,7 +239,7 @@
     <version.jakarta.xml.ws-api>4.0.3</version.jakarta.xml.ws-api>
     <version.jakarta.xml.soap-api>3.0.2</version.jakarta.xml.soap-api>
     <version.jakarta.websocket-api>2.2.0</version.jakarta.websocket-api>
-    <version.jakarta.persistence-api>3.2.0</version.jakarta.persistence-api>
+    <version.jakarta.persistence-api>3.1.0</version.jakarta.persistence-api>
     <version.jakarta.servlet-api>6.1.0</version.jakarta.servlet-api>
     <version.jakarta.xml.bind-api>4.0.5</version.jakarta.xml.bind-api>
     <version.jakarta-regexp>1.4</version.jakarta-regexp>
@@ -4804,12 +4804,7 @@
         <version>${version.org.hamcrest}</version>
       </dependency>
       <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core</artifactId>
-        <version>${version.org.hibernate}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.hibernate</groupId>
+        <groupId>org.hibernate.orm</groupId>
         <artifactId>hibernate-envers</artifactId>
         <version>${version.org.hibernate}</version>
       </dependency>
@@ -4819,7 +4814,7 @@
         <version>${version.org.hibernate.commons.annotations}</version>
       </dependency>
       <dependency>
-        <groupId>org.hibernate</groupId>
+        <groupId>org.hibernate.orm</groupId>
         <artifactId>hibernate-jpamodelgen</artifactId>
         <version>${version.org.hibernate}</version>
         <exclusions>

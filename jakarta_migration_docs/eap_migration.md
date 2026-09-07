@@ -54,8 +54,8 @@
 | Property | 7.67.x-blue | Current 7.81.x | EAP 8.1 / WF 35 provides | Action needed |
 |---|---|---|---|---|
 | `org.jboss.resteasy` | 3.15.6.Final | **6.2.16.Final** | 6.2.x | ✅ Aligned |
-| `org.hibernate` (ORM) | 5.4.24.Final | **6.2.13.Final** | 6.2.x | ✅ Aligned |
-| `org.hibernate.validator` | 6.2.0.Final | **8.0.1.Final** | 8.0.x | ✅ Aligned |
+| `org.hibernate` (ORM) | 5.4.24.Final | **6.6.18.Final** | 6.6.x | ✅ Aligned |
+| `org.hibernate.validator` | 6.2.0.Final | **8.0.2.Final** | 8.0.x | ✅ Aligned |
 | `org.jboss.weld.weld` (CDI) | 3.1.6.Final | **5.1.7.Final** | 5.1.x | ✅ Aligned |
 | `org.jboss.weld.weld-api` | 3.1.SP3 | **5.0.SP3** | 5.0.x | ✅ Aligned |
 | `org.jboss.ejb.client` | 4.0.39.Final | **5.0.0.Final** | 5.0.x | ✅ Aligned |

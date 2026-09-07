@@ -43,9 +43,9 @@ This is the BOM/parent POM repository. All changes are in `pom.xml` (property ve
 
 | Property | Old version | New version |
 |---|---|---|
-| `version.org.hibernate` | `5.4.24.Final` | `6.2.13.Final` |
-| `version.org.hibernate.validator` | `6.2.0.Final` | `8.0.1.Final` |
-| `version.org.hibernate.commons.annotations` | `5.0.5.Final` | `6.0.6.Final` |
+| `version.org.hibernate` | `5.4.24.Final` | `6.6.18.Final` |
+| `version.org.hibernate.validator` | `6.2.0.Final` | `8.0.2.Final` |
+| `version.org.hibernate.commons.annotations` | `5.0.5.Final` | `7.0.3.Final` |
 | `version.org.jboss.resteasy` | `3.15.6.Final` | `6.2.16.Final` |
 | `version.org.jboss.weld.weld` | `3.1.6.Final` | `5.1.7.Final` |
 | `version.org.jboss.weld.weld-api` | `3.1.SP3` | `5.0.SP3` |

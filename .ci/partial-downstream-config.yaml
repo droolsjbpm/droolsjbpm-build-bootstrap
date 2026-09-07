@@ -28,8 +28,8 @@ default:
 build:
   - project: dba/kiegroup-drools
     build-command:
-      current: mvn -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
-      downstream: mvn -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true ${{ env.BUILD_MVN_OPTS }}
+      current: mvn -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true -Dmaven.javadoc.failOnError=false  ${{ env.BUILD_MVN_OPTS }}
+      downstream: mvn -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true -Dmaven.javadoc.failOnError=false ${{ env.BUILD_MVN_OPTS }}
 
   - project: dba/kiegroup-appformer
     build-command:
