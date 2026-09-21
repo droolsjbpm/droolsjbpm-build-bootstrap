@@ -1,4 +1,5 @@
 lienzo-core
+gwtmockito
 droolsjbpm-build-bootstrap
 kie-soup
 droolsjbpm-knowledge

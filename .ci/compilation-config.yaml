@@ -21,6 +21,12 @@ default:
         df -h
 
 build:
+  - project: dba/kiegroup-gwtmockito
+    build-command:
+      current: mvn clean install ${{ env.BUILD_MVN_OPTS }}
+      downstream: mvn clean install ${{ env.BUILD_MVN_OPTS }}
+      upstream: mvn -e clean install -DskipTests ${{ env.BUILD_MVN_OPTS }}
+
   - project: dba/kiegroup-appformer
     build-command:
       upstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}

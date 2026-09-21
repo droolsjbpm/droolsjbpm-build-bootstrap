@@ -3,13 +3,19 @@ version: "2.1"
 dependencies:
   - project: dba/kiegroup-lienzo-core
 
+  - project: dba/kiegroup-gwtmockito
+    dependencies:
+      - project: dba/kiegroup-lienzo-core
+
   - project: dba/kiegroup-lienzo-tests
     dependencies:
       - project: dba/kiegroup-lienzo-core
+      - project: dba/kiegroup-gwtmockito
 
   - project: dba/kiegroup-droolsjbpm-build-bootstrap
     dependencies:
       - project: dba/kiegroup-lienzo-core
+      - project: dba/kiegroup-gwtmockito
 
   - project: dba/kiegroup-kie-soup
     dependencies:
@@ -18,6 +24,7 @@ dependencies:
   - project: dba/kiegroup-appformer
     dependencies:    
       - project: dba/kiegroup-lienzo-core
+      - project: dba/kiegroup-gwtmockito
       - project: dba/kiegroup-droolsjbpm-build-bootstrap
       - project: dba/kiegroup-lienzo-tests
       - project: dba/kiegroup-kie-soup
@@ -68,6 +75,7 @@ dependencies:
   - project: dba/kiegroup-kie-wb-common
     dependencies:
       - project: dba/kiegroup-lienzo-core
+      - project: dba/kiegroup-gwtmockito
       - project: dba/kiegroup-appformer
       - project: dba/kiegroup-kie-uberfire-extensions
       - project: dba/kiegroup-kie-wb-playground
@@ -80,6 +88,7 @@ dependencies:
   - project: dba/kiegroup-drools-wb
     dependencies:
       - project: dba/kiegroup-lienzo-core
+      - project: dba/kiegroup-gwtmockito
       - project: dba/kiegroup-kie-wb-common
       - project: dba/kiegroup-kie-gwthelper-maven-plugin
 

@@ -26,6 +26,12 @@ default:
       upstream: rm -rf ./*
 
 build:
+  - project: dba/kiegroup-gwtmockito
+    build-command:
+      current: mvn clean install ${{ env.BUILD_MVN_OPTS }}
+      downstream: mvn clean install ${{ env.BUILD_MVN_OPTS }}
+      upstream: mvn -e clean install -DskipTests ${{ env.BUILD_MVN_OPTS }}
+
   - project: dba/kiegroup-drools
     build-command:
       current: mvn -e -nsu clean install -Dfull -Dcontainer=wildfly -Dcontainer.profile=wildfly -Dintegration-tests=true -Dcargo.ignore.failures=true -Dmaven.test.failure.ignore=true -Dmaven.test.redirectTestOutputToFile=true -Dgwt.compiler.localWorkers=1 -Dgwt.skipCompilation=true -Dmaven.javadoc.failOnError=false  ${{ env.BUILD_MVN_OPTS }}
@@ -61,8 +67,8 @@ build:
 
   - project: dba/kiegroup-kie-wb-common
     build-command:
-      current: mvn -e clean install -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
-      downstream: mvn -e clean install -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+      current: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
+      downstream: mvn -e clean install -DskipTests -Dgwt.compiler.skip=true -Dgwt.skipCompilation=true -Denforcer.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drevapi.skip=true ${{ env.BUILD_MVN_OPTS }}
     archive-artifacts:
       path: |
         **/target/screenshots/**
