@@ -386,20 +386,6 @@
         <groupId>org.kie.server</groupId>
         <artifactId>kie-server</artifactId>
         <version>${version.org.kie}</version>
-        <classifier>ee8</classifier>
-        <type>war</type>
-      </dependency>
-      <dependency>
-        <groupId>org.kie.server</groupId>
-        <artifactId>kie-server</artifactId>
-        <version>${version.org.kie}</version>
-        <classifier>ee7</classifier>
-        <type>war</type>
-      </dependency>
-      <dependency>
-        <groupId>org.kie.server</groupId>
-        <artifactId>kie-server</artifactId>
-        <version>${version.org.kie}</version>
         <classifier>webc</classifier>
         <type>war</type>
       </dependency>
@@ -497,7 +483,7 @@
         <groupId>org.kie.server</groupId>
         <artifactId>kie-server-controller-standalone</artifactId>
         <version>${version.org.kie}</version>
-        <classifier>ee7</classifier>
+        <classifier>ee10</classifier>
         <type>war</type>
       </dependency>
       <dependency>
@@ -2629,28 +2615,28 @@
         <groupId>org.kie</groupId>
         <artifactId>kie-wb</artifactId>
         <version>${version.org.kie}</version>
-        <classifier>wildfly23</classifier>
+        <classifier>wildfly35</classifier>
         <type>war</type>
       </dependency>
       <dependency>
         <groupId>org.kie</groupId>
         <artifactId>kie-wb</artifactId>
         <version>${version.org.kie}</version>
-        <classifier>eap7</classifier>
+        <classifier>eap8</classifier>
         <type>war</type>
       </dependency>
       <dependency>
         <groupId>org.kie</groupId>
         <artifactId>business-monitoring</artifactId>
         <version>${version.org.kie}</version>
-        <classifier>wildfly23</classifier>
+        <classifier>wildfly35</classifier>
         <type>war</type>
       </dependency>
       <dependency>
         <groupId>org.kie</groupId>
         <artifactId>business-monitoring</artifactId>
         <version>${version.org.kie}</version>
-        <classifier>eap7</classifier>
+        <classifier>eap8</classifier>
         <type>war</type>
       </dependency>
 
