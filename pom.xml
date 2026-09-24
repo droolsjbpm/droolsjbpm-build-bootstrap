@@ -289,6 +289,12 @@
     <version.org.webjars.swagger-ui>2.2.10</version.org.webjars.swagger-ui>
     <version.org.webjars.npm.monaco-editor>0.20.0</version.org.webjars.npm.monaco-editor>
     <version.org.wildfly>35.0.1.Final</version.org.wildfly>
+    <version.org.wildfly.cloud.galleon-pack>7.0.2.Final</version.org.wildfly.cloud.galleon-pack>
+    <!-- EAP 8.1 product artifacts — resolved from maven.repository.redhat.com/ga -->
+    <version.org.jboss.eap.maven.plugin>2.0.0.Final-redhat-00009</version.org.jboss.eap.maven.plugin>
+    <version.org.jboss.eap.galleon-pack>8.1.1.GA-redhat-00019</version.org.jboss.eap.galleon-pack>
+    <version.org.jboss.eap.cloud.galleon-pack>2.0.0.Final-redhat-00030</version.org.jboss.eap.cloud.galleon-pack>
+    <version.org.jboss.eap.channel>1.7.1.GA-redhat-00001</version.org.jboss.eap.channel>
     <version.org.wildfly.arquillian>5.1.0.Final</version.org.wildfly.arquillian>
     <version.org.wildfly.client>1.0.1.Final</version.org.wildfly.client>
     <version.org.wildfly.core>27.0.1.Final</version.org.wildfly.core>
@@ -1566,6 +1572,18 @@
             <breakiterator>true</breakiterator>
             <quiet>true</quiet>
             <additionalparam>${javadoc.additional.params}</additionalparam>
+            <!-- Use classpath mode instead of JPMS module-path mode.
+                 gwt-user embeds .java sources referencing gwt-dev internals (GWTBridge,
+                 GwtScriptOnly) and errai jars use cross-jar service registrations; both
+                 cause javadoc to fail in JPMS module-path mode (default since 3.11+).
+                 legacyMode=true keeps javadoc on the classpath, matching pre-JPMS behaviour. -->
+            <legacyMode>true</legacyMode>
+            <!-- GWT and Errai JARs embed .java sources alongside compiled classes; javadoc
+                 follows type references into those embedded sources and fails when their
+                 transitive provided-scope dependencies (gwt-dev, Eclipse JDT) are absent.
+                 failOnError=false converts those exit-code-1 errors to warnings so the
+                 javadoc jar is still produced for the project's own public API. -->
+            <failOnError>false</failOnError>
           </configuration>
         </plugin>
         <plugin>
