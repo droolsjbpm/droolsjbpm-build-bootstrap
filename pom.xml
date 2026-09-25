@@ -289,12 +289,6 @@
     <version.org.webjars.swagger-ui>2.2.10</version.org.webjars.swagger-ui>
     <version.org.webjars.npm.monaco-editor>0.20.0</version.org.webjars.npm.monaco-editor>
     <version.org.wildfly>35.0.1.Final</version.org.wildfly>
-    <version.org.wildfly.cloud.galleon-pack>7.0.2.Final</version.org.wildfly.cloud.galleon-pack>
-    <!-- EAP 8.1 product artifacts — resolved from maven.repository.redhat.com/ga -->
-    <version.org.jboss.eap.maven.plugin>2.0.0.Final-redhat-00009</version.org.jboss.eap.maven.plugin>
-    <version.org.jboss.eap.galleon-pack>8.1.1.GA-redhat-00019</version.org.jboss.eap.galleon-pack>
-    <version.org.jboss.eap.cloud.galleon-pack>2.0.0.Final-redhat-00030</version.org.jboss.eap.cloud.galleon-pack>
-    <version.org.jboss.eap.channel>1.7.1.GA-redhat-00001</version.org.jboss.eap.channel>
     <version.org.wildfly.arquillian>5.1.0.Final</version.org.wildfly.arquillian>
     <version.org.wildfly.client>1.0.1.Final</version.org.wildfly.client>
     <version.org.wildfly.core>27.0.1.Final</version.org.wildfly.core>
